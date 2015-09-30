@@ -241,14 +241,7 @@
 
       
         
-          <span itemprop="articleBody"><p>Django 是个python中web-framework</p>
-<p>MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接. </p>
-<p>虽然这种方法是可行的， 但是不是规范的。 </p>
-<p>为什么呢？</p>
-<p>最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上<code>项目名字</code></p>
-<p>urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增加了改造的复杂度。</p>
-<p>通过此次改造我发现</p>
-<p>其实django中有一种很好的机制, 来通过urls中的viewname 来反解析url生成url.</p>
+          <span itemprop="articleBody"><p>Django 是个python中web-framework<br>MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接.<br>虽然这种方法是可行的， 但是不是规范的。<br>为什么呢？<br>最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上<code>项目名字</code><br>urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增加了改造的复杂度。<br>通过此次改造我发现<br>其实django中有一种很好的机制, 来通过urls中的viewname 来反解析url生成url.</p>
 <p>他们分别是: <code>django.core.urlresolvers.reverse</code> 和 <code>templatetags.url</code></p>
 <h2 id="django-core-urlresolvers-reverse">django.core.urlresolvers.reverse</h2><p>这个函数主要用在于python代码中， 详情请看下面案例</p>
 <p><code>urls.py</code>这里是一个对象详细页面, 需要两个参数.<br><code>models.py</code>中要通过<code>viewname</code> detail 来生成url.</p>
