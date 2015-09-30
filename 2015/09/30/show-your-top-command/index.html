@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="Pillow,Python,图片处理," />
+  <meta name="keywords" content="Bash,Python,Zsh,command," />
 
 
 
@@ -41,19 +41,22 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="透明重叠最主要用的是Image.blend方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要Image.blend方法第三个参数是相对于第一张图片透明度。 
-1234567891011121314151617181920212223242526272829303132333435363738394041424344">
+<meta name="description" content="一个查看历史命令的使用率工具， 因为看到oh-my-zsh项目中的zsh_statsfunction 后有感仿照开发了一个。 本项目不仅支持zsh_history而且支持bash_history 。 还有可扩展的趋势.
+oh-my-zsh 之 zsh_stats如果你用oh-my-zsh ， 那么你就有了这个功能。 
+1234567891011121314151617181920212223242">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用python将两张照片透明重叠">
-<meta property="og:url" content="http://yoursite.com/2015/09/30/python-pillow/index.html">
+<meta property="og:title" content="查看你历史命令的使用率">
+<meta property="og:url" content="http://yoursite.com/2015/09/30/show-your-top-command/index.html">
 <meta property="og:site_name" content="JackeyGao's Notes">
-<meta property="og:description" content="透明重叠最主要用的是Image.blend方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要Image.blend方法第三个参数是相对于第一张图片透明度。 
-1234567891011121314151617181920212223242526272829303132333435363738394041424344">
-<meta property="og:updated_time" content="2015-09-30T05:24:33.000Z">
+<meta property="og:description" content="一个查看历史命令的使用率工具， 因为看到oh-my-zsh项目中的zsh_statsfunction 后有感仿照开发了一个。 本项目不仅支持zsh_history而且支持bash_history 。 还有可扩展的趋势.
+oh-my-zsh 之 zsh_stats如果你用oh-my-zsh ， 那么你就有了这个功能。 
+1234567891011121314151617181920212223242">
+<meta property="og:updated_time" content="2015-09-30T06:01:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用python将两张照片透明重叠">
-<meta name="twitter:description" content="透明重叠最主要用的是Image.blend方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要Image.blend方法第三个参数是相对于第一张图片透明度。 
-1234567891011121314151617181920212223242526272829303132333435363738394041424344">
+<meta name="twitter:title" content="查看你历史命令的使用率">
+<meta name="twitter:description" content="一个查看历史命令的使用率工具， 因为看到oh-my-zsh项目中的zsh_statsfunction 后有感仿照开发了一个。 本项目不仅支持zsh_history而且支持bash_history 。 还有可扩展的趋势.
+oh-my-zsh 之 zsh_stats如果你用oh-my-zsh ， 那么你就有了这个功能。 
+1234567891011121314151617181920212223242">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -63,7 +66,7 @@
   };
 </script>
 
-  <title> 使用python将两张照片透明重叠 | JackeyGao's Notes </title>
+  <title> 查看你历史命令的使用率 | JackeyGao's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -178,7 +181,7 @@
           
           
             
-              使用python将两张照片透明重叠
+              查看你历史命令的使用率
             
           
         </h1>
@@ -187,7 +190,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-09-30T13:19:26+08:00" content="2015-09-30">
+          <time itemprop="dateCreated" datetime="2015-09-30T13:46:55+08:00" content="2015-09-30">
             2015-09-30
           </time>
         </span>
@@ -213,8 +216,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/09/30/python-pillow/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-pillow/" itemprop="commentsCount"></span>
+              <a href="/2015/09/30/show-your-top-command/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/show-your-top-command/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -228,10 +231,15 @@
       
 
       
-        <span itemprop="articleBody"><p>透明重叠最主要用的是<code>Image.blend</code>方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要<code>Image.blend</code>方法第三个参数是相对于第一张图片透明度。 </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">File Name: merge.py</span><br><span class="line">Author: JackeyGao</span><br><span class="line">mail: junqi.gao@shuyun.com</span><br><span class="line">Created Time: 一  6/ 1 13:27:49 2015</span><br><span class="line">'''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">image_resize</span><span class="params">(img, size=<span class="params">(<span class="number">4</span>, <span class="number">3</span>)</span>)</span>:</span></span><br><span class="line">    <span class="string">"""调整图片大小</span><br><span class="line">    """</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> img.mode <span class="keyword">not</span> <span class="keyword">in</span> (<span class="string">'L'</span>, <span class="string">'RGB'</span>):</span><br><span class="line">            img = img.convert(<span class="string">'RGB'</span>)</span><br><span class="line">        img = img.resize(size)</span><br><span class="line">    <span class="keyword">except</span> Exception, e:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">image_merge</span><span class="params">(images, output_dir=<span class="string">'output'</span>, output_name=<span class="string">'merge.jpg'</span>, \</span><br><span class="line">                restriction_max_width=None, restriction_max_height=None)</span>:</span></span><br><span class="line">    <span class="string">"""垂直合并多张图片</span><br><span class="line">    images - 要合并的图片路径列表</span><br><span class="line">    ouput_dir - 输出路径</span><br><span class="line">    output_name - 输出文件名</span><br><span class="line">    restriction_max_width - 限制合并后的图片最大宽度，如果超过将等比缩小</span><br><span class="line">    restriction_max_height - 限制合并后的图片最大高度，如果超过将等比缩小</span><br><span class="line">    """</span></span><br><span class="line">    x_number = <span class="number">10</span> <span class="keyword">if</span> len(images) &gt;= <span class="number">5</span> <span class="keyword">else</span> len(images)</span><br><span class="line">    y_number = int(math.ceil(len(images) / x_number))</span><br><span class="line">    total_height = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 计算合成后图片的宽度（以最宽的为准）和高度</span></span><br><span class="line">    <span class="keyword">for</span> img_path <span class="keyword">in</span> images:</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(img_path):</span><br><span class="line">            img = Image.open(img_path)</span><br><span class="line">            img = img.resize((<span class="number">712</span>, <span class="number">960</span>))</span><br><span class="line">            width, height = img.size</span><br><span class="line"></span><br><span class="line">            max_width = width * x_number</span><br><span class="line">            total_height = height * y_number</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 产生一张空白图</span></span><br><span class="line">    new_img = Image.new(<span class="string">'RGB'</span>, (max_width, total_height), <span class="number">255</span>)</span><br><span class="line">    <span class="comment"># 合并</span></span><br><span class="line">    x = y = n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> img_path <span class="keyword">in</span> images:</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(img_path):</span><br><span class="line">            img = Image.open(img_path)</span><br><span class="line">            img = img.resize((<span class="number">712</span>, <span class="number">960</span>))</span><br><span class="line">            width, height = img.size</span><br><span class="line">            <span class="keyword">print</span> width, height</span><br><span class="line">            new_img.paste(img, (x, y))</span><br><span class="line"></span><br><span class="line">            n += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> n % x_number == <span class="number">0</span>:</span><br><span class="line">                y += height</span><br><span class="line">                x = <span class="number">0</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                x += width</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> restriction_max_width <span class="keyword">and</span> max_width &gt;= restriction_max_width:</span><br><span class="line">        <span class="comment"># 如果宽带超过限制</span></span><br><span class="line">        <span class="comment"># 等比例缩小</span></span><br><span class="line">        ratio = restriction_max_height / float(max_width)</span><br><span class="line">        max_width = restriction_max_width</span><br><span class="line">        total_height = int(total_height * ratio)</span><br><span class="line">        new_img = image_resize(new_img, size=(max_width, total_height))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> restriction_max_height <span class="keyword">and</span> total_height &gt;= restriction_max_height:</span><br><span class="line">        <span class="comment"># 如果高度超过限制</span></span><br><span class="line">        <span class="comment"># 等比例缩小</span></span><br><span class="line">        ratio = restriction_max_height / float(total_height)</span><br><span class="line">        max_width = int(max_width * ratio)</span><br><span class="line">        total_height = restriction_max_height</span><br><span class="line">        new_img = image_resize(new_img, size=(max_width, total_height))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(output_dir):</span><br><span class="line">        os.makedirs(output_dir)</span><br><span class="line">    save_path = <span class="string">'%s/%s'</span> % (output_dir, output_name)</span><br><span class="line">    new_img.save(save_path)</span><br><span class="line">    <span class="keyword">return</span> save_path</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">import</span> os</span><br><span class="line">    image_files = [ <span class="string">"input/%s"</span> % f <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(<span class="string">"input/"</span>) <span class="keyword">if</span> f.endswith(<span class="string">"pg"</span>) ]</span><br><span class="line"></span><br><span class="line">    image_files = image_files * <span class="number">4</span></span><br><span class="line"></span><br><span class="line">    image_merge(images=image_files)</span><br></pre></td></tr></table></figure>
-<p>将两张背景图重叠</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Image</span><br><span class="line">img = Image.open(<span class="string">"bg.jpeg"</span>)</span><br><span class="line">img2 = Image.open(<span class="string">"merge.jpg"</span>)</span><br><span class="line">merge = Image.blend(img, img2, <span class="number">0.3</span>)</span><br><span class="line">merge.save(<span class="string">"my.jpg"</span>)</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><p>一个查看历史命令的使用率工具， 因为看到<code>oh-my-zsh</code>项目中的<code>zsh_stats</code>function 后有感仿照开发了一个。 本项目不仅支持<code>zsh_history</code>而且支持<code>bash_history</code> 。 还有可扩展的趋势.</p>
+<h2 id="oh-my-zsh_之_zsh_stats">oh-my-zsh 之 zsh_stats</h2><p>如果你用<code>oh-my-zsh</code> ， 那么你就有了这个功能。 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ zsh_stats</span><br><span class="line">     <span class="number">1</span>  <span class="number">3290</span>  <span class="number">32.9033</span>%   vim</span><br><span class="line">     <span class="number">2</span>  <span class="number">2204</span>  <span class="number">22.0422</span>%   python</span><br><span class="line">     <span class="number">3</span>  <span class="number">902</span>   <span class="number">9.0209</span>%    ls</span><br><span class="line">     <span class="number">4</span>  <span class="number">730</span>   <span class="number">7.30073</span>%   git</span><br><span class="line">     <span class="number">5</span>  <span class="number">449</span>   <span class="number">4.49045</span>%   <span class="built_in">cd</span></span><br><span class="line">     <span class="number">6</span>  <span class="number">194</span>   <span class="number">1.94019</span>%   curl</span><br><span class="line">     <span class="number">7</span>  <span class="number">170</span>   <span class="number">1.70017</span>%   pip</span><br><span class="line">     <span class="number">8</span>  <span class="number">168</span>   <span class="number">1.68017</span>%   ll</span><br><span class="line">     <span class="number">9</span>  <span class="number">157</span>   <span class="number">1.57016</span>%   scrapy</span><br><span class="line">    <span class="number">10</span>  <span class="number">142</span>   <span class="number">1.42014</span>%   rm</span><br><span class="line">    <span class="number">11</span>  <span class="number">96</span>    <span class="number">0.960096</span>%  cat</span><br><span class="line">    <span class="number">12</span>  <span class="number">78</span>    <span class="number">0.780078</span>%  hexo</span><br><span class="line">    <span class="number">13</span>  <span class="number">76</span>    <span class="number">0.760076</span>%  clear</span><br><span class="line">    <span class="number">14</span>  <span class="number">63</span>    <span class="number">0.630063</span>%  mkdir</span><br><span class="line">    <span class="number">15</span>  <span class="number">60</span>    <span class="number">0.60006</span>%   ping</span><br><span class="line">    <span class="number">16</span>  <span class="number">59</span>    <span class="number">0.590059</span>%  grep</span><br><span class="line">    <span class="number">17</span>  <span class="number">58</span>    <span class="number">0.580058</span>%  workon</span><br><span class="line">    <span class="number">18</span>  <span class="number">57</span>    <span class="number">0.570057</span>%  sudo</span><br><span class="line">    <span class="number">19</span>  <span class="number">57</span>    <span class="number">0.570057</span>%  docker</span><br><span class="line">    <span class="number">20</span>  <span class="number">55</span>    <span class="number">0.550055</span>%  mv</span><br><span class="line">$ <span class="built_in">which</span> zsh_stats <span class="comment"># oh-my-zsh 封装的函数</span></span><br><span class="line"><span class="function"><span class="title">zsh_stats</span></span> () &#123;</span><br><span class="line">    <span class="built_in">fc</span> <span class="operator">-l</span> <span class="number">1</span> | awk <span class="string">'&#123;CMD[$2]++;count++;&#125;END &#123; for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;&#125;'</span> | grep -v <span class="string">"./"</span> | column -c3 <span class="operator">-s</span> <span class="string">" "</span> -t | sort -nr | nl | head -n20</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="cmdstats_项目">cmdstats 项目</h2><p>查看你终端命令使用频率列表, 原理是通过宿主目录下的 <code>.*history</code> 分析后得到历史命令使用频率状态， 并且进行排序输出.</p>
+<p>目前支持 <code>~/.bash_history</code> 、 <code>~/.zsh_history</code></p>
+<h3 id="安装">安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install git+https://github.com/jackeyGao/cmdstats.git</span><br></pre></td></tr></table></figure>
+<h3 id="使用">使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ cmdstats -h</span><br><span class="line">usage: cmdstats [-h] [<span class="operator">-l</span> LIMIT]</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --help            show this <span class="built_in">help</span> message and <span class="built_in">exit</span></span><br><span class="line">  <span class="operator">-l</span> LIMIT, --limit LIMIT</span><br><span class="line">                        显示条数[default: <span class="number">20</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ cmdstats</span><br><span class="line"><span class="number">1</span>   <span class="number">3612</span>  <span class="number">33.13154</span>%  vim</span><br><span class="line"><span class="number">2</span>   <span class="number">2473</span>  <span class="number">22.68391</span>%  python</span><br><span class="line"><span class="number">3</span>   <span class="number">1018</span>  <span class="number">9.33774</span>%   ls</span><br><span class="line"><span class="number">4</span>   <span class="number">692</span>   <span class="number">6.34746</span>%   git</span><br><span class="line"><span class="number">5</span>   <span class="number">487</span>   <span class="number">4.46707</span>%   <span class="built_in">cd</span></span><br><span class="line"><span class="number">6</span>   <span class="number">204</span>   <span class="number">1.87122</span>%   ll</span><br><span class="line"><span class="number">7</span>   <span class="number">194</span>   <span class="number">1.77949</span>%   curl</span><br><span class="line"><span class="number">8</span>   <span class="number">178</span>   <span class="number">1.63273</span>%   pip</span><br><span class="line"><span class="number">9</span>   <span class="number">157</span>   <span class="number">1.4401</span>%    scrapy</span><br><span class="line"><span class="number">10</span>  <span class="number">147</span>   <span class="number">1.34838</span>%   rm</span><br><span class="line"><span class="number">11</span>  <span class="number">98</span>    <span class="number">0.89892</span>%   cat</span><br><span class="line"><span class="number">12</span>  <span class="number">91</span>    <span class="number">0.83471</span>%   clear</span><br><span class="line"><span class="number">13</span>  <span class="number">86</span>    <span class="number">0.78885</span>%   ping</span><br><span class="line"><span class="number">14</span>  <span class="number">78</span>    <span class="number">0.71547</span>%   hexo</span><br><span class="line"><span class="number">15</span>  <span class="number">73</span>    <span class="number">0.6696</span>%    docker</span><br><span class="line"><span class="number">16</span>  <span class="number">71</span>    <span class="number">0.65126</span>%   mkdir</span><br><span class="line"><span class="number">17</span>  <span class="number">61</span>    <span class="number">0.55953</span>%   workon</span><br><span class="line"><span class="number">18</span>  <span class="number">60</span>    <span class="number">0.55036</span>%   grep</span><br><span class="line"><span class="number">19</span>  <span class="number">58</span>    <span class="number">0.53201</span>%   sudo</span><br><span class="line"><span class="number">20</span>  <span class="number">57</span>    <span class="number">0.52284</span>%   mv</span><br><span class="line">$ <span class="built_in">which</span> cmdstats</span><br><span class="line">/usr/<span class="built_in">local</span>/bin//cmdstats</span><br></pre></td></tr></table></figure>
+<h3 id="项目地址">项目地址</h3><p><a href="https://github.com/jackeyGao/cmdstats" target="_blank" rel="external">jackeyGao/cmdstats</a></p>
 </span>
       
     </div>
@@ -240,11 +248,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Pillow/" rel="tag">#Pillow</a>
+            <a href="/tags/Bash/" rel="tag">#Bash</a>
           
             <a href="/tags/Python/" rel="tag">#Python</a>
           
-            <a href="/tags/图片处理/" rel="tag">#图片处理</a>
+            <a href="/tags/Zsh/" rel="tag">#Zsh</a>
+          
+            <a href="/tags/command/" rel="tag">#command</a>
           
         </div>
       
@@ -253,13 +263,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/30/show-your-top-command/" rel="prev">查看你历史命令的使用率</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/30/black-night-cat/" rel="next">黑夜的猫</a>
+              <a href="/2015/09/30/python-pillow/" rel="next">使用python将两张照片透明重叠</a>
             
           </div>
         </div>
@@ -284,8 +292,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/09/30/python-pillow/"
-                   data-title="使用python将两张照片透明重叠" data-url="http://yoursite.com/2015/09/30/python-pillow/">
+              <div class="ds-thread" data-thread-key="2015/09/30/show-your-top-command/"
+                   data-title="查看你历史命令的使用率" data-url="http://yoursite.com/2015/09/30/show-your-top-command/">
               </div>
             
           </div>
@@ -398,7 +406,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#oh-my-zsh_之_zsh_stats"><span class="nav-number">1.</span> <span class="nav-text">oh-my-zsh 之 zsh_stats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cmdstats_项目"><span class="nav-number">2.</span> <span class="nav-text">cmdstats 项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">2.2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目地址"><span class="nav-number">2.3.</span> <span class="nav-text">项目地址</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
