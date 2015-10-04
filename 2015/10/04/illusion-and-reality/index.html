@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="Concurrent,Python," />
+  <meta name="keywords" content="病,随想录," />
 
 
 
@@ -41,19 +41,17 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="总的来说并发级别归纳为下列三种, 其实也就是从底层到高层过渡， 从直接的接口到相对成熟对程序员友好的高级封装， 级别越高对于程序员来说越容易控制, 我们都知道并发难以实现， 经常出现跑死， 或者僵尸进程， 难以调试。 这些可能就是因为用了相对来说低级的并发逻辑。 此次专题主要讲述python的高级并发， 一种相对来说比较Pythonic的高级并发库. 在开始之前对并发归类做个引导.
-并发的归类低级">
+<meta name="description" content="我是个会意淫的人， 从自己的爱情， 到自己的事业， 总是憧憬那么美好的事情。时间可以是将来， 可以是过去， 但总是美好。 当一个人的时候， 特别是晚上睡觉的之前的半个小时， 总能想到很多不可思议的遐想， 这些遐想太美妙了， 让我不可自拔， 每天晚上我都会想象这些美好的事情， 有时候开始一个新的意淫， 有时候则接着之前的剧情发展， 期间我无数次告诉自己这是假的， 马上停止下来继续你的睡眠， 可是越是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python 高级并发1">
-<meta property="og:url" content="http://yoursite.com/2015/09/30/python-concurrent-high-level/index.html">
+<meta property="og:title" content="幻想与现实">
+<meta property="og:url" content="http://yoursite.com/2015/10/04/illusion-and-reality/index.html">
 <meta property="og:site_name" content="JackeyGao's Notes">
-<meta property="og:description" content="总的来说并发级别归纳为下列三种, 其实也就是从底层到高层过渡， 从直接的接口到相对成熟对程序员友好的高级封装， 级别越高对于程序员来说越容易控制, 我们都知道并发难以实现， 经常出现跑死， 或者僵尸进程， 难以调试。 这些可能就是因为用了相对来说低级的并发逻辑。 此次专题主要讲述python的高级并发， 一种相对来说比较Pythonic的高级并发库. 在开始之前对并发归类做个引导.
-并发的归类低级">
-<meta property="og:updated_time" content="2015-09-30T03:16:53.000Z">
+<meta property="og:description" content="我是个会意淫的人， 从自己的爱情， 到自己的事业， 总是憧憬那么美好的事情。时间可以是将来， 可以是过去， 但总是美好。 当一个人的时候， 特别是晚上睡觉的之前的半个小时， 总能想到很多不可思议的遐想， 这些遐想太美妙了， 让我不可自拔， 每天晚上我都会想象这些美好的事情， 有时候开始一个新的意淫， 有时候则接着之前的剧情发展， 期间我无数次告诉自己这是假的， 马上停止下来继续你的睡眠， 可是越是">
+<meta property="og:image" content="http://yoursite.com/uploads/images/photo-1440964829947-ca3277bd37f8.jpeg">
+<meta property="og:updated_time" content="2015-10-04T12:53:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python 高级并发1">
-<meta name="twitter:description" content="总的来说并发级别归纳为下列三种, 其实也就是从底层到高层过渡， 从直接的接口到相对成熟对程序员友好的高级封装， 级别越高对于程序员来说越容易控制, 我们都知道并发难以实现， 经常出现跑死， 或者僵尸进程， 难以调试。 这些可能就是因为用了相对来说低级的并发逻辑。 此次专题主要讲述python的高级并发， 一种相对来说比较Pythonic的高级并发库. 在开始之前对并发归类做个引导.
-并发的归类低级">
+<meta name="twitter:title" content="幻想与现实">
+<meta name="twitter:description" content="我是个会意淫的人， 从自己的爱情， 到自己的事业， 总是憧憬那么美好的事情。时间可以是将来， 可以是过去， 但总是美好。 当一个人的时候， 特别是晚上睡觉的之前的半个小时， 总能想到很多不可思议的遐想， 这些遐想太美妙了， 让我不可自拔， 每天晚上我都会想象这些美好的事情， 有时候开始一个新的意淫， 有时候则接着之前的剧情发展， 期间我无数次告诉自己这是假的， 马上停止下来继续你的睡眠， 可是越是">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -63,7 +61,7 @@
   };
 </script>
 
-  <title> python 高级并发1 | JackeyGao's Notes </title>
+  <title> 幻想与现实 | JackeyGao's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -187,7 +185,7 @@
             
             
               
-                python 高级并发1
+                幻想与现实
               
             
           </h1>
@@ -196,8 +194,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-09-30T11:09:40+08:00" content="2015-09-30">
-              2015-09-30
+            <time itemprop="dateCreated" datetime="2015-10-04T20:48:51+08:00" content="2015-10-04">
+              2015-10-04
             </time>
           </span>
 
@@ -206,20 +204,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/Python高级并发/" itemprop="url" rel="index">
-                    <span itemprop="name">Python高级并发</span>
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
                   </a>
                 </span>
 
@@ -234,8 +220,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/30/python-concurrent-high-level/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-concurrent-high-level/" itemprop="commentsCount"></span>
+                <a href="/2015/10/04/illusion-and-reality/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/04/illusion-and-reality/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -250,19 +236,10 @@
       
 
       
-        <span itemprop="articleBody"><p>总的来说并发级别归纳为下列三种, 其实也就是从底层到高层过渡， 从直接的接口到相对成熟对程序员友好的高级封装， 级别越高对于程序员来说越容易控制, 我们都知道并发难以实现， 经常出现跑死， 或者僵尸进程， 难以调试。 这些可能就是因为用了相对来说低级的并发逻辑。 此次专题主要讲述python的高级并发， 一种相对来说比较<code>Pythonic</code>的高级并发库. 在开始之前对并发归类做个引导.</p>
-<h2 id="并发的归类">并发的归类</h2><p><strong>低级并发(Low-level Concurrency)</strong></p>
-<p>就是直接用『原子操作』(atomic operation)所实现的并发。这种并发是给程序库的编写者用的， 而应用程序开发者则不需要它，因为这种写法很容易出错，而且极难调试。虽说Python本身的并发机制一般是用底层的操作实现的， 但开发者不能用Python语言编写这种级别的并发代码。</p>
-<p><strong>中级并发(Mid-level Concurrency)</strong></p>
-<p>不直接使用原子操作， 但却会直接使用”锁”（lock）,大多数语言提供的都是这种级别的并发。Python的threading.Semaphore、threading.Lock及multiprocessing.Lock等类都支持中级并发。开发应用程序的人一般都会使用终极并发，因为他们通常只能使用这个级别的并发功能。</p>
-<p><strong>高级并发(High-level Concurrency)</strong></p>
-<p>既不直接使用原子操作， 也不直接使用锁(锁与原子操作可能在幕后使用， 但开发者无须关注这些。)目前已经有编程语言开始支持高级并发了。从3.2版本起，Python提供了支持高级并发的concurrent.futures模块，此外， queue.Queue及multiprocessing这两个『队列集合类』(queue collection class)也支持高级并发.</p>
-<h2 id="见解">见解</h2><p><strong>中级并发痛点</strong></p>
-<p>中级并发是我经常使用的， 这种并发等级虽说使用起来相对低级并发简单， 但很容易出错， 容易出现那种难于追踪而且调试起来非常复杂。此外还会导致程序莫名的崩溃、失去响应(frozen)或者僵尸(zombie)进程.</p>
-<p><strong>关于中级并发建议</strong></p>
-<p>关键问题处在共享数据上面。如果共享数据可以修改，那么必须用锁来保护，以确保所有线程和进程都能按照顺序来存取它(也就是说你必须在程序里面控制好同一时刻必须有一个线程或进程访问这份数据)。如果有多个线程或进程试图访问同一份共享数据， 那么只有其中一个能够获取到， 而其他的都会阻塞(也就是进去『空闲状态』(idle)状态)。这就意味着当锁定机制生效时， 应用程序只有一个线程或进程起作用(这就变得和非并发程序类似了)，其余都得等待。由此可见我们应该进程少用锁，即便要用也不要时间太长,最简单的方法是根本不要分享可以修改的数据， 使进程本身只做运算，和I/O操作， 操作完后返回结果。这样就不用加锁了， 而大部分并发问题也就随之消失了.</p>
-<p><strong>高级并发</strong></p>
-<p>后面会追加一些高级并发， 对于Python来说高级并发才显得<code>Pythonic</code></p>
+        <span itemprop="articleBody"><p><img src="/uploads/images/photo-1440964829947-ca3277bd37f8.jpeg" alt=""></p>
+<p>我是个会意淫的人， 从自己的爱情， 到自己的事业， 总是憧憬那么美好的事情。时间可以是将来， 可以是过去， 但总是美好。 当一个人的时候， 特别是晚上睡觉的之前的半个小时， 总能想到很多不可思议的遐想， 这些遐想太美妙了， 让我不可自拔， 每天晚上我都会想象这些美好的事情， 有时候开始一个新的意淫， 有时候则接着之前的剧情发展， 期间我无数次告诉自己这是假的， 马上停止下来继续你的睡眠， 可是越是美好越让我心潮澎湃， 激动处我有时能微笑， 有时候能感动到流泪， 然后再无睡意。</p>
+<p>不得不说， 这些想象真的很难实现， 太过于虚幻、美好、 完美。我不知道这个是不是病， 我想这是每个人的共性， 都会一致的幻想自己丰衣足食， 总是很轻松， 不会为未来担忧， 不后悔过去， 因为过去是按照自己的设想过来的。 如果我让这些写出来， 估计也是屌丝逆袭人生的大剧， 会吸引同类病种人群大量观看， 我也就成了一位有病的伟大编剧。每次都不能从 YY 中把我自己唤醒， 感觉是被幻想召唤走了， 我跟着这种心理不断创造出美好， 并被这些美好吸引， 吸引着我持续输出更美的结局， 让我不能理解的是这些创造我也会根据自身和社会因素来克制， 所以在我糊涂的幻想中我认为这些就是现实， 之后我完全不能自拔。</p>
+<p>最近越来越严重了， 我到网上查了查这种状况是否正常， 其实我深知这是不正常的表现。 只是想知道为什么会产生这种不健康的生活习惯， 查来查去给出最多是失眠造成的脑袋空想。我并不在乎这种病在并发能给我有多大危害， 但每次早上我都死气沉沉， 觉得好像失恋一样， 甚至产生一种厌世的心态， 我知道可能和我晚上空想有关。</p>
 </span>
       
     </div>
@@ -271,9 +248,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Concurrent/" rel="tag">#Concurrent</a>
+            <a href="/tags/病/" rel="tag">#病</a>
           
-            <a href="/tags/Python/" rel="tag">#Python</a>
+            <a href="/tags/随想录/" rel="tag">#随想录</a>
           
         </div>
       
@@ -282,13 +259,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/30/python-concurrent-high-level-2/" rel="prev">python 高级并发2</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/30/hello-world/" rel="next">Hello World</a>
+              <a href="/2015/10/03/jiaxiangmei/" rel="next">秋耕 － 秋意浓</a>
             
           </div>
         </div>
@@ -313,8 +288,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/09/30/python-concurrent-high-level/"
-                   data-title="python 高级并发1" data-url="http://yoursite.com/2015/09/30/python-concurrent-high-level/">
+              <div class="ds-thread" data-thread-key="2015/10/04/illusion-and-reality/"
+                   data-title="幻想与现实" data-url="http://yoursite.com/2015/10/04/illusion-and-reality/">
               </div>
             
           </div>
@@ -428,7 +403,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#并发的归类"><span class="nav-number">1.</span> <span class="nav-text">并发的归类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#见解"><span class="nav-number">2.</span> <span class="nav-text">见解</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
