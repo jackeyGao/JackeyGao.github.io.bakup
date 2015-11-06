@@ -185,6 +185,116 @@
             
             
               
+                <a class="post-title-link" href="/2015/11/06/offices-proxy/" itemprop="url">
+                  企业级翻墙方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-06T15:53:27+08:00" content="2015-11-06">
+              2015-11-06
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/06/offices-proxy/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/06/offices-proxy/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+        </div>
+      </header>
+    
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>为了公司内一些技术员工的要求访问google查资料, 公司准备采购国外vps来建设内部翻墙方案.利用公司内部的认证系统（Open LDAP）来进行账号授权。然后通过PAC文件进行网站过滤.</p>
+<h2 id="准备工作">准备工作</h2><p><strong>服务器</strong></p>
+<ul>
+<li>自由网络的VPS若干, 以下简称VPS.</li>
+<li>LDAP 服务, 认证服务器</li>
+<li>内部分流机器, 以下简称分流机器</li>
+<li>提供PAC服务机器(HTTP服务), 可以和分流服务器共用</li>
+</ul>
+<p><strong>开源软件</strong></p>
+<ul>
+<li>Squid</li>
+<li>Stunnel</li>
+</ul>
+<h2 id="思考工作">思考工作</h2><p>首先要考虑加密工作, 随着墙的升级, 越来越多的手段都被禁止或者被干扰. 所以加密一定要做的， 这里采用了Stunnel进行加密.其次是网站过滤,虽然一些技术人员不会关注政治黑暗， 但一些视频娱乐网站也是要控制的.这里用PAC文件来控制， 有些人懂一些网络基础直接连接端口进行全局proxy也不是不可能的。 这个地方可以通过squid的ACL来控制.关于ACL本文不会描述 ， 请自行查阅squid文档.</p>
+<p><strong>所以</strong></p>
+<ul>
+<li>加密 (保证在公网使用ssl加密)</li>
+<li>控制 (这个看需求了, 最好控制youtube等无用的大流量网站)</li>
+</ul>
+<p><strong>大概的路线</strong></p>
+<p><strong>Client</strong> &lt;~localnetl~&gt; <strong>PAC</strong> &lt;~localnetl~&gt; <strong>分流Stunnel</strong> &lt;~internet~&gt; <strong>VPSStunnel</strong> &lt;~vps net~&gt; <strong>Squid</strong> &lt;~internet~&gt; <strong>目标服务器</strong></p>
+<h2 id="安装操作">安装操作</h2><p>参考这里: <a href="http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html" target="_blank" rel="external">http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html</a></p>
+<p>我说明下和ldap关联集中认证.首先调通 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/lib64/squid/squid_ldap_auth -u -cn <span class="operator">-f</span> <span class="string">"uid=%s"</span> -b <span class="string">"ou=people,dc=example,dc=com"</span> -D <span class="string">"cn=squid,ou=people,dc=example,dc=com"</span> -w <span class="string">"认证密码"</span>  -H ldap://ldap.example.com</span><br><span class="line"><span class="variable">$username</span> <span class="variable">$password</span> <span class="comment"># 这里输入测试认证的用户名 空格 密码</span></span><br><span class="line">OK <span class="comment">#这里是ok才是正常</span></span><br></pre></td></tr></table></figure>
+<p>然后修改squid配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/squid/squid.conf</span><br><span class="line"></span><br><span class="line">增加下面代码.</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">auth_param basic program /usr/lib64/squid/squid_ldap_auth -u -cn <span class="operator">-f</span> <span class="string">"uid=%s"</span> -b <span class="string">"ou=people,dc=example,dc=com"</span> -D <span class="string">"cn=squid,ou=people,dc=example,dc=com"</span> -w <span class="string">"xxxxxx"</span>  -H ldap://ldap.example.com</span><br><span class="line"><span class="comment">#auth_param basic realm Internet Proxy</span></span><br><span class="line">auth_param basic credentialsttl <span class="number">1</span> minute</span><br><span class="line">acl ldapauth proxy_auth REQUIRED <span class="comment"># 定义ldap认证后的acl，直接转发</span></span><br><span class="line">http_access allow ldapauth <span class="comment"># 允许ldapauth认证过的</span></span><br><span class="line">http_access deny all <span class="comment"># 其他拒绝</span></span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>squid_ldap_auth 这个工具是squid程序里面的， 地址可能不是我上面指定的 ， 因为我是yum安装的。 如果是编译安装应该是prefix里面找. 如果没有生效可以通过这个命令进行测试， 具体可以man squid_ldap_auth 查看EXAMPLE里面的介绍. 如果还不行可能是编译没有开启ldap. 这个需要开启， 网上有大量的文档说明开启ldap.</p>
+</blockquote>
+<p>然后安装<a href="http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html" target="_blank" rel="external">文档</a>继续装剩下的。</p>
+<h2 id="关于PAC">关于PAC</h2><p>PAC文件可以通过<a href="https://github.com/JinnLynn/GenPAC" target="_blank" rel="external">Genpac</a>生成. 然后使用<strong>PAC服务机器</strong>起个http服务， 让员工通过一个内网地址访问到就行。 这样只有上班实践可以使用翻墙.</p>
+<h2 id="关于拓展">关于拓展</h2><p>多个vps 可以启动多个squid和stunnel服务, 客户端起多个stunnel端口即可.</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/11/02/use-conoha/" itemprop="url">
                   conoha主机测评
                 </a>
@@ -1098,118 +1208,6 @@
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/09/30/python-concurrent-high-level/" itemprop="url">
-                  python 高级并发
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-09-30T10:15:40+08:00" content="2015-09-30">
-              2015-09-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/Python高级并发/" itemprop="url" rel="index">
-                    <span itemprop="name">Python高级并发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/30/python-concurrent-high-level/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-concurrent-high-level/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-        </div>
-      </header>
-    
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>并发级别归纳为下列三种：</p>
-<h2 id="并发的归类">并发的归类</h2><h3 id="低级并发(Low-level_Concurrency)">低级并发(Low-level Concurrency)</h3><p>就是直接用『原子操作』(atomic operation)所实现的并发。这种并发是给程序库的编写者用的， 而应用程序开发者则不需要它，因为这种写法很容易出错，而且极难调试。虽说Python本身的并发机制一般是用底层的操作实现的， 但开发者不能用Python语言编写这种级别的并发代码。</p>
-<h3 id="中级并发(Mid-level_Concurrency)">中级并发(Mid-level Concurrency)</h3><p>不直接使用原子操作， 但却会直接使用”锁”（lock）,大多数语言提供的都是这种级别的并发。Python的threading.Semaphore、threading.Lock及multiprocessing.Lock等类都支持中级并发。开发应用程序的人一般都会使用终极并发，因为他们通常只能使用这个级别的并发功能。</p>
-<h3 id="高级并发(High-level_Concurrency)">高级并发(High-level Concurrency)</h3><p>既不直接使用原子操作， 也不直接使用锁(锁与原子操作可能在幕后使用， 但开发者无须关注这些。)目前已经有编程语言开始支持高级并发了。从3.2版本起，Python提供了支持高级并发的concurrent.futures模块，此外， queue.Queue及multiprocessing这两个『队列集合类』(queue collection class)也支持高级并发.</p>
-<h2 id="见解">见解</h2><h3 id="中级并发痛点">中级并发痛点</h3><p>中级并发是我经常使用的， 这种并发等级虽说使用起来相对低级并发简单， 但很容易出错， 容易出现那种难于追踪而且调试起来非常复杂。此外还会导致程序莫名的崩溃、失去响应(frozen)或者僵尸(zombie)进程.</p>
-<h3 id="关于中级并发建议">关于中级并发建议</h3><p>关键问题处在共享数据上面。如果共享数据可以修改，那么必须用锁来保护，以确保所有线程和进程都能按照顺序来存取它(也就是说你必须在程序里面控制好同一时刻必须有一个线程或进程访问这份数据)。如果有多个线程或进程试图访问同一份共享数据， 那么只有其中一个能够获取到， 而其他的都会阻塞(也就是进去『空闲状态』(idle)状态)。这就意味着当锁定机制生效时， 应用程序只有一个线程或进程起作用(这就变得和非并发程序类似了)，其余都得等待。由此可见我们应该进程少用锁，即便要用也不要时间太长,最简单的方法是根本不要分享可以修改的数据， 使进程本身只做运算，和I/O操作， 操作完后返回结果。这样就不用加锁了， 而大部分并发问题也就随之消失了.</p>
-<h3 id="高级并发">高级并发</h3><p>后面会追加一些高级并发， 对于Python来说高级并发才显得<code>Pythonic</code></p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1249,21 +1247,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
