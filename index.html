@@ -185,6 +185,123 @@
             
             
               
+                <a class="post-title-link" href="/2015/11/18/flask-jpg2ascii/" itemprop="url">
+                  JPG2ASCII开发上线记录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-18T14:17:10+08:00" content="2015-11-18">
+              2015-11-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/18/flask-jpg2ascii/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/flask-jpg2ascii/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+        </div>
+      </header>
+    
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="介绍">介绍</h2><p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.<br><a href="jpg2ascii.herokuapp.com">JPG2ASCII</a></p>
+<h3 id="用到的开源">用到的开源</h3><p><strong>jp2a</strong></p>
+<p>进行转换的工具<br>项目地址:  <a href="https://csl.name/jp2a/" target="_blank" rel="external">https://csl.name/jp2a/</a></p>
+<blockquote>
+<p>jp2a is a small utility that converts JPG images to ASCII. It’s written in C and released under the GPL.</p>
+</blockquote>
+<p><strong>flask</strong></p>
+<p>一个Python web框架<br>项目地址: <a href="https://github.com/mitsuhiko/flask" target="_blank" rel="external">https://github.com/mitsuhiko/flask</a></p>
+<blockquote>
+<p>A microframework based on Werkzeug, Jinja2 and good intentions <a href="http://flask.pocoo.org/" target="_blank" rel="external">http://flask.pocoo.org/</a></p>
+</blockquote>
+<p><strong>semantic-UI</strong></p>
+<p>一个前端开发框架<br>项目地址: <a href="https://github.com/semantic-org/semantic-ui/" target="_blank" rel="external">https://github.com/semantic-org/semantic-ui/</a></p>
+<blockquote>
+<p>Semantic is a development framework that helps create beautiful, responsive layouts using human-friendly HTML.</p>
+</blockquote>
+<h2 id="主要思路">主要思路</h2><p>前端网页UI将图片和参数传递到后端flask, 然后保存图片生成ASCII最后返回生成结果.项目已经开源， 这里不贴代码了， 有兴趣移步到<a href="https://github.com/jackeyGao/Flask-JPG2ASCII" target="_blank" rel="external">https://github.com/jackeyGao/Flask-JPG2ASCII</a></p>
+<h2 id="最后部署heroku">最后部署heroku</h2><p><code>Heroku</code>是一个支持多种编程语言的云平台即服务</p>
+<p>Python 的web程序指定好<code>Procfile</code> 和 <code>requirements.txt</code> 就可以正常工作了， 但是由于此次项目用到了jp2a这个需要编译的工具, 现在就有个问题. 现在本地的jp2a可执行文件是不能在heroku机器上运行成功的, 所以我怎么在heroku上编译这个工具。 幸运的是heroku支持的， 官方的<code>快速开始</code>文档没有关于这个的介绍, 我在国外的一个博客看到有个伙计成功了. 下面介绍</p>
+<p>首先需要获得一个shell命令行交互环境.其次需要把包放到heroku APP机器上, 这个可以scp, 或者wget, curl.<br>获得shell(其实相当于ssh操作这台机器)， 使用heroku的run命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku run /bin/bash</span><br></pre></td></tr></table></figure>
+<p>然后就会有一个shell环境来操作app机器, 这时候</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -O http://sourceforge.net/projects/jp2a/files/latest/download</span><br><span class="line"></span><br><span class="line">tar zxvf download</span><br><span class="line"><span class="built_in">cd</span> jp2a-xxxxx/</span><br><span class="line">./configure --prefix=/app/.heroku/vendor/jp2a</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>编译完成后需要把这个jp2a可执行命令打进包里面, heroku app机器上不太方便git操作, 我这边是在heroku app机器scp到我的服务器上. 然后add commit.</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/11/06/offices-proxy/" itemprop="url">
                   企业级翻墙方案
                 </a>
@@ -1121,93 +1238,6 @@
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/09/30/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-09-30T10:16:33+08:00" content="2015-09-30">
-              2015-09-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/30/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-        </div>
-      </header>
-    
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1247,7 +1277,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1261,7 +1291,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

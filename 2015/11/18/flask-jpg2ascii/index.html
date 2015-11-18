@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="Concurrent,Python," />
+  <meta name="keywords" content="flask,heroku,jpg2ascii,python," />
 
 
 
@@ -41,25 +41,22 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="本篇主要讲案例, 两个使用Concurrent.futures实现的并发， 一个是多线程， 一个是多进程。
-多进程
-用在计算密集的确定Long Number是否为质数的例子
-12345678910111213141516171819202122232425262728import concurrent.futuresimport mathPRIMES = [    112272535095293,">
+<meta name="description" content="介绍刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.JPG2ASCII
+用到的开源jp2a
+进">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python 高级并发3">
-<meta property="og:url" content="http://yoursite.com/2015/09/30/python-concurrent-high-level-3/index.html">
+<meta property="og:title" content="JPG2ASCII开发上线记录">
+<meta property="og:url" content="http://yoursite.com/2015/11/18/flask-jpg2ascii/index.html">
 <meta property="og:site_name" content="JackeyGao's Notes">
-<meta property="og:description" content="本篇主要讲案例, 两个使用Concurrent.futures实现的并发， 一个是多线程， 一个是多进程。
-多进程
-用在计算密集的确定Long Number是否为质数的例子
-12345678910111213141516171819202122232425262728import concurrent.futuresimport mathPRIMES = [    112272535095293,">
-<meta property="og:updated_time" content="2015-09-30T03:23:38.000Z">
+<meta property="og:description" content="介绍刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.JPG2ASCII
+用到的开源jp2a
+进">
+<meta property="og:updated_time" content="2015-11-18T06:32:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python 高级并发3">
-<meta name="twitter:description" content="本篇主要讲案例, 两个使用Concurrent.futures实现的并发， 一个是多线程， 一个是多进程。
-多进程
-用在计算密集的确定Long Number是否为质数的例子
-12345678910111213141516171819202122232425262728import concurrent.futuresimport mathPRIMES = [    112272535095293,">
+<meta name="twitter:title" content="JPG2ASCII开发上线记录">
+<meta name="twitter:description" content="介绍刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.JPG2ASCII
+用到的开源jp2a
+进">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -69,7 +66,7 @@
   };
 </script>
 
-  <title> python 高级并发3 | JackeyGao's Notes </title>
+  <title> JPG2ASCII开发上线记录 | JackeyGao's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -193,7 +190,7 @@
             
             
               
-                python 高级并发3
+                JPG2ASCII开发上线记录
               
             
           </h1>
@@ -202,8 +199,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-09-30T11:22:40+08:00" content="2015-09-30">
-              2015-09-30
+            <time itemprop="dateCreated" datetime="2015-11-18T14:17:10+08:00" content="2015-11-18">
+              2015-11-18
             </time>
           </span>
 
@@ -219,18 +216,6 @@
 
                 
                 
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/Python高级并发/" itemprop="url" rel="index">
-                    <span itemprop="name">Python高级并发</span>
-                  </a>
-                </span>
-
-                
-                
 
               
             </span>
@@ -240,8 +225,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/30/python-concurrent-high-level-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-concurrent-high-level-3/" itemprop="commentsCount"></span>
+                <a href="/2015/11/18/flask-jpg2ascii/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/flask-jpg2ascii/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -256,27 +241,30 @@
       
 
       
-        <span itemprop="articleBody"><p>本篇主要讲案例, 两个使用Concurrent.futures实现的并发， 一个是多线程， 一个是多进程。</p>
-<p><strong>多进程</strong></p>
-<p>用在计算密集的确定Long Number是否为<code>质数</code>的例子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">PRIMES = [</span><br><span class="line">    <span class="number">112272535095293</span>,</span><br><span class="line">    <span class="number">112582705942171</span>,</span><br><span class="line">    <span class="number">112272535095293</span>,</span><br><span class="line">    <span class="number">115280095190773</span>,</span><br><span class="line">    <span class="number">115797848077099</span>,</span><br><span class="line">    <span class="number">1099726899285419</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_prime</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    sqrt_n = int(math.floor(math.sqrt(n)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>, sqrt_n + <span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">        <span class="keyword">if</span> n % i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> concurrent.futures.ProcessPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">        <span class="keyword">for</span> number, prime <span class="keyword">in</span> zip(PRIMES, executor.map(is_prime, PRIMES)):</span><br><span class="line">            print(<span class="string">'%d is prime: %s'</span> % (number, prime))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<p><strong>多线程</strong></p>
-<p>用在多线程访问HTTP链接， I/O密集的时候</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">URLS = [<span class="string">'http://jackeygao.com/'</span>,</span><br><span class="line">        <span class="string">'http://pythoner.party/'</span>,</span><br><span class="line">        <span class="string">'http://www.baidu.com/'</span>,</span><br><span class="line">        <span class="string">'http://12306.cn/'</span>,</span><br><span class="line">        <span class="string">'http://china.com/'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Retrieve a single page and report the url and contents</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_url</span><span class="params">(url, timeout)</span>:</span></span><br><span class="line">    res = requests.get(url, timeout=timeout)</span><br><span class="line">    <span class="keyword">return</span> res.text</span><br><span class="line"></span><br><span class="line"><span class="comment"># We can use a with statement to ensure threads are cleaned up promptly</span></span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor(max_workers=<span class="number">5</span>) <span class="keyword">as</span> executor:</span><br><span class="line">    <span class="comment"># Start the load operations and mark each future with its URL</span></span><br><span class="line">    future_to_url = &#123;executor.submit(load_url, url, <span class="number">60</span>): url <span class="keyword">for</span> url <span class="keyword">in</span> URLS&#125;</span><br><span class="line">    <span class="keyword">for</span> future <span class="keyword">in</span> concurrent.futures.as_completed(future_to_url):</span><br><span class="line">        url = future_to_url[future]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            data = future.result()</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> exc:</span><br><span class="line">            print(<span class="string">'%r generated an exception: %s'</span> % (url, exc))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'%r page is %d bytes'</span> % (url, len(data)))</span><br></pre></td></tr></table></figure>
-<p>以上内容修改自<a href="https://docs.python.org/3/library/concurrent.futures.html" target="_blank" rel="external">docs.python.org</a></p>
-<p><code>ThreadPoolExecutor</code> 和 <code>ProcessPoolExecutor</code> 都是<code>concurrent.futures.Executor</code>的子类。 那么他们都有<code>submit</code>、<code>map</code>、<code>shutdown</code>方法</p>
-<p><strong>submit(fn, *args, </strong>kwargs)**</p>
-<p>异步执行函数</p>
-<p><strong>参数:</strong></p>
-<p><strong>fn</strong>      为需要异步执行的函数</p>
-<p><strong>args</strong>    kwargs  函数的参数</p>
-<p><strong>map(func, *iterables, timeout=None)¶</strong></p>
-<p>此map函数和python自带的map函数功能类似，只不过concurrent模块的map函数从迭代器获得参数后异步执行。并且，每一个异步操作，能用timeout参数来设置超时时间，timeout的值可以是int或float型，如果操作timeout的话，会raisesTimeoutError。如果timeout参数不指定的话，则不设置超时间。</p>
-<p><strong>func</strong> 为需要异步执行的函数</p>
-<p><strong>*iterables</strong>  可以是一个能迭代的对象，例如列表等。每一次func执行，会从iterables中取参数。</p>
-<p><strong>timeout</strong> 每个异步操作的超时时间</p>
-<p><strong>shutdown(wait=True)</strong></p>
-<p>此函数用于释放异步执行操作后的系统资源。</p>
+        <span itemprop="articleBody"><h2 id="介绍">介绍</h2><p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.<br><a href="jpg2ascii.herokuapp.com">JPG2ASCII</a></p>
+<h3 id="用到的开源">用到的开源</h3><p><strong>jp2a</strong></p>
+<p>进行转换的工具<br>项目地址:  <a href="https://csl.name/jp2a/" target="_blank" rel="external">https://csl.name/jp2a/</a></p>
+<blockquote>
+<p>jp2a is a small utility that converts JPG images to ASCII. It’s written in C and released under the GPL.</p>
+</blockquote>
+<p><strong>flask</strong></p>
+<p>一个Python web框架<br>项目地址: <a href="https://github.com/mitsuhiko/flask" target="_blank" rel="external">https://github.com/mitsuhiko/flask</a></p>
+<blockquote>
+<p>A microframework based on Werkzeug, Jinja2 and good intentions <a href="http://flask.pocoo.org/" target="_blank" rel="external">http://flask.pocoo.org/</a></p>
+</blockquote>
+<p><strong>semantic-UI</strong></p>
+<p>一个前端开发框架<br>项目地址: <a href="https://github.com/semantic-org/semantic-ui/" target="_blank" rel="external">https://github.com/semantic-org/semantic-ui/</a></p>
+<blockquote>
+<p>Semantic is a development framework that helps create beautiful, responsive layouts using human-friendly HTML.</p>
+</blockquote>
+<h2 id="主要思路">主要思路</h2><p>前端网页UI将图片和参数传递到后端flask, 然后保存图片生成ASCII最后返回生成结果.项目已经开源， 这里不贴代码了， 有兴趣移步到<a href="https://github.com/jackeyGao/Flask-JPG2ASCII" target="_blank" rel="external">https://github.com/jackeyGao/Flask-JPG2ASCII</a></p>
+<h2 id="最后部署heroku">最后部署heroku</h2><p><code>Heroku</code>是一个支持多种编程语言的云平台即服务</p>
+<p>Python 的web程序指定好<code>Procfile</code> 和 <code>requirements.txt</code> 就可以正常工作了， 但是由于此次项目用到了jp2a这个需要编译的工具, 现在就有个问题. 现在本地的jp2a可执行文件是不能在heroku机器上运行成功的, 所以我怎么在heroku上编译这个工具。 幸运的是heroku支持的， 官方的<code>快速开始</code>文档没有关于这个的介绍, 我在国外的一个博客看到有个伙计成功了. 下面介绍</p>
+<p>首先需要获得一个shell命令行交互环境.其次需要把包放到heroku APP机器上, 这个可以scp, 或者wget, curl.<br>获得shell(其实相当于ssh操作这台机器)， 使用heroku的run命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku run /bin/bash</span><br></pre></td></tr></table></figure>
+<p>然后就会有一个shell环境来操作app机器, 这时候</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -O http://sourceforge.net/projects/jp2a/files/latest/download</span><br><span class="line"></span><br><span class="line">tar zxvf download</span><br><span class="line"><span class="built_in">cd</span> jp2a-xxxxx/</span><br><span class="line">./configure --prefix=/app/.heroku/vendor/jp2a</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>编译完成后需要把这个jp2a可执行命令打进包里面, heroku app机器上不太方便git操作, 我这边是在heroku app机器scp到我的服务器上. 然后add commit.</p>
 </span>
       
     </div>
@@ -285,9 +273,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Concurrent/" rel="tag">#Concurrent</a>
+            <a href="/tags/flask/" rel="tag">#flask</a>
           
-            <a href="/tags/Python/" rel="tag">#Python</a>
+            <a href="/tags/heroku/" rel="tag">#heroku</a>
+          
+            <a href="/tags/jpg2ascii/" rel="tag">#jpg2ascii</a>
+          
+            <a href="/tags/python/" rel="tag">#python</a>
           
         </div>
       
@@ -296,13 +288,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/30/black-night-cat/" rel="prev">黑夜的猫</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/30/python-concurrent-high-level-2/" rel="next">python 高级并发2</a>
+              <a href="/2015/11/06/offices-proxy/" rel="next">企业级翻墙方案</a>
             
           </div>
         </div>
@@ -327,8 +317,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/09/30/python-concurrent-high-level-3/"
-                   data-title="python 高级并发3" data-url="http://yoursite.com/2015/09/30/python-concurrent-high-level-3/">
+              <div class="ds-thread" data-thread-key="2015/11/18/flask-jpg2ascii/"
+                   data-title="JPG2ASCII开发上线记录" data-url="http://yoursite.com/2015/11/18/flask-jpg2ascii/">
               </div>
             
           </div>
@@ -442,7 +432,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用到的开源"><span class="nav-number">1.1.</span> <span class="nav-text">用到的开源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要思路"><span class="nav-number">2.</span> <span class="nav-text">主要思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后部署heroku"><span class="nav-number">3.</span> <span class="nav-text">最后部署heroku</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
