@@ -185,6 +185,113 @@
             
             
               
+                <a class="post-title-link" href="/2015/11/24/dynamic-autochange-proxy/" itemprop="url">
+                  动态切换代理 - PAC方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-24T15:50:19+08:00" content="2015-11-24">
+              2015-11-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/折腾/" itemprop="url" rel="index">
+                    <span itemprop="name">折腾</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/24/dynamic-autochange-proxy/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/24/dynamic-autochange-proxy/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+        </div>
+      </header>
+    
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>最近协助搭建了企业级翻墙系统， 由于没有现成的公司提供这些， 也没有成套比较成熟的方案(国外人用不着, 国内人不敢用的东西). 所以就自己摸索搭建而且也搭建了， 而且相对来说能控制. 可以参考这里<a href="http://omem.me/2015/11/06/offices-proxy/" target="_blank" rel="external">企业级翻墙方案</a>. 随着很多用户的使用一台服务器显得力不从心, 所以又买了一台然后Squid ＋ Stunnel方案都配好正常启动了。 </p>
+<h2 id="搞定负载均衡">搞定负载均衡</h2><p>PAC文件支持故障转移(比较坑, 这种机制比较坑， 我们基本上是避免采取的),比较头疼的是负载均衡, 又两种方案</p>
+<ul>
+<li>一种是通过负载均衡程序转发</li>
+<li>通过随机PAC文件配置.</li>
+</ul>
+<p>前者的故障转移不好做, 因为客户端代理用的stunnel端口转发到squid端口, 如果stunnel端口依然存活而squid端口还在的话， 这种是转移不了的。然后PAC的故障转移坑的点也在这里. 所以只能不做采取. 后者是我们采取的方案， 开发一个web服务提供pac文件, 然后response的逻辑改下, 随机选择代理服务器生成pac. 这种方法测试一段时间之后能达到我们预期的效果.</p>
+<p>负载均衡基于flask服务代码</p>
+<p><strong>server.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">File Name: web.py</span><br><span class="line">Author: JackeyGao</span><br><span class="line">Created Time: 五 11/13 16:11:23 2015</span><br><span class="line">'''</span></span><br><span class="line"><span class="keyword">import</span> random, os, json</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> make_response</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> render_template</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="decorator">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'proxys.json'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        proxy_policy = json.loads(f.read())</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">"index.html"</span>, count=len(proxy_policy))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="decorator">@app.route('/proxy.pac')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">proxy</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'proxys.json'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        proxy_policy = json.loads(f.read())</span><br><span class="line">    proxys = [ proxy <span class="keyword">for</span> proxy, pl <span class="keyword">in</span> proxy_policy <span class="keyword">for</span> n <span class="keyword">in</span> range(pl) ]</span><br><span class="line">    random.shuffle(proxys)</span><br><span class="line">    master = random.sample(proxys, <span class="number">1</span>)[<span class="number">0</span>]</span><br><span class="line">    sleve  = [ proxy <span class="keyword">for</span> proxy <span class="keyword">in</span> proxys <span class="keyword">if</span> proxy &lt;&gt; master ]</span><br><span class="line">    <span class="keyword">if</span> sleve:</span><br><span class="line">        proxy_list = <span class="string">"PROXY %s;PROXY %s;"</span> % (master, sleve[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        proxy_list = <span class="string">"PROXY %s;"</span> % master</span><br><span class="line"></span><br><span class="line">    response = make_response(render_template(<span class="string">'proxy.pac'</span>,</span><br><span class="line">        proxy_list=proxy_list))</span><br><span class="line">    response.mimetype = <span class="string">"text/plain"</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    port = int(os.environ.get(<span class="string">"PORT"</span>, <span class="number">5000</span>))</span><br><span class="line">    app.run(host=<span class="string">'0.0.0.0'</span>, port=port, debug=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="故障转移">故障转移</h2><p>前面已经提到PAC的故障转移是通过Stunnel端口的联通性作出判断的, 当stunnel端口存活而上游的squid端口不通的情况是不会自动转移的。 所以需要一个监控脚本去刷新整个过程的联通性然后把结果给上面的flask web pac服务使用. 这里使用一个reload.py 脚本搞定， 然后把reload.py 做成计划任务.</p>
+<p><strong>reload.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">File Name: reload.py</span><br><span class="line">Author: JackeyGao</span><br><span class="line">Created Time: 二 11/24 13:09:20 2015</span><br><span class="line">'''</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">proxy_configs = &#123;</span><br><span class="line">    <span class="string">'114.xxx.xx.xx:7072'</span>: &#123;</span><br><span class="line">        <span class="string">'user'</span>: <span class="string">'xxxxxx'</span>,</span><br><span class="line">        <span class="string">'passwd'</span>: <span class="string">'xxxxxxx'</span>,</span><br><span class="line">        <span class="string">'return'</span>: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">        <span class="string">'priority'</span>: <span class="number">1</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    <span class="string">'114.xxx.xx.xx:7071'</span>: &#123;</span><br><span class="line">        <span class="string">'user'</span>: <span class="string">'xxxxxx'</span>,</span><br><span class="line">        <span class="string">'passwd'</span>: <span class="string">'xxxxxxxxx'</span>,</span><br><span class="line">        <span class="string">'return'</span>: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">        <span class="string">'priority'</span>: <span class="number">1</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request_error_handler</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_deco</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">        <span class="keyword">except</span> requests.exceptions.ConnectionError <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">if</span> <span class="string">'407'</span> <span class="keyword">in</span> str(e):</span><br><span class="line">                print(<span class="string">"%s代理服务器认证失败"</span> % (args,))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">"%s链接的其他错误E:(%s)"</span> % (args, str(e)))</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            print(<span class="string">"%s发生未知错误E:(%s)"</span> % (args, str(e)))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">return</span> _deco</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="decorator">@request_error_handler</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_proxy_connection</span><span class="params">(proxy, user, passwd, return_ip)</span>:</span></span><br><span class="line">    proxies = &#123;</span><br><span class="line">        <span class="string">"https"</span>: <span class="string">"http://%s:%s@%s"</span> % (user, passwd, proxy),</span><br><span class="line">    &#125;</span><br><span class="line">    url = <span class="string">"https://httpbin.org/ip"</span></span><br><span class="line">    r = requests.get(url, proxies=proxies, timeout=<span class="number">10</span>)</span><br><span class="line">    origin = r.json().get(<span class="string">"origin"</span>, <span class="keyword">None</span>)</span><br><span class="line">    <span class="keyword">if</span> return_ip == origin:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    proxys = []</span><br><span class="line">    <span class="keyword">for</span> proxy, config <span class="keyword">in</span> proxy_configs.items():</span><br><span class="line">        status = test_proxy_connection(proxy, config.get(<span class="string">'user'</span>),</span><br><span class="line">                config.get(<span class="string">'passwd'</span>), config.get(<span class="string">'return'</span>))</span><br><span class="line">        <span class="keyword">if</span> status:</span><br><span class="line">            proxys.append((proxy, config.get(<span class="string">"priority"</span>)))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'proxys.json'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(json.dumps(proxys))</span><br></pre></td></tr></table></figure>
+<p>然后经过pac文件路径改成现在起的地址.需要说明一点有些系统支持的pac文件每隔一段时间会重载pac文件, 这个时间越快对于客户端的故障转移就越及时. pac服务端的故障转移取决于reload.py 的执行间隔, 可以在crontab里面设置为5分钟, 甚至更少的时间.</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/11/18/flask-jpg2ascii/" itemprop="url">
                   JPG2ASCII开发上线记录
                 </a>
@@ -1119,125 +1226,6 @@
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/09/30/python-concurrent-high-level-2/" itemprop="url">
-                  python 高级并发2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-09-30T11:15:40+08:00" content="2015-09-30">
-              2015-09-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/Python高级并发/" itemprop="url" rel="index">
-                    <span itemprop="name">Python高级并发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/30/python-concurrent-high-level-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-concurrent-high-level-2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-        </div>
-      </header>
-    
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>一般程序并发分为<code>多线程</code>和<code>多进程</code>并发.</p>
-<p>那么什么时候选择两种并发手段， 该如何选择呢， 应用场景是什么？</p>
-<p>根据编程逻辑一般需要计算密集和I/O操作密集的时候选择并发提高程序效率， Python 由于GIL的限制，密集性运算需要使用多核心CPU时候， 这时候多线程显得力不从心， 甚至会变得更慢。而当需要I/O操作， 比如HTTP长连接的时候， 耗费的时间只是TCP建立链接的等待时间， 这时候当然优先使用多线程。</p>
-<p>所以一般情况下， 我们开发程序耗费比较慢的是<code>计算密集</code>和<code>I/O密集</code>两种情况下的逻辑， 那么我可以采取：</p>
-<ul>
-<li>计算密集:多进程</li>
-<li>I/O密集:多线程</li>
-</ul>
-<p>推荐使用库：</p>
-<p>concurrent.futures 是python3新增加的一个库，用于并发处理，类似于其他语言里的线程池（也有一个进程池），他属于上层的封装，对于用户来说，不用在考虑那么多东西了, 现已加入python 3.2标准库， python 2.7需要安装一下。</p>
-<p><code>pip install futures</code></p>
-<p>Executor:两个子<code>ThreadPoolExecutor</code>和<code>ProcessPoolExecutor</code>分别是产生进程池和线程池</p>
-<p>Future：有Executor.submit产生多任务</p>
-<p>ThreadPoolExecutor 和 ProcessPoolExecutor直接python的with as 控制流语句， 让你非常简单的就套入了程序里面。</p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1277,21 +1265,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
