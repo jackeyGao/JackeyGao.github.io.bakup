@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-11-26T06:37:40.000Z</updated>
+  <updated>2015-11-27T03:00:35.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://yoursite.com/2015/11/26/python-environment/"/>
     <id>http://yoursite.com/2015/11/26/python-environment/</id>
     <published>2015-11-26T06:33:53.000Z</published>
-    <updated>2015-11-26T06:37:40.000Z</updated>
+    <updated>2015-11-27T03:00:35.000Z</updated>
     <content type="html"><![CDATA[<h2 id="版本">版本</h2><ul>
 <li>python2.6(不推荐)</li>
 <li>python2.7</li>
@@ -237,11 +237,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[conoha主机测评]]></title>
+    <title><![CDATA[Conoha主机测评]]></title>
     <link href="http://yoursite.com/2015/11/02/use-conoha/"/>
     <id>http://yoursite.com/2015/11/02/use-conoha/</id>
     <published>2015-11-02T07:41:12.000Z</published>
-    <updated>2015-11-05T01:44:10.000Z</updated>
+    <updated>2015-11-27T02:59:09.000Z</updated>
     <content type="html"><![CDATA[<p>最近由于心知肚明原因， 原来的linode主机已不能使用。所以最近又开始了疯狂找主机的历程， 说起这个简直不能提起。 我本人也连续找了好多家， linode更换了一次ip依然不能访问。然后又找了搬瓦工， 无奈速度简直不能忍受， 打开链接的时间能让我细品一杯茶.</p>
 <p>再后来就找到conoha ， 说起conoha之前我注册过， 而且使用别人推荐链接注册，然后加上活动送的1000日元总共2000日元，他们家东京机房是900元，  这些能用两个月的日本机房</p>
 <p>开端总是不好的。 我创建第一个主机除了22端口外， 其他端口均不通.然后找客服， 要求更换ip。 客服告知为不能更换ip.然后他们提供了一种方法来更换. 先创建另外一台， 然后把这台机器删除.全程聊天他们一直用日本语，很是无语😓.</p>
@@ -286,11 +286,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[django url 反解析]]></title>
+    <title><![CDATA[Django url 反解析]]></title>
     <link href="http://yoursite.com/2015/09/30/django-url-reverse/"/>
     <id>http://yoursite.com/2015/09/30/django-url-reverse/</id>
     <published>2015-09-30T06:07:20.000Z</published>
-    <updated>2015-09-30T06:27:54.000Z</updated>
+    <updated>2015-11-27T02:59:19.000Z</updated>
     <content type="html"><![CDATA[<p>Django 是个python中web-framework<br>MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接.<br>虽然这种方法是可行的， 但是不是规范的。<br>为什么呢？<br>最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上<code>项目名字</code><br>urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增加了改造的复杂度。<br>通过此次改造我发现<br>其实django中有一种很好的机制, 来通过urls中的viewname 来反解析url生成url.</p>
 <p>他们分别是: <code>django.core.urlresolvers.reverse</code> 和 <code>templatetags.url</code></p>
 <h2 id="django-core-urlresolvers-reverse">django.core.urlresolvers.reverse</h2><p>这个函数主要用在于python代码中， 详情请看下面案例</p>
@@ -347,11 +347,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[使用python将两张照片透明重叠]]></title>
+    <title><![CDATA[使用Python将两张照片透明重叠]]></title>
     <link href="http://yoursite.com/2015/09/30/python-pillow/"/>
     <id>http://yoursite.com/2015/09/30/python-pillow/</id>
     <published>2015-09-30T05:19:26.000Z</published>
-    <updated>2015-09-30T05:24:33.000Z</updated>
+    <updated>2015-11-27T03:00:28.000Z</updated>
     <content type="html"><![CDATA[<p>透明重叠最主要用的是<code>Image.blend</code>方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要<code>Image.blend</code>方法第三个参数是相对于第一张图片透明度。 </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">File Name: merge.py</span><br><span class="line">Author: JackeyGao</span><br><span class="line">mail: junqi.gao@shuyun.com</span><br><span class="line">Created Time: 一  6/ 1 13:27:49 2015</span><br><span class="line">'''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">image_resize</span><span class="params">(img, size=<span class="params">(<span class="number">4</span>, <span class="number">3</span>)</span>)</span>:</span></span><br><span class="line">    <span class="string">"""调整图片大小</span><br><span class="line">    """</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> img.mode <span class="keyword">not</span> <span class="keyword">in</span> (<span class="string">'L'</span>, <span class="string">'RGB'</span>):</span><br><span class="line">            img = img.convert(<span class="string">'RGB'</span>)</span><br><span class="line">        img = img.resize(size)</span><br><span class="line">    <span class="keyword">except</span> Exception, e:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">image_merge</span><span class="params">(images, output_dir=<span class="string">'output'</span>, output_name=<span class="string">'merge.jpg'</span>, \</span><br><span class="line">                restriction_max_width=None, restriction_max_height=None)</span>:</span></span><br><span class="line">    <span class="string">"""垂直合并多张图片</span><br><span class="line">    images - 要合并的图片路径列表</span><br><span class="line">    ouput_dir - 输出路径</span><br><span class="line">    output_name - 输出文件名</span><br><span class="line">    restriction_max_width - 限制合并后的图片最大宽度，如果超过将等比缩小</span><br><span class="line">    restriction_max_height - 限制合并后的图片最大高度，如果超过将等比缩小</span><br><span class="line">    """</span></span><br><span class="line">    x_number = <span class="number">10</span> <span class="keyword">if</span> len(images) &gt;= <span class="number">5</span> <span class="keyword">else</span> len(images)</span><br><span class="line">    y_number = int(math.ceil(len(images) / x_number))</span><br><span class="line">    total_height = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 计算合成后图片的宽度（以最宽的为准）和高度</span></span><br><span class="line">    <span class="keyword">for</span> img_path <span class="keyword">in</span> images:</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(img_path):</span><br><span class="line">            img = Image.open(img_path)</span><br><span class="line">            img = img.resize((<span class="number">712</span>, <span class="number">960</span>))</span><br><span class="line">            width, height = img.size</span><br><span class="line"></span><br><span class="line">            max_width = width * x_number</span><br><span class="line">            total_height = height * y_number</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 产生一张空白图</span></span><br><span class="line">    new_img = Image.new(<span class="string">'RGB'</span>, (max_width, total_height), <span class="number">255</span>)</span><br><span class="line">    <span class="comment"># 合并</span></span><br><span class="line">    x = y = n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> img_path <span class="keyword">in</span> images:</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(img_path):</span><br><span class="line">            img = Image.open(img_path)</span><br><span class="line">            img = img.resize((<span class="number">712</span>, <span class="number">960</span>))</span><br><span class="line">            width, height = img.size</span><br><span class="line">            <span class="keyword">print</span> width, height</span><br><span class="line">            new_img.paste(img, (x, y))</span><br><span class="line"></span><br><span class="line">            n += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> n % x_number == <span class="number">0</span>:</span><br><span class="line">                y += height</span><br><span class="line">                x = <span class="number">0</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                x += width</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> restriction_max_width <span class="keyword">and</span> max_width &gt;= restriction_max_width:</span><br><span class="line">        <span class="comment"># 如果宽带超过限制</span></span><br><span class="line">        <span class="comment"># 等比例缩小</span></span><br><span class="line">        ratio = restriction_max_height / float(max_width)</span><br><span class="line">        max_width = restriction_max_width</span><br><span class="line">        total_height = int(total_height * ratio)</span><br><span class="line">        new_img = image_resize(new_img, size=(max_width, total_height))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> restriction_max_height <span class="keyword">and</span> total_height &gt;= restriction_max_height:</span><br><span class="line">        <span class="comment"># 如果高度超过限制</span></span><br><span class="line">        <span class="comment"># 等比例缩小</span></span><br><span class="line">        ratio = restriction_max_height / float(total_height)</span><br><span class="line">        max_width = int(max_width * ratio)</span><br><span class="line">        total_height = restriction_max_height</span><br><span class="line">        new_img = image_resize(new_img, size=(max_width, total_height))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(output_dir):</span><br><span class="line">        os.makedirs(output_dir)</span><br><span class="line">    save_path = <span class="string">'%s/%s'</span> % (output_dir, output_name)</span><br><span class="line">    new_img.save(save_path)</span><br><span class="line">    <span class="keyword">return</span> save_path</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">import</span> os</span><br><span class="line">    image_files = [ <span class="string">"input/%s"</span> % f <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(<span class="string">"input/"</span>) <span class="keyword">if</span> f.endswith(<span class="string">"pg"</span>) ]</span><br><span class="line"></span><br><span class="line">    image_files = image_files * <span class="number">4</span></span><br><span class="line"></span><br><span class="line">    image_merge(images=image_files)</span><br></pre></td></tr></table></figure>
 <p>将两张背景图重叠</p>
@@ -402,11 +402,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[python 高级并发3]]></title>
+    <title><![CDATA[Python 高级并发3]]></title>
     <link href="http://yoursite.com/2015/09/30/python-concurrent-high-level-3/"/>
     <id>http://yoursite.com/2015/09/30/python-concurrent-high-level-3/</id>
     <published>2015-09-30T03:22:40.000Z</published>
-    <updated>2015-09-30T03:23:38.000Z</updated>
+    <updated>2015-11-27T03:00:00.000Z</updated>
     <content type="html"><![CDATA[<p>本篇主要讲案例, 两个使用Concurrent.futures实现的并发， 一个是多线程， 一个是多进程。</p>
 <p><strong>多进程</strong></p>
 <p>用在计算密集的确定Long Number是否为<code>质数</code>的例子</p>
@@ -447,11 +447,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[python 高级并发2]]></title>
+    <title><![CDATA[Python 高级并发2]]></title>
     <link href="http://yoursite.com/2015/09/30/python-concurrent-high-level-2/"/>
     <id>http://yoursite.com/2015/09/30/python-concurrent-high-level-2/</id>
     <published>2015-09-30T03:15:40.000Z</published>
-    <updated>2015-09-30T03:18:49.000Z</updated>
+    <updated>2015-11-27T02:59:53.000Z</updated>
     <content type="html"><![CDATA[<p>一般程序并发分为<code>多线程</code>和<code>多进程</code>并发.</p>
 <p>那么什么时候选择两种并发手段， 该如何选择呢， 应用场景是什么？</p>
 <p>根据编程逻辑一般需要计算密集和I/O操作密集的时候选择并发提高程序效率， Python 由于GIL的限制，密集性运算需要使用多核心CPU时候， 这时候多线程显得力不从心， 甚至会变得更慢。而当需要I/O操作， 比如HTTP长连接的时候， 耗费的时间只是TCP建立链接的等待时间， 这时候当然优先使用多线程。</p>
@@ -508,11 +508,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[python 高级并发]]></title>
+    <title><![CDATA[Python 高级并发]]></title>
     <link href="http://yoursite.com/2015/09/30/python-concurrent-high-level/"/>
     <id>http://yoursite.com/2015/09/30/python-concurrent-high-level/</id>
     <published>2015-09-30T02:15:40.000Z</published>
-    <updated>2015-11-05T01:48:09.000Z</updated>
+    <updated>2015-11-27T02:59:44.000Z</updated>
     <content type="html"><![CDATA[<p>并发级别归纳为下列三种：</p>
 <h2 id="并发的归类">并发的归类</h2><h3 id="低级并发(Low-level_Concurrency)">低级并发(Low-level Concurrency)</h3><p>就是直接用『原子操作』(atomic operation)所实现的并发。这种并发是给程序库的编写者用的， 而应用程序开发者则不需要它，因为这种写法很容易出错，而且极难调试。虽说Python本身的并发机制一般是用底层的操作实现的， 但开发者不能用Python语言编写这种级别的并发代码。</p>
 <h3 id="中级并发(Mid-level_Concurrency)">中级并发(Mid-level Concurrency)</h3><p>不直接使用原子操作， 但却会直接使用”锁”（lock）,大多数语言提供的都是这种级别的并发。Python的threading.Semaphore、threading.Lock及multiprocessing.Lock等类都支持中级并发。开发应用程序的人一般都会使用终极并发，因为他们通常只能使用这个级别的并发功能。</p>
