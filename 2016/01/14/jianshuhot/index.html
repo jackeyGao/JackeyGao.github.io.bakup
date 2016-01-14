@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="flask,heroku,jpg2ascii,python," />
+  <meta name="keywords" content="Python,Scrapy,病," />
 
 
 
@@ -41,22 +41,37 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="介绍刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.JPG2ASCII
-用到的开源jp2a
-进">
+<meta name="description" content="简书是个学习的好网站， 我大多只关注首页上的人们文章， 但是最近因为忙错过了很多首页上的文章，所以有了想法把每天的热门top生成mobi推送到kindle。这样在地铁上也能快速翻完. 
+环境准备:
+
+一台主机(需要联网)
+Gitbook
+calibre(Gitbook 依赖calibre的ebook-convert)
+Python2.7.9(calibre 需要python2.7.9)
+项目地址:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JPG2ASCII开发上线记录">
-<meta property="og:url" content="http://yoursite.com/2015/11/18/flask-jpg2ascii/index.html">
+<meta property="og:title" content="Scrapy抓取简书热门生成电子书发送到Kindle">
+<meta property="og:url" content="http://yoursite.com/2016/01/14/jianshuhot/index.html">
 <meta property="og:site_name" content="JackeyGao's Notes">
-<meta property="og:description" content="介绍刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.JPG2ASCII
-用到的开源jp2a
-进">
-<meta property="og:updated_time" content="2015-11-18T06:33:07.000Z">
+<meta property="og:description" content="简书是个学习的好网站， 我大多只关注首页上的人们文章， 但是最近因为忙错过了很多首页上的文章，所以有了想法把每天的热门top生成mobi推送到kindle。这样在地铁上也能快速翻完. 
+环境准备:
+
+一台主机(需要联网)
+Gitbook
+calibre(Gitbook 依赖calibre的ebook-convert)
+Python2.7.9(calibre 需要python2.7.9)
+项目地址:">
+<meta property="og:updated_time" content="2016-01-14T08:38:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JPG2ASCII开发上线记录">
-<meta name="twitter:description" content="介绍刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.JPG2ASCII
-用到的开源jp2a
-进">
+<meta name="twitter:title" content="Scrapy抓取简书热门生成电子书发送到Kindle">
+<meta name="twitter:description" content="简书是个学习的好网站， 我大多只关注首页上的人们文章， 但是最近因为忙错过了很多首页上的文章，所以有了想法把每天的热门top生成mobi推送到kindle。这样在地铁上也能快速翻完. 
+环境准备:
+
+一台主机(需要联网)
+Gitbook
+calibre(Gitbook 依赖calibre的ebook-convert)
+Python2.7.9(calibre 需要python2.7.9)
+项目地址:">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -66,7 +81,7 @@
   };
 </script>
 
-  <title> JPG2ASCII开发上线记录 | JackeyGao's Notes </title>
+  <title> Scrapy抓取简书热门生成电子书发送到Kindle | JackeyGao's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -190,7 +205,7 @@
             
             
               
-                JPG2ASCII开发上线记录
+                Scrapy抓取简书热门生成电子书发送到Kindle
               
             
           </h1>
@@ -199,8 +214,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-18T14:17:10+08:00" content="2015-11-18">
-              2015-11-18
+            <time itemprop="dateCreated" datetime="2016-01-14T16:31:14+08:00" content="2016-01-14">
+              2016-01-14
             </time>
           </span>
 
@@ -216,6 +231,18 @@
 
                 
                 
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python/折腾/" itemprop="url" rel="index">
+                    <span itemprop="name">折腾</span>
+                  </a>
+                </span>
+
+                
+                
 
               
             </span>
@@ -225,8 +252,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/18/flask-jpg2ascii/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/flask-jpg2ascii/" itemprop="commentsCount"></span>
+                <a href="/2016/01/14/jianshuhot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/jianshuhot/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -241,30 +268,29 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="介绍">介绍</h2><p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.<br><a href="jpg2ascii.herokuapp.com">JPG2ASCII</a></p>
-<h3 id="用到的开源">用到的开源</h3><p><strong>jp2a</strong></p>
-<p>进行转换的工具<br>项目地址:  <a href="https://csl.name/jp2a/" target="_blank" rel="external">https://csl.name/jp2a/</a></p>
-<blockquote>
-<p>jp2a is a small utility that converts JPG images to ASCII. It’s written in C and released under the GPL.</p>
-</blockquote>
-<p><strong>flask</strong></p>
-<p>一个Python web框架<br>项目地址: <a href="https://github.com/mitsuhiko/flask" target="_blank" rel="external">https://github.com/mitsuhiko/flask</a></p>
-<blockquote>
-<p>A microframework based on Werkzeug, Jinja2 and good intentions <a href="http://flask.pocoo.org/" target="_blank" rel="external">http://flask.pocoo.org/</a></p>
-</blockquote>
-<p><strong>semantic-UI</strong></p>
-<p>一个前端开发框架<br>项目地址: <a href="https://github.com/semantic-org/semantic-ui/" target="_blank" rel="external">https://github.com/semantic-org/semantic-ui/</a></p>
-<blockquote>
-<p>Semantic is a development framework that helps create beautiful, responsive layouts using human-friendly HTML.</p>
-</blockquote>
-<h2 id="主要思路">主要思路</h2><p>前端网页UI将图片和参数传递到后端flask, 然后保存图片生成ASCII最后返回生成结果.项目已经开源， 这里不贴代码了， 有兴趣移步到<a href="https://github.com/jackeyGao/Flask-JPG2ASCII" target="_blank" rel="external">https://github.com/jackeyGao/Flask-JPG2ASCII</a></p>
-<h2 id="最后部署heroku">最后部署heroku</h2><p><code>Heroku</code>是一个支持多种编程语言的云平台即服务</p>
-<p>Python 的web程序指定好<code>Procfile</code> 和 <code>requirements.txt</code> 就可以正常工作了， 但是由于此次项目用到了jp2a这个需要编译的工具, 现在就有个问题. 现在本地的jp2a可执行文件是不能在heroku机器上运行成功的, 所以我怎么在heroku上编译这个工具。 幸运的是heroku支持的， 官方的<code>快速开始</code>文档没有关于这个的介绍, 我在国外的一个博客看到有个伙计成功了. 下面介绍</p>
-<p>首先需要获得一个shell命令行交互环境.其次需要把包放到heroku APP机器上, 这个可以scp, 或者wget, curl.<br>获得shell(其实相当于ssh操作这台机器)， 使用heroku的run命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku run /bin/bash</span><br></pre></td></tr></table></figure>
-<p>然后就会有一个shell环境来操作app机器, 这时候</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -O http://sourceforge.net/projects/jp2a/files/latest/download</span><br><span class="line"></span><br><span class="line">tar zxvf download</span><br><span class="line"><span class="built_in">cd</span> jp2a-xxxxx/</span><br><span class="line">./configure --prefix=/app/.heroku/vendor/jp2a</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<p>编译完成后需要把这个jp2a可执行命令打进包里面, heroku app机器上不太方便git操作, 我这边是在heroku app机器scp到我的服务器上. 然后add commit.</p>
+        <span itemprop="articleBody"><p><a href="http://www.jianshu.com" target="_blank" rel="external">简书</a>是个学习的好网站， 我大多只关注首页上的人们文章， 但是最近因为忙错过了很多首页上的文章，所以有了想法把每天的热门top生成mobi推送到kindle。这样在地铁上也能快速翻完. </p>
+<p>环境准备:</p>
+<ul>
+<li>一台主机(需要联网)</li>
+<li>Gitbook</li>
+<li>calibre(Gitbook 依赖calibre的<code>ebook-convert</code>)</li>
+<li>Python2.7.9(calibre 需要<code>python2.7.9</code>)</li>
+<li>项目地址:  <strong><a href="https://github.com/jackeyGao/jianshuHot" target="_blank" rel="external">jianshuHot</a></strong></li>
+</ul>
+<h2 id="关于calibre安装">关于calibre安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -v &amp;&amp; wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c <span class="string">"import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"</span></span><br></pre></td></tr></table></figure>
+<p>官网文档提供的安装脚本看似简单， 执行之后也可以安装使用了， 但是gitbook调用<code>ebook-convert</code>时候会报错， 这个地方报错应该是QT的错误(至少我遇到的是, 具体错误信息忘记截图了)如果遇到此错误直接安装QT pyQT即可. <a href="http://calibre-ebook.com/download_linux" target="_blank" rel="external">calibre 安装页面</a>有依赖表</p>
+<h2 id="Gitbook_安装">Gitbook 安装</h2><p>需要安装<code>nodejs</code>和<code>npm</code>然后执行<code>npm install -g gitbook-cli</code></p>
+<h2 id="安装jianshuHot">安装jianshuHot</h2><p>需要强调的是此部分需要解决大量的依赖,</p>
+<p><strong><code>scrapy</code></strong>所依赖的python包很多， 而且这些依赖的python大多需要一些系统库， 必要的时候需要<code>apt-get</code>、<code>yum</code>安装一下, 如<code>python-devel</code> <code>libffi-devel</code> <code>libxml-devel</code>等….</p>
+<p><strong><code>peewee</code></strong> (数据库ORM)要<code>mysql-devel</code>， 以上举例都是已知的， 这是在我部署之后写的， 部署的过程没有详细记录， 现在只能靠回忆来写本章节.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/jackeyGao/jianshuHot</span><br><span class="line">$ <span class="built_in">cd</span> jianshuHot</span><br><span class="line">$ pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<h2 id="初始化程序">初始化程序</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sh init.sh</span><br></pre></td></tr></table></figure>
+<h2 id="邮件配置">邮件配置</h2><p>这里发送邮件使用的<a href="http://caspian.dotconf.net/menu/Software/SendEmail/" target="_blank" rel="external">sendEmail</a>, <a href="http://caspian.dotconf.net/menu/Software/SendEmail/" target="_blank" rel="external">下载地址</a> . 解压后把解压的<code>sendEmail</code>重命名到<code>/usr/local/bin/sendEmail</code>理论上都能安装成功， 这个是免编译的， 只需要机器上安装了<code>perl</code></p>
+<p>然后修改start.sh 邮箱配置， 写成你自己163邮箱， 也可以用其他品牌邮箱， 如果你用其他品牌别忘了改下<code>smtp.163.com</code>, 改成相应的smtp服务器即可.</p>
+<p><strong>注意:</strong> 无论你用哪个邮箱都必须把此邮箱账号加入亚马逊<strong><code>已认可的发件人电子邮箱列表</code></strong>， 确保发送的文档能到达亚马逊Cloud</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ vim start.sh</span><br><span class="line">....</span><br><span class="line">YOURKINDLE_MAIL_ADDRESS=<span class="string">"xxxxx@kindle.cn"</span></span><br><span class="line">YOUR_SEND_MAIL_USERNAME=<span class="string">"xxxx@163.com"</span></span><br><span class="line">YOUR_SEND_MAIL_SECRET = <span class="string">'xxxxxxxxxxxx'</span></span><br><span class="line">MOBI_BOOK_PATH=<span class="string">'./output/book.mobi'</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="开始抓取生成">开始抓取生成</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sh start.sh</span><br></pre></td></tr></table></figure>
+<p>执行后会自动抓取页面生成markdown， 下载每个文章的图片， 然后gitbook通过markdown生成此次文档列表的<code>book.mobi</code> (output/book.mobi), 在start.sh 最后面有个备份的操作， 会把此次的mobi备份到<code>output/books</code>. 然后发送到指定的kindle地址邮箱.</p>
 </span>
       
     </div>
@@ -273,13 +299,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/flask/" rel="tag">#flask</a>
+            <a href="/tags/Python/" rel="tag">#Python</a>
           
-            <a href="/tags/heroku/" rel="tag">#heroku</a>
+            <a href="/tags/Scrapy/" rel="tag">#Scrapy</a>
           
-            <a href="/tags/jpg2ascii/" rel="tag">#jpg2ascii</a>
-          
-            <a href="/tags/python/" rel="tag">#python</a>
+            <a href="/tags/病/" rel="tag">#病</a>
           
         </div>
       
@@ -288,13 +312,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/24/dynamic-autochange-proxy/" rel="prev">动态切换代理 - PAC方法</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/06/offices-proxy/" rel="next">企业级翻墙方案</a>
+              <a href="/2015/11/26/python-environment/" rel="next">Python生态圈</a>
             
           </div>
         </div>
@@ -319,8 +341,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/11/18/flask-jpg2ascii/"
-                   data-title="JPG2ASCII开发上线记录" data-url="http://yoursite.com/2015/11/18/flask-jpg2ascii/">
+              <div class="ds-thread" data-thread-key="2016/01/14/jianshuhot/"
+                   data-title="Scrapy抓取简书热门生成电子书发送到Kindle" data-url="http://yoursite.com/2016/01/14/jianshuhot/">
               </div>
             
           </div>
@@ -434,7 +456,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用到的开源"><span class="nav-number">1.1.</span> <span class="nav-text">用到的开源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要思路"><span class="nav-number">2.</span> <span class="nav-text">主要思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后部署heroku"><span class="nav-number">3.</span> <span class="nav-text">最后部署heroku</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于calibre安装"><span class="nav-number">1.</span> <span class="nav-text">关于calibre安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitbook_安装"><span class="nav-number">2.</span> <span class="nav-text">Gitbook 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装jianshuHot"><span class="nav-number">3.</span> <span class="nav-text">安装jianshuHot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化程序"><span class="nav-number">4.</span> <span class="nav-text">初始化程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邮件配置"><span class="nav-number">5.</span> <span class="nav-text">邮件配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始抓取生成"><span class="nav-number">6.</span> <span class="nav-text">开始抓取生成</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
