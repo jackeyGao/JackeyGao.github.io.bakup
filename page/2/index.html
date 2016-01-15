@@ -121,14 +121,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
@@ -168,6 +160,103 @@
       <div class="main-inner">
         <div id="content" class="content"> 
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                <a class="post-title-link" href="/2015/09/30/python-pillow/" itemprop="url">
+                  使用Python将两张照片透明重叠
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-09-30T13:19:26+08:00" content="2015-09-30">
+              2015-09-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/30/python-pillow/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-pillow/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+        </div>
+      </header>
+    
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>透明重叠最主要用的是<code>Image.blend</code>方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要<code>Image.blend</code>方法第三个参数是相对于第一张图片透明度。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">File Name: merge.py</span><br><span class="line">Author: JackeyGao</span><br><span class="line">mail: junqi.gao@shuyun.com</span><br><span class="line">Created Time: 一  6/ 1 13:27:49 2015</span><br><span class="line">'''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">image_resize</span><span class="params">(img, size=<span class="params">(<span class="number">4</span>, <span class="number">3</span>)</span>)</span>:</span></span><br><span class="line">    <span class="string">"""调整图片大小</span><br><span class="line">    """</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> img.mode <span class="keyword">not</span> <span class="keyword">in</span> (<span class="string">'L'</span>, <span class="string">'RGB'</span>):</span><br><span class="line">            img = img.convert(<span class="string">'RGB'</span>)</span><br><span class="line">        img = img.resize(size)</span><br><span class="line">    <span class="keyword">except</span> Exception, e:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">image_merge</span><span class="params">(images, output_dir=<span class="string">'output'</span>, output_name=<span class="string">'merge.jpg'</span>, \</span><br><span class="line">                restriction_max_width=None, restriction_max_height=None)</span>:</span></span><br><span class="line">    <span class="string">"""垂直合并多张图片</span><br><span class="line">    images - 要合并的图片路径列表</span><br><span class="line">    ouput_dir - 输出路径</span><br><span class="line">    output_name - 输出文件名</span><br><span class="line">    restriction_max_width - 限制合并后的图片最大宽度，如果超过将等比缩小</span><br><span class="line">    restriction_max_height - 限制合并后的图片最大高度，如果超过将等比缩小</span><br><span class="line">    """</span></span><br><span class="line">    x_number = <span class="number">10</span> <span class="keyword">if</span> len(images) &gt;= <span class="number">5</span> <span class="keyword">else</span> len(images)</span><br><span class="line">    y_number = int(math.ceil(len(images) / x_number))</span><br><span class="line">    total_height = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 计算合成后图片的宽度（以最宽的为准）和高度</span></span><br><span class="line">    <span class="keyword">for</span> img_path <span class="keyword">in</span> images:</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(img_path):</span><br><span class="line">            img = Image.open(img_path)</span><br><span class="line">            img = img.resize((<span class="number">712</span>, <span class="number">960</span>))</span><br><span class="line">            width, height = img.size</span><br><span class="line"></span><br><span class="line">            max_width = width * x_number</span><br><span class="line">            total_height = height * y_number</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 产生一张空白图</span></span><br><span class="line">    new_img = Image.new(<span class="string">'RGB'</span>, (max_width, total_height), <span class="number">255</span>)</span><br><span class="line">    <span class="comment"># 合并</span></span><br><span class="line">    x = y = n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> img_path <span class="keyword">in</span> images:</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(img_path):</span><br><span class="line">            img = Image.open(img_path)</span><br><span class="line">            img = img.resize((<span class="number">712</span>, <span class="number">960</span>))</span><br><span class="line">            width, height = img.size</span><br><span class="line">            <span class="keyword">print</span> width, height</span><br><span class="line">            new_img.paste(img, (x, y))</span><br><span class="line"></span><br><span class="line">            n += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> n % x_number == <span class="number">0</span>:</span><br><span class="line">                y += height</span><br><span class="line">                x = <span class="number">0</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                x += width</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> restriction_max_width <span class="keyword">and</span> max_width &gt;= restriction_max_width:</span><br><span class="line">        <span class="comment"># 如果宽带超过限制</span></span><br><span class="line">        <span class="comment"># 等比例缩小</span></span><br><span class="line">        ratio = restriction_max_height / float(max_width)</span><br><span class="line">        max_width = restriction_max_width</span><br><span class="line">        total_height = int(total_height * ratio)</span><br><span class="line">        new_img = image_resize(new_img, size=(max_width, total_height))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> restriction_max_height <span class="keyword">and</span> total_height &gt;= restriction_max_height:</span><br><span class="line">        <span class="comment"># 如果高度超过限制</span></span><br><span class="line">        <span class="comment"># 等比例缩小</span></span><br><span class="line">        ratio = restriction_max_height / float(total_height)</span><br><span class="line">        max_width = int(max_width * ratio)</span><br><span class="line">        total_height = restriction_max_height</span><br><span class="line">        new_img = image_resize(new_img, size=(max_width, total_height))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(output_dir):</span><br><span class="line">        os.makedirs(output_dir)</span><br><span class="line">    save_path = <span class="string">'%s/%s'</span> % (output_dir, output_name)</span><br><span class="line">    new_img.save(save_path)</span><br><span class="line">    <span class="keyword">return</span> save_path</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">import</span> os</span><br><span class="line">    image_files = [ <span class="string">"input/%s"</span> % f <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(<span class="string">"input/"</span>) <span class="keyword">if</span> f.endswith(<span class="string">"pg"</span>) ]</span><br><span class="line"></span><br><span class="line">    image_files = image_files * <span class="number">4</span></span><br><span class="line"></span><br><span class="line">    image_merge(images=image_files)</span><br></pre></td></tr></table></figure>
+<p>将两张背景图重叠</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Image</span><br><span class="line">img = Image.open(<span class="string">"bg.jpeg"</span>)</span><br><span class="line">img2 = Image.open(<span class="string">"merge.jpg"</span>)</span><br><span class="line">merge = Image.blend(img, img2, <span class="number">0.3</span>)</span><br><span class="line">merge.save(<span class="string">"my.jpg"</span>)</span><br></pre></td></tr></table></figure>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -834,21 +923,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
-            <a href="/categories">
+            
               <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">分类</span>
-              </a>
+              
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
