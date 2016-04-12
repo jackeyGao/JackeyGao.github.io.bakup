@@ -214,6 +214,129 @@
             
               
                 
+                <a class="post-title-link" href="/2015/09/30/show-your-top-command/" itemprop="url">
+                  查看你历史命令的使用率
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-30T13:46:55+08:00" content="2015-09-30">
+              2015-09-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/30/show-your-top-command/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/show-your-top-command/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一个查看历史命令的使用率工具， 因为看到<code>oh-my-zsh</code>项目中的<code>zsh_stats</code>function 后有感仿照开发了一个。 本项目不仅支持<code>zsh_history</code>而且支持<code>bash_history</code> 。 还有可扩展的趋势.</p>
+<h2 id="oh-my-zsh_之_zsh_stats">oh-my-zsh 之 zsh_stats</h2><p>如果你用<code>oh-my-zsh</code> ， 那么你就有了这个功能。 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ zsh_stats</span><br><span class="line">     <span class="number">1</span>  <span class="number">3290</span>  <span class="number">32.9033</span>%   vim</span><br><span class="line">     <span class="number">2</span>  <span class="number">2204</span>  <span class="number">22.0422</span>%   python</span><br><span class="line">     <span class="number">3</span>  <span class="number">902</span>   <span class="number">9.0209</span>%    ls</span><br><span class="line">     <span class="number">4</span>  <span class="number">730</span>   <span class="number">7.30073</span>%   git</span><br><span class="line">     <span class="number">5</span>  <span class="number">449</span>   <span class="number">4.49045</span>%   <span class="built_in">cd</span></span><br><span class="line">     <span class="number">6</span>  <span class="number">194</span>   <span class="number">1.94019</span>%   curl</span><br><span class="line">     <span class="number">7</span>  <span class="number">170</span>   <span class="number">1.70017</span>%   pip</span><br><span class="line">     <span class="number">8</span>  <span class="number">168</span>   <span class="number">1.68017</span>%   ll</span><br><span class="line">     <span class="number">9</span>  <span class="number">157</span>   <span class="number">1.57016</span>%   scrapy</span><br><span class="line">    <span class="number">10</span>  <span class="number">142</span>   <span class="number">1.42014</span>%   rm</span><br><span class="line">    <span class="number">11</span>  <span class="number">96</span>    <span class="number">0.960096</span>%  cat</span><br><span class="line">    <span class="number">12</span>  <span class="number">78</span>    <span class="number">0.780078</span>%  hexo</span><br><span class="line">    <span class="number">13</span>  <span class="number">76</span>    <span class="number">0.760076</span>%  clear</span><br><span class="line">    <span class="number">14</span>  <span class="number">63</span>    <span class="number">0.630063</span>%  mkdir</span><br><span class="line">    <span class="number">15</span>  <span class="number">60</span>    <span class="number">0.60006</span>%   ping</span><br><span class="line">    <span class="number">16</span>  <span class="number">59</span>    <span class="number">0.590059</span>%  grep</span><br><span class="line">    <span class="number">17</span>  <span class="number">58</span>    <span class="number">0.580058</span>%  workon</span><br><span class="line">    <span class="number">18</span>  <span class="number">57</span>    <span class="number">0.570057</span>%  sudo</span><br><span class="line">    <span class="number">19</span>  <span class="number">57</span>    <span class="number">0.570057</span>%  docker</span><br><span class="line">    <span class="number">20</span>  <span class="number">55</span>    <span class="number">0.550055</span>%  mv</span><br><span class="line">$ <span class="built_in">which</span> zsh_stats <span class="comment"># oh-my-zsh 封装的函数</span></span><br><span class="line"><span class="function"><span class="title">zsh_stats</span></span> () &#123;</span><br><span class="line">    <span class="built_in">fc</span> <span class="operator">-l</span> <span class="number">1</span> | awk <span class="string">'&#123;CMD[$2]++;count++;&#125;END &#123; for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;&#125;'</span> | grep -v <span class="string">"./"</span> | column -c3 <span class="operator">-s</span> <span class="string">" "</span> -t | sort -nr | nl | head -n20</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="cmdstats_项目">cmdstats 项目</h2><p>查看你终端命令使用频率列表, 原理是通过宿主目录下的 <code>.*history</code> 分析后得到历史命令使用频率状态， 并且进行排序输出.</p>
+<p>目前支持 <code>~/.bash_history</code> 、 <code>~/.zsh_history</code></p>
+<h3 id="安装">安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install git+https://github.com/jackeyGao/cmdstats.git</span><br></pre></td></tr></table></figure>
+<h3 id="使用">使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ cmdstats -h</span><br><span class="line">usage: cmdstats [-h] [<span class="operator">-l</span> LIMIT]</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --help            show this <span class="built_in">help</span> message and <span class="built_in">exit</span></span><br><span class="line">  <span class="operator">-l</span> LIMIT, --limit LIMIT</span><br><span class="line">                        显示条数[default: <span class="number">20</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ cmdstats</span><br><span class="line"><span class="number">1</span>   <span class="number">3612</span>  <span class="number">33.13154</span>%  vim</span><br><span class="line"><span class="number">2</span>   <span class="number">2473</span>  <span class="number">22.68391</span>%  python</span><br><span class="line"><span class="number">3</span>   <span class="number">1018</span>  <span class="number">9.33774</span>%   ls</span><br><span class="line"><span class="number">4</span>   <span class="number">692</span>   <span class="number">6.34746</span>%   git</span><br><span class="line"><span class="number">5</span>   <span class="number">487</span>   <span class="number">4.46707</span>%   <span class="built_in">cd</span></span><br><span class="line"><span class="number">6</span>   <span class="number">204</span>   <span class="number">1.87122</span>%   ll</span><br><span class="line"><span class="number">7</span>   <span class="number">194</span>   <span class="number">1.77949</span>%   curl</span><br><span class="line"><span class="number">8</span>   <span class="number">178</span>   <span class="number">1.63273</span>%   pip</span><br><span class="line"><span class="number">9</span>   <span class="number">157</span>   <span class="number">1.4401</span>%    scrapy</span><br><span class="line"><span class="number">10</span>  <span class="number">147</span>   <span class="number">1.34838</span>%   rm</span><br><span class="line"><span class="number">11</span>  <span class="number">98</span>    <span class="number">0.89892</span>%   cat</span><br><span class="line"><span class="number">12</span>  <span class="number">91</span>    <span class="number">0.83471</span>%   clear</span><br><span class="line"><span class="number">13</span>  <span class="number">86</span>    <span class="number">0.78885</span>%   ping</span><br><span class="line"><span class="number">14</span>  <span class="number">78</span>    <span class="number">0.71547</span>%   hexo</span><br><span class="line"><span class="number">15</span>  <span class="number">73</span>    <span class="number">0.6696</span>%    docker</span><br><span class="line"><span class="number">16</span>  <span class="number">71</span>    <span class="number">0.65126</span>%   mkdir</span><br><span class="line"><span class="number">17</span>  <span class="number">61</span>    <span class="number">0.55953</span>%   workon</span><br><span class="line"><span class="number">18</span>  <span class="number">60</span>    <span class="number">0.55036</span>%   grep</span><br><span class="line"><span class="number">19</span>  <span class="number">58</span>    <span class="number">0.53201</span>%   sudo</span><br><span class="line"><span class="number">20</span>  <span class="number">57</span>    <span class="number">0.52284</span>%   mv</span><br><span class="line">$ <span class="built_in">which</span> cmdstats</span><br><span class="line">/usr/<span class="built_in">local</span>/bin//cmdstats</span><br></pre></td></tr></table></figure>
+<h3 id="项目地址">项目地址</h3><p><a href="https://github.com/jackeyGao/cmdstats" target="_blank" rel="external">jackeyGao/cmdstats</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/09/30/python-pillow/" itemprop="url">
                   使用Python将两张照片透明重叠
                 </a>
@@ -698,110 +821,6 @@
 <p>Executor:两个子<code>ThreadPoolExecutor</code>和<code>ProcessPoolExecutor</code>分别是产生进程池和线程池</p>
 <p>Future：有Executor.submit产生多任务</p>
 <p>ThreadPoolExecutor 和 ProcessPoolExecutor直接python的with as 控制流语句， 让你非常简单的就套入了程序里面。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/30/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-30T10:16:33+08:00" content="2015-09-30">
-              2015-09-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/30/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
           
         
