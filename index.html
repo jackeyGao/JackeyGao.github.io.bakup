@@ -1,11 +1,16 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
-<head>
+
+
+
   
 
-<meta charset="UTF-8"/>
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -18,19 +23,27 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
-    <meta name="description" content="Jackey Gao的日记本" />
 
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo,next" />
+
+
 
 
 
@@ -38,7 +51,12 @@
 
 
 
+
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+
+
 
 
 <meta name="description" content="Jackey Gao的日记本">
@@ -52,10 +70,18 @@
 <meta name="twitter:description" content="Jackey Gao的日记本">
 
 
+
 <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'post'
+    sidebar: "post",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
   };
 </script>
 
@@ -64,38 +90,43 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
 
-  <div class="container one-column 
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1258527046&web_id=1258527046" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  
    page-home 
-">
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner">
+      <div class="header-inner"><div class="site-meta ">
+  
 
-<div class="site-meta ">
-  
-    <span class="logo-line-before"><i></i></span>
-    <a href="/" class="brand" rel="start">
-          <span class="logo">
-            <i class="icon-next-logo"></i>
-          </span>
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
       <span class="site-title">文本不限, 诗歌除外</span>
+      <span class="logo-line-after"><i></i></span>
     </a>
-    <span class="logo-line-after"><i></i></span>
-  
+  </div>
+  <p class="site-subtitle"></p>
 </div>
 
 <div class="site-nav-toggle">
@@ -110,7 +141,7 @@
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
@@ -146,7 +177,6 @@
       
 
       
-      
     </ul>
   
 
@@ -158,11 +188,17 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
     
       
 
+  
+  
+
+  
   
   
 
@@ -177,6 +213,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2016/01/15/dhxy-examination-command-line/" itemprop="url">
                   大话西游答题器 command line
                 </a>
@@ -187,7 +224,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2016-01-15T09:55:15+08:00" content="2016-01-15">
               2016-01-15
             </time>
@@ -205,20 +245,26 @@
               </span>
             
           
+
+          
+
+          
+          
+
         </div>
       </header>
     
 
-    <div class="post-body">
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>科举，大理寺都适用。 唯独不支持的是殿试。</p>
+          
+            <p>科举，大理寺都适用。 唯独不支持的是殿试。</p>
 <h2 id="项目代吗">项目代吗</h2><p>需要依赖<a href="http://docs.python-requests.org/en/latest/" target="_blank" rel="external">requests</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
 <p>然后保存下列代码到一个python文件(如: <code>search.py</code>)</p>
@@ -226,9 +272,12 @@
 <h2 id="使用方式">使用方式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ python search.py <span class="variable">$CATEGORY</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># CATEGORY 可以为空为空则为所有科目</span></span><br><span class="line"><span class="comment"># CATEGORY 支持(乡试,省试-地理,省试-文学,省试-常识,省试-饮食,省试-历史,大话常识, ''(所有))</span></span><br></pre></td></tr></table></figure>
 <p><img src="/uploads/images/QQ20160115-1.png" alt="使用截图"></p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -251,6 +300,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -262,6 +315,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2016/01/14/jianshuhot/" itemprop="url">
                   Scrapy抓取简书热门生成电子书发送到Kindle
                 </a>
@@ -272,7 +326,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2016-01-14T16:31:14+08:00" content="2016-01-14">
               2016-01-14
             </time>
@@ -280,7 +337,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Python/" itemprop="url" rel="index">
@@ -317,20 +378,26 @@
               </span>
             
           
+
+          
+
+          
+          
+
         </div>
       </header>
     
 
-    <div class="post-body">
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p><a href="http://www.jianshu.com" target="_blank" rel="external">简书</a>是个学习的好网站， 我大多只关注首页上的人们文章， 但是最近因为忙错过了很多首页上的文章，所以有了想法把每天的热门top生成mobi推送到kindle。这样在地铁上也能快速翻完. </p>
+          
+            <p><a href="http://www.jianshu.com" target="_blank" rel="external">简书</a>是个学习的好网站， 我大多只关注首页上的人们文章， 但是最近因为忙错过了很多首页上的文章，所以有了想法把每天的热门top生成mobi推送到kindle。这样在地铁上也能快速翻完. </p>
 <p>环境准备:</p>
 <ul>
 <li>一台主机(需要联网)</li>
@@ -354,9 +421,12 @@
 <h2 id="开始抓取生成">开始抓取生成</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sh start.sh</span><br></pre></td></tr></table></figure>
 <p>执行后会自动抓取页面生成markdown， 下载每个文章的图片， 然后gitbook通过markdown生成此次文档列表的<code>book.mobi</code> (output/book.mobi), 在start.sh 最后面有个备份的操作， 会把此次的mobi备份到<code>output/books</code>. 然后发送到指定的kindle地址邮箱.</p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -379,6 +449,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -390,6 +464,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/11/26/python-environment/" itemprop="url">
                   Python生态圈
                 </a>
@@ -400,7 +475,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-11-26T14:33:53+08:00" content="2015-11-26">
               2015-11-26
             </time>
@@ -408,7 +486,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Python/" itemprop="url" rel="index">
@@ -433,20 +515,26 @@
               </span>
             
           
+
+          
+
+          
+          
+
         </div>
       </header>
     
 
-    <div class="post-body">
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h2 id="版本">版本</h2><ul>
+          
+            <h2 id="版本">版本</h2><ul>
 <li>python2.6(不推荐)</li>
 <li>python2.7</li>
 <li>python3.0(强力推荐)</li>
@@ -503,9 +591,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(my_env)[monitor@localhost]$ pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
 <h2 id="编辑器推荐">编辑器推荐</h2><p>个人比较倾向vim， 还有支持自动补全的 PyCharm， 你应该选择最合适的编辑器.</p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -528,6 +619,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -539,6 +634,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/11/24/dynamic-autochange-proxy/" itemprop="url">
                   动态切换代理 - PAC方法
                 </a>
@@ -549,7 +645,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-11-24T15:50:19+08:00" content="2015-11-24">
               2015-11-24
             </time>
@@ -557,7 +656,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/折腾/" itemprop="url" rel="index">
@@ -582,20 +685,26 @@
               </span>
             
           
+
+          
+
+          
+          
+
         </div>
       </header>
     
 
-    <div class="post-body">
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>最近协助搭建了企业级翻墙系统， 由于没有现成的公司提供这些， 也没有成套比较成熟的方案(国外人用不着, 国内人不敢用的东西). 所以就自己摸索搭建而且也搭建了， 而且相对来说能控制. 可以参考这里<a href="http://omem.me/2015/11/06/offices-proxy/" target="_blank" rel="external">企业级翻墙方案</a>. 随着很多用户的使用一台服务器显得力不从心, 所以又买了一台然后Squid ＋ Stunnel方案都配好正常启动了。 </p>
+          
+            <p>最近协助搭建了企业级翻墙系统， 由于没有现成的公司提供这些， 也没有成套比较成熟的方案(国外人用不着, 国内人不敢用的东西). 所以就自己摸索搭建而且也搭建了， 而且相对来说能控制. 可以参考这里<a href="http://omem.me/2015/11/06/offices-proxy/" target="_blank" rel="external">企业级翻墙方案</a>. 随着很多用户的使用一台服务器显得力不从心, 所以又买了一台然后Squid ＋ Stunnel方案都配好正常启动了。 </p>
 <h2 id="搞定负载均衡">搞定负载均衡</h2><p>PAC文件支持故障转移(比较坑, 这种机制比较坑， 我们基本上是避免采取的),比较头疼的是负载均衡, 又两种方案</p>
 <ul>
 <li>一种是通过负载均衡程序转发</li>
@@ -610,9 +719,12 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">File Name: reload.py</span><br><span class="line">Author: JackeyGao</span><br><span class="line">Created Time: 二 11/24 13:09:20 2015</span><br><span class="line">'''</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">proxy_configs = &#123;</span><br><span class="line">    <span class="string">'114.xxx.xx.xx:7072'</span>: &#123;</span><br><span class="line">        <span class="string">'user'</span>: <span class="string">'xxxxxx'</span>,</span><br><span class="line">        <span class="string">'passwd'</span>: <span class="string">'xxxxxxx'</span>,</span><br><span class="line">        <span class="string">'return'</span>: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">        <span class="string">'priority'</span>: <span class="number">1</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    <span class="string">'114.xxx.xx.xx:7071'</span>: &#123;</span><br><span class="line">        <span class="string">'user'</span>: <span class="string">'xxxxxx'</span>,</span><br><span class="line">        <span class="string">'passwd'</span>: <span class="string">'xxxxxxxxx'</span>,</span><br><span class="line">        <span class="string">'return'</span>: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">        <span class="string">'priority'</span>: <span class="number">1</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request_error_handler</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_deco</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">        <span class="keyword">except</span> requests.exceptions.ConnectionError <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">if</span> <span class="string">'407'</span> <span class="keyword">in</span> str(e):</span><br><span class="line">                print(<span class="string">"%s代理服务器认证失败"</span> % (args,))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">"%s链接的其他错误E:(%s)"</span> % (args, str(e)))</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            print(<span class="string">"%s发生未知错误E:(%s)"</span> % (args, str(e)))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">return</span> _deco</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="decorator">@request_error_handler</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_proxy_connection</span><span class="params">(proxy, user, passwd, return_ip)</span>:</span></span><br><span class="line">    proxies = &#123;</span><br><span class="line">        <span class="string">"https"</span>: <span class="string">"http://%s:%s@%s"</span> % (user, passwd, proxy),</span><br><span class="line">    &#125;</span><br><span class="line">    url = <span class="string">"https://httpbin.org/ip"</span></span><br><span class="line">    r = requests.get(url, proxies=proxies, timeout=<span class="number">10</span>)</span><br><span class="line">    origin = r.json().get(<span class="string">"origin"</span>, <span class="keyword">None</span>)</span><br><span class="line">    <span class="keyword">if</span> return_ip == origin:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    proxys = []</span><br><span class="line">    <span class="keyword">for</span> proxy, config <span class="keyword">in</span> proxy_configs.items():</span><br><span class="line">        status = test_proxy_connection(proxy, config.get(<span class="string">'user'</span>),</span><br><span class="line">                config.get(<span class="string">'passwd'</span>), config.get(<span class="string">'return'</span>))</span><br><span class="line">        <span class="keyword">if</span> status:</span><br><span class="line">            proxys.append((proxy, config.get(<span class="string">"priority"</span>)))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'proxys.json'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(json.dumps(proxys))</span><br></pre></td></tr></table></figure>
 <p>然后经过pac文件路径改成现在起的地址.需要说明一点有些系统支持的pac文件每隔一段时间会重载pac文件, 这个时间越快对于客户端的故障转移就越及时. pac服务端的故障转移取决于reload.py 的执行间隔, 可以在crontab里面设置为5分钟, 甚至更少的时间.</p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -635,6 +747,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -646,6 +762,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/11/18/flask-jpg2ascii/" itemprop="url">
                   JPG2ASCII开发上线记录
                 </a>
@@ -656,7 +773,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-11-18T14:17:10+08:00" content="2015-11-18">
               2015-11-18
             </time>
@@ -664,7 +784,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Python/" itemprop="url" rel="index">
@@ -689,20 +813,26 @@
               </span>
             
           
+
+          
+
+          
+          
+
         </div>
       </header>
     
 
-    <div class="post-body">
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h2 id="介绍">介绍</h2><p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.<br><a href="jpg2ascii.herokuapp.com">JPG2ASCII</a></p>
+          
+            <h2 id="介绍">介绍</h2><p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.<br><a href="jpg2ascii.herokuapp.com">JPG2ASCII</a></p>
 <h3 id="用到的开源">用到的开源</h3><p><strong>jp2a</strong></p>
 <p>进行转换的工具<br>项目地址:  <a href="https://csl.name/jp2a/" target="_blank" rel="external">https://csl.name/jp2a/</a></p>
 <blockquote>
@@ -727,9 +857,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -O http://sourceforge.net/projects/jp2a/files/latest/download</span><br><span class="line"></span><br><span class="line">tar zxvf download</span><br><span class="line"><span class="built_in">cd</span> jp2a-xxxxx/</span><br><span class="line">./configure --prefix=/app/.heroku/vendor/jp2a</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
 <p>编译完成后需要把这个jp2a可执行命令打进包里面, heroku app机器上不太方便git操作, 我这边是在heroku app机器scp到我的服务器上. 然后add commit.</p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -752,6 +885,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -763,6 +900,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/11/06/offices-proxy/" itemprop="url">
                   企业级翻墙方案
                 </a>
@@ -773,7 +911,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-11-06T15:53:27+08:00" content="2015-11-06">
               2015-11-06
             </time>
@@ -791,20 +932,26 @@
               </span>
             
           
+
+          
+
+          
+          
+
         </div>
       </header>
     
 
-    <div class="post-body">
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>为了公司内一些技术员工的要求访问google查资料, 公司准备采购国外vps来建设内部翻墙方案.利用公司内部的认证系统（Open LDAP）来进行账号授权。然后通过PAC文件进行网站过滤.</p>
+          
+            <p>为了公司内一些技术员工的要求访问google查资料, 公司准备采购国外vps来建设内部翻墙方案.利用公司内部的认证系统（Open LDAP）来进行账号授权。然后通过PAC文件进行网站过滤.</p>
 <h2 id="准备工作">准备工作</h2><p><strong>服务器</strong></p>
 <ul>
 <li>自由网络的VPS若干, 以下简称VPS.</li>
@@ -837,9 +984,12 @@
 <h2 id="关于PAC">关于PAC</h2><p>PAC文件可以通过<a href="https://github.com/JinnLynn/GenPAC" target="_blank" rel="external">Genpac</a>生成. 然后使用<strong>PAC服务机器</strong>起个http服务， 让员工通过一个内网地址访问到就行。 这样只有上班实践可以使用翻墙.</p>
 <h2 id="关于拓展">关于拓展</h2><p>多个vps 可以启动多个squid和stunnel服务, 客户端起多个stunnel端口即可.</p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -862,6 +1012,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -873,6 +1027,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/11/02/use-conoha/" itemprop="url">
                   Conoha主机测评
                 </a>
@@ -883,7 +1038,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-11-02T15:41:12+08:00" content="2015-11-02">
               2015-11-02
             </time>
@@ -901,20 +1059,26 @@
               </span>
             
           
+
+          
+
+          
+          
+
         </div>
       </header>
     
 
-    <div class="post-body">
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>最近由于心知肚明原因， 原来的linode主机已不能使用。所以最近又开始了疯狂找主机的历程， 说起这个简直不能提起。 我本人也连续找了好多家， linode更换了一次ip依然不能访问。然后又找了搬瓦工， 无奈速度简直不能忍受， 打开链接的时间能让我细品一杯茶.</p>
+          
+            <p>最近由于心知肚明原因， 原来的linode主机已不能使用。所以最近又开始了疯狂找主机的历程， 说起这个简直不能提起。 我本人也连续找了好多家， linode更换了一次ip依然不能访问。然后又找了搬瓦工， 无奈速度简直不能忍受， 打开链接的时间能让我细品一杯茶.</p>
 <p>再后来就找到conoha ， 说起conoha之前我注册过， 而且使用别人推荐链接注册，然后加上活动送的1000日元总共2000日元，他们家东京机房是900元，  这些能用两个月的日本机房</p>
 <p>开端总是不好的。 我创建第一个主机除了22端口外， 其他端口均不通.然后找客服， 要求更换ip。 客服告知为不能更换ip.然后他们提供了一种方法来更换. 先创建另外一台， 然后把这台机器删除.全程聊天他们一直用日本语，很是无语😓.</p>
 <p>第二台， 延迟时间比第一台少, 大概133ms</p>
@@ -922,9 +1086,12 @@
 <p>使用推荐链接会有优惠。</p>
 <p><a href="https://www.conoha.jp/referral/?token=587K1ucxrGKjarxl9o.8AJxc718ZZfdHt9QFr5HR9_DprBM._ZI-AHH" target="_blank" rel="external">我是链接</a></p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -947,6 +1114,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -958,6 +1129,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/10/04/illusion-and-reality/" itemprop="url">
                   幻想与现实
                 </a>
@@ -968,7 +1140,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-10-04T20:48:51+08:00" content="2015-10-04">
               2015-10-04
             </time>
@@ -976,7 +1151,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/随笔/" itemprop="url" rel="index">
@@ -1001,27 +1180,36 @@
               </span>
             
           
+
+          
+
+          
+          
+
         </div>
       </header>
     
 
-    <div class="post-body">
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p><img src="/uploads/images/photo-1440964829947-ca3277bd37f8.jpeg" alt=""></p>
+          
+            <p><img src="/uploads/images/photo-1440964829947-ca3277bd37f8.jpeg" alt=""></p>
 <p>我是个会意淫的人， 从自己的爱情， 到自己的事业， 总是憧憬那么美好的事情。时间可以是将来， 可以是过去， 但总是美好。 当一个人的时候， 特别是晚上睡觉的之前的半个小时， 总能想到很多不可思议的遐想， 这些遐想太美妙了， 让我不可自拔， 每天晚上我都会想象这些美好的事情， 有时候开始一个新的意淫， 有时候则接着之前的剧情发展， 期间我无数次告诉自己这是假的， 马上停止下来继续你的睡眠， 可是越是美好越让我心潮澎湃， 激动处我有时能微笑， 有时候能感动到流泪， 然后再无睡意。</p>
 <p>不得不说， 这些想象真的很难实现， 太过于虚幻、美好、 完美。我不知道这个是不是病， 我想这是每个人的共性， 都会一致的幻想自己丰衣足食， 总是很轻松， 不会为未来担忧， 不后悔过去， 因为过去是按照自己的设想过来的。 如果我让这些写出来， 估计也是屌丝逆袭人生的大剧， 会吸引同类病种人群大量观看， 我也就成了一位有病的伟大编剧。每次都不能从 YY 中把我自己唤醒， 感觉是被幻想召唤走了， 我跟着这种心理不断创造出美好， 并被这些美好吸引， 吸引着我持续输出更美的结局， 让我不能理解的是这些创造我也会根据自身和社会因素来克制， 所以在我糊涂的幻想中我认为这些就是现实， 之后我完全不能自拔。</p>
 <p>最近越来越严重了， 我到网上查了查这种状况是否正常， 其实我深知这是不正常的表现。 只是想知道为什么会产生这种不健康的生活习惯， 查来查去给出最多是失眠造成的脑袋空想。我并不在乎这种病在并发能给我有多大危害， 但每次早上我都死气沉沉， 觉得好像失恋一样， 甚至产生一种厌世的心态， 我知道可能和我晚上空想有关。</p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1044,6 +1232,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -1055,6 +1247,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/09/30/django-url-reverse/" itemprop="url">
                   Django url 反解析
                 </a>
@@ -1065,7 +1258,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-09-30T14:07:20+08:00" content="2015-09-30">
               2015-09-30
             </time>
@@ -1073,7 +1269,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Python/" itemprop="url" rel="index">
@@ -1110,20 +1310,26 @@
               </span>
             
           
+
+          
+
+          
+          
+
         </div>
       </header>
     
 
-    <div class="post-body">
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>Django 是个python中web-framework<br>MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接.<br>虽然这种方法是可行的， 但是不是规范的。<br>为什么呢？<br>最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上<code>项目名字</code><br>urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增加了改造的复杂度。<br>通过此次改造我发现<br>其实django中有一种很好的机制, 来通过urls中的viewname 来反解析url生成url.</p>
+          
+            <p>Django 是个python中web-framework<br>MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接.<br>虽然这种方法是可行的， 但是不是规范的。<br>为什么呢？<br>最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上<code>项目名字</code><br>urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增加了改造的复杂度。<br>通过此次改造我发现<br>其实django中有一种很好的机制, 来通过urls中的viewname 来反解析url生成url.</p>
 <p>他们分别是: <code>django.core.urlresolvers.reverse</code> 和 <code>templatetags.url</code></p>
 <h2 id="django-core-urlresolvers-reverse">django.core.urlresolvers.reverse</h2><p>这个函数主要用在于python代码中， 详情请看下面案例</p>
 <p><code>urls.py</code>这里是一个对象详细页面, 需要两个参数.<br><code>models.py</code>中要通过<code>viewname</code> detail 来生成url.</p>
@@ -1132,9 +1338,12 @@
 <h2 id="templatetags-url">templatetags.url</h2><p>这里还使用上面的urls.py 中的detail举例, 在模版中生成url</p>
 <h3 id="base-html">base.html</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% url "detail" step.label.name step.name %&#125;</span><br></pre></td></tr></table></figure>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1157,6 +1366,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -1168,6 +1381,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/09/30/show-your-top-command/" itemprop="url">
                   查看你历史命令的使用率
                 </a>
@@ -1178,7 +1392,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-09-30T13:46:55+08:00" content="2015-09-30">
               2015-09-30
             </time>
@@ -1186,7 +1403,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Python/" itemprop="url" rel="index">
@@ -1211,20 +1432,26 @@
               </span>
             
           
+
+          
+
+          
+          
+
         </div>
       </header>
     
 
-    <div class="post-body">
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>一个查看历史命令的使用率工具， 因为看到<code>oh-my-zsh</code>项目中的<code>zsh_stats</code>function 后有感仿照开发了一个。 本项目不仅支持<code>zsh_history</code>而且支持<code>bash_history</code> 。 还有可扩展的趋势.</p>
+          
+            <p>一个查看历史命令的使用率工具， 因为看到<code>oh-my-zsh</code>项目中的<code>zsh_stats</code>function 后有感仿照开发了一个。 本项目不仅支持<code>zsh_history</code>而且支持<code>bash_history</code> 。 还有可扩展的趋势.</p>
 <h2 id="oh-my-zsh_之_zsh_stats">oh-my-zsh 之 zsh_stats</h2><p>如果你用<code>oh-my-zsh</code> ， 那么你就有了这个功能。 </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ zsh_stats</span><br><span class="line">     <span class="number">1</span>  <span class="number">3290</span>  <span class="number">32.9033</span>%   vim</span><br><span class="line">     <span class="number">2</span>  <span class="number">2204</span>  <span class="number">22.0422</span>%   python</span><br><span class="line">     <span class="number">3</span>  <span class="number">902</span>   <span class="number">9.0209</span>%    ls</span><br><span class="line">     <span class="number">4</span>  <span class="number">730</span>   <span class="number">7.30073</span>%   git</span><br><span class="line">     <span class="number">5</span>  <span class="number">449</span>   <span class="number">4.49045</span>%   <span class="built_in">cd</span></span><br><span class="line">     <span class="number">6</span>  <span class="number">194</span>   <span class="number">1.94019</span>%   curl</span><br><span class="line">     <span class="number">7</span>  <span class="number">170</span>   <span class="number">1.70017</span>%   pip</span><br><span class="line">     <span class="number">8</span>  <span class="number">168</span>   <span class="number">1.68017</span>%   ll</span><br><span class="line">     <span class="number">9</span>  <span class="number">157</span>   <span class="number">1.57016</span>%   scrapy</span><br><span class="line">    <span class="number">10</span>  <span class="number">142</span>   <span class="number">1.42014</span>%   rm</span><br><span class="line">    <span class="number">11</span>  <span class="number">96</span>    <span class="number">0.960096</span>%  cat</span><br><span class="line">    <span class="number">12</span>  <span class="number">78</span>    <span class="number">0.780078</span>%  hexo</span><br><span class="line">    <span class="number">13</span>  <span class="number">76</span>    <span class="number">0.760076</span>%  clear</span><br><span class="line">    <span class="number">14</span>  <span class="number">63</span>    <span class="number">0.630063</span>%  mkdir</span><br><span class="line">    <span class="number">15</span>  <span class="number">60</span>    <span class="number">0.60006</span>%   ping</span><br><span class="line">    <span class="number">16</span>  <span class="number">59</span>    <span class="number">0.590059</span>%  grep</span><br><span class="line">    <span class="number">17</span>  <span class="number">58</span>    <span class="number">0.580058</span>%  workon</span><br><span class="line">    <span class="number">18</span>  <span class="number">57</span>    <span class="number">0.570057</span>%  sudo</span><br><span class="line">    <span class="number">19</span>  <span class="number">57</span>    <span class="number">0.570057</span>%  docker</span><br><span class="line">    <span class="number">20</span>  <span class="number">55</span>    <span class="number">0.550055</span>%  mv</span><br><span class="line">$ <span class="built_in">which</span> zsh_stats <span class="comment"># oh-my-zsh 封装的函数</span></span><br><span class="line"><span class="function"><span class="title">zsh_stats</span></span> () &#123;</span><br><span class="line">    <span class="built_in">fc</span> <span class="operator">-l</span> <span class="number">1</span> | awk <span class="string">'&#123;CMD[$2]++;count++;&#125;END &#123; for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;&#125;'</span> | grep -v <span class="string">"./"</span> | column -c3 <span class="operator">-s</span> <span class="string">" "</span> -t | sort -nr | nl | head -n20</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="cmdstats_项目">cmdstats 项目</h2><p>查看你终端命令使用频率列表, 原理是通过宿主目录下的 <code>.*history</code> 分析后得到历史命令使用频率状态， 并且进行排序输出.</p>
@@ -1234,9 +1461,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ cmdstats</span><br><span class="line"><span class="number">1</span>   <span class="number">3612</span>  <span class="number">33.13154</span>%  vim</span><br><span class="line"><span class="number">2</span>   <span class="number">2473</span>  <span class="number">22.68391</span>%  python</span><br><span class="line"><span class="number">3</span>   <span class="number">1018</span>  <span class="number">9.33774</span>%   ls</span><br><span class="line"><span class="number">4</span>   <span class="number">692</span>   <span class="number">6.34746</span>%   git</span><br><span class="line"><span class="number">5</span>   <span class="number">487</span>   <span class="number">4.46707</span>%   <span class="built_in">cd</span></span><br><span class="line"><span class="number">6</span>   <span class="number">204</span>   <span class="number">1.87122</span>%   ll</span><br><span class="line"><span class="number">7</span>   <span class="number">194</span>   <span class="number">1.77949</span>%   curl</span><br><span class="line"><span class="number">8</span>   <span class="number">178</span>   <span class="number">1.63273</span>%   pip</span><br><span class="line"><span class="number">9</span>   <span class="number">157</span>   <span class="number">1.4401</span>%    scrapy</span><br><span class="line"><span class="number">10</span>  <span class="number">147</span>   <span class="number">1.34838</span>%   rm</span><br><span class="line"><span class="number">11</span>  <span class="number">98</span>    <span class="number">0.89892</span>%   cat</span><br><span class="line"><span class="number">12</span>  <span class="number">91</span>    <span class="number">0.83471</span>%   clear</span><br><span class="line"><span class="number">13</span>  <span class="number">86</span>    <span class="number">0.78885</span>%   ping</span><br><span class="line"><span class="number">14</span>  <span class="number">78</span>    <span class="number">0.71547</span>%   hexo</span><br><span class="line"><span class="number">15</span>  <span class="number">73</span>    <span class="number">0.6696</span>%    docker</span><br><span class="line"><span class="number">16</span>  <span class="number">71</span>    <span class="number">0.65126</span>%   mkdir</span><br><span class="line"><span class="number">17</span>  <span class="number">61</span>    <span class="number">0.55953</span>%   workon</span><br><span class="line"><span class="number">18</span>  <span class="number">60</span>    <span class="number">0.55036</span>%   grep</span><br><span class="line"><span class="number">19</span>  <span class="number">58</span>    <span class="number">0.53201</span>%   sudo</span><br><span class="line"><span class="number">20</span>  <span class="number">57</span>    <span class="number">0.52284</span>%   mv</span><br><span class="line">$ <span class="built_in">which</span> cmdstats</span><br><span class="line">/usr/<span class="built_in">local</span>/bin//cmdstats</span><br></pre></td></tr></table></figure>
 <h3 id="项目地址">项目地址</h3><p><a href="https://github.com/jackeyGao/cmdstats" target="_blank" rel="external">jackeyGao/cmdstats</a></p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1258,18 +1488,20 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
- </div>
 
-        
 
-        
-      </div>
+          </div>
+          
 
-      
+
+          
+
+        </div>
         
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -1284,12 +1516,16 @@
 
       
 
-      <section class="site-overview">
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/uploads/avatar.jpg" alt="JackeyGao" itemprop="image"/>
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="JackeyGao" />
           <p class="site-author-name" itemprop="name">JackeyGao</p>
+          <p class="site-description motion-element" itemprop="description">JackeyGao的日记本</p>
         </div>
-        <p class="site-description motion-element" itemprop="description">JackeyGao的日记本</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -1298,26 +1534,30 @@
             </a>
           </div>
 
-          <div class="site-state-item site-state-categories">
-            
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">分类</span>
+          
+            <div class="site-state-item site-state-categories">
               
-          </div>
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">27</span>
-              <span class="site-state-item-name">标签</span>
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
               </a>
-          </div>
+            </div>
+          
 
         </nav>
 
         
           <div class="feed-link motion-element">
             <a href="/atom.xml" rel="alternate">
-              <i class="menu-item-icon icon-next-feed"></i>
+              <i class="fa fa-rss"></i>
               RSS
             </a>
           </div>
@@ -1327,19 +1567,27 @@
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/jackeyGao" target="_blank">Github</a>
+                <a href="https://github.com/jackeyGao" target="_blank">
+                  
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="gaojunqi@outlook.com" target="_blank">Email</a>
+                <a href="gaojunqi@outlook.com" target="_blank">
+                  
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://weibo.com/JackeyGaoQ" target="_blank">Weibo</a>
+                <a href="http://weibo.com/JackeyGaoQ" target="_blank">
+                  
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://twitter.com/JackeyGaoo" target="_blank">Twitter</a>
+                <a href="https://twitter.com/JackeyGaoo" target="_blank">
+                  
+                </a>
               </span>
             
           
@@ -1354,7 +1602,8 @@
           </div>
         
 
-        <div class="links-of-author motion-element">
+        
+        <div class="links-of-blogroll motion-element">
           
         </div>
 
@@ -1366,16 +1615,18 @@
   </aside>
 
 
-      
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
+      <div class="footer-inner">
+        <div class="copyright" >
   
-  &copy; &nbsp; 
+  &copy; 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Jackey Gao</span>
 </div>
@@ -1392,18 +1643,65 @@
 </div>
 
 
- </div>
+
+      </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
 
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.4.5.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.4.5.1"></script>
+
+
+
   
   
+
   
-    
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.4.5.1"></script>
+
+
+
+  
 
   
     
@@ -1414,64 +1712,29 @@
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
       ds.charset = 'UTF-8';
       (document.getElementsByTagName('head')[0]
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+
+  
     
-     
-
-    
-  
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
   
 
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
 
 
 
-
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-      if (isMobile()) {
-        FastClick.attach(document.body);
-      }
-    });
-  </script>
-
   
   
 
   
-  
 
   
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
-        effect: "fadeIn"
-      });
-    });
-  </script>
+
 </body>
 </html>

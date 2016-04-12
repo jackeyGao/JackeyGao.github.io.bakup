@@ -1,11 +1,16 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
-<head>
+
+
+
   
 
-<meta charset="UTF-8"/>
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -18,19 +23,27 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
-    <meta name="description" content="Jackey Gao的日记本" />
 
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Flask,Python,Squid,Stunnel,翻墙," />
+
+
 
 
 
@@ -38,7 +51,12 @@
 
 
 
+
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+
+
 
 
 <meta name="description" content="最近协助搭建了企业级翻墙系统， 由于没有现成的公司提供这些， 也没有成套比较成熟的方案(国外人用不着, 国内人不敢用的东西). 所以就自己摸索搭建而且也搭建了， 而且相对来说能控制. 可以参考这里企业级翻墙方案. 随着很多用户的使用一台服务器显得力不从心, 所以又买了一台然后Squid ＋ Stunnel方案都配好正常启动了。 
@@ -56,10 +74,18 @@
 搞定负载均衡PAC文件支持故障转移(比较坑, 这种机制比较坑， 我们">
 
 
+
 <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'post'
+    sidebar: "post",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
   };
 </script>
 
@@ -68,36 +94,41 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
 
-  <div class="container one-column page-post-detail">
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1258527046&web_id=1258527046" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner">
+      <div class="header-inner"><div class="site-meta ">
+  
 
-<div class="site-meta ">
-  
-    <span class="logo-line-before"><i></i></span>
-    <a href="/" class="brand" rel="start">
-          <span class="logo">
-            <i class="icon-next-logo"></i>
-          </span>
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
       <span class="site-title">文本不限, 诗歌除外</span>
+      <span class="logo-line-after"><i></i></span>
     </a>
-    <span class="logo-line-after"><i></i></span>
-  
+  </div>
+  <p class="site-subtitle"></p>
 </div>
 
 <div class="site-nav-toggle">
@@ -112,7 +143,7 @@
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
@@ -148,7 +179,6 @@
       
 
       
-      
     </ul>
   
 
@@ -160,11 +190,17 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
     
 
+  
+  
+
+  
   
   
 
@@ -187,7 +223,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-11-24T15:50:19+08:00" content="2015-11-24">
               2015-11-24
             </time>
@@ -195,7 +234,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/折腾/" itemprop="url" rel="index">
@@ -220,17 +263,24 @@
               </span>
             
           
+
+          
+
+          
+          
+
         </div>
       </header>
     
 
-    <div class="post-body">
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <span itemprop="articleBody"><p>最近协助搭建了企业级翻墙系统， 由于没有现成的公司提供这些， 也没有成套比较成熟的方案(国外人用不着, 国内人不敢用的东西). 所以就自己摸索搭建而且也搭建了， 而且相对来说能控制. 可以参考这里<a href="http://omem.me/2015/11/06/offices-proxy/" target="_blank" rel="external">企业级翻墙方案</a>. 随着很多用户的使用一台服务器显得力不从心, 所以又买了一台然后Squid ＋ Stunnel方案都配好正常启动了。 </p>
+        <p>最近协助搭建了企业级翻墙系统， 由于没有现成的公司提供这些， 也没有成套比较成熟的方案(国外人用不着, 国内人不敢用的东西). 所以就自己摸索搭建而且也搭建了， 而且相对来说能控制. 可以参考这里<a href="http://omem.me/2015/11/06/offices-proxy/" target="_blank" rel="external">企业级翻墙方案</a>. 随着很多用户的使用一台服务器显得力不从心, 所以又买了一台然后Squid ＋ Stunnel方案都配好正常启动了。 </p>
 <h2 id="搞定负载均衡">搞定负载均衡</h2><p>PAC文件支持故障转移(比较坑, 这种机制比较坑， 我们基本上是避免采取的),比较头疼的是负载均衡, 又两种方案</p>
 <ul>
 <li>一种是通过负载均衡程序转发</li>
@@ -244,7 +294,13 @@
 <p><strong>reload.py</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">File Name: reload.py</span><br><span class="line">Author: JackeyGao</span><br><span class="line">Created Time: 二 11/24 13:09:20 2015</span><br><span class="line">'''</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">proxy_configs = &#123;</span><br><span class="line">    <span class="string">'114.xxx.xx.xx:7072'</span>: &#123;</span><br><span class="line">        <span class="string">'user'</span>: <span class="string">'xxxxxx'</span>,</span><br><span class="line">        <span class="string">'passwd'</span>: <span class="string">'xxxxxxx'</span>,</span><br><span class="line">        <span class="string">'return'</span>: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">        <span class="string">'priority'</span>: <span class="number">1</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    <span class="string">'114.xxx.xx.xx:7071'</span>: &#123;</span><br><span class="line">        <span class="string">'user'</span>: <span class="string">'xxxxxx'</span>,</span><br><span class="line">        <span class="string">'passwd'</span>: <span class="string">'xxxxxxxxx'</span>,</span><br><span class="line">        <span class="string">'return'</span>: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">        <span class="string">'priority'</span>: <span class="number">1</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request_error_handler</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_deco</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">        <span class="keyword">except</span> requests.exceptions.ConnectionError <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">if</span> <span class="string">'407'</span> <span class="keyword">in</span> str(e):</span><br><span class="line">                print(<span class="string">"%s代理服务器认证失败"</span> % (args,))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">"%s链接的其他错误E:(%s)"</span> % (args, str(e)))</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            print(<span class="string">"%s发生未知错误E:(%s)"</span> % (args, str(e)))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">return</span> _deco</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="decorator">@request_error_handler</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_proxy_connection</span><span class="params">(proxy, user, passwd, return_ip)</span>:</span></span><br><span class="line">    proxies = &#123;</span><br><span class="line">        <span class="string">"https"</span>: <span class="string">"http://%s:%s@%s"</span> % (user, passwd, proxy),</span><br><span class="line">    &#125;</span><br><span class="line">    url = <span class="string">"https://httpbin.org/ip"</span></span><br><span class="line">    r = requests.get(url, proxies=proxies, timeout=<span class="number">10</span>)</span><br><span class="line">    origin = r.json().get(<span class="string">"origin"</span>, <span class="keyword">None</span>)</span><br><span class="line">    <span class="keyword">if</span> return_ip == origin:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    proxys = []</span><br><span class="line">    <span class="keyword">for</span> proxy, config <span class="keyword">in</span> proxy_configs.items():</span><br><span class="line">        status = test_proxy_connection(proxy, config.get(<span class="string">'user'</span>),</span><br><span class="line">                config.get(<span class="string">'passwd'</span>), config.get(<span class="string">'return'</span>))</span><br><span class="line">        <span class="keyword">if</span> status:</span><br><span class="line">            proxys.append((proxy, config.get(<span class="string">"priority"</span>)))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'proxys.json'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(json.dumps(proxys))</span><br></pre></td></tr></table></figure>
 <p>然后经过pac文件路径改成现在起的地址.需要说明一点有些系统支持的pac文件每隔一段时间会重载pac文件, 这个时间越快对于客户端的故障转移就越及时. pac服务端的故障转移取决于reload.py 的执行间隔, 可以在crontab里面设置为5分钟, 甚至更少的时间.</p>
-</span>
+
+      
+    </div>
+
+    <div>
+      
+        
       
     </div>
 
@@ -267,15 +323,19 @@
 
       
         <div class="post-nav">
-          <div class="post-nav-prev post-nav-item">
+          <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/26/python-environment/" rel="prev">Python生态圈</a>
+              <a href="/2015/11/18/flask-jpg2ascii/" rel="next" title="JPG2ASCII开发上线记录">
+                <i class="fa fa-chevron-left"></i> JPG2ASCII开发上线记录
+              </a>
             
           </div>
 
-          <div class="post-nav-next post-nav-item">
+          <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/18/flask-jpg2ascii/" rel="next">JPG2ASCII开发上线记录</a>
+              <a href="/2015/11/26/python-environment/" rel="prev" title="Python生态圈">
+                Python生态圈 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -293,23 +353,24 @@
     </div>
   </div>
 
- </div>
 
-        
-
-        
-          <div class="comments" id="comments">
-            
-              <div class="ds-thread" data-thread-key="2015/11/24/dynamic-autochange-proxy/"
-                   data-title="动态切换代理 - PAC方法" data-url="http://yoursite.com/2015/11/24/dynamic-autochange-proxy/">
-              </div>
-            
           </div>
-        
-      </div>
+          
 
-      
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/24/dynamic-autochange-proxy/"
+           data-title="动态切换代理 - PAC方法" data-url="http://yoursite.com/2015/11/24/dynamic-autochange-proxy/">
+      </div>
+    
+  </div>
+
+
+        </div>
         
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -323,22 +384,17 @@
     <div class="sidebar-inner">
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
+
       
 
-      <section class="site-overview">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/uploads/avatar.jpg" alt="JackeyGao" itemprop="image"/>
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="JackeyGao" />
           <p class="site-author-name" itemprop="name">JackeyGao</p>
+          <p class="site-description motion-element" itemprop="description">JackeyGao的日记本</p>
         </div>
-        <p class="site-description motion-element" itemprop="description">JackeyGao的日记本</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -347,26 +403,30 @@
             </a>
           </div>
 
-          <div class="site-state-item site-state-categories">
-            
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">分类</span>
+          
+            <div class="site-state-item site-state-categories">
               
-          </div>
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">27</span>
-              <span class="site-state-item-name">标签</span>
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
               </a>
-          </div>
+            </div>
+          
 
         </nav>
 
         
           <div class="feed-link motion-element">
             <a href="/atom.xml" rel="alternate">
-              <i class="menu-item-icon icon-next-feed"></i>
+              <i class="fa fa-rss"></i>
               RSS
             </a>
           </div>
@@ -376,19 +436,27 @@
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/jackeyGao" target="_blank">Github</a>
+                <a href="https://github.com/jackeyGao" target="_blank">
+                  
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="gaojunqi@outlook.com" target="_blank">Email</a>
+                <a href="gaojunqi@outlook.com" target="_blank">
+                  
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://weibo.com/JackeyGaoQ" target="_blank">Weibo</a>
+                <a href="http://weibo.com/JackeyGaoQ" target="_blank">
+                  
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://twitter.com/JackeyGaoo" target="_blank">Twitter</a>
+                <a href="https://twitter.com/JackeyGaoo" target="_blank">
+                  
+                </a>
               </span>
             
           
@@ -403,39 +471,31 @@
           </div>
         
 
-        <div class="links-of-author motion-element">
+        
+        <div class="links-of-blogroll motion-element">
           
         </div>
 
       </section>
 
       
-        <section class="post-toc-wrap sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator"></div>
-          <div class="post-toc">
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搞定负载均衡"><span class="nav-number">1.</span> <span class="nav-text">搞定负载均衡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#故障转移"><span class="nav-number">2.</span> <span class="nav-text">故障转移</span></a></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-        </section>
-      
 
     </div>
   </aside>
 
 
-      
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
+      <div class="footer-inner">
+        <div class="copyright" >
   
-  &copy; &nbsp; 
+  &copy; 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Jackey Gao</span>
 </div>
@@ -452,18 +512,70 @@
 </div>
 
 
- </div>
+
+      </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
 
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.4.5.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.4.5.1"></script>
+
+
+
   
   
+
   
-    
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.4.5.1"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.4.5.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.4.5.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.4.5.1"></script>
+
+
+
+  
 
   
     
@@ -474,223 +586,29 @@
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
       ds.charset = 'UTF-8';
       (document.getElementsByTagName('head')[0]
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+
+  
     
-     
-
-    
-  
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
   
 
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
 
 
 
-
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
-
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 0.4 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    var $tocContent = $('.post-toc-content');
-    if (isDesktop() && CONFIG.sidebar === 'post') {
-      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-        displaySidebar();
-      }
-    }
-  });
-</script>
-
-
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-      if (isMobile()) {
-        FastClick.attach(document.body);
-      }
-    });
-  </script>
-
   
   
 
   
-  
 
   
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
-        effect: "fadeIn"
-      });
-    });
-  </script>
+
 </body>
 </html>
