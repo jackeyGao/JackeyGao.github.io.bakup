@@ -214,6 +214,136 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/13/offices-proxy-install-document/" itemprop="url">
+                  企业级翻墙服务部署文档
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-13T10:35:45+08:00" content="2016-04-13">
+              2016-04-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/13/offices-proxy-install-document/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/offices-proxy-install-document/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>写在前面, 翻墙后仅资料查询或学术研究.</p>
+<p>之前有说过翻墙方案： <a href="/2015/11/06/offices-proxy/">企业级翻墙方案</a></p>
+<h2 id="思考工作">思考工作</h2><p>翻墙主要的技术有VPN和代理， 但是VPN在去年政策出了后正常使用需要备案， 所以VPN肯定是不推荐。 其次是代理， 个人代理最多用的是shadowsocks, shadowsocks不支持集中认证， 所以不考虑. squid支持ldap集中认证， 但是要考虑加密工作, 随着墙的升级, 越来越多的手段都被禁止或者被干扰. 所以加密一定要做的， 这里采用了Stunnel进行加密.其次是网站过滤, 一些视频网站控制住. 这里用PAC文件来控制， 有些人懂一些网络基础直接连接端口进行全局proxy也不是不可能的。 这个地方可以通过squid的ACL来控制.关于ACL本文不会描述 ， 请自行查阅squid文档.</p>
+<h2 id="环境">环境</h2><p><strong>硬件环境</strong></p>
+<ul>
+<li>墙外VPS 若干(国外需要网络自由)</li>
+<li>墙内VPS (Stunnel分流机器, 带宽要足够)</li>
+</ul>
+<p><strong>软件环境</strong></p>
+<ul>
+<li><code>Squid</code> 是一种用来缓冲Internet数据的软件。在这里仅仅使用它的代理功能.</li>
+<li><code>Stunnel</code> 是一个自由的跨平台软件，用于提供全局的<code>TLS/SSL</code>服务。针对本身无法进行TLS或SSL通信的客户端及服务器，Stunnel可提供安全的加密连接。这里我们在墙内VPS和墙外VPS中间通信中间加个加密通道， 所以需要双向安装， 墙外的为服务端墙内分流为客户端.</li>
+<li><code>LDAP Server</code>（这里没有安装介绍）</li>
+</ul>
+<h2 id="安装">安装</h2><h3 id="墙外VPS">墙外VPS</h3><p><strong>墙外VPS</strong>需要安装Stunnel 服务端和Squid服务端.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install stunnel </span><br><span class="line">$ yum -y install squid</span><br></pre></td></tr></table></figure>
+<h4 id="配置stunnel_-_生成pem">配置stunnel - 生成pem</h4><p><strong>pem可以生成一份， 所有机器通用</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /etc/stunnel/;</span><br><span class="line">$ openssl req -new -x509 -days <span class="number">365</span> -nodes -out stunnel.pem -keyout stunnel.pem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接着给它生成Diffie-Hellman部分</span></span><br><span class="line">$ openssl gendh <span class="number">512</span>&gt;&gt; stunnel.pem</span><br></pre></td></tr></table></figure>
+<h4 id="配置stunnel_-_配置Stunnel-conf">配置stunnel -  配置Stunnel.conf</h4><p>配置文件在/etc/stunnel/下</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">cert = <span class="value">/etc/stunnel/stunnel.pem</span></span></span><br><span class="line"><span class="setting">CAfile = <span class="value">/etc/stunnel/stunnel.pem</span></span></span><br><span class="line"><span class="setting">socket = <span class="value">l:TCP_NODELAY=<span class="number">1</span></span></span></span><br><span class="line"><span class="setting">socket = <span class="value">r:TCP_NODELAY=<span class="number">1</span></span></span></span><br><span class="line"></span><br><span class="line"><span class="setting">pid = <span class="value">/tmp/stunnel.pid</span></span></span><br><span class="line"><span class="setting">verify = <span class="value"><span class="number">3</span></span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="setting">setuid = <span class="value">stunnel</span></span></span><br><span class="line"><span class="setting">setgid = <span class="value">stunnel</span></span></span><br><span class="line"></span><br><span class="line"><span class="setting">compression = <span class="value">zlib</span></span></span><br><span class="line"><span class="setting">delay = <span class="value"><span class="keyword">no</span></span></span></span><br><span class="line"><span class="setting">sslVersion = <span class="value">TLSv1</span></span></span><br><span class="line"><span class="setting">fips=<span class="value"><span class="keyword">no</span></span></span></span><br><span class="line"></span><br><span class="line"><span class="setting">debug = <span class="value"><span class="number">7</span></span></span></span><br><span class="line"><span class="setting">syslog = <span class="value"><span class="keyword">no</span></span></span></span><br><span class="line"><span class="setting">output = <span class="value">stunnel.log</span></span></span><br><span class="line"><span class="title"></span><br><span class="line">[sproxy]</span></span><br><span class="line"><span class="setting">accept = <span class="value"><span class="number">34567</span></span></span></span><br><span class="line"><span class="setting">connect = <span class="value"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">10801</span></span></span></span><br></pre></td></tr></table></figure>
+<p>以上这是stunnel 服务端的配置， cert、CAfile指定刚刚生成的pem， 后面的[sproxy] 可以指定一组对应，sproxy可以多个， 单服务端不需要一台机器只有一个squid所以只写一组. accept 表示转发的端口， connect表示映射端口， 也就是squid的端口这里是10801， 默认为3128.</p>
+<h4 id="启动">启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ service squid start</span><br><span class="line">$ stunnel</span><br></pre></td></tr></table></figure>
+<h3 id="配置squid_-_配置squid-conf">配置squid - 配置squid.conf</h3><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">... 以下为修改， 也可以不修改， 选择默认， 上面的connect需要写成<span class="number">3128</span></span><br><span class="line">http_port <span class="number">10801</span></span><br><span class="line"></span><br><span class="line">... 以下为添加</span><br><span class="line">auth_param basic program <span class="pi">/usr/lib64/squid/squid_ldap_auth -u -cn -f "uid=%s" -b "ou=people,dc=shuyun,dc=com" -D "cn=proxy proxy,ou=people,dc=shuyun,dc=com" -w "Shuyun123456"  -H ldap:/</span>/ldap.shuyun.com   <span class="comment"># ldap 配置</span></span><br><span class="line">auth_param basic realm Please enter the wiki user <span class="keyword">and</span> password ＃ 认证提示</span><br><span class="line">auth_param basic credentialsttl <span class="number">8</span> hours ＃ 认证过期时间</span><br><span class="line">auth_param basic casesensitive <span class="literal">off</span>   </span><br><span class="line">acl ldapauth proxy_auth REQUIRED</span><br><span class="line">http_access allow ldapauth ＃ 默认允许ldap认证过的</span><br><span class="line">http_access deny all ＃ 拒绝其他所有</span><br><span class="line">acl rejectfile  urlpath_regex -i <span class="string">\.avi$</span> <span class="string">\.rmvb$</span> <span class="string">\.wmv$</span> <span class="string">\.rm$</span> <span class="string">\.mpg$</span> <span class="string">\.mpeg$</span> <span class="string">\.mp4$</span> <span class="string">\.mov$</span> <span class="string">\.asf$</span> <span class="string">\.mkv$</span> <span class="string">\.dat$</span> <span class="string">\.flv$</span> <span class="string">\.3gp$</span> <span class="string">\.mp3$</span></span><br><span class="line">http_access deny rejectfile ＃ 拒绝视频文件</span><br></pre></td></tr></table></figure>
+<p><strong>注意:</strong>  http_access 语句配置完成后应该只有上面的三个， 安装<strong>Squid默认的配置文件里面的http_access 语句需要注视掉</strong>， 否则ldapauth 会不生效， 因为默认是没有认证的。<code>http_access allow all</code> 这一句就允许所有了…</p>
+<p><strong>注意:</strong>  如果有多台墙外VPS的话重复上面的步骤, pem 可以直接复制到备份机器. 下面stunnel client可以复制这个pem.</p>
+<p>到这里服务端的配置就完成了， 下面开始分流机器的配置</p>
+<h3 id="墙内分流VPS">墙内分流VPS</h3><p><strong>墙内分流VPS</strong>需要安装Stunnel 软件作为客户端.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install stunnel</span><br></pre></td></tr></table></figure>
+<h3 id="配置Stunnel_-_复制pem">配置Stunnel - 复制pem</h3><p>复制刚刚生成pem那台服务器的pem文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp root@$墙外VPS:/etc/stunnel/stunnel.pem /etc/stunnel/stunnel.pem</span><br></pre></td></tr></table></figure>
+<h3 id="配置Stunnel_-_配置stunnel-conf">配置Stunnel - 配置stunnel.conf</h3><p>配置文件: <code>/etc/stunnel/stunnel.conf</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">cert = <span class="value">/etc/stunnel/stunnel.pem</span></span></span><br><span class="line"><span class="setting">CAfile = <span class="value">/etc/stunnel/stunnel.pem</span></span></span><br><span class="line"><span class="setting">socket = <span class="value">l:TCP_NODELAY=<span class="number">1</span></span></span></span><br><span class="line"><span class="setting">socket = <span class="value">r:TCP_NODELAY=<span class="number">1</span></span></span></span><br><span class="line"><span class="setting">verify = <span class="value"><span class="number">2</span></span></span></span><br><span class="line"><span class="setting">client=<span class="value"><span class="keyword">yes</span>  # 这里指明当前服务为客户端， 默认是服务端(<span class="keyword">no</span>).</span></span></span><br><span class="line"><span class="setting">compression = <span class="value">zlib</span></span></span><br><span class="line"><span class="setting">ciphers = <span class="value">AES256-SHA</span></span></span><br><span class="line"><span class="setting">delay = <span class="value"><span class="keyword">no</span></span></span></span><br><span class="line"><span class="setting">failover = <span class="value">prio</span></span></span><br><span class="line"><span class="setting">sslVersion = <span class="value">TLSv1</span></span></span><br><span class="line"><span class="setting">fips = <span class="value"><span class="keyword">no</span></span></span></span><br><span class="line"><span class="setting">debug = <span class="value">debug</span></span></span><br><span class="line"><span class="title"></span><br><span class="line">[sproxy2]</span></span><br><span class="line"><span class="setting">accept  = <span class="value"><span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">7072</span></span></span></span><br><span class="line"><span class="setting">connect = <span class="value">$墙内vps1:<span class="number">34567</span></span></span></span><br><span class="line"><span class="title"></span><br><span class="line">[sproxy2]</span></span><br><span class="line"><span class="setting">accept  = <span class="value"><span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">7073</span></span></span></span><br><span class="line"><span class="setting">connect = <span class="value">$墙内vps2:<span class="number">34567</span></span></span></span><br></pre></td></tr></table></figure>
+<h4 id="启动-1">启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ stunnel</span><br></pre></td></tr></table></figure>
+<p>这里所有的配置均已完成， 测试的话，可以在浏览器设置里面设置</p>
+<p>Windows: windows键+R键输入inetcpl.cpl &gt; 连接 &gt; 局域网设置 &gt; 代理服务器<br>MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; 代理 &gt; WEB 代理(HTTP) &gt; 输入地址端口用户名密码.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/12/google-photos-for-mac/" itemprop="url">
                   Google photos for MAC使用教程
                 </a>
@@ -1329,140 +1459,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/30/django-url-reverse/" itemprop="url">
-                  Django url 反解析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-30T14:07:20+08:00" content="2015-09-30">
-              2015-09-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/Django/" itemprop="url" rel="index">
-                    <span itemprop="name">Django</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/30/django-url-reverse/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/django-url-reverse/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Django 是个python中web-framework<br>MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接.<br>虽然这种方法是可行的， 但是不是规范的。<br>为什么呢？<br>最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上<code>项目名字</code><br>urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增加了改造的复杂度。<br>通过此次改造我发现<br>其实django中有一种很好的机制, 来通过urls中的viewname 来反解析url生成url.</p>
-<p>他们分别是: <code>django.core.urlresolvers.reverse</code> 和 <code>templatetags.url</code></p>
-<h2 id="django-core-urlresolvers-reverse">django.core.urlresolvers.reverse</h2><p>这个函数主要用在于python代码中， 详情请看下面案例</p>
-<p><code>urls.py</code>这里是一个对象详细页面, 需要两个参数.<br><code>models.py</code>中要通过<code>viewname</code> detail 来生成url.</p>
-<h3 id="urls-py">urls.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    url(<span class="string">r'^step/(?P&lt;label&gt;.*)/(?P&lt;name&gt;.*)$'</span>, step, name=<span class="string">"detail"</span>),</span><br><span class="line">    ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h3 id="models-py">models.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Step</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    ......</span><br><span class="line">    ......</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_absolute_url</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> reverse(<span class="string">'detail'</span>, kwargs=&#123;</span><br><span class="line">            <span class="string">'label'</span>: self.label,</span><br><span class="line">            <span class="string">'name'</span>: self.name&#125;</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">label_name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.label.name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> unicode(self.name)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br></pre></td></tr></table></figure>
-<h2 id="templatetags-url">templatetags.url</h2><p>这里还使用上面的urls.py 中的detail举例, 在模版中生成url</p>
-<h3 id="base-html">base.html</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% url "detail" step.label.name step.name %&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1508,7 +1504,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
