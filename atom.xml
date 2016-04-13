@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-13T02:41:36.000Z</updated>
+  <updated>2016-04-13T02:44:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,9 +19,8 @@
     <link href="http://yoursite.com/2016/04/13/offices-proxy-install-document/"/>
     <id>http://yoursite.com/2016/04/13/offices-proxy-install-document/</id>
     <published>2016-04-13T02:35:45.000Z</published>
-    <updated>2016-04-13T02:41:36.000Z</updated>
-    <content type="html"><![CDATA[<p>写在前面, 翻墙后仅资料查询或学术研究.</p>
-<p>之前有说过翻墙方案： <a href="/2015/11/06/offices-proxy/">企业级翻墙方案</a></p>
+    <updated>2016-04-13T02:44:00.000Z</updated>
+    <content type="html"><![CDATA[<p>写在前面, 翻墙后仅资料查询或学术研究. 之前有说过翻墙方案： <a href="/2015/11/06/offices-proxy/">企业级翻墙方案</a></p>
 <h2 id="思考工作">思考工作</h2><p>翻墙主要的技术有VPN和代理， 但是VPN在去年政策出了后正常使用需要备案， 所以VPN肯定是不推荐。 其次是代理， 个人代理最多用的是shadowsocks, shadowsocks不支持集中认证， 所以不考虑. squid支持ldap集中认证， 但是要考虑加密工作, 随着墙的升级, 越来越多的手段都被禁止或者被干扰. 所以加密一定要做的， 这里采用了Stunnel进行加密.其次是网站过滤, 一些视频网站控制住. 这里用PAC文件来控制， 有些人懂一些网络基础直接连接端口进行全局proxy也不是不可能的。 这个地方可以通过squid的ACL来控制.关于ACL本文不会描述 ， 请自行查阅squid文档.</p>
 <h2 id="环境">环境</h2><p><strong>硬件环境</strong></p>
 <ul>
@@ -57,9 +56,8 @@
 <p>Windows: windows键+R键输入inetcpl.cpl &gt; 连接 &gt; 局域网设置 &gt; 代理服务器<br>MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; 代理 &gt; WEB 代理(HTTP) &gt; 输入地址端口用户名密码.</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>写在前面, 翻墙后仅资料查询或学术研究.</p>
-<p>之前有说过翻墙方案： <a href="/2015/11/06/offices-proxy/">企业级翻墙方案</a></p>
-<h2 id="思考工作">思考工作</h2><p>翻墙主要的技术有VPN和代理， 但是V]]>
+    <![CDATA[<p>写在前面, 翻墙后仅资料查询或学术研究. 之前有说过翻墙方案： <a href="/2015/11/06/offices-proxy/">企业级翻墙方案</a></p>
+<h2 id="思考工作">思考工作</h2><p>翻墙主要的技术有VPN和代理， 但是VPN在去年政策]]>
     </summary>
     
       <category term="Squid" scheme="http://yoursite.com/tags/Squid/"/>
