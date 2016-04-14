@@ -3,9 +3,9 @@
   <title><![CDATA[文本不限, 诗歌除外]]></title>
   
   <link href="/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
+  <link href="http://omem.me/"/>
   <updated>2016-04-14T03:51:16.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://omem.me/</id>
   
   <author>
     <name><![CDATA[Jackey Gao]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[Karabiner profile 命令行切换方式]]></title>
-    <link href="http://yoursite.com/2016/04/14/karabiner-switch-command-line/"/>
-    <id>http://yoursite.com/2016/04/14/karabiner-switch-command-line/</id>
+    <link href="http://omem.me/2016/04/14/karabiner-switch-command-line/"/>
+    <id>http://omem.me/2016/04/14/karabiner-switch-command-line/</id>
     <published>2016-04-14T03:35:05.000Z</published>
     <updated>2016-04-14T03:51:16.000Z</updated>
     <content type="html"><![CDATA[<p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
@@ -41,14 +41,14 @@
 <h]]>
     </summary>
     
-      <category term="Karabiner" scheme="http://yoursite.com/tags/Karabiner/"/>
+      <category term="Karabiner" scheme="http://omem.me/tags/Karabiner/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[企业级翻墙服务部署文档]]></title>
-    <link href="http://yoursite.com/2016/04/13/offices-proxy-install-document/"/>
-    <id>http://yoursite.com/2016/04/13/offices-proxy-install-document/</id>
+    <link href="http://omem.me/2016/04/13/offices-proxy-install-document/"/>
+    <id>http://omem.me/2016/04/13/offices-proxy-install-document/</id>
     <published>2016-04-13T02:35:45.000Z</published>
     <updated>2016-04-13T02:44:56.000Z</updated>
     <content type="html"><![CDATA[<p>写在前面, 翻墙后仅资料查询或学术研究. 之前有说过翻墙方案： <a href="/2015/11/06/offices-proxy/">企业级翻墙方案</a></p>
@@ -91,20 +91,20 @@
 <h2 id="思考工作">思考工作</h2><p>翻墙主要的技术有VPN和代理， 但是VPN在去年政策]]>
     </summary>
     
-      <category term="Squid" scheme="http://yoursite.com/tags/Squid/"/>
+      <category term="Squid" scheme="http://omem.me/tags/Squid/"/>
     
-      <category term="Stunnel" scheme="http://yoursite.com/tags/Stunnel/"/>
+      <category term="Stunnel" scheme="http://omem.me/tags/Stunnel/"/>
     
-      <category term="vps" scheme="http://yoursite.com/tags/vps/"/>
+      <category term="vps" scheme="http://omem.me/tags/vps/"/>
     
-      <category term="翻墙" scheme="http://yoursite.com/tags/%E7%BF%BB%E5%A2%99/"/>
+      <category term="翻墙" scheme="http://omem.me/tags/%E7%BF%BB%E5%A2%99/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Google photos for MAC使用教程]]></title>
-    <link href="http://yoursite.com/2016/04/12/google-photos-for-mac/"/>
-    <id>http://yoursite.com/2016/04/12/google-photos-for-mac/</id>
+    <link href="http://omem.me/2016/04/12/google-photos-for-mac/"/>
+    <id>http://omem.me/2016/04/12/google-photos-for-mac/</id>
     <published>2016-04-12T03:41:17.000Z</published>
     <updated>2016-04-12T03:45:02.000Z</updated>
     <content type="html"><![CDATA[<p>Google photos 是谷歌推出了一个独立的无限相片 / 视频存放服务。使用者可以免费存放无限量相片和视频至云端，唯其大小限于最大 16MP 和 1080p。而且客户端可以设置是否对图片进行压缩， 所以大的图片也不会占用google drive的空间。</p>
@@ -120,18 +120,18 @@
 <p>]]>
     </summary>
     
-      <category term="Google" scheme="http://yoursite.com/tags/Google/"/>
+      <category term="Google" scheme="http://omem.me/tags/Google/"/>
     
-      <category term="病" scheme="http://yoursite.com/tags/%E7%97%85/"/>
+      <category term="病" scheme="http://omem.me/tags/%E7%97%85/"/>
     
-      <category term="翻墙" scheme="http://yoursite.com/tags/%E7%BF%BB%E5%A2%99/"/>
+      <category term="翻墙" scheme="http://omem.me/tags/%E7%BF%BB%E5%A2%99/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[大话西游答题器 command line]]></title>
-    <link href="http://yoursite.com/2016/01/15/dhxy-examination-command-line/"/>
-    <id>http://yoursite.com/2016/01/15/dhxy-examination-command-line/</id>
+    <link href="http://omem.me/2016/01/15/dhxy-examination-command-line/"/>
+    <id>http://omem.me/2016/01/15/dhxy-examination-command-line/</id>
     <published>2016-01-15T01:55:15.000Z</published>
     <updated>2016-01-15T06:52:13.000Z</updated>
     <content type="html"><![CDATA[<p>科举，大理寺都适用。 唯独不支持的是殿试。</p>
@@ -147,16 +147,16 @@
 <h2 id="项目代吗">项目代吗</h2><p>需要依赖<a href="http://docs.python-requests.org/en/latest/" target="_blank" rel="externa]]>
     </summary>
     
-      <category term="游戏" scheme="http://yoursite.com/tags/%E6%B8%B8%E6%88%8F/"/>
+      <category term="游戏" scheme="http://omem.me/tags/%E6%B8%B8%E6%88%8F/"/>
     
-      <category term="病" scheme="http://yoursite.com/tags/%E7%97%85/"/>
+      <category term="病" scheme="http://omem.me/tags/%E7%97%85/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Scrapy抓取简书热门生成电子书发送到Kindle]]></title>
-    <link href="http://yoursite.com/2016/01/14/jianshuhot/"/>
-    <id>http://yoursite.com/2016/01/14/jianshuhot/</id>
+    <link href="http://omem.me/2016/01/14/jianshuhot/"/>
+    <id>http://omem.me/2016/01/14/jianshuhot/</id>
     <published>2016-01-14T08:31:14.000Z</published>
     <updated>2016-01-14T08:38:36.000Z</updated>
     <content type="html"><![CDATA[<p><a href="http://www.jianshu.com" target="_blank" rel="external">简书</a>是个学习的好网站， 我大多只关注首页上的人们文章， 但是最近因为忙错过了很多首页上的文章，所以有了想法把每天的热门top生成mobi推送到kindle。这样在地铁上也能快速翻完. </p>
@@ -187,22 +187,22 @@
     <![CDATA[<p><a href="http://www.jianshu.com" target="_blank" rel="external">简书</a>是个学习的好网站， 我大多只关注首页上的人们文章， 但是最近因为忙错过了很多首页上的文章，所以有了想法把每天的热门top生成mobi推]]>
     </summary>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://omem.me/tags/Python/"/>
     
-      <category term="Scrapy" scheme="http://yoursite.com/tags/Scrapy/"/>
+      <category term="Scrapy" scheme="http://omem.me/tags/Scrapy/"/>
     
-      <category term="病" scheme="http://yoursite.com/tags/%E7%97%85/"/>
+      <category term="病" scheme="http://omem.me/tags/%E7%97%85/"/>
     
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+      <category term="Python" scheme="http://omem.me/categories/Python/"/>
     
-      <category term="折腾" scheme="http://yoursite.com/categories/Python/%E6%8A%98%E8%85%BE/"/>
+      <category term="折腾" scheme="http://omem.me/categories/Python/%E6%8A%98%E8%85%BE/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Python生态圈]]></title>
-    <link href="http://yoursite.com/2015/11/26/python-environment/"/>
-    <id>http://yoursite.com/2015/11/26/python-environment/</id>
+    <link href="http://omem.me/2015/11/26/python-environment/"/>
+    <id>http://omem.me/2015/11/26/python-environment/</id>
     <published>2015-11-26T06:33:53.000Z</published>
     <updated>2015-11-27T03:00:35.000Z</updated>
     <content type="html"><![CDATA[<h2 id="版本">版本</h2><ul>
@@ -271,23 +271,23 @@
 <h2 id="PYTHONPATH变量">PYTHONPATH变量</h2><p>]]>
     </summary>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://omem.me/tags/Python/"/>
     
-      <category term="pip" scheme="http://yoursite.com/tags/pip/"/>
+      <category term="pip" scheme="http://omem.me/tags/pip/"/>
     
-      <category term="virtualenv" scheme="http://yoursite.com/tags/virtualenv/"/>
+      <category term="virtualenv" scheme="http://omem.me/tags/virtualenv/"/>
     
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+      <category term="Python" scheme="http://omem.me/categories/Python/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[动态切换代理 - PAC方法]]></title>
-    <link href="http://yoursite.com/2015/11/24/dynamic-autochange-proxy/"/>
-    <id>http://yoursite.com/2015/11/24/dynamic-autochange-proxy/</id>
+    <link href="http://omem.me/2015/11/24/dynamic-autochange-proxy/"/>
+    <id>http://omem.me/2015/11/24/dynamic-autochange-proxy/</id>
     <published>2015-11-24T07:50:19.000Z</published>
     <updated>2015-11-24T08:43:26.000Z</updated>
-    <content type="html"><![CDATA[<p>最近协助搭建了企业级翻墙系统， 由于没有现成的公司提供这些， 也没有成套比较成熟的方案(国外人用不着, 国内人不敢用的东西). 所以就自己摸索搭建而且也搭建了， 而且相对来说能控制. 可以参考这里<a href="http://omem.me/2015/11/06/offices-proxy/" target="_blank" rel="external">企业级翻墙方案</a>. 随着很多用户的使用一台服务器显得力不从心, 所以又买了一台然后Squid ＋ Stunnel方案都配好正常启动了。 </p>
+    <content type="html"><![CDATA[<p>最近协助搭建了企业级翻墙系统， 由于没有现成的公司提供这些， 也没有成套比较成熟的方案(国外人用不着, 国内人不敢用的东西). 所以就自己摸索搭建而且也搭建了， 而且相对来说能控制. 可以参考这里<a href="http://omem.me/2015/11/06/offices-proxy/">企业级翻墙方案</a>. 随着很多用户的使用一台服务器显得力不从心, 所以又买了一台然后Squid ＋ Stunnel方案都配好正常启动了。 </p>
 <h2 id="搞定负载均衡">搞定负载均衡</h2><p>PAC文件支持故障转移(比较坑, 这种机制比较坑， 我们基本上是避免采取的),比较头疼的是负载均衡, 又两种方案</p>
 <ul>
 <li>一种是通过负载均衡程序转发</li>
@@ -306,24 +306,24 @@
     <![CDATA[<p>最近协助搭建了企业级翻墙系统， 由于没有现成的公司提供这些， 也没有成套比较成熟的方案(国外人用不着, 国内人不敢用的东西). 所以就自己摸索搭建而且也搭建了， 而且相对来说能控制. 可以参考这里<a href="http://omem.me/2015/11/06/offi]]>
     </summary>
     
-      <category term="Flask" scheme="http://yoursite.com/tags/Flask/"/>
+      <category term="Flask" scheme="http://omem.me/tags/Flask/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://omem.me/tags/Python/"/>
     
-      <category term="Squid" scheme="http://yoursite.com/tags/Squid/"/>
+      <category term="Squid" scheme="http://omem.me/tags/Squid/"/>
     
-      <category term="Stunnel" scheme="http://yoursite.com/tags/Stunnel/"/>
+      <category term="Stunnel" scheme="http://omem.me/tags/Stunnel/"/>
     
-      <category term="翻墙" scheme="http://yoursite.com/tags/%E7%BF%BB%E5%A2%99/"/>
+      <category term="翻墙" scheme="http://omem.me/tags/%E7%BF%BB%E5%A2%99/"/>
     
-      <category term="折腾" scheme="http://yoursite.com/categories/%E6%8A%98%E8%85%BE/"/>
+      <category term="折腾" scheme="http://omem.me/categories/%E6%8A%98%E8%85%BE/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[JPG2ASCII开发上线记录]]></title>
-    <link href="http://yoursite.com/2015/11/18/flask-jpg2ascii/"/>
-    <id>http://yoursite.com/2015/11/18/flask-jpg2ascii/</id>
+    <link href="http://omem.me/2015/11/18/flask-jpg2ascii/"/>
+    <id>http://omem.me/2015/11/18/flask-jpg2ascii/</id>
     <published>2015-11-18T06:17:10.000Z</published>
     <updated>2015-11-18T06:33:07.000Z</updated>
     <content type="html"><![CDATA[<h2 id="介绍">介绍</h2><p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.<br><a href="jpg2ascii.herokuapp.com">JPG2ASCII</a></p>
@@ -355,22 +355,22 @@
     <![CDATA[<h2 id="介绍">介绍</h2><p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研]]>
     </summary>
     
-      <category term="flask" scheme="http://yoursite.com/tags/flask/"/>
+      <category term="flask" scheme="http://omem.me/tags/flask/"/>
     
-      <category term="heroku" scheme="http://yoursite.com/tags/heroku/"/>
+      <category term="heroku" scheme="http://omem.me/tags/heroku/"/>
     
-      <category term="jpg2ascii" scheme="http://yoursite.com/tags/jpg2ascii/"/>
+      <category term="jpg2ascii" scheme="http://omem.me/tags/jpg2ascii/"/>
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+      <category term="python" scheme="http://omem.me/tags/python/"/>
     
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+      <category term="Python" scheme="http://omem.me/categories/Python/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[企业级翻墙方案]]></title>
-    <link href="http://yoursite.com/2015/11/06/offices-proxy/"/>
-    <id>http://yoursite.com/2015/11/06/offices-proxy/</id>
+    <link href="http://omem.me/2015/11/06/offices-proxy/"/>
+    <id>http://omem.me/2015/11/06/offices-proxy/</id>
     <published>2015-11-06T07:53:27.000Z</published>
     <updated>2015-11-06T08:41:49.000Z</updated>
     <content type="html"><![CDATA[<p>为了公司内一些技术员工的要求访问google查资料, 公司准备采购国外vps来建设内部翻墙方案.利用公司内部的认证系统（Open LDAP）来进行账号授权。然后通过PAC文件进行网站过滤.</p>
@@ -411,20 +411,20 @@
 <h2 id="准备工作">准备工作</h2><p><strong>服务器<]]>
     </summary>
     
-      <category term="Squid" scheme="http://yoursite.com/tags/Squid/"/>
+      <category term="Squid" scheme="http://omem.me/tags/Squid/"/>
     
-      <category term="Stunnel" scheme="http://yoursite.com/tags/Stunnel/"/>
+      <category term="Stunnel" scheme="http://omem.me/tags/Stunnel/"/>
     
-      <category term="vps" scheme="http://yoursite.com/tags/vps/"/>
+      <category term="vps" scheme="http://omem.me/tags/vps/"/>
     
-      <category term="翻墙" scheme="http://yoursite.com/tags/%E7%BF%BB%E5%A2%99/"/>
+      <category term="翻墙" scheme="http://omem.me/tags/%E7%BF%BB%E5%A2%99/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Conoha主机测评]]></title>
-    <link href="http://yoursite.com/2015/11/02/use-conoha/"/>
-    <id>http://yoursite.com/2015/11/02/use-conoha/</id>
+    <link href="http://omem.me/2015/11/02/use-conoha/"/>
+    <id>http://omem.me/2015/11/02/use-conoha/</id>
     <published>2015-11-02T07:41:12.000Z</published>
     <updated>2015-11-27T02:59:09.000Z</updated>
     <content type="html"><![CDATA[<p>最近由于心知肚明原因， 原来的linode主机已不能使用。所以最近又开始了疯狂找主机的历程， 说起这个简直不能提起。 我本人也连续找了好多家， linode更换了一次ip依然不能访问。然后又找了搬瓦工， 无奈速度简直不能忍受， 打开链接的时间能让我细品一杯茶.</p>
@@ -440,16 +440,16 @@
 <p]]>
     </summary>
     
-      <category term="conoha" scheme="http://yoursite.com/tags/conoha/"/>
+      <category term="conoha" scheme="http://omem.me/tags/conoha/"/>
     
-      <category term="vps" scheme="http://yoursite.com/tags/vps/"/>
+      <category term="vps" scheme="http://omem.me/tags/vps/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[幻想与现实]]></title>
-    <link href="http://yoursite.com/2015/10/04/illusion-and-reality/"/>
-    <id>http://yoursite.com/2015/10/04/illusion-and-reality/</id>
+    <link href="http://omem.me/2015/10/04/illusion-and-reality/"/>
+    <id>http://omem.me/2015/10/04/illusion-and-reality/</id>
     <published>2015-10-04T12:48:51.000Z</published>
     <updated>2015-10-04T12:53:27.000Z</updated>
     <content type="html"><![CDATA[<p><img src="/uploads/images/photo-1440964829947-ca3277bd37f8.jpeg" alt=""></p>
@@ -462,18 +462,18 @@
 <p>我是个会意淫的人， 从自己的爱情， 到自己的事业， 总是憧憬那么美好的事情。时间可以是将来， 可以是过去， 但总是]]>
     </summary>
     
-      <category term="病" scheme="http://yoursite.com/tags/%E7%97%85/"/>
+      <category term="病" scheme="http://omem.me/tags/%E7%97%85/"/>
     
-      <category term="随想录" scheme="http://yoursite.com/tags/%E9%9A%8F%E6%83%B3%E5%BD%95/"/>
+      <category term="随想录" scheme="http://omem.me/tags/%E9%9A%8F%E6%83%B3%E5%BD%95/"/>
     
-      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://omem.me/categories/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Django url 反解析]]></title>
-    <link href="http://yoursite.com/2015/09/30/django-url-reverse/"/>
-    <id>http://yoursite.com/2015/09/30/django-url-reverse/</id>
+    <link href="http://omem.me/2015/09/30/django-url-reverse/"/>
+    <id>http://omem.me/2015/09/30/django-url-reverse/</id>
     <published>2015-09-30T06:07:20.000Z</published>
     <updated>2015-11-27T02:59:19.000Z</updated>
     <content type="html"><![CDATA[<p>Django 是个python中web-framework<br>MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接.<br>虽然这种方法是可行的， 但是不是规范的。<br>为什么呢？<br>最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上<code>项目名字</code><br>urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增加了改造的复杂度。<br>通过此次改造我发现<br>其实django中有一种很好的机制, 来通过urls中的viewname 来反解析url生成url.</p>
@@ -489,20 +489,20 @@
     <![CDATA[<p>Django 是个python中web-framework<br>MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接.<br>虽然这种方法是可行的， 但是不是规范的。<br>为什么呢？<b]]>
     </summary>
     
-      <category term="Django" scheme="http://yoursite.com/tags/Django/"/>
+      <category term="Django" scheme="http://omem.me/tags/Django/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://omem.me/tags/Python/"/>
     
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+      <category term="Python" scheme="http://omem.me/categories/Python/"/>
     
-      <category term="Django" scheme="http://yoursite.com/categories/Python/Django/"/>
+      <category term="Django" scheme="http://omem.me/categories/Python/Django/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[查看你历史命令的使用率]]></title>
-    <link href="http://yoursite.com/2015/09/30/show-your-top-command/"/>
-    <id>http://yoursite.com/2015/09/30/show-your-top-command/</id>
+    <link href="http://omem.me/2015/09/30/show-your-top-command/"/>
+    <id>http://omem.me/2015/09/30/show-your-top-command/</id>
     <published>2015-09-30T05:46:55.000Z</published>
     <updated>2015-09-30T06:01:34.000Z</updated>
     <content type="html"><![CDATA[<p>一个查看历史命令的使用率工具， 因为看到<code>oh-my-zsh</code>项目中的<code>zsh_stats</code>function 后有感仿照开发了一个。 本项目不仅支持<code>zsh_history</code>而且支持<code>bash_history</code> 。 还有可扩展的趋势.</p>
@@ -519,22 +519,22 @@
     <![CDATA[<p>一个查看历史命令的使用率工具， 因为看到<code>oh-my-zsh</code>项目中的<code>zsh_stats</code>function 后有感仿照开发了一个。 本项目不仅支持<code>zsh_history</code>而且支持<code>bash_hi]]>
     </summary>
     
-      <category term="Bash" scheme="http://yoursite.com/tags/Bash/"/>
+      <category term="Bash" scheme="http://omem.me/tags/Bash/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://omem.me/tags/Python/"/>
     
-      <category term="Zsh" scheme="http://yoursite.com/tags/Zsh/"/>
+      <category term="Zsh" scheme="http://omem.me/tags/Zsh/"/>
     
-      <category term="command" scheme="http://yoursite.com/tags/command/"/>
+      <category term="command" scheme="http://omem.me/tags/command/"/>
     
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+      <category term="Python" scheme="http://omem.me/categories/Python/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[使用Python将两张照片透明重叠]]></title>
-    <link href="http://yoursite.com/2015/09/30/python-pillow/"/>
-    <id>http://yoursite.com/2015/09/30/python-pillow/</id>
+    <link href="http://omem.me/2015/09/30/python-pillow/"/>
+    <id>http://omem.me/2015/09/30/python-pillow/</id>
     <published>2015-09-30T05:19:26.000Z</published>
     <updated>2015-11-27T03:00:28.000Z</updated>
     <content type="html"><![CDATA[<p>透明重叠最主要用的是<code>Image.blend</code>方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要<code>Image.blend</code>方法第三个参数是相对于第一张图片透明度。 </p>
@@ -546,20 +546,20 @@
     <![CDATA[<p>透明重叠最主要用的是<code>Image.blend</code>方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要<code>Image.blend</code>方法第三个参数是相对于第]]>
     </summary>
     
-      <category term="Pillow" scheme="http://yoursite.com/tags/Pillow/"/>
+      <category term="Pillow" scheme="http://omem.me/tags/Pillow/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://omem.me/tags/Python/"/>
     
-      <category term="图片处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+      <category term="图片处理" scheme="http://omem.me/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
     
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+      <category term="Python" scheme="http://omem.me/categories/Python/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[黑夜的猫]]></title>
-    <link href="http://yoursite.com/2015/09/30/black-night-cat/"/>
-    <id>http://yoursite.com/2015/09/30/black-night-cat/</id>
+    <link href="http://omem.me/2015/09/30/black-night-cat/"/>
+    <id>http://omem.me/2015/09/30/black-night-cat/</id>
     <published>2015-09-30T04:50:22.000Z</published>
     <updated>2016-01-15T03:34:05.000Z</updated>
     <content type="html"><![CDATA[<p><img src="/uploads/images/photo-1415931633537-351070d20b81.jpeg" alt="黎明"></p>
@@ -580,16 +580,16 @@
 <]]>
     </summary>
     
-      <category term="现代诗" scheme="http://yoursite.com/tags/%E7%8E%B0%E4%BB%A3%E8%AF%97/"/>
+      <category term="现代诗" scheme="http://omem.me/tags/%E7%8E%B0%E4%BB%A3%E8%AF%97/"/>
     
-      <category term="淫诗作对" scheme="http://yoursite.com/categories/%E6%B7%AB%E8%AF%97%E4%BD%9C%E5%AF%B9/"/>
+      <category term="淫诗作对" scheme="http://omem.me/categories/%E6%B7%AB%E8%AF%97%E4%BD%9C%E5%AF%B9/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Python 高级并发3]]></title>
-    <link href="http://yoursite.com/2015/09/30/python-concurrent-high-level-3/"/>
-    <id>http://yoursite.com/2015/09/30/python-concurrent-high-level-3/</id>
+    <link href="http://omem.me/2015/09/30/python-concurrent-high-level-3/"/>
+    <id>http://omem.me/2015/09/30/python-concurrent-high-level-3/</id>
     <published>2015-09-30T03:22:40.000Z</published>
     <updated>2015-11-27T03:00:00.000Z</updated>
     <content type="html"><![CDATA[<p>本篇主要讲案例, 两个使用Concurrent.futures实现的并发， 一个是多线程， 一个是多进程。</p>
@@ -621,20 +621,20 @@
 <f]]>
     </summary>
     
-      <category term="Concurrent" scheme="http://yoursite.com/tags/Concurrent/"/>
+      <category term="Concurrent" scheme="http://omem.me/tags/Concurrent/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://omem.me/tags/Python/"/>
     
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+      <category term="Python" scheme="http://omem.me/categories/Python/"/>
     
-      <category term="Python高级并发" scheme="http://yoursite.com/categories/Python/Python%E9%AB%98%E7%BA%A7%E5%B9%B6%E5%8F%91/"/>
+      <category term="Python高级并发" scheme="http://omem.me/categories/Python/Python%E9%AB%98%E7%BA%A7%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Python 高级并发2]]></title>
-    <link href="http://yoursite.com/2015/09/30/python-concurrent-high-level-2/"/>
-    <id>http://yoursite.com/2015/09/30/python-concurrent-high-level-2/</id>
+    <link href="http://omem.me/2015/09/30/python-concurrent-high-level-2/"/>
+    <id>http://omem.me/2015/09/30/python-concurrent-high-level-2/</id>
     <published>2015-09-30T03:15:40.000Z</published>
     <updated>2015-11-27T02:59:53.000Z</updated>
     <content type="html"><![CDATA[<p>一般程序并发分为<code>多线程</code>和<code>多进程</code>并发.</p>
@@ -658,20 +658,20 @@
 <p>根据编程逻辑一般需要计算密集和I/O操作密集的时候选择并发提高程序效率， Python 由]]>
     </summary>
     
-      <category term="Concurrent" scheme="http://yoursite.com/tags/Concurrent/"/>
+      <category term="Concurrent" scheme="http://omem.me/tags/Concurrent/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://omem.me/tags/Python/"/>
     
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+      <category term="Python" scheme="http://omem.me/categories/Python/"/>
     
-      <category term="Python高级并发" scheme="http://yoursite.com/categories/Python/Python%E9%AB%98%E7%BA%A7%E5%B9%B6%E5%8F%91/"/>
+      <category term="Python高级并发" scheme="http://omem.me/categories/Python/Python%E9%AB%98%E7%BA%A7%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Python 高级并发]]></title>
-    <link href="http://yoursite.com/2015/09/30/python-concurrent-high-level/"/>
-    <id>http://yoursite.com/2015/09/30/python-concurrent-high-level/</id>
+    <link href="http://omem.me/2015/09/30/python-concurrent-high-level/"/>
+    <id>http://omem.me/2015/09/30/python-concurrent-high-level/</id>
     <published>2015-09-30T02:15:40.000Z</published>
     <updated>2015-11-27T02:59:44.000Z</updated>
     <content type="html"><![CDATA[<p>并发级别归纳为下列三种：</p>
@@ -687,20 +687,20 @@
 <h2 id="并发的归类">并发的归类</h2><h3 id="低级并发(Low-level_Concurrency)">低级并发(Low-level Concurrency)</h3><p>就是直接用『原子操作』(atomic oper]]>
     </summary>
     
-      <category term="Concurrent" scheme="http://yoursite.com/tags/Concurrent/"/>
+      <category term="Concurrent" scheme="http://omem.me/tags/Concurrent/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://omem.me/tags/Python/"/>
     
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+      <category term="Python" scheme="http://omem.me/categories/Python/"/>
     
-      <category term="Python高级并发" scheme="http://yoursite.com/categories/Python/Python%E9%AB%98%E7%BA%A7%E5%B9%B6%E5%8F%91/"/>
+      <category term="Python高级并发" scheme="http://omem.me/categories/Python/Python%E9%AB%98%E7%BA%A7%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[My New Post]]></title>
-    <link href="http://yoursite.com/2015/09/30/My-New-Post/"/>
-    <id>http://yoursite.com/2015/09/30/My-New-Post/</id>
+    <link href="http://omem.me/2015/09/30/My-New-Post/"/>
+    <id>http://omem.me/2015/09/30/My-New-Post/</id>
     <published>2015-09-30T02:11:01.000Z</published>
     <updated>2015-09-30T02:16:20.000Z</updated>
     <content type="html"><![CDATA[<p>这是第一篇日记， 仅仅为了测试.</p>
@@ -710,7 +710,7 @@
 ]]>
     </summary>
     
-      <category term="hello" scheme="http://yoursite.com/tags/hello/"/>
+      <category term="hello" scheme="http://omem.me/tags/hello/"/>
     
   </entry>
   

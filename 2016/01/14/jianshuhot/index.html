@@ -69,7 +69,7 @@ Python2.7.9(calibre 需要python2.7.9)
 项目地址:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scrapy抓取简书热门生成电子书发送到Kindle">
-<meta property="og:url" content="http://yoursite.com/2016/01/14/jianshuhot/index.html">
+<meta property="og:url" content="http://omem.me/2016/01/14/jianshuhot/index.html">
 <meta property="og:site_name" content="文本不限, 诗歌除外">
 <meta property="og:description" content="简书是个学习的好网站， 我大多只关注首页上的人们文章， 但是最近因为忙错过了很多首页上的文章，所以有了想法把每天的热门top生成mobi推送到kindle。这样在地铁上也能快速翻完. 
 环境准备:
@@ -101,7 +101,7 @@ Python2.7.9(calibre 需要python2.7.9)
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: undefined,
       author: '博主'
     }
   };
@@ -288,7 +288,7 @@ Python2.7.9(calibre 需要python2.7.9)
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2016/01/14/jianshuhot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/14/jianshuhot/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/jianshuhot/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -396,11 +396,8 @@ Python2.7.9(calibre 需要python2.7.9)
           
   <div class="comments" id="comments">
     
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
+      <div class="ds-thread" data-thread-key="2016/01/14/jianshuhot/"
+           data-title="Scrapy抓取简书热门生成电子书发送到Kindle" data-url="http://omem.me/2016/01/14/jianshuhot/">
       </div>
     
   </div>
@@ -623,30 +620,26 @@ Python2.7.9(calibre 需要python2.7.9)
 
   
 
+  
+    
+  
 
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jackeygao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
 
   
 
-    <script type="text/javascript">
-      var disqus_shortname = 'jackeygaoblog';
-      var disqus_identifier = '2016/01/14/jianshuhot/';
-      var disqus_title = 'Scrapy抓取简书热门生成电子书发送到Kindle';
-      var disqus_url = 'http://yoursite.com/2016/01/14/jianshuhot/';
 
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-        run_disqus_script('embed.js');
-      
-    </script>
-  
 
 
 

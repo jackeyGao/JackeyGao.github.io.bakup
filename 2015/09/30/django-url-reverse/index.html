@@ -62,7 +62,7 @@
 <meta name="description" content="Django 是个python中web-frameworkMTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的urls来手写链接.虽然这种方法是可行的， 但是不是规范的。为什么呢？最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上项目名字urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django url 反解析">
-<meta property="og:url" content="http://yoursite.com/2015/09/30/django-url-reverse/index.html">
+<meta property="og:url" content="http://omem.me/2015/09/30/django-url-reverse/index.html">
 <meta property="og:site_name" content="文本不限, 诗歌除外">
 <meta property="og:description" content="Django 是个python中web-frameworkMTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的urls来手写链接.虽然这种方法是可行的， 但是不是规范的。为什么呢？最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上项目名字urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增">
 <meta property="og:updated_time" content="2015-11-27T02:59:19.000Z">
@@ -80,7 +80,7 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: undefined,
       author: '博主'
     }
   };
@@ -267,7 +267,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2015/09/30/django-url-reverse/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/30/django-url-reverse/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/django-url-reverse/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -358,11 +358,8 @@
           
   <div class="comments" id="comments">
     
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
+      <div class="ds-thread" data-thread-key="2015/09/30/django-url-reverse/"
+           data-title="Django url 反解析" data-url="http://omem.me/2015/09/30/django-url-reverse/">
       </div>
     
   </div>
@@ -585,30 +582,26 @@
 
   
 
+  
+    
+  
 
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jackeygao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
 
   
 
-    <script type="text/javascript">
-      var disqus_shortname = 'jackeygaoblog';
-      var disqus_identifier = '2015/09/30/django-url-reverse/';
-      var disqus_title = 'Django url 反解析';
-      var disqus_url = 'http://yoursite.com/2015/09/30/django-url-reverse/';
 
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-        run_disqus_script('embed.js');
-      
-    </script>
-  
 
 
 

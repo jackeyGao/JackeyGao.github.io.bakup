@@ -62,7 +62,7 @@
 <meta name="description" content="Jackey Gao的日记本">
 <meta property="og:type" content="website">
 <meta property="og:title" content="文本不限, 诗歌除外">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:url" content="http://omem.me/page/2/index.html">
 <meta property="og:site_name" content="文本不限, 诗歌除外">
 <meta property="og:description" content="Jackey Gao的日记本">
 <meta name="twitter:card" content="summary">
@@ -79,7 +79,7 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: undefined,
       author: '博主'
     }
   };
@@ -259,7 +259,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2015/10/04/illusion-and-reality/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/10/04/illusion-and-reality/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/04/illusion-and-reality/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2015/09/30/django-url-reverse/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/30/django-url-reverse/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/django-url-reverse/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -511,7 +511,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2015/09/30/show-your-top-command/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/30/show-your-top-command/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/show-your-top-command/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -634,7 +634,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2015/09/30/python-pillow/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/30/python-pillow/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-pillow/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -752,7 +752,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2015/09/30/black-night-cat/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/30/black-night-cat/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/black-night-cat/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -888,7 +888,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2015/09/30/python-concurrent-high-level-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/30/python-concurrent-high-level-3/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-concurrent-high-level-3/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1035,7 +1035,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2015/09/30/python-concurrent-high-level-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/30/python-concurrent-high-level-2/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-concurrent-high-level-2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1175,7 +1175,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2015/09/30/python-concurrent-high-level/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/30/python-concurrent-high-level/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-concurrent-high-level/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1277,7 +1277,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2015/09/30/My-New-Post/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/30/My-New-Post/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/My-New-Post/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1553,28 +1553,26 @@
 
   
 
+  
+    
+  
 
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jackeygao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
 
   
 
-    <script type="text/javascript">
-      var disqus_shortname = 'jackeygaoblog';
-      var disqus_identifier = 'page/2/index.html';
-      var disqus_title = '';
-      var disqus_url = '';
 
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-    </script>
-  
 
 
 
