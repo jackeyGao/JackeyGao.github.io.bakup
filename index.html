@@ -214,6 +214,116 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/14/karabiner-switch-command-line/" itemprop="url">
+                  Karabiner profile 命令行切换方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-14T11:35:05+08:00" content="2016-04-14">
+              2016-04-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/14/karabiner-switch-command-line/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/karabiner-switch-command-line/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
+<h2 id="帮助文档">帮助文档</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">Usage:</span><br><span class="line">  Profile operations:</span><br><span class="line">    $ karabiner list</span><br><span class="line">    $ karabiner select INDEX (INDEX starts at <span class="number">0</span>)</span><br><span class="line">    $ karabiner select_by_name NAME</span><br><span class="line">    $ karabiner selected</span><br><span class="line">    $ karabiner append NAME</span><br><span class="line">    $ karabiner rename INDEX NEWNAME (INDEX starts at <span class="number">0</span>)</span><br><span class="line">    $ karabiner delete INDEX (INDEX starts at <span class="number">0</span>)</span><br><span class="line">  Settings:</span><br><span class="line">    $ karabiner <span class="built_in">set</span> IDENTIFIER VALUE</span><br><span class="line">    $ karabiner <span class="built_in">enable</span> IDENTIFIER (<span class="built_in">alias</span> of <span class="built_in">set</span> IDENTIFIER <span class="number">1</span>)</span><br><span class="line">    $ karabiner <span class="built_in">disable</span> IDENTIFIER (<span class="built_in">alias</span> of <span class="built_in">set</span> IDENTIFIER <span class="number">0</span>)</span><br><span class="line">    $ karabiner toggle IDENTIFIER</span><br><span class="line">    $ karabiner changed</span><br><span class="line">  Others:</span><br><span class="line">    $ karabiner <span class="built_in">export</span></span><br><span class="line">    $ karabiner reloadxml</span><br><span class="line">    $ karabiner relaunch</span><br><span class="line">    $ karabiner be_careful_to_use__clear_all_values_by_name PROFILE_NAME</span><br><span class="line"></span><br><span class="line">Examples:</span><br><span class="line">  $ karabiner list</span><br><span class="line">  $ karabiner select <span class="number">1</span></span><br><span class="line">  $ karabiner select_by_name NewItem</span><br><span class="line">  $ karabiner selected</span><br><span class="line">  $ karabiner append <span class="string">"For external keyboard"</span></span><br><span class="line">  $ karabiner rename <span class="number">1</span> <span class="string">"Empty Setting"</span></span><br><span class="line">  $ karabiner delete <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  $ karabiner <span class="built_in">set</span> repeat.wait <span class="number">30</span></span><br><span class="line">  $ karabiner <span class="built_in">enable</span> remap.shiftL2<span class="built_in">command</span>L</span><br><span class="line">  $ karabiner <span class="built_in">disable</span> remap.shiftL2<span class="built_in">command</span>L</span><br><span class="line">  $ karabiner toggle remap.shiftL2<span class="built_in">command</span>L</span><br><span class="line">  $ karabiner changed</span><br><span class="line"></span><br><span class="line">  $ karabiner <span class="built_in">export</span></span><br><span class="line">  $ karabiner reloadxml</span><br><span class="line">  $ karabiner relaunch</span><br><span class="line">  $ karabiner be_careful_to_use__clear_all_values_by_name NewItem</span><br></pre></td></tr></table></figure>
+<h3 id="简单介绍">简单介绍</h3><p><strong>查看已定义的profile</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner list</span><br><span class="line"><span class="number">0</span>: Default</span><br><span class="line"><span class="number">1</span>: Poker2</span><br></pre></td></tr></table></figure>
+<p><strong>切换到指定profile 通过index</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner select <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>切换到指定profile 通过item name</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner select_by_name <span class="variable">$NAME</span></span><br></pre></td></tr></table></figure>
+<p><strong>当前选择的profile</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner selected</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>当前选择的profile name</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner list | grep <span class="string">"^<span class="variable">$(karabiner selected)</span>"</span></span><br></pre></td></tr></table></figure>
+<p>同时此命令行工具还支持 <code>export</code>, <code>reloadxml</code>, <code>relaunch</code>, <code>删除profile</code>, <code>rename profile</code>, 等..</p>
+<h3 id="通过karabiner_设置热键来切换">通过karabiner 设置热键来切换</h3><p>以下为定义, 写入到private.xml的root标签中. 之后reload xml. 可以通过preferences界面也可以通过命令行<code>karabiner reloadxml</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">vkopenurldef</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">url</span> <span class="attribute">type</span>=<span class="value">"shell"</span>&gt;</span></span><br><span class="line">        <span class="cdata">&lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Poker2    ]]&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">vkopenurldef</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">name</span>&gt;</span>Switch Profile to NewItem with F4<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">identifier</span>&gt;</span>private.switch1<span class="tag">&lt;/<span class="title">identifier</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">autogen</span>&gt;</span></span><br><span class="line">        __KeyToKey__</span><br><span class="line">        KeyCode::SHIFT_L,</span><br><span class="line">        KeyCode::SHIFT_L,</span><br><span class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem</span><br><span class="line">    <span class="tag">&lt;/<span class="title">autogen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/13/offices-proxy-install-document/" itemprop="url">
                   企业级翻墙服务部署文档
                 </a>
@@ -1340,124 +1450,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/04/illusion-and-reality/" itemprop="url">
-                  幻想与现实
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-04T20:48:51+08:00" content="2015-10-04">
-              2015-10-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/04/illusion-and-reality/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/04/illusion-and-reality/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/uploads/images/photo-1440964829947-ca3277bd37f8.jpeg" alt=""></p>
-<p>我是个会意淫的人， 从自己的爱情， 到自己的事业， 总是憧憬那么美好的事情。时间可以是将来， 可以是过去， 但总是美好。 当一个人的时候， 特别是晚上睡觉的之前的半个小时， 总能想到很多不可思议的遐想， 这些遐想太美妙了， 让我不可自拔， 每天晚上我都会想象这些美好的事情， 有时候开始一个新的意淫， 有时候则接着之前的剧情发展， 期间我无数次告诉自己这是假的， 马上停止下来继续你的睡眠， 可是越是美好越让我心潮澎湃， 激动处我有时能微笑， 有时候能感动到流泪， 然后再无睡意。</p>
-<p>不得不说， 这些想象真的很难实现， 太过于虚幻、美好、 完美。我不知道这个是不是病， 我想这是每个人的共性， 都会一致的幻想自己丰衣足食， 总是很轻松， 不会为未来担忧， 不后悔过去， 因为过去是按照自己的设想过来的。 如果我让这些写出来， 估计也是屌丝逆袭人生的大剧， 会吸引同类病种人群大量观看， 我也就成了一位有病的伟大编剧。每次都不能从 YY 中把我自己唤醒， 感觉是被幻想召唤走了， 我跟着这种心理不断创造出美好， 并被这些美好吸引， 吸引着我持续输出更美的结局， 让我不能理解的是这些创造我也会根据自身和社会因素来克制， 所以在我糊涂的幻想中我认为这些就是现实， 之后我完全不能自拔。</p>
-<p>最近越来越严重了， 我到网上查了查这种状况是否正常， 其实我深知这是不正常的表现。 只是想知道为什么会产生这种不健康的生活习惯， 查来查去给出最多是失眠造成的脑袋空想。我并不在乎这种病在并发能给我有多大危害， 但每次早上我都死气沉沉， 觉得好像失恋一样， 甚至产生一种厌世的心态， 我知道可能和我晚上空想有关。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1503,7 +1495,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1520,7 +1512,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
