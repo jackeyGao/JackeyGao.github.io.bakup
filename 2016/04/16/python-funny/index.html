@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.4.5.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Karabiner," />
+  <meta name="keywords" content="Python,Python不务正业,终端乱弹," />
 
 
 
@@ -59,19 +59,29 @@
 
 
 
-<meta name="description" content="Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: /Applications/Karabiner.app/Contents/Library/bin/karabiner 
-帮助文档12345678910111213141516171819202122232425262728293031323334353637383940Usage:">
+<meta name="description" content="从这篇开始会做一个用Python不务正业专题， 记录Python一些一无是用但是很好玩的脚本.本期是一个终端乱弹的脚本.
+效果图:
+
+记得刚学shell的时候做过终端随机的点生成随机颜色的字符， 只为好玩和增强脚本开发技能， 下午闲来无事用python实现了， 正好学习了python的curses标准库. python curses标准库可以用来对终端定制开发， 做一些友好的终端命令。
+本脚本不需">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Karabiner profile 命令行切换方式">
-<meta property="og:url" content="http://omem.me/2016/04/14/karabiner-switch-command-line/index.html">
+<meta property="og:title" content="用Python不务正业 - 第一弹">
+<meta property="og:url" content="http://omem.me/2016/04/16/python-funny/index.html">
 <meta property="og:site_name" content="文本不限, 诗歌除外">
-<meta property="og:description" content="Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: /Applications/Karabiner.app/Contents/Library/bin/karabiner 
-帮助文档12345678910111213141516171819202122232425262728293031323334353637383940Usage:">
-<meta property="og:updated_time" content="2016-04-14T03:51:16.000Z">
+<meta property="og:description" content="从这篇开始会做一个用Python不务正业专题， 记录Python一些一无是用但是很好玩的脚本.本期是一个终端乱弹的脚本.
+效果图:
+
+记得刚学shell的时候做过终端随机的点生成随机颜色的字符， 只为好玩和增强脚本开发技能， 下午闲来无事用python实现了， 正好学习了python的curses标准库. python curses标准库可以用来对终端定制开发， 做一些友好的终端命令。
+本脚本不需">
+<meta property="og:image" content="http://omem.me/uploads/images/xiaoguo.gif">
+<meta property="og:updated_time" content="2016-04-16T10:44:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Karabiner profile 命令行切换方式">
-<meta name="twitter:description" content="Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: /Applications/Karabiner.app/Contents/Library/bin/karabiner 
-帮助文档12345678910111213141516171819202122232425262728293031323334353637383940Usage:">
+<meta name="twitter:title" content="用Python不务正业 - 第一弹">
+<meta name="twitter:description" content="从这篇开始会做一个用Python不务正业专题， 记录Python一些一无是用但是很好玩的脚本.本期是一个终端乱弹的脚本.
+效果图:
+
+记得刚学shell的时候做过终端随机的点生成随机颜色的字符， 只为好玩和增强脚本开发技能， 下午闲来无事用python实现了， 正好学习了python的curses标准库. python curses标准库可以用来对终端定制开发， 做一些友好的终端命令。
+本脚本不需">
 
 
 
@@ -89,7 +99,7 @@
   };
 </script>
 
-  <title> Karabiner profile 命令行切换方式 | 文本不限, 诗歌除外 </title>
+  <title> 用Python不务正业 - 第一弹 | 文本不限, 诗歌除外 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -215,7 +225,7 @@
             
             
               
-                Karabiner profile 命令行切换方式
+                用Python不务正业 - 第一弹
               
             
           </h1>
@@ -227,8 +237,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-14T11:35:05+08:00" content="2016-04-14">
-              2016-04-14
+            <time itemprop="dateCreated" datetime="2016-04-16T18:31:40+08:00" content="2016-04-16">
+              2016-04-16
             </time>
           </span>
 
@@ -238,8 +248,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/14/karabiner-switch-command-line/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/karabiner-switch-command-line/" itemprop="commentsCount"></span>
+                <a href="/2016/04/16/python-funny/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/16/python-funny/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -249,7 +259,7 @@
 
           
           
-             <span id="/2016/04/14/karabiner-switch-command-line/" class="leancloud_visitors" data-flag-title="Karabiner profile 命令行切换方式">
+             <span id="/2016/04/16/python-funny/" class="leancloud_visitors" data-flag-title="用Python不务正业 - 第一弹">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -270,21 +280,12 @@
       
 
       
-        <p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
-<h2 id="帮助文档">帮助文档</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">Usage:</span><br><span class="line">  Profile operations:</span><br><span class="line">    $ karabiner list</span><br><span class="line">    $ karabiner select INDEX (INDEX starts at <span class="number">0</span>)</span><br><span class="line">    $ karabiner select_by_name NAME</span><br><span class="line">    $ karabiner selected</span><br><span class="line">    $ karabiner append NAME</span><br><span class="line">    $ karabiner rename INDEX NEWNAME (INDEX starts at <span class="number">0</span>)</span><br><span class="line">    $ karabiner delete INDEX (INDEX starts at <span class="number">0</span>)</span><br><span class="line">  Settings:</span><br><span class="line">    $ karabiner <span class="built_in">set</span> IDENTIFIER VALUE</span><br><span class="line">    $ karabiner <span class="built_in">enable</span> IDENTIFIER (<span class="built_in">alias</span> of <span class="built_in">set</span> IDENTIFIER <span class="number">1</span>)</span><br><span class="line">    $ karabiner <span class="built_in">disable</span> IDENTIFIER (<span class="built_in">alias</span> of <span class="built_in">set</span> IDENTIFIER <span class="number">0</span>)</span><br><span class="line">    $ karabiner toggle IDENTIFIER</span><br><span class="line">    $ karabiner changed</span><br><span class="line">  Others:</span><br><span class="line">    $ karabiner <span class="built_in">export</span></span><br><span class="line">    $ karabiner reloadxml</span><br><span class="line">    $ karabiner relaunch</span><br><span class="line">    $ karabiner be_careful_to_use__clear_all_values_by_name PROFILE_NAME</span><br><span class="line"></span><br><span class="line">Examples:</span><br><span class="line">  $ karabiner list</span><br><span class="line">  $ karabiner select <span class="number">1</span></span><br><span class="line">  $ karabiner select_by_name NewItem</span><br><span class="line">  $ karabiner selected</span><br><span class="line">  $ karabiner append <span class="string">"For external keyboard"</span></span><br><span class="line">  $ karabiner rename <span class="number">1</span> <span class="string">"Empty Setting"</span></span><br><span class="line">  $ karabiner delete <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  $ karabiner <span class="built_in">set</span> repeat.wait <span class="number">30</span></span><br><span class="line">  $ karabiner <span class="built_in">enable</span> remap.shiftL2<span class="built_in">command</span>L</span><br><span class="line">  $ karabiner <span class="built_in">disable</span> remap.shiftL2<span class="built_in">command</span>L</span><br><span class="line">  $ karabiner toggle remap.shiftL2<span class="built_in">command</span>L</span><br><span class="line">  $ karabiner changed</span><br><span class="line"></span><br><span class="line">  $ karabiner <span class="built_in">export</span></span><br><span class="line">  $ karabiner reloadxml</span><br><span class="line">  $ karabiner relaunch</span><br><span class="line">  $ karabiner be_careful_to_use__clear_all_values_by_name NewItem</span><br></pre></td></tr></table></figure>
-<h3 id="简单介绍">简单介绍</h3><p><strong>查看已定义的profile</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner list</span><br><span class="line"><span class="number">0</span>: Default</span><br><span class="line"><span class="number">1</span>: Poker2</span><br></pre></td></tr></table></figure>
-<p><strong>切换到指定profile 通过index</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner select <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p><strong>切换到指定profile 通过item name</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner select_by_name <span class="variable">$NAME</span></span><br></pre></td></tr></table></figure>
-<p><strong>当前选择的profile</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner selected</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p><strong>当前选择的profile name</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner list | grep <span class="string">"^<span class="variable">$(karabiner selected)</span>"</span></span><br></pre></td></tr></table></figure>
-<p>同时此命令行工具还支持 <code>export</code>, <code>reloadxml</code>, <code>relaunch</code>, <code>删除profile</code>, <code>rename profile</code>, 等..</p>
-<h3 id="通过karabiner_设置热键来切换">通过karabiner 设置热键来切换</h3><p>以下为定义, 写入到private.xml的root标签中. 之后reload xml. 可以通过preferences界面也可以通过命令行<code>karabiner reloadxml</code></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">vkopenurldef</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">url</span> <span class="attribute">type</span>=<span class="value">"shell"</span>&gt;</span></span><br><span class="line">        <span class="cdata">&lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Poker2    ]]&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">vkopenurldef</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">name</span>&gt;</span>Switch Profile to NewItem with F4<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">identifier</span>&gt;</span>private.switch1<span class="tag">&lt;/<span class="title">identifier</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">autogen</span>&gt;</span></span><br><span class="line">        __KeyToKey__</span><br><span class="line">        KeyCode::SHIFT_L,</span><br><span class="line">        KeyCode::SHIFT_L,</span><br><span class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem</span><br><span class="line">    <span class="tag">&lt;/<span class="title">autogen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <p>从这篇开始会做一个<code>用Python不务正业</code>专题， 记录Python一些一无是用但是很好玩的脚本.本期是一个<code>终端乱弹</code>的脚本.</p>
+<p><strong>效果图:</strong></p>
+<p><img src="/uploads/images/xiaoguo.gif" alt="效果图"></p>
+<p>记得刚学shell的时候做过终端随机的点生成随机颜色的字符， 只为好玩和增强脚本开发技能， 下午闲来无事用python实现了， 正好学习了python的<code>curses</code>标准库. python <code>curses</code>标准库可以用来对终端定制开发， 做一些友好的终端命令。</p>
+<p>本脚本不需要安装其他的库， 只依赖标准库， 在Python2.7 测试通过， 以下为代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">File Name: mt2.py</span><br><span class="line">Author: JackeyGao</span><br><span class="line">mail: gaojunqi@outlook.com</span><br><span class="line">Created Time: Fri Apr 15 15:52:31 2016</span><br><span class="line">'''</span></span><br><span class="line"><span class="keyword">import</span> os, sys</span><br><span class="line"><span class="keyword">import</span> locale</span><br><span class="line"><span class="keyword">import</span> signal</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> curses</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"></span><br><span class="line">locale.setlocale(locale.LC_ALL, <span class="string">''</span>)</span><br><span class="line">code = locale.getpreferredencoding()</span><br><span class="line"></span><br><span class="line">stdscr = curses.initscr()</span><br><span class="line">size = <span class="keyword">lambda</span>: os.popen(<span class="string">'stty size'</span>, <span class="string">'r'</span>).read().split()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_point</span><span class="params">(str, x, y, colorpair=<span class="number">2</span>)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> stdscr</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        stdscr.addstr(y, x, str, curses.color_pair(colorpair))</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    stdscr.refresh()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_window</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''''控制台设置'''</span></span><br><span class="line">    <span class="keyword">global</span> stdscr</span><br><span class="line">    curses.start_color()</span><br><span class="line">    curses.init_pair(<span class="number">1</span>, curses.COLOR_RED, curses.COLOR_BLACK)</span><br><span class="line">    curses.init_pair(<span class="number">2</span>, curses.COLOR_GREEN, curses.COLOR_BLACK)</span><br><span class="line">    curses.init_pair(<span class="number">3</span>, curses.COLOR_YELLOW, curses.COLOR_BLACK)</span><br><span class="line">    curses.init_pair(<span class="number">4</span>, curses.COLOR_BLUE, curses.COLOR_BLACK)</span><br><span class="line">    curses.init_pair(<span class="number">5</span>, curses.COLOR_MAGENTA, curses.COLOR_BLACK)</span><br><span class="line">    curses.init_pair(<span class="number">6</span>, curses.COLOR_CYAN, curses.COLOR_BLACK)</span><br><span class="line">    curses.init_pair(<span class="number">7</span>, curses.COLOR_WHITE, curses.COLOR_BLACK)</span><br><span class="line">    curses.noecho()</span><br><span class="line">    curses.cbreak()</span><br><span class="line">    stdscr.nodelay(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">unset_window</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''控制台重置'''</span></span><br><span class="line">    <span class="keyword">global</span> stdstr</span><br><span class="line">    curses.nocbreak()</span><br><span class="line">    stdscr.keypad(<span class="number">0</span>)</span><br><span class="line">    curses.echo()</span><br><span class="line">    curses.endwin()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">signal_handler</span><span class="params">(signal, frame)</span>:</span></span><br><span class="line">    sys.exit(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    signal.signal(signal.SIGINT, signal_handler)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        set_window()</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            height, weight = size()</span><br><span class="line">            y = random.randrange(<span class="number">0</span>, int(height), <span class="number">1</span>)</span><br><span class="line">            x = random.randrange(<span class="number">0</span>, int(weight), <span class="number">1</span>)</span><br><span class="line">            color = random.randrange(<span class="number">1</span>, <span class="number">8</span>, <span class="number">1</span>)</span><br><span class="line">            show_point(<span class="string">'Ooo0oOo'</span>, x, y, colorpair=color)</span><br><span class="line">            time.sleep(<span class="number">0.01</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        unset_window()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -299,7 +300,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Karabiner/" rel="tag">#Karabiner</a>
+            <a href="/tags/Python/" rel="tag">#Python</a>
+          
+            <a href="/tags/Python不务正业/" rel="tag">#Python不务正业</a>
+          
+            <a href="/tags/终端乱弹/" rel="tag">#终端乱弹</a>
           
         </div>
       
@@ -308,17 +313,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/13/offices-proxy-install-document/" rel="next" title="企业级翻墙服务部署文档">
-                <i class="fa fa-chevron-left"></i> 企业级翻墙服务部署文档
+              <a href="/2016/04/14/karabiner-switch-command-line/" rel="next" title="Karabiner profile 命令行切换方式">
+                <i class="fa fa-chevron-left"></i> Karabiner profile 命令行切换方式
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/16/python-funny/" rel="prev" title="用Python不务正业 - 第一弹">
-                用Python不务正业 - 第一弹 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -344,8 +345,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/14/karabiner-switch-command-line/"
-           data-title="Karabiner profile 命令行切换方式" data-url="http://omem.me/2016/04/14/karabiner-switch-command-line/">
+      <div class="ds-thread" data-thread-key="2016/04/16/python-funny/"
+           data-title="用Python不务正业 - 第一弹" data-url="http://omem.me/2016/04/16/python-funny/">
       </div>
     
   </div>
