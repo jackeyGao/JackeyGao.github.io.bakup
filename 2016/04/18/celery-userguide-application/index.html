@@ -1,0 +1,756 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Celery,Python,翻译," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="文本不限, 诗歌除外" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+
+
+
+
+<meta name="description" content="Application必须使用一个Application实例来创建celery 任务.
+该Application线程是安全(thread-safe)的，以便你可以使用多个不同的Application 配置.  组件和任务能共存于相同的进程空间。
+创建一个Application实例:
+1234&amp;gt;&amp;gt;&amp;gt; from celery import Celery&amp;gt;&amp;gt;&amp;gt; app">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Celery用户手册 - Application">
+<meta property="og:url" content="http://omem.me/2016/04/18/celery-userguide-application/index.html">
+<meta property="og:site_name" content="文本不限, 诗歌除外">
+<meta property="og:description" content="Application必须使用一个Application实例来创建celery 任务.
+该Application线程是安全(thread-safe)的，以便你可以使用多个不同的Application 配置.  组件和任务能共存于相同的进程空间。
+创建一个Application实例:
+1234&amp;gt;&amp;gt;&amp;gt; from celery import Celery&amp;gt;&amp;gt;&amp;gt; app">
+<meta property="og:updated_time" content="2016-04-18T06:52:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Celery用户手册 - Application">
+<meta name="twitter:description" content="Application必须使用一个Application实例来创建celery 任务.
+该Application线程是安全(thread-safe)的，以便你可以使用多个不同的Application 配置.  组件和任务能共存于相同的进程空间。
+创建一个Application实例:
+1234&amp;gt;&amp;gt;&amp;gt; from celery import Celery&amp;gt;&amp;gt;&amp;gt; app">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: "post",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 509455,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Celery用户手册 - Application | 文本不限, 诗歌除外 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1258527046&web_id=1258527046" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">文本不限, 诗歌除外</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Celery用户手册 - Application
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-18T14:51:56+08:00" content="2016-04-18">
+              2016-04-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/18/celery-userguide-application/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/18/celery-userguide-application/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/18/celery-userguide-application/" class="leancloud_visitors" data-flag-title="Celery用户手册 - Application">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Application">Application</h2><p>必须使用一个Application实例来创建celery 任务.</p>
+<p>该Application线程是安全(thread-safe)的，以便你可以使用多个不同的Application 配置.  组件和任务能共存于相同的进程空间。</p>
+<p>创建一个Application实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app = Celery()</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app</span><br><span class="line">&lt;Celery __main__:<span class="number">0x100469fd0</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>最后一行显示的是此Application实例的文本描述，其中包括celery类的名称，此实例存在于<code>__main__</code> 主模块中和此实例的内存地址.</p>
+<h3 id="Main_Name">Main Name</h3><p><code>Main Name</code> 是个很重要的概念， 以下会介绍为什么重要.</p>
+<p>当你使用Celery 推送一个任务消息， 这个消息不携带任何的源代码，但是需要指定一个此消息需要执行的任务名称。这种工作方式类似于hostname工作方式， 在网络上: 每个worker维护着任务名和他们所能执行的实际函数. 这就是所谓的<code>task registry</code>(任务注册表).</p>
+<p>每当你定义一个任务,  该任务也将要添加到本地的<code>task registry</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>@app.task</span><br><span class="line"><span class="prompt">... </span><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line"><span class="prompt">... </span>    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add</span><br><span class="line">&lt;@task: __main__.add&gt;</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add.name</span><br><span class="line">__main__.add</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app.tasks[<span class="string">'__main__.add'</span>] <span class="comment"># 根据task name取出实际函数(function)</span></span><br><span class="line">&lt;@task: __main__.add&gt;</span><br></pre></td></tr></table></figure>
+<p>这里你会在此看到<code>__main__</code> ，每当Celery无法检索到function属于哪个模块, 它会使用主模块名称生成任务模块， 即<code>__main__.add</code>.</p>
+<p>这种现象只会出现在下面情况中：</p>
+<ol>
+<li>定义的task所属的application 在一个主模块中</li>
+<li>此application实例创建在Python 交互式环境中</li>
+</ol>
+<p>第一种:<br><code>tasks.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line">app = Celery()</span><br><span class="line"></span><br><span class="line"><span class="decorator">@app.task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span> <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.worker_main()</span><br></pre></td></tr></table></figure>
+<p>当这个<code>tasks.py</code> 作为一个主模块执行的时候(<code>__main__</code>成立)任务名称以<code>__main__</code>开头， 即<code>__main__.add</code>. 但是当此模块被另外一个模块引用的时候，它的任务名称将以<code>tasks</code>开头, 即<code>tasks.add</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> tasks <span class="keyword">import</span> add</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add.name</span><br><span class="line">tasks.add</span><br></pre></td></tr></table></figure>
+<p>可以在创建的Application的时候指定一个名称.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app = Celery(<span class="string">'tasks'</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app.main</span><br><span class="line"><span class="string">'tasks'</span></span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>@app.task</span><br><span class="line"><span class="prompt">... </span><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line"><span class="prompt">... </span>    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add.name</span><br><span class="line">tasks.add</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参考: <a href="http://docs.jinkan.org/docs/celery/userguide/tasks.html#task-names" target="_blank" rel="external">Names</a></p>
+</blockquote>
+<h3 id="Configuration">Configuration</h3><p>你可以设置Celery的其他选项，这些选项作用于application 实例. 但你最好单独定义一个配置模块。 </p>
+<p>查看一个配置<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app.conf.CELERY_TIMEZONE</span><br><span class="line"><span class="string">'Europe/London'</span></span><br></pre></td></tr></table></figure></p>
+<p>你也可以直接设置配置项<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app.conf.CELERY_ENABLE_UTC = <span class="keyword">True</span></span><br></pre></td></tr></table></figure></p>
+<p>使用<code>update</code>方法更新多个键值.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app.conf.update(</span><br><span class="line"><span class="prompt">... </span>    CELERY_ENABLE_UTC=<span class="keyword">True</span>,</span><br><span class="line"><span class="prompt">... </span>    CELERY_TIMEZONE=<span class="string">'Europe/London'</span>,</span><br><span class="line">...)</span><br></pre></td></tr></table></figure></p>
+<p>配置对象可以通过多种方法去修改操作, 他们的优先级是:</p>
+<ol>
+<li>运行时修改</li>
+<li>配置模块(如果有的话)</li>
+<li>默认配置模块(<strong>celery.app.defaults</strong>)</li>
+</ol>
+<p>你甚至可以使用celery.add_defaults()方法来添加新的默认源.</p>
+<blockquote>
+<p>参见: <a href="http://docs.jinkan.org/docs/celery/configuration.html#configuration" target="_blank" rel="external">Configuration reference</a> 查看支持的通用选项参数列表.</p>
+</blockquote>
+<h4 id="config_from_object">config_from_object</h4><p><code>Celery.config_from_object()</code> 可以从一个配置对象加载配置， 可以是一个配置模块， 或者其他配置属性的对象.</p>
+<p>需要注意的是， 使用此方法后默认参数将会被重置， 如果配置对象的键值和默认对象有冲突的话。 如果你想设置额外的配置你应该在之后在此方法之后去设置.</p>
+<p><strong>Example 1: 使用name作为module</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"></span><br><span class="line">app = Celery()</span><br><span class="line">app.config_from_object(<span class="string">'celeryconfig'</span>)</span><br></pre></td></tr></table></figure>
+<p><code>celeryconfig</code> 作为字符串对象传入， <code>celeryconfig</code>内容如下</p>
+<p><code>celeryconfig.py</code>:<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">CELERY_ENABLE_UTC = <span class="value"><span class="keyword">True</span></span></span></span><br><span class="line"><span class="setting">CELERY_TIMEZONE = <span class="value"><span class="string">'Europe/London'</span></span></span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2: 使用configtion module</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"></span><br><span class="line">app = Celery()</span><br><span class="line"><span class="keyword">import</span> celeryconfig</span><br><span class="line">app.config_from_object(celeryconfig)</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3: 使用configtion class/object</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"></span><br><span class="line">app = Celery()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span>:</span></span><br><span class="line">    CELERY_ENABLE_UTC = <span class="keyword">True</span></span><br><span class="line">    CELERY_TIMEZONE = <span class="string">'Europe/London'</span></span><br><span class="line"></span><br><span class="line">app.config_from_object(Config)</span><br><span class="line"><span class="comment"># or using the fully qualified name of the object:</span></span><br><span class="line"><span class="comment">#   app.config_from_object('module:Config')</span></span><br></pre></td></tr></table></figure>
+<h4 id="config_from_envvar">config_from_envvar</h4><p>使用<code>Celery.config_from_envvar()</code>方法可以从环境变量来设置选项.</p>
+<p>从环境变量名为<strong>CELERY_CONFIG_MODULE</strong>加载配置:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"></span><br><span class="line"><span class="comment">#: Set default configuration module name</span></span><br><span class="line">os.environ.setdefault(<span class="string">'CELERY_CONFIG_MODULE'</span>, <span class="string">'celeryconfig'</span>)</span><br><span class="line"></span><br><span class="line">app = Celery()</span><br><span class="line">app.config_from_envvar(<span class="string">'CELERY_CONFIG_MODULE'</span>)</span><br></pre></td></tr></table></figure>
+<p>然后你可以指定配置模块，通过设置环境变量的方法:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ CELERY_CONFIG_MODULE=<span class="string">"celeryconfig.prod"</span> celery worker <span class="operator">-l</span> info</span><br></pre></td></tr></table></figure>
+<h3 id="Censored_configuration">Censored configuration</h3><p>如果你想打印出配置， 但是你不想打印一些敏感的数据， 就像密码和API 密钥类似的敏感信息。</p>
+<p>Celery 支持用于展示配置相关逻辑， 一个就是<code>humanize()</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app.conf.humanize(with_defaults=<span class="keyword">False</span>, censored=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<p>此方法将会隐藏敏感信息， 如果<code>with_defaults</code>为true的话， 可以显示为默认的值。</p>
+<p>默认情况下Celery认为配置KEY中包含<code>API</code>, <code>TOKEN</code>, <code>KEY</code>, <code>SECRET</code>, <code>PASS</code>, <code>SIGNATURE</code>, <code>DATABASE</code>这些字符的都为敏感信息。</p>
+<h3 id="Breaking_the_chain">Breaking the chain</h3><p>并没有看懂这段 , 貌似讲的是一种规范.</p>
+<h3 id="Abstract_Tasks">Abstract Tasks</h3><p>以上所有的tasks创建的时候都使用了task() 装饰器，task会继承Task class.</p>
+<p>当然可以指定成其他的Task基类， 比如下面代码中<code>base=OtherTask</code>, 那么此task的基类为<code>OtherTask</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task(base=OtherTask):</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<p>如果你想创建一个自定义的Task 类， 你必须继承自<code>celery.Task</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Task</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DebugTask</span><span class="params">(Task)</span>:</span></span><br><span class="line">    abstract = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        print(<span class="string">'TASK STARTING: &#123;0.name&#125;[&#123;0.request.id&#125;]'</span>.format(self))</span><br><span class="line">        <span class="keyword">return</span> super(DebugTask, self).__call__(*args, **kwargs)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Celery/" rel="tag">#Celery</a>
+          
+            <a href="/tags/Python/" rel="tag">#Python</a>
+          
+            <a href="/tags/翻译/" rel="tag">#翻译</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/16/python-funny/" rel="next" title="用Python不务正业 - 第一弹">
+                <i class="fa fa-chevron-left"></i> 用Python不务正业 - 第一弹
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/18/celery-userguide-application/"
+           data-title="Celery用户手册 - Application" data-url="http://omem.me/2016/04/18/celery-userguide-application/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="JackeyGao" />
+          <p class="site-author-name" itemprop="name">JackeyGao</p>
+          <p class="site-description motion-element" itemprop="description">JackeyGao的日记本</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jackeyGao" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="gaojunqi@outlook.com" target="_blank">
+                  
+                    <i class="fa fa-envelope"></i> Email
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/JackeyGaoQ" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/JackeyGaoo" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackey Gao</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.4.5.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.4.5.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.4.5.1"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.4.5.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.4.5.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.4.5.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jackeygao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("yf0s3ONpEsCybQxnLE1hvYLz-gzGzoHsz", "86yi2o6lVtLREC5KqYklEbMR");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
