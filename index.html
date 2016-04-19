@@ -214,6 +214,233 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/19/celery-userguide-tasks/" itemprop="url">
+                  Celery用户手册 - Tasks
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-19T14:39:27+08:00" content="2016-04-19">
+              2016-04-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/19/celery-userguide-tasks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/19/celery-userguide-tasks/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/19/celery-userguide-tasks/" class="leancloud_visitors" data-flag-title="Celery用户手册 - Tasks">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>Tasks</code>是Celery 应用的构建块。事实上Celery应用是由一个或多个Task拼装组成的。</p>
+<p>一个Task即是一个对象， Task被创建后可以被所有调用， 它是双重角色， 当Task被调用可以通过Task可以发送消息， 同时当作为一个worker的时候可以接收消息，并消费。</p>
+<p>每个Task name 都是唯一的， 这样可以通过这个名字，找到合适的function去执行消费。</p>
+<p>当发送一个任务消息在worker确认(acknowledged)前不会消失，一个worker可以提前存储很多消息，如果worker进程崩溃或killed，消息也不会消失， 消息会通过在投递的方式给其他存活worker。</p>
+<p>理想的Task函数必须是幂等的，这意味着相同的参数调用多次不会出现不同的结果。但是worker并不知道函数是幂等的， woker默认是提前确认消息， 在执行完成之前这个task永远不会被重复执行。 这个就是上锁(LOCK)意思。这一段和上一段还是有区别的， 这一段强调的是<strong>开始执行之前确认</strong>。</p>
+<p>当然确认如果任务是幂等的，你可以设置<code>acks_late</code>选项来控制worker 在函数返回之后去确认消息<code>acknowledge</code>. 请参考: <a href="http://docs.celeryproject.org/en/latest/faq.html#faq-acks-late-vs-retry%20%22%22" target="_blank" rel="external">Should I use retry or acks_late?</a></p>
+<p>在这一章节， 你将学习所有关于任务的定义，以下为目录:</p>
+<blockquote>
+<ul>
+<li><a href="#basics">Basics</a></li>
+<li><a href="#names">Names</a></li>
+<li><a href="#context">Context</a></li>
+<li><a href="#logging">Logging</a></li>
+<li><a href="#retrying">Retrying</a></li>
+<li><a href="#listofoptions">List of Options</a></li>
+<li><a href="#states">States</a></li>
+<li><a href="#semipredicates">Semipredicates</a></li>
+<li><a href="#customtaskclasses">Custom task classes</a></li>
+<li><a href="#howitworks">How it works</a></li>
+<li><a href="#tips">Tips and Best Practices</a></li>
+<li><a href="#performance">Performance and Strategies</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</blockquote>
+<h2 id="Basics">Basics <span id="basics"></span></h2><p>你可以很容易的创建任务在任何的可调用函数上使用<code>task()</code>装饰器.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> User</span><br><span class="line"></span><br><span class="line"><span class="decorator">@app.task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_user</span><span class="params">(username, password)</span>:</span></span><br><span class="line">    User.objects.create(username=username, password=password)</span><br></pre></td></tr></table></figure>
+<p>可以在装饰器上指定参数， 来设置<code>Task</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task(serializer='json')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_user</span><span class="params">(username, password)</span>:</span></span><br><span class="line">    User.objects.create(username=username, password=password)</span><br></pre></td></tr></table></figure>
+<p><strong>Multiple decorators</strong></p>
+<p>当使用多个装饰器，需要确保任务装饰生效， 把<code>task decorator</code> 写在函数第一个装饰器.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task</span></span><br><span class="line"><span class="decorator">@decorator2</span></span><br><span class="line"><span class="decorator">@decorator1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<p><strong>如何引入task装饰器？</strong></p>
+<p><code>task decorator</code> 存在于你的Celery应用的实例上， 上一节我们已经讲过如何声明Application和使用它. </p>
+<p>如果你使用的是Django 或者仍然适用老的版本， 你可能导入<code>task decorator</code>的方式是下面这样.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> task</span><br><span class="line"></span><br><span class="line"><span class="decorator">@task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<h2 id="Names">Names <span id="names"></span></h2><p>每个任务都有一个唯一的名称， 一个任务创建时如果不提供一个自定义的名字， 将会去生成一个任务.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>@app.task(name=<span class="string">'sum-of-two-numbers'</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line"><span class="prompt">... </span>    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add.name</span><br><span class="line"><span class="string">'sum-of-two-numbers'</span></span><br></pre></td></tr></table></figure>
+<p>最好的方式是适用模块名称作为一个名称空间，如果一个任务另外一个模块中也有这样的名称如user模块中有<code>add</code>, group 模块中也有<code>add</code>, 那么这样就会冲突. 最好的方式如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>@app.task(name=<span class="string">'tasks.add'</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line"><span class="prompt">... </span>    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<p>你可以通过调用task的属性来获取task name.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add.name</span><br><span class="line"><span class="string">'tasks.add'</span></span><br></pre></td></tr></table></figure>
+<p>如果不指定， 默认也会通过模块名和函数名拼装生成name</p>
+<p><code>tasks.py</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> tasks <span class="keyword">import</span> add</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add.name</span><br><span class="line"><span class="string">'tasks.add'</span></span><br></pre></td></tr></table></figure>
+<p><strong>自动命名和相对import</strong></p>
+<p>相对import和自动命名不能一起工作， 所以如果适用相对引入你必须精确的设置name.</p>
+<p>如果一个客户端(创建消息的时候) 导入这个<code>myapp.tasks</code> 通过<code>.tasks</code>导入，另外一个worker导入模块通过<code>myapp.tasks</code>， 生成的名称不匹配导致worker会抛出<code>NotRegistered</code> 从而不能工作.</p>
+<p>Django INSTALLED_APPS的<code>project.myapp</code>风格.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [<span class="string">'project.myapp'</span>]</span><br></pre></td></tr></table></figure>
+<p>如果你安装app使用<code>project.myapp</code>, 那么task导入的时候也要通过<code>project.myapp.tasks</code>导入， 所以你要确保总是使用相同的名称导入任务.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> project.myapp.tasks <span class="keyword">import</span> mytask   <span class="comment"># &lt;&lt; GOOD</span></span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> myapp.tasks <span class="keyword">import</span> mytask    <span class="comment"># &lt;&lt; BAD!!!</span></span><br></pre></td></tr></table></figure>
+<p>上面第二个例子将导致任务以不同的方式命名， 进而导致客户端和worker不用的任务名称。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> project.myapp.tasks <span class="keyword">import</span> mytask</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>mytask.name</span><br><span class="line"><span class="string">'project.myapp.tasks.mytask'</span></span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> myapp.tasks <span class="keyword">import</span> mytask</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>mytask.name</span><br><span class="line"><span class="string">'myapp.tasks.mytask'</span></span><br></pre></td></tr></table></figure>
+<p>因而你导入必须一致， 这也是python推荐的方式。</p>
+<p>同样的你不应该使用旧风格进行相对引入.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> module <span class="keyword">import</span> foo   <span class="comment"># BAD!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> proj.module <span class="keyword">import</span> foo  <span class="comment"># GOOD!</span></span><br></pre></td></tr></table></figure>
+<p>以下新的风格相对引入也是可以推荐的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .module <span class="keyword">import</span> foo  <span class="comment"># GOOD!</span></span><br></pre></td></tr></table></figure>
+<p>如果你的程序已经做了错的引入， 并且你没有时间去重构， 建议通过显式的指定名称去覆盖自动命名.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@task(name='proj.tasks.add')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<h2 id="Context">Context <span id="context"></span></h2><p>执行任务<code>request</code> 包含的信息和状态.</p>
+<p><code>request</code>定义了以下属性<br>key|value|<br>—|—|<br><strong>id:</strong>|执行任务的唯一ID|<br><strong>group:</strong>|组id如果属于组|<br><strong>chord:</strong>|The unique id of the chord this task belongs to (if the task is part of the header).|<br><strong>args:</strong> |位置参数|<br><strong>kwargs:</strong> | 键值参数|<br><strong>retries:</strong> |重拾次数|<br><strong>is_eager:</strong> |如果不是工人是本地客户端，设置为True|<br><strong>eta:</strong> |预计任务时间|<br><strong>expires:</strong> |任务的过期时间|<br><strong>logfile:</strong>|worker 的日志文件, See: <a href="http://docs.celeryproject.org/en/latest/userguide/tasks.html#logging" target="_blank" rel="external">logging</a>|<br><strong>loglevel:</strong>|当前使用的日志级别|<br><strong>hostname:</strong>|worker实例的hostname|<br><strong>delivery_info:</strong>|额外的传递信息|<br><strong>called_directly:</strong>|This flag is set to true if the task was not executed by the worker.|<br><strong>callbacks:</strong>|回调函数|<br><strong>errback:</strong>|异常回调函数|<br><strong>utc:</strong>|如果为True说明调用者启动了utc|</p>
+<p>3.1 新属性</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>headers:</strong></td>
+<td>映射消息头</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>reply_to:</strong></td>
+<td>发送replay到哪个队列</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>correlation_id:</strong></td>
+<td>通常与任务id通用， 常用语amqp的跟踪回复</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>一个从context获取获取信息的例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task(bind=True)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dump_context</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">    print(<span class="string">'Executing task id &#123;0.id&#125;, args: &#123;0.args!r&#125; kwargs: &#123;0.kwargs!r&#125;'</span>.format(</span><br><span class="line">            self.request))</span><br></pre></td></tr></table></figure>
+<h2 id="Logging">Logging <span id="logging"></span></h2><p>worker 将会自动配置logging， 也可以手动配置定制logging 日志输出.</p>
+<p>Celery 提供一个名为<code>celery.task</code>的logger供使用, 你可以通过这个logger 自动的生成一个名称和唯一id作为日志的一部分.</p>
+<p>推荐在每个模块中都声明一个logger， 每个模块使用单独的logger.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery.utils.log <span class="keyword">import</span> get_task_logger</span><br><span class="line"></span><br><span class="line">logger = get_task_logger(__name__)</span><br><span class="line"></span><br><span class="line"><span class="decorator">@app.task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    logger.info(<span class="string">'Adding &#123;0&#125; + &#123;1&#125;'</span>.format(x, y))</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<p>Celery 使用Python标准库的logging模块， 文档支持可以在<a href="http://docs.python.org/dev/library/logging.html#module-logging" target="_blank" rel="external">logging</a> 模块中看到</p>
+<p>你也可以使用<code>print()</code>, 任何写入标准输出和标准错误都会转到日志系统。 所以print的字符也会作为日志记录， 记录等级为<strong>WARN</strong>.</p>
+<h2 id="Retrying">Retrying <span id="retrying"></span></h2><p><code>retry()</code> 可以重试任务， 当任务出现可恢复的错误.</p>
+<p>当调用<code>retry()</code>时将会发送一个新的消息， 使用相同的task-id,  确保消息和原始任务属于相同的队列.</p>
+<p>当一个消息重试后， 任务也会记录一个状态。这样你可以使用结果实例跟踪任务状态记录(see <a href="http://docs.celeryproject.org/en/latest/userguide/tasks.html#task-states" target="_blank" rel="external">States</a>)</p>
+<p>一个使用<code>retry()</code> 的例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task(bind=True)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_twitter_status</span><span class="params">(self, oauth, tweet)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        twitter = Twitter(oauth)</span><br><span class="line">        twitter.update_status(tweet)</span><br><span class="line">    <span class="keyword">except</span> (Twitter.FailWhaleError, Twitter.LoginError) <span class="keyword">as</span> exc:</span><br><span class="line">        <span class="keyword">raise</span> self.retry(exc=exc)</span><br></pre></td></tr></table></figure>
+<p><code>bind</code> 参数告诉装饰器将会给一个可以访问的self实例.</p>
+<p>当存储任务结果，exc 是用于传递异常信息用户日志输出。 内容有异常信息和traceback信息都存在于exc.</p>
+<p>如果此任务有<code>max_retries</code>值， 并且重试次数超过了这个值， 那么这个exc异常将会重新raise.  如果是下列情况将不会这样:</p>
+<ul>
+<li>exc 没有指定</li>
+</ul>
+<p>这种情况下将会raise <code>MaxRetriesExceeded</code>异常, 这个是默认异常</p>
+<ul>
+<li>没有异常</li>
+</ul>
+<p>当重试没有异常发生(也就是上面except没有发生)， 重试次数达到了， 但task还没有正确返回， 可以指定给exc一个异常， 用于代理默认的<code>MaxRetriesExceeded</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.retry(exc=Twitter.LoginError())</span><br></pre></td></tr></table></figure>
+<p>将会触发提供的异常信息。 </p>
+<p><strong>自定义重试间隔</strong></p>
+<p>当一个任务要去重试， 可以指定一个时间之后再去重试. 使用<code>default_retry_delay</code>属性来设置默认延迟.默认是三分钟,  注意: 延迟的单位是秒.</p>
+<p>你可以使用 <code>retry(..., countdown=60s)</code>来覆盖task级别的<code>default_retry_delay</code>时间. 两种方法灵活使用 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task(bind=True, default_retry_delay=30 * 60)  # retry in 30 minutes.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        …</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> exc:</span><br><span class="line">        <span class="keyword">raise</span> self.retry(exc=exc, countdown=<span class="number">60</span>)  <span class="comment"># override the default and                                                 # retry in 1 minute</span></span><br></pre></td></tr></table></figure>
+<h2 id="List_of_Options">List of Options <span id="listofoptions"></span></h2><p>Task.<strong>name</strong></p>
+<p>task 注册名</p>
+<p>可以手动设置，也可以生成此name. See: <a href="#names">Names</a></p>
+<p>未完待续&gt;&gt;&gt;</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/18/celery-userguide-application/" itemprop="url">
                   Celery用户手册 - Application
                 </a>
@@ -1424,153 +1651,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/18/flask-jpg2ascii/" itemprop="url">
-                  JPG2ASCII开发上线记录
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-18T14:17:10+08:00" content="2015-11-18">
-              2015-11-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/18/flask-jpg2ascii/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/flask-jpg2ascii/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/11/18/flask-jpg2ascii/" class="leancloud_visitors" data-flag-title="JPG2ASCII开发上线记录">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="介绍">介绍</h2><p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.<br><a href="jpg2ascii.herokuapp.com">JPG2ASCII</a></p>
-<h3 id="用到的开源">用到的开源</h3><p><strong>jp2a</strong></p>
-<p>进行转换的工具<br>项目地址:  <a href="https://csl.name/jp2a/" target="_blank" rel="external">https://csl.name/jp2a/</a></p>
-<blockquote>
-<p>jp2a is a small utility that converts JPG images to ASCII. It’s written in C and released under the GPL.</p>
-</blockquote>
-<p><strong>flask</strong></p>
-<p>一个Python web框架<br>项目地址: <a href="https://github.com/mitsuhiko/flask" target="_blank" rel="external">https://github.com/mitsuhiko/flask</a></p>
-<blockquote>
-<p>A microframework based on Werkzeug, Jinja2 and good intentions <a href="http://flask.pocoo.org/" target="_blank" rel="external">http://flask.pocoo.org/</a></p>
-</blockquote>
-<p><strong>semantic-UI</strong></p>
-<p>一个前端开发框架<br>项目地址: <a href="https://github.com/semantic-org/semantic-ui/" target="_blank" rel="external">https://github.com/semantic-org/semantic-ui/</a></p>
-<blockquote>
-<p>Semantic is a development framework that helps create beautiful, responsive layouts using human-friendly HTML.</p>
-</blockquote>
-<h2 id="主要思路">主要思路</h2><p>前端网页UI将图片和参数传递到后端flask, 然后保存图片生成ASCII最后返回生成结果.项目已经开源， 这里不贴代码了， 有兴趣移步到<a href="https://github.com/jackeyGao/Flask-JPG2ASCII" target="_blank" rel="external">https://github.com/jackeyGao/Flask-JPG2ASCII</a></p>
-<h2 id="最后部署heroku">最后部署heroku</h2><p><code>Heroku</code>是一个支持多种编程语言的云平台即服务</p>
-<p>Python 的web程序指定好<code>Procfile</code> 和 <code>requirements.txt</code> 就可以正常工作了， 但是由于此次项目用到了jp2a这个需要编译的工具, 现在就有个问题. 现在本地的jp2a可执行文件是不能在heroku机器上运行成功的, 所以我怎么在heroku上编译这个工具。 幸运的是heroku支持的， 官方的<code>快速开始</code>文档没有关于这个的介绍, 我在国外的一个博客看到有个伙计成功了. 下面介绍</p>
-<p>首先需要获得一个shell命令行交互环境.其次需要把包放到heroku APP机器上, 这个可以scp, 或者wget, curl.<br>获得shell(其实相当于ssh操作这台机器)， 使用heroku的run命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku run /bin/bash</span><br></pre></td></tr></table></figure>
-<p>然后就会有一个shell环境来操作app机器, 这时候</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -O http://sourceforge.net/projects/jp2a/files/latest/download</span><br><span class="line"></span><br><span class="line">tar zxvf download</span><br><span class="line"><span class="built_in">cd</span> jp2a-xxxxx/</span><br><span class="line">./configure --prefix=/app/.heroku/vendor/jp2a</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<p>编译完成后需要把这个jp2a可执行命令打进包里面, heroku app机器上不太方便git操作, 我这边是在heroku app机器scp到我的服务器上. 然后add commit.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1616,7 +1696,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

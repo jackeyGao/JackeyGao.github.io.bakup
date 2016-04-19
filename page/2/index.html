@@ -214,6 +214,153 @@
             
               
                 
+                <a class="post-title-link" href="/2015/11/18/flask-jpg2ascii/" itemprop="url">
+                  JPG2ASCII开发上线记录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-18T14:17:10+08:00" content="2015-11-18">
+              2015-11-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/18/flask-jpg2ascii/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/flask-jpg2ascii/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/11/18/flask-jpg2ascii/" class="leancloud_visitors" data-flag-title="JPG2ASCII开发上线记录">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="介绍">介绍</h2><p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.<br><a href="jpg2ascii.herokuapp.com">JPG2ASCII</a></p>
+<h3 id="用到的开源">用到的开源</h3><p><strong>jp2a</strong></p>
+<p>进行转换的工具<br>项目地址:  <a href="https://csl.name/jp2a/" target="_blank" rel="external">https://csl.name/jp2a/</a></p>
+<blockquote>
+<p>jp2a is a small utility that converts JPG images to ASCII. It’s written in C and released under the GPL.</p>
+</blockquote>
+<p><strong>flask</strong></p>
+<p>一个Python web框架<br>项目地址: <a href="https://github.com/mitsuhiko/flask" target="_blank" rel="external">https://github.com/mitsuhiko/flask</a></p>
+<blockquote>
+<p>A microframework based on Werkzeug, Jinja2 and good intentions <a href="http://flask.pocoo.org/" target="_blank" rel="external">http://flask.pocoo.org/</a></p>
+</blockquote>
+<p><strong>semantic-UI</strong></p>
+<p>一个前端开发框架<br>项目地址: <a href="https://github.com/semantic-org/semantic-ui/" target="_blank" rel="external">https://github.com/semantic-org/semantic-ui/</a></p>
+<blockquote>
+<p>Semantic is a development framework that helps create beautiful, responsive layouts using human-friendly HTML.</p>
+</blockquote>
+<h2 id="主要思路">主要思路</h2><p>前端网页UI将图片和参数传递到后端flask, 然后保存图片生成ASCII最后返回生成结果.项目已经开源， 这里不贴代码了， 有兴趣移步到<a href="https://github.com/jackeyGao/Flask-JPG2ASCII" target="_blank" rel="external">https://github.com/jackeyGao/Flask-JPG2ASCII</a></p>
+<h2 id="最后部署heroku">最后部署heroku</h2><p><code>Heroku</code>是一个支持多种编程语言的云平台即服务</p>
+<p>Python 的web程序指定好<code>Procfile</code> 和 <code>requirements.txt</code> 就可以正常工作了， 但是由于此次项目用到了jp2a这个需要编译的工具, 现在就有个问题. 现在本地的jp2a可执行文件是不能在heroku机器上运行成功的, 所以我怎么在heroku上编译这个工具。 幸运的是heroku支持的， 官方的<code>快速开始</code>文档没有关于这个的介绍, 我在国外的一个博客看到有个伙计成功了. 下面介绍</p>
+<p>首先需要获得一个shell命令行交互环境.其次需要把包放到heroku APP机器上, 这个可以scp, 或者wget, curl.<br>获得shell(其实相当于ssh操作这台机器)， 使用heroku的run命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku run /bin/bash</span><br></pre></td></tr></table></figure>
+<p>然后就会有一个shell环境来操作app机器, 这时候</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -O http://sourceforge.net/projects/jp2a/files/latest/download</span><br><span class="line"></span><br><span class="line">tar zxvf download</span><br><span class="line"><span class="built_in">cd</span> jp2a-xxxxx/</span><br><span class="line">./configure --prefix=/app/.heroku/vendor/jp2a</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>编译完成后需要把这个jp2a可执行命令打进包里面, heroku app机器上不太方便git操作, 我这边是在heroku app机器scp到我的服务器上. 然后add commit.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/11/06/offices-proxy/" itemprop="url">
                   企业级翻墙方案
                 </a>
@@ -1407,148 +1554,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/30/python-concurrent-high-level/" itemprop="url">
-                  Python 高级并发
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-30T10:15:40+08:00" content="2015-09-30">
-              2015-09-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/Python高级并发/" itemprop="url" rel="index">
-                    <span itemprop="name">Python高级并发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/30/python-concurrent-high-level/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-concurrent-high-level/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/09/30/python-concurrent-high-level/" class="leancloud_visitors" data-flag-title="Python 高级并发">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>并发级别归纳为下列三种：</p>
-<h2 id="并发的归类">并发的归类</h2><h3 id="低级并发(Low-level_Concurrency)">低级并发(Low-level Concurrency)</h3><p>就是直接用『原子操作』(atomic operation)所实现的并发。这种并发是给程序库的编写者用的， 而应用程序开发者则不需要它，因为这种写法很容易出错，而且极难调试。虽说Python本身的并发机制一般是用底层的操作实现的， 但开发者不能用Python语言编写这种级别的并发代码。</p>
-<h3 id="中级并发(Mid-level_Concurrency)">中级并发(Mid-level Concurrency)</h3><p>不直接使用原子操作， 但却会直接使用”锁”（lock）,大多数语言提供的都是这种级别的并发。Python的threading.Semaphore、threading.Lock及multiprocessing.Lock等类都支持中级并发。开发应用程序的人一般都会使用终极并发，因为他们通常只能使用这个级别的并发功能。</p>
-<h3 id="高级并发(High-level_Concurrency)">高级并发(High-level Concurrency)</h3><p>既不直接使用原子操作， 也不直接使用锁(锁与原子操作可能在幕后使用， 但开发者无须关注这些。)目前已经有编程语言开始支持高级并发了。从3.2版本起，Python提供了支持高级并发的concurrent.futures模块，此外， queue.Queue及multiprocessing这两个『队列集合类』(queue collection class)也支持高级并发.</p>
-<h2 id="见解">见解</h2><h3 id="中级并发痛点">中级并发痛点</h3><p>中级并发是我经常使用的， 这种并发等级虽说使用起来相对低级并发简单， 但很容易出错， 容易出现那种难于追踪而且调试起来非常复杂。此外还会导致程序莫名的崩溃、失去响应(frozen)或者僵尸(zombie)进程.</p>
-<h3 id="关于中级并发建议">关于中级并发建议</h3><p>关键问题处在共享数据上面。如果共享数据可以修改，那么必须用锁来保护，以确保所有线程和进程都能按照顺序来存取它(也就是说你必须在程序里面控制好同一时刻必须有一个线程或进程访问这份数据)。如果有多个线程或进程试图访问同一份共享数据， 那么只有其中一个能够获取到， 而其他的都会阻塞(也就是进去『空闲状态』(idle)状态)。这就意味着当锁定机制生效时， 应用程序只有一个线程或进程起作用(这就变得和非并发程序类似了)，其余都得等待。由此可见我们应该进程少用锁，即便要用也不要时间太长,最简单的方法是根本不要分享可以修改的数据， 使进程本身只做运算，和I/O操作， 操作完后返回结果。这样就不用加锁了， 而大部分并发问题也就随之消失了.</p>
-<h3 id="高级并发">高级并发</h3><p>后面会追加一些高级并发， 对于Python来说高级并发才显得<code>Pythonic</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1594,7 +1599,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
