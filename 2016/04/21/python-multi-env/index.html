@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.4.5.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Django,Python," />
+  <meta name="keywords" content="Centos,Python,virtualenv,virtualenvwrapper,折腾," />
 
 
 
@@ -59,16 +59,25 @@
 
 
 
-<meta name="description" content="Django 是个python中web-frameworkMTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的urls来手写链接.虽然这种方法是可行的， 但是不是规范的。为什么呢？最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上项目名字urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增">
+<meta name="description" content="由于yum命令依赖系统的python2.6， 所以如果直接覆盖的话，会导致yum不能工作。 所以自带的python 2.6绝对不能动。 不过可以通过自定义安装来共存两套或多套python环境。 再配合virtualenv 隔离项目环境.
+这里演示安装Python2.7 :
+首先安装系统依赖包
+12345yum install zlib-develyum install bzip2-develyum">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django url 反解析">
-<meta property="og:url" content="http://omem.me/2015/09/30/django-url-reverse/index.html">
+<meta property="og:title" content="Centos 6.x 共存安装Python 2.7 or 3.x">
+<meta property="og:url" content="http://omem.me/2016/04/21/python-multi-env/index.html">
 <meta property="og:site_name" content="文本不限, 诗歌除外">
-<meta property="og:description" content="Django 是个python中web-frameworkMTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的urls来手写链接.虽然这种方法是可行的， 但是不是规范的。为什么呢？最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上项目名字urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增">
-<meta property="og:updated_time" content="2015-11-27T02:59:19.000Z">
+<meta property="og:description" content="由于yum命令依赖系统的python2.6， 所以如果直接覆盖的话，会导致yum不能工作。 所以自带的python 2.6绝对不能动。 不过可以通过自定义安装来共存两套或多套python环境。 再配合virtualenv 隔离项目环境.
+这里演示安装Python2.7 :
+首先安装系统依赖包
+12345yum install zlib-develyum install bzip2-develyum">
+<meta property="og:updated_time" content="2016-04-21T06:48:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django url 反解析">
-<meta name="twitter:description" content="Django 是个python中web-frameworkMTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的urls来手写链接.虽然这种方法是可行的， 但是不是规范的。为什么呢？最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上项目名字urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增">
+<meta name="twitter:title" content="Centos 6.x 共存安装Python 2.7 or 3.x">
+<meta name="twitter:description" content="由于yum命令依赖系统的python2.6， 所以如果直接覆盖的话，会导致yum不能工作。 所以自带的python 2.6绝对不能动。 不过可以通过自定义安装来共存两套或多套python环境。 再配合virtualenv 隔离项目环境.
+这里演示安装Python2.7 :
+首先安装系统依赖包
+12345yum install zlib-develyum install bzip2-develyum">
 
 
 
@@ -86,7 +95,7 @@
   };
 </script>
 
-  <title> Django url 反解析 | 文本不限, 诗歌除外 </title>
+  <title> Centos 6.x 共存安装Python 2.7 or 3.x | 文本不限, 诗歌除外 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -212,7 +221,7 @@
             
             
               
-                Django url 反解析
+                Centos 6.x 共存安装Python 2.7 or 3.x
               
             
           </h1>
@@ -224,50 +233,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-30T14:07:20+08:00" content="2015-09-30">
-              2015-09-30
+            <time itemprop="dateCreated" datetime="2016-04-21T14:46:16+08:00" content="2016-04-21">
+              2016-04-21
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/Django/" itemprop="url" rel="index">
-                    <span itemprop="name">Django</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/30/django-url-reverse/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/django-url-reverse/" itemprop="commentsCount"></span>
+                <a href="/2016/04/21/python-multi-env/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/python-multi-env/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -277,7 +255,7 @@
 
           
           
-             <span id="/2015/09/30/django-url-reverse/" class="leancloud_visitors" data-flag-title="Django url 反解析">
+             <span id="/2016/04/21/python-multi-env/" class="leancloud_visitors" data-flag-title="Centos 6.x 共存安装Python 2.7 or 3.x">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -298,14 +276,26 @@
       
 
       
-        <p>Django 是个python中web-framework<br>MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接.<br>虽然这种方法是可行的， 但是不是规范的。<br>为什么呢？<br>最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上<code>项目名字</code><br>urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增加了改造的复杂度。<br>通过此次改造我发现<br>其实django中有一种很好的机制, 来通过urls中的viewname 来反解析url生成url.</p>
-<p>他们分别是: <code>django.core.urlresolvers.reverse</code> 和 <code>templatetags.url</code></p>
-<h2 id="django-core-urlresolvers-reverse">django.core.urlresolvers.reverse</h2><p>这个函数主要用在于python代码中， 详情请看下面案例</p>
-<p><code>urls.py</code>这里是一个对象详细页面, 需要两个参数.<br><code>models.py</code>中要通过<code>viewname</code> detail 来生成url.</p>
-<h3 id="urls-py">urls.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    url(<span class="string">r'^step/(?P&lt;label&gt;.*)/(?P&lt;name&gt;.*)$'</span>, step, name=<span class="string">"detail"</span>),</span><br><span class="line">    ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h3 id="models-py">models.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Step</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    ......</span><br><span class="line">    ......</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_absolute_url</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> reverse(<span class="string">'detail'</span>, kwargs=&#123;</span><br><span class="line">            <span class="string">'label'</span>: self.label,</span><br><span class="line">            <span class="string">'name'</span>: self.name&#125;</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">label_name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.label.name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> unicode(self.name)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br></pre></td></tr></table></figure>
-<h2 id="templatetags-url">templatetags.url</h2><p>这里还使用上面的urls.py 中的detail举例, 在模版中生成url</p>
-<h3 id="base-html">base.html</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% url "detail" step.label.name step.name %&#125;</span><br></pre></td></tr></table></figure>
+        <p>由于yum命令依赖系统的python2.6， 所以如果直接覆盖的话，会导致yum不能工作。 所以自带的python 2.6绝对不能动。 不过可以通过自定义安装来共存两套或多套python环境。 再配合virtualenv 隔离项目环境.</p>
+<p>这里演示安装Python2.7 :</p>
+<p><strong>首先安装系统依赖包</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install zlib-devel</span><br><span class="line">yum install bzip2-devel</span><br><span class="line">yum install openssl-devel</span><br><span class="line">yum install ncurses-devel</span><br><span class="line">yum install sqlite-devel</span><br></pre></td></tr></table></figure>
+<p><strong>下载Python2.7 源码编译安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src;</span><br><span class="line">wget --no-check-certificate https://www.python.org/ftp/python/<span class="number">2.7</span>.<span class="number">11</span>/Python-<span class="number">2.7</span>.<span class="number">11</span>.tar.xz</span><br><span class="line">tar xf Python-<span class="number">2.7</span>.<span class="number">11</span>.tar.xz</span><br><span class="line"><span class="built_in">cd</span> Python-<span class="number">2.7</span>.<span class="number">11</span></span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/python27</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p><strong>安装pip</strong></p>
+<p>使用python27安装pip</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py</span><br><span class="line">/usr/<span class="built_in">local</span>/python27/bin/python ez_setup.py</span><br><span class="line">/usr/<span class="built_in">local</span>/python27/bin/easy_install pip</span><br></pre></td></tr></table></figure>
+<p>到这里python2.7.11 和 pip套件都安装了可以使用了。 下一步就是把<code>/usr/local/python27/bin/</code> 加入<code>$PATH</code>变量。</p>
+<h3 id="安装virtualenvwrapper">安装virtualenvwrapper</h3><p>这一步实在自带的python2.6 上执行的， 所以如果用python 2.7 需要再创建的虚拟环境的时候指定</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenvwrapper</span><br></pre></td></tr></table></figure>
+<p>然后再<code>~/.bashrc</code>文件追加以下操作</p>
+<p><code>~/.bashrc</code> or <code>./zshrc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> $(<span class="built_in">which</span> virtualenvwrapper.sh)</span><br></pre></td></tr></table></figure></p>
+<p>然后<code>source ~/.bashrc</code> 这样就可以使用<code>workon</code>、 <code>mkvirtualenv</code>、 <code>rmvirtualenv</code>命令.具体的指南参考 <a href="https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html" target="_blank" rel="external">virtualenvwrapper</a></p>
+<h3 id="错误处理">错误处理</h3><p>第一个错误,  <code>source $(which virtualenvwrapper.sh)</code>出现<code>logging no NullHandler</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"/usr/lib64/python2.6/runpy.py"</span>, line <span class="number">122</span>, <span class="keyword">in</span> _run_module_as_main</span><br><span class="line">    <span class="string">"__main__"</span>, fname, loader, pkg_name)</span><br><span class="line">  File <span class="string">"/usr/lib64/python2.6/runpy.py"</span>, line <span class="number">34</span>, <span class="keyword">in</span> _run_code</span><br><span class="line">    <span class="keyword">exec</span> code <span class="keyword">in</span> run_globals</span><br><span class="line">  File <span class="string">"/usr/lib/python2.6/site-packages/virtualenvwrapper/hook_loader.py"</span>, line <span class="number">16</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> stevedore <span class="keyword">import</span> ExtensionManager</span><br><span class="line">  File <span class="string">"/usr/lib/python2.6/site-packages/stevedore/__init__.py"</span>, line <span class="number">23</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    LOG.addHandler(logging.NullHandler())</span><br><span class="line">AttributeError: <span class="string">'module'</span> object has no attribute <span class="string">'NullHandler'</span></span><br><span class="line">virtualenvwrapper.sh: There was a problem running the initialization hooks.</span><br><span class="line"></span><br><span class="line">If Python could <span class="keyword">not</span> <span class="keyword">import</span> the module virtualenvwrapper.hook_loader,</span><br><span class="line">check that virtualenvwrapper has been installed <span class="keyword">for</span></span><br><span class="line">VIRTUALENVWRAPPER_PYTHON=/usr/bin/python <span class="keyword">and</span> that PATH <span class="keyword">is</span></span><br></pre></td></tr></table></figure>
+<p>处理方法, 升级stevedore</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install stevedore</span><br></pre></td></tr></table></figure>
+<p><code>python 2.6.6</code> 可以升级到1.3.0 就可以了.</p>
 
       
     </div>
@@ -320,9 +310,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Django/" rel="tag">#Django</a>
+            <a href="/tags/Centos/" rel="tag">#Centos</a>
           
             <a href="/tags/Python/" rel="tag">#Python</a>
+          
+            <a href="/tags/virtualenv/" rel="tag">#virtualenv</a>
+          
+            <a href="/tags/virtualenvwrapper/" rel="tag">#virtualenvwrapper</a>
+          
+            <a href="/tags/折腾/" rel="tag">#折腾</a>
           
         </div>
       
@@ -331,17 +327,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/30/show-your-top-command/" rel="next" title="查看你历史命令的使用率">
-                <i class="fa fa-chevron-left"></i> 查看你历史命令的使用率
+              <a href="/2016/04/19/celery-userguide-tasks/" rel="next" title="Celery用户手册 - Tasks">
+                <i class="fa fa-chevron-left"></i> Celery用户手册 - Tasks
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/10/04/illusion-and-reality/" rel="prev" title="幻想与现实">
-                幻想与现实 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -367,8 +359,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/09/30/django-url-reverse/"
-           data-title="Django url 反解析" data-url="http://omem.me/2015/09/30/django-url-reverse/">
+      <div class="ds-thread" data-thread-key="2016/04/21/python-multi-env/"
+           data-title="Centos 6.x 共存安装Python 2.7 or 3.x" data-url="http://omem.me/2016/04/21/python-multi-env/">
       </div>
     
   </div>

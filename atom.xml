@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://omem.me/"/>
-  <updated>2016-04-19T07:46:44.000Z</updated>
+  <updated>2016-04-21T06:48:21.000Z</updated>
   <id>http://omem.me/</id>
   
   <author>
@@ -13,6 +13,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Centos 6.x 共存安装Python 2.7 or 3.x]]></title>
+    <link href="http://omem.me/2016/04/21/python-multi-env/"/>
+    <id>http://omem.me/2016/04/21/python-multi-env/</id>
+    <published>2016-04-21T06:46:16.000Z</published>
+    <updated>2016-04-21T06:48:21.000Z</updated>
+    <content type="html"><![CDATA[<p>由于yum命令依赖系统的python2.6， 所以如果直接覆盖的话，会导致yum不能工作。 所以自带的python 2.6绝对不能动。 不过可以通过自定义安装来共存两套或多套python环境。 再配合virtualenv 隔离项目环境.</p>
+<p>这里演示安装Python2.7 :</p>
+<p><strong>首先安装系统依赖包</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install zlib-devel</span><br><span class="line">yum install bzip2-devel</span><br><span class="line">yum install openssl-devel</span><br><span class="line">yum install ncurses-devel</span><br><span class="line">yum install sqlite-devel</span><br></pre></td></tr></table></figure>
+<p><strong>下载Python2.7 源码编译安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src;</span><br><span class="line">wget --no-check-certificate https://www.python.org/ftp/python/<span class="number">2.7</span>.<span class="number">11</span>/Python-<span class="number">2.7</span>.<span class="number">11</span>.tar.xz</span><br><span class="line">tar xf Python-<span class="number">2.7</span>.<span class="number">11</span>.tar.xz</span><br><span class="line"><span class="built_in">cd</span> Python-<span class="number">2.7</span>.<span class="number">11</span></span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/python27</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p><strong>安装pip</strong></p>
+<p>使用python27安装pip</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py</span><br><span class="line">/usr/<span class="built_in">local</span>/python27/bin/python ez_setup.py</span><br><span class="line">/usr/<span class="built_in">local</span>/python27/bin/easy_install pip</span><br></pre></td></tr></table></figure>
+<p>到这里python2.7.11 和 pip套件都安装了可以使用了。 下一步就是把<code>/usr/local/python27/bin/</code> 加入<code>$PATH</code>变量。</p>
+<h3 id="安装virtualenvwrapper">安装virtualenvwrapper</h3><p>这一步实在自带的python2.6 上执行的， 所以如果用python 2.7 需要再创建的虚拟环境的时候指定</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenvwrapper</span><br></pre></td></tr></table></figure>
+<p>然后再<code>~/.bashrc</code>文件追加以下操作</p>
+<p><code>~/.bashrc</code> or <code>./zshrc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> $(<span class="built_in">which</span> virtualenvwrapper.sh)</span><br></pre></td></tr></table></figure></p>
+<p>然后<code>source ~/.bashrc</code> 这样就可以使用<code>workon</code>、 <code>mkvirtualenv</code>、 <code>rmvirtualenv</code>命令.具体的指南参考 <a href="https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html" target="_blank" rel="external">virtualenvwrapper</a></p>
+<h3 id="错误处理">错误处理</h3><p>第一个错误,  <code>source $(which virtualenvwrapper.sh)</code>出现<code>logging no NullHandler</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"/usr/lib64/python2.6/runpy.py"</span>, line <span class="number">122</span>, <span class="keyword">in</span> _run_module_as_main</span><br><span class="line">    <span class="string">"__main__"</span>, fname, loader, pkg_name)</span><br><span class="line">  File <span class="string">"/usr/lib64/python2.6/runpy.py"</span>, line <span class="number">34</span>, <span class="keyword">in</span> _run_code</span><br><span class="line">    <span class="keyword">exec</span> code <span class="keyword">in</span> run_globals</span><br><span class="line">  File <span class="string">"/usr/lib/python2.6/site-packages/virtualenvwrapper/hook_loader.py"</span>, line <span class="number">16</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> stevedore <span class="keyword">import</span> ExtensionManager</span><br><span class="line">  File <span class="string">"/usr/lib/python2.6/site-packages/stevedore/__init__.py"</span>, line <span class="number">23</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    LOG.addHandler(logging.NullHandler())</span><br><span class="line">AttributeError: <span class="string">'module'</span> object has no attribute <span class="string">'NullHandler'</span></span><br><span class="line">virtualenvwrapper.sh: There was a problem running the initialization hooks.</span><br><span class="line"></span><br><span class="line">If Python could <span class="keyword">not</span> <span class="keyword">import</span> the module virtualenvwrapper.hook_loader,</span><br><span class="line">check that virtualenvwrapper has been installed <span class="keyword">for</span></span><br><span class="line">VIRTUALENVWRAPPER_PYTHON=/usr/bin/python <span class="keyword">and</span> that PATH <span class="keyword">is</span></span><br></pre></td></tr></table></figure>
+<p>处理方法, 升级stevedore</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install stevedore</span><br></pre></td></tr></table></figure>
+<p><code>python 2.6.6</code> 可以升级到1.3.0 就可以了.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>由于yum命令依赖系统的python2.6， 所以如果直接覆盖的话，会导致yum不能工作。 所以自带的python 2.6绝对不能动。 不过可以通过自定义安装来共存两套或多套python环境。 再配合virtualenv 隔离项目环境.</p>
+<p>这里演示安装Pytho]]>
+    </summary>
+    
+      <category term="Centos" scheme="http://omem.me/tags/Centos/"/>
+    
+      <category term="Python" scheme="http://omem.me/tags/Python/"/>
+    
+      <category term="virtualenv" scheme="http://omem.me/tags/virtualenv/"/>
+    
+      <category term="virtualenvwrapper" scheme="http://omem.me/tags/virtualenvwrapper/"/>
+    
+      <category term="折腾" scheme="http://omem.me/tags/%E6%8A%98%E8%85%BE/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Celery用户手册 - Tasks]]></title>
@@ -947,43 +991,6 @@
 <p><strong>多进程</strong></p>
 <p>用在计算密集的确定Long Number是否为<code>质数</code>的例子</p>
 <f]]>
-    </summary>
-    
-      <category term="Concurrent" scheme="http://omem.me/tags/Concurrent/"/>
-    
-      <category term="Python" scheme="http://omem.me/tags/Python/"/>
-    
-      <category term="Python" scheme="http://omem.me/categories/Python/"/>
-    
-      <category term="Python高级并发" scheme="http://omem.me/categories/Python/Python%E9%AB%98%E7%BA%A7%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Python 高级并发2]]></title>
-    <link href="http://omem.me/2015/09/30/python-concurrent-high-level-2/"/>
-    <id>http://omem.me/2015/09/30/python-concurrent-high-level-2/</id>
-    <published>2015-09-30T03:15:40.000Z</published>
-    <updated>2015-11-27T02:59:53.000Z</updated>
-    <content type="html"><![CDATA[<p>一般程序并发分为<code>多线程</code>和<code>多进程</code>并发.</p>
-<p>那么什么时候选择两种并发手段， 该如何选择呢， 应用场景是什么？</p>
-<p>根据编程逻辑一般需要计算密集和I/O操作密集的时候选择并发提高程序效率， Python 由于GIL的限制，密集性运算需要使用多核心CPU时候， 这时候多线程显得力不从心， 甚至会变得更慢。而当需要I/O操作， 比如HTTP长连接的时候， 耗费的时间只是TCP建立链接的等待时间， 这时候当然优先使用多线程。</p>
-<p>所以一般情况下， 我们开发程序耗费比较慢的是<code>计算密集</code>和<code>I/O密集</code>两种情况下的逻辑， 那么我可以采取：</p>
-<ul>
-<li>计算密集:多进程</li>
-<li>I/O密集:多线程</li>
-</ul>
-<p>推荐使用库：</p>
-<p>concurrent.futures 是python3新增加的一个库，用于并发处理，类似于其他语言里的线程池（也有一个进程池），他属于上层的封装，对于用户来说，不用在考虑那么多东西了, 现已加入python 3.2标准库， python 2.7需要安装一下。</p>
-<p><code>pip install futures</code></p>
-<p>Executor:两个子<code>ThreadPoolExecutor</code>和<code>ProcessPoolExecutor</code>分别是产生进程池和线程池</p>
-<p>Future：有Executor.submit产生多任务</p>
-<p>ThreadPoolExecutor 和 ProcessPoolExecutor直接python的with as 控制流语句， 让你非常简单的就套入了程序里面。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>一般程序并发分为<code>多线程</code>和<code>多进程</code>并发.</p>
-<p>那么什么时候选择两种并发手段， 该如何选择呢， 应用场景是什么？</p>
-<p>根据编程逻辑一般需要计算密集和I/O操作密集的时候选择并发提高程序效率， Python 由]]>
     </summary>
     
       <category term="Concurrent" scheme="http://omem.me/tags/Concurrent/"/>
