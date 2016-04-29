@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://omem.me/"/>
-  <updated>2016-04-27T01:26:29.000Z</updated>
+  <updated>2016-04-29T06:09:54.000Z</updated>
   <id>http://omem.me/</id>
   
   <author>
@@ -19,13 +19,14 @@
     <link href="http://omem.me/2016/04/27/python-introduction/"/>
     <id>http://omem.me/2016/04/27/python-introduction/</id>
     <published>2016-04-27T01:23:26.000Z</published>
-    <updated>2016-04-27T01:26:29.000Z</updated>
+    <updated>2016-04-29T06:09:54.000Z</updated>
     <content type="html"><![CDATA[<p>一个Python语法介绍的入门文档</p>
-<iframe src="//slides.com/jackeygao/deck-3/embed" width="700" height="450" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe>
+<a id="more"></a>
+<iframe src="//slides.com/jackeygao/deck-3/embed" width="100%" height="400" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>一个Python语法介绍的入门文档</p>
-<iframe src="//slides.com/jackeygao/deck-3/embed" width="700" height="450" scrolling="no" frameborder="0" webkitall]]>
+    <![CDATA[<p>一个Python语法介绍的入门文档</p>]]>
+    
     </summary>
     
       <category term="PPT" scheme="http://omem.me/tags/PPT/"/>
