@@ -214,6 +214,230 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/03/intermediate-django-admin-dynamic-actions/" itemprop="url">
+                  Django 进阶学习 - 动态actions
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T16:09:06+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/03/intermediate-django-admin-dynamic-actions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/03/intermediate-django-admin-dynamic-actions/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/03/intermediate-django-admin-dynamic-actions/" class="leancloud_visitors" data-flag-title="Django 进阶学习 - 动态actions">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Django后台默认只有一个动作<code>Delete selected xxxxs</code>, 那么如果自定义动作该怎么办， 也很容易， 直接写个类似于这种的函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_published</span><span class="params">(modeladmin, request, queryset)</span>:</span></span><br><span class="line">    queryset.update(status=<span class="string">'p'</span>)</span><br></pre></td></tr></table></figure>
+<p>然后绑定到ModelAdmin的actions属性</p>
+<p><code>admin.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TriggerAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    empty_value_display = <span class="string">u'无规则'</span></span><br><span class="line">    list_display = (<span class="string">'__str__'</span>, <span class="string">'id'</span>)</span><br><span class="line">    search_fields = (<span class="string">'description'</span>,)</span><br><span class="line">    list_filter = (IpFilter, <span class="string">'t_type'</span>)</span><br><span class="line">    actions = (make_published,) <span class="comment">#指定自定义actions</span></span><br></pre></td></tr></table></figure>
+<p>action在程序启动后就会正常工作， 现在我有个项目需要根据一张表（role表）来动态扩展动作， 所以这种方法没有办法扩展。 总不能在role表加一个数据就要重启django把？ 显然不能这样做， 当然django有动态生成action的方法, 那就是<code>admin.ModelAdmin</code>的<code>get_actions()</code>方法</p>
+<p><strong>首先写个闭包</strong></p>
+<p>根据role生成<code>action function</code></p>
+<p><code>actions.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.translation <span class="keyword">import</span> ugettext <span class="keyword">as</span> _, ugettext_lazy</span><br><span class="line"><span class="keyword">from</span> controller.models <span class="keyword">import</span> SwitchRole</span><br><span class="line"><span class="keyword">from</span> controller.models <span class="keyword">import</span> ConvergeRole</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_with_role</span><span class="params">(role, switch=True)</span>:</span></span><br><span class="line">    <span class="string">"""闭包实现， 设置role, switch为通用变量,  返回一个action函数"""</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 根据role类型判断字段类型</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(role, SwitchRole):</span><br><span class="line">        field_name = <span class="string">"switch_role"</span></span><br><span class="line">    <span class="keyword">elif</span> isinstance(role, ConvergeRole):</span><br><span class="line">        field_name = <span class="string">"converge_role"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_selected</span><span class="params">(modeladmin, request, queryset)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        规则动作</span><br><span class="line">        """</span></span><br><span class="line">        <span class="comment"># 根据开关选项， 来判断字段value</span></span><br><span class="line">        kwargs = &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> switch:</span><br><span class="line">            field_value = role.pk</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            field_value = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        kwargs[field_name] = field_value</span><br><span class="line">        <span class="keyword">return</span> queryset.update(**kwargs)</span><br><span class="line"></span><br><span class="line">    set_selected.short_description = ugettext_lazy(<span class="string">u"设置规则为: %s"</span> % role)</span><br><span class="line">    set_selected.__name__ = <span class="string">"set_role_%s_%s"</span> % (field_name, role.pk)</span><br><span class="line">    <span class="keyword">return</span> set_selected</span><br></pre></td></tr></table></figure>
+<p><strong>注意:</strong> <code>set_selected.short_description</code>为后台管理界面actions下拉菜单显示的文本， <code>set_selected.__name__</code> 是函数的名称， 由于我们是多个，所以函数的名称一定要唯一.</p>
+<p><strong>下面重写get_actions()</strong></p>
+<p><code>admin.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TriggerAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    empty_value_display = <span class="string">u'无规则'</span></span><br><span class="line">    list_display = (<span class="string">'__str__'</span>, <span class="string">'id'</span>, <span class="string">'ip'</span>, <span class="string">'t_type'</span>,</span><br><span class="line">            <span class="string">'get_converge'</span>, <span class="string">'get_switch'</span>, <span class="string">'level'</span>)</span><br><span class="line">    search_fields = (<span class="string">'description'</span>,)</span><br><span class="line">    list_filter = (IpFilter, <span class="string">'t_type'</span>, <span class="string">'converge_role'</span>, <span class="string">'switch_role'</span>, <span class="string">'level'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_actions</span><span class="params">(self, request)</span>:</span></span><br><span class="line">        <span class="comment"># 设置Role动作</span></span><br><span class="line">        fns = [ _with_role(i) <span class="keyword">for</span> i <span class="keyword">in</span> SwitchRole.objects.all() ]</span><br><span class="line">        fns += [_with_role(i) <span class="keyword">for</span> i <span class="keyword">in</span> ConvergeRole.objects.all()]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 清空Role动作</span></span><br><span class="line">        <span class="keyword">if</span> SwitchRole.objects.all():</span><br><span class="line">            role = _with_role(SwitchRole.objects.all()[<span class="number">0</span>], switch=<span class="keyword">False</span>)</span><br><span class="line">            role.__name__ = <span class="string">'remove_switch_role'</span></span><br><span class="line">            role.short_description = ugettext_lazy(<span class="string">u"清空开关规则"</span>)</span><br><span class="line">            fns.append(role)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ConvergeRole.objects.all():</span><br><span class="line">            role = _with_role(ConvergeRole.objects.all()[<span class="number">0</span>], switch=<span class="keyword">False</span>)</span><br><span class="line">            role.__name__ = <span class="string">'remove_converge_role'</span></span><br><span class="line">            role.short_description = ugettext_lazy(<span class="string">u"清空聚合规则"</span>)</span><br><span class="line">            fns.append(role)</span><br><span class="line"></span><br><span class="line">        actions = [ self.get_action(fn) <span class="keyword">for</span> fn <span class="keyword">in</span> fns ]</span><br><span class="line">        actions = OrderedDict(</span><br><span class="line">            (name, (func, name, desc))</span><br><span class="line">            <span class="keyword">for</span> func, name, desc <span class="keyword">in</span> actions</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> actions</span><br></pre></td></tr></table></figure>
+<p>这样每次刷新页面<code>get_actions</code>都会执行一遍， 做到动态actions.</p>
+<p><img src="/uploads/images/intermediate-django-admin-dynamic-actions.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/03/intermediate-django-admin-dynamic-actions-md/" itemprop="url">
+                  intermediate-django-admin-dynamic-actions.md
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T16:08:48+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/03/intermediate-django-admin-dynamic-actions-md/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/03/intermediate-django-admin-dynamic-actions-md/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/03/intermediate-django-admin-dynamic-actions-md/" class="leancloud_visitors" data-flag-title="intermediate-django-admin-dynamic-actions.md">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/03/intermediate-django-single-input-text-filter/" itemprop="url">
                   Django 进阶学习 - 文本框过滤
                 </a>
@@ -1377,228 +1601,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/12/google-photos-for-mac/" itemprop="url">
-                  Google photos for MAC使用教程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-12T11:41:17+08:00" content="2016-04-12">
-              2016-04-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/12/google-photos-for-mac/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/google-photos-for-mac/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/12/google-photos-for-mac/" class="leancloud_visitors" data-flag-title="Google photos for MAC使用教程">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Google photos 是谷歌推出了一个独立的无限相片 / 视频存放服务。使用者可以免费存放无限量相片和视频至云端，唯其大小限于最大 16MP 和 1080p。而且客户端可以设置是否对图片进行压缩， 所以大的图片也不会占用google drive的空间。</p>
-<p>安卓手机上面使用shadowsocks 可以正常登陆和备份照片 ， 此处略。</p>
-<p>但是mac 上使用shadowsocks是不行的， 貌似有一些连接不支持socks协议。就在刚刚折腾了VPN死活出错， 最后放弃。 于是又折腾了hosts， 这个比较好弄。</p>
-<p>首先获取最新hosts文件， 向维护作者致敬</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/racaljk/hosts</span><br></pre></td></tr></table></figure>
-<p>然后追加到/etc/hosts文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 需要root权限, 第一步请输入提权密码。 </span></span><br><span class="line">sudo <span class="variable">$SHELL</span></span><br><span class="line">cat hosts/hosts &gt;&gt; /etc/hosts</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/15/dhxy-examination-command-line/" itemprop="url">
-                  大话西游答题器 command line
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-15T09:55:15+08:00" content="2016-01-15">
-              2016-01-15
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/15/dhxy-examination-command-line/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/15/dhxy-examination-command-line/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/01/15/dhxy-examination-command-line/" class="leancloud_visitors" data-flag-title="大话西游答题器 command line">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>科举，大理寺都适用。 唯独不支持的是殿试。</p>
-<h2 id="项目代吗">项目代吗</h2><p>需要依赖<a href="http://docs.python-requests.org/en/latest/" target="_blank" rel="external">requests</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
-<p>然后保存下列代码到一个python文件(如: <code>search.py</code>)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">File Name: search.py</span><br><span class="line">Author: JackeyGao</span><br><span class="line">mail: junqi.gao@shuyun.com</span><br><span class="line">Created Time: 三  1/13 11:12:32 2016</span><br><span class="line">'''</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> readline</span><br><span class="line"><span class="keyword">import</span> signal</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">readline.parse_and_bind(<span class="string">'tab: complete'</span>)</span><br><span class="line">readline.parse_and_bind(<span class="string">'set editing-mode vi'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_wrap_with_code</span><span class="params">(code)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">(text, bold=False)</span>:</span></span><br><span class="line">        c = code</span><br><span class="line">        <span class="keyword">if</span> bold:</span><br><span class="line">            c = <span class="string">"1;%s"</span> % c</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"\033[%sm%s\033[0m"</span> % (c, text)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">red = _wrap_with_code(<span class="string">'31'</span>)</span><br><span class="line">green = _wrap_with_code(<span class="string">'32'</span>)</span><br><span class="line">blue = _wrap_with_code(<span class="string">'34'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">categorys = (</span><br><span class="line">        <span class="string">''</span>,</span><br><span class="line">        <span class="string">'乡试'</span>,</span><br><span class="line">        <span class="string">'省试-地理'</span>,</span><br><span class="line">        <span class="string">'省试-文学'</span>,</span><br><span class="line">        <span class="string">'省试-常识'</span>,</span><br><span class="line">        <span class="string">'省试-饮食'</span>,</span><br><span class="line">        <span class="string">'省试-历史'</span>,</span><br><span class="line">        <span class="string">'大话常识'</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    category = sys.argv[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> category <span class="keyword">not</span> <span class="keyword">in</span> categorys:</span><br><span class="line">        <span class="keyword">raise</span> Exception()</span><br><span class="line"><span class="keyword">except</span> IndexError <span class="keyword">as</span> e:</span><br><span class="line">    category = <span class="string">''</span></span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    sys.stdout.write(red(<span class="string">"CategoryError:\n无效的科目'%s',支持:(%s, ''(所有))\n"</span> \</span><br><span class="line">            % (category, <span class="string">','</span>.join(categorys))))</span><br><span class="line">    exit()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request</span><span class="params">(collect, query)</span>:</span></span><br><span class="line">    url = <span class="string">"http://xy2-tiku.webapp.163.com/tiku/search"</span></span><br><span class="line">    params = &#123; <span class="string">"q"</span>: query &#125;</span><br><span class="line">    <span class="keyword">if</span> collect:</span><br><span class="line">        params[<span class="string">"c"</span>] = collect</span><br><span class="line"></span><br><span class="line">    headers = &#123;</span><br><span class="line">            <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span>,</span><br><span class="line">            <span class="string">"Accept-Language"</span>: <span class="string">"zh-CN,zh;q=0.8,en;q=0.6"</span>,</span><br><span class="line">            <span class="string">"Connection"</span>: <span class="string">"keep-alive"</span>,</span><br><span class="line">            <span class="string">"Referer"</span>: <span class="string">"http://dhxy.163.com/"</span></span><br><span class="line">            &#125;</span><br><span class="line">    response = requests.get(</span><br><span class="line">            url,</span><br><span class="line">            params=params,</span><br><span class="line">            headers=headers</span><br><span class="line">            )</span><br><span class="line">    <span class="keyword">return</span> response.json()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> q <span class="keyword">in</span> data[<span class="string">"data"</span>]:</span><br><span class="line">        sys.stdout.write(<span class="string">"- [%s] "</span> % q[<span class="string">"category"</span>] + blue(q[<span class="string">"question"</span>]) + <span class="string">'\n'</span>)</span><br><span class="line">        sys.stdout.write(<span class="string">"&gt; "</span> + green(<span class="string">','</span>.join(q[<span class="string">"answers"</span>])) + <span class="string">'\n'</span>)</span><br><span class="line">        sys.stdout.write(<span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">signal_handler</span><span class="params">(signal, frame)</span>:</span></span><br><span class="line">    sys.stdout.write(red(<span class="string">'\nYou pressed Ctrl+C! 答题终止.\n'</span>))</span><br><span class="line">    sys.exit(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">signal.signal(signal.SIGINT, signal_handler)</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    collect = category <span class="keyword">or</span> <span class="string">'所有'</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        keyword = raw_input(<span class="string">"[%s]输入关键字(终止Ctrl+C): "</span> % red(collect))</span><br><span class="line">        show(request(category, keyword))</span><br><span class="line">    <span class="keyword">except</span> EOFError:</span><br><span class="line">        print(red(<span class="string">"\n快捷键错误, 使用Ctrl+C 退出."</span>))</span><br></pre></td></tr></table></figure>
-<h2 id="使用方式">使用方式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ python search.py <span class="variable">$CATEGORY</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># CATEGORY 可以为空为空则为所有科目</span></span><br><span class="line"><span class="comment"># CATEGORY 支持(乡试,省试-地理,省试-文学,省试-常识,省试-饮食,省试-历史,大话常识, ''(所有))</span></span><br></pre></td></tr></table></figure>
-<p><img src="/uploads/images/QQ20160115-1.png" alt="使用截图"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1644,7 +1646,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

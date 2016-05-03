@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.4.5.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Concurrent,Python," />
+  <meta name="keywords" content="Django,Python," />
 
 
 
@@ -59,25 +59,29 @@
 
 
 
-<meta name="description" content="本篇主要讲案例, 两个使用Concurrent.futures实现的并发， 一个是多线程， 一个是多进程。
-多进程
-用在计算密集的确定Long Number是否为质数的例子
-12345678910111213141516171819202122232425262728import concurrent.futuresimport mathPRIMES = [    112272535095293,">
+<meta name="description" content="Django后台默认只有一个动作Delete selected xxxxs, 那么如果自定义动作该怎么办， 也很容易， 直接写个类似于这种的函数
+12def make_published(modeladmin, request, queryset):    queryset.update(status=&apos;p&apos;)
+然后绑定到ModelAdmin的actions属性
+admin.py
+123456cl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python 高级并发3">
-<meta property="og:url" content="http://omem.me/2015/09/30/python-concurrent-high-level-3/index.html">
+<meta property="og:title" content="Django 进阶学习 - 动态actions">
+<meta property="og:url" content="http://omem.me/2016/05/03/intermediate-django-admin-dynamic-actions/index.html">
 <meta property="og:site_name" content="文本不限, 诗歌除外">
-<meta property="og:description" content="本篇主要讲案例, 两个使用Concurrent.futures实现的并发， 一个是多线程， 一个是多进程。
-多进程
-用在计算密集的确定Long Number是否为质数的例子
-12345678910111213141516171819202122232425262728import concurrent.futuresimport mathPRIMES = [    112272535095293,">
-<meta property="og:updated_time" content="2015-11-27T03:00:00.000Z">
+<meta property="og:description" content="Django后台默认只有一个动作Delete selected xxxxs, 那么如果自定义动作该怎么办， 也很容易， 直接写个类似于这种的函数
+12def make_published(modeladmin, request, queryset):    queryset.update(status=&apos;p&apos;)
+然后绑定到ModelAdmin的actions属性
+admin.py
+123456cl">
+<meta property="og:image" content="http://omem.me/uploads/images/intermediate-django-admin-dynamic-actions.png">
+<meta property="og:updated_time" content="2016-05-03T08:12:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python 高级并发3">
-<meta name="twitter:description" content="本篇主要讲案例, 两个使用Concurrent.futures实现的并发， 一个是多线程， 一个是多进程。
-多进程
-用在计算密集的确定Long Number是否为质数的例子
-12345678910111213141516171819202122232425262728import concurrent.futuresimport mathPRIMES = [    112272535095293,">
+<meta name="twitter:title" content="Django 进阶学习 - 动态actions">
+<meta name="twitter:description" content="Django后台默认只有一个动作Delete selected xxxxs, 那么如果自定义动作该怎么办， 也很容易， 直接写个类似于这种的函数
+12def make_published(modeladmin, request, queryset):    queryset.update(status=&apos;p&apos;)
+然后绑定到ModelAdmin的actions属性
+admin.py
+123456cl">
 
 
 
@@ -95,7 +99,7 @@
   };
 </script>
 
-  <title> Python 高级并发3 | 文本不限, 诗歌除外 </title>
+  <title> Django 进阶学习 - 动态actions | 文本不限, 诗歌除外 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -221,7 +225,7 @@
             
             
               
-                Python 高级并发3
+                Django 进阶学习 - 动态actions
               
             
           </h1>
@@ -233,50 +237,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-30T11:22:40+08:00" content="2015-09-30">
-              2015-09-30
+            <time itemprop="dateCreated" datetime="2016-05-03T16:09:06+08:00" content="2016-05-03">
+              2016-05-03
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python/Python高级并发/" itemprop="url" rel="index">
-                    <span itemprop="name">Python高级并发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/30/python-concurrent-high-level-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-concurrent-high-level-3/" itemprop="commentsCount"></span>
+                <a href="/2016/05/03/intermediate-django-admin-dynamic-actions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/03/intermediate-django-admin-dynamic-actions/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -286,7 +259,7 @@
 
           
           
-             <span id="/2015/09/30/python-concurrent-high-level-3/" class="leancloud_visitors" data-flag-title="Python 高级并发3">
+             <span id="/2016/05/03/intermediate-django-admin-dynamic-actions/" class="leancloud_visitors" data-flag-title="Django 进阶学习 - 动态actions">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -307,27 +280,22 @@
       
 
       
-        <p>本篇主要讲案例, 两个使用Concurrent.futures实现的并发， 一个是多线程， 一个是多进程。</p>
-<p><strong>多进程</strong></p>
-<p>用在计算密集的确定Long Number是否为<code>质数</code>的例子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">PRIMES = [</span><br><span class="line">    <span class="number">112272535095293</span>,</span><br><span class="line">    <span class="number">112582705942171</span>,</span><br><span class="line">    <span class="number">112272535095293</span>,</span><br><span class="line">    <span class="number">115280095190773</span>,</span><br><span class="line">    <span class="number">115797848077099</span>,</span><br><span class="line">    <span class="number">1099726899285419</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_prime</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    sqrt_n = int(math.floor(math.sqrt(n)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>, sqrt_n + <span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">        <span class="keyword">if</span> n % i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> concurrent.futures.ProcessPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">        <span class="keyword">for</span> number, prime <span class="keyword">in</span> zip(PRIMES, executor.map(is_prime, PRIMES)):</span><br><span class="line">            print(<span class="string">'%d is prime: %s'</span> % (number, prime))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<p><strong>多线程</strong></p>
-<p>用在多线程访问HTTP链接， I/O密集的时候</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">URLS = [<span class="string">'http://jackeygao.com/'</span>,</span><br><span class="line">        <span class="string">'http://pythoner.party/'</span>,</span><br><span class="line">        <span class="string">'http://www.baidu.com/'</span>,</span><br><span class="line">        <span class="string">'http://12306.cn/'</span>,</span><br><span class="line">        <span class="string">'http://china.com/'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Retrieve a single page and report the url and contents</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_url</span><span class="params">(url, timeout)</span>:</span></span><br><span class="line">    res = requests.get(url, timeout=timeout)</span><br><span class="line">    <span class="keyword">return</span> res.text</span><br><span class="line"></span><br><span class="line"><span class="comment"># We can use a with statement to ensure threads are cleaned up promptly</span></span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor(max_workers=<span class="number">5</span>) <span class="keyword">as</span> executor:</span><br><span class="line">    <span class="comment"># Start the load operations and mark each future with its URL</span></span><br><span class="line">    future_to_url = &#123;executor.submit(load_url, url, <span class="number">60</span>): url <span class="keyword">for</span> url <span class="keyword">in</span> URLS&#125;</span><br><span class="line">    <span class="keyword">for</span> future <span class="keyword">in</span> concurrent.futures.as_completed(future_to_url):</span><br><span class="line">        url = future_to_url[future]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            data = future.result()</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> exc:</span><br><span class="line">            print(<span class="string">'%r generated an exception: %s'</span> % (url, exc))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'%r page is %d bytes'</span> % (url, len(data)))</span><br></pre></td></tr></table></figure>
-<p>以上内容修改自<a href="https://docs.python.org/3/library/concurrent.futures.html" target="_blank" rel="external">docs.python.org</a></p>
-<p><code>ThreadPoolExecutor</code> 和 <code>ProcessPoolExecutor</code> 都是<code>concurrent.futures.Executor</code>的子类。 那么他们都有<code>submit</code>、<code>map</code>、<code>shutdown</code>方法</p>
-<p><strong>submit(fn, *args, </strong>kwargs)**</p>
-<p>异步执行函数</p>
-<p><strong>参数:</strong></p>
-<p><strong>fn</strong>      为需要异步执行的函数</p>
-<p><strong>args</strong>    kwargs  函数的参数</p>
-<p><strong>map(func, *iterables, timeout=None)¶</strong></p>
-<p>此map函数和python自带的map函数功能类似，只不过concurrent模块的map函数从迭代器获得参数后异步执行。并且，每一个异步操作，能用timeout参数来设置超时时间，timeout的值可以是int或float型，如果操作timeout的话，会raisesTimeoutError。如果timeout参数不指定的话，则不设置超时间。</p>
-<p><strong>func</strong> 为需要异步执行的函数</p>
-<p><strong>*iterables</strong>  可以是一个能迭代的对象，例如列表等。每一次func执行，会从iterables中取参数。</p>
-<p><strong>timeout</strong> 每个异步操作的超时时间</p>
-<p><strong>shutdown(wait=True)</strong></p>
-<p>此函数用于释放异步执行操作后的系统资源。</p>
+        <p>Django后台默认只有一个动作<code>Delete selected xxxxs</code>, 那么如果自定义动作该怎么办， 也很容易， 直接写个类似于这种的函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_published</span><span class="params">(modeladmin, request, queryset)</span>:</span></span><br><span class="line">    queryset.update(status=<span class="string">'p'</span>)</span><br></pre></td></tr></table></figure>
+<p>然后绑定到ModelAdmin的actions属性</p>
+<p><code>admin.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TriggerAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    empty_value_display = <span class="string">u'无规则'</span></span><br><span class="line">    list_display = (<span class="string">'__str__'</span>, <span class="string">'id'</span>)</span><br><span class="line">    search_fields = (<span class="string">'description'</span>,)</span><br><span class="line">    list_filter = (IpFilter, <span class="string">'t_type'</span>)</span><br><span class="line">    actions = (make_published,) <span class="comment">#指定自定义actions</span></span><br></pre></td></tr></table></figure>
+<p>action在程序启动后就会正常工作， 现在我有个项目需要根据一张表（role表）来动态扩展动作， 所以这种方法没有办法扩展。 总不能在role表加一个数据就要重启django把？ 显然不能这样做， 当然django有动态生成action的方法, 那就是<code>admin.ModelAdmin</code>的<code>get_actions()</code>方法</p>
+<p><strong>首先写个闭包</strong></p>
+<p>根据role生成<code>action function</code></p>
+<p><code>actions.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.translation <span class="keyword">import</span> ugettext <span class="keyword">as</span> _, ugettext_lazy</span><br><span class="line"><span class="keyword">from</span> controller.models <span class="keyword">import</span> SwitchRole</span><br><span class="line"><span class="keyword">from</span> controller.models <span class="keyword">import</span> ConvergeRole</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_with_role</span><span class="params">(role, switch=True)</span>:</span></span><br><span class="line">    <span class="string">"""闭包实现， 设置role, switch为通用变量,  返回一个action函数"""</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 根据role类型判断字段类型</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(role, SwitchRole):</span><br><span class="line">        field_name = <span class="string">"switch_role"</span></span><br><span class="line">    <span class="keyword">elif</span> isinstance(role, ConvergeRole):</span><br><span class="line">        field_name = <span class="string">"converge_role"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_selected</span><span class="params">(modeladmin, request, queryset)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        规则动作</span><br><span class="line">        """</span></span><br><span class="line">        <span class="comment"># 根据开关选项， 来判断字段value</span></span><br><span class="line">        kwargs = &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> switch:</span><br><span class="line">            field_value = role.pk</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            field_value = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        kwargs[field_name] = field_value</span><br><span class="line">        <span class="keyword">return</span> queryset.update(**kwargs)</span><br><span class="line"></span><br><span class="line">    set_selected.short_description = ugettext_lazy(<span class="string">u"设置规则为: %s"</span> % role)</span><br><span class="line">    set_selected.__name__ = <span class="string">"set_role_%s_%s"</span> % (field_name, role.pk)</span><br><span class="line">    <span class="keyword">return</span> set_selected</span><br></pre></td></tr></table></figure>
+<p><strong>注意:</strong> <code>set_selected.short_description</code>为后台管理界面actions下拉菜单显示的文本， <code>set_selected.__name__</code> 是函数的名称， 由于我们是多个，所以函数的名称一定要唯一.</p>
+<p><strong>下面重写get_actions()</strong></p>
+<p><code>admin.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TriggerAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    empty_value_display = <span class="string">u'无规则'</span></span><br><span class="line">    list_display = (<span class="string">'__str__'</span>, <span class="string">'id'</span>, <span class="string">'ip'</span>, <span class="string">'t_type'</span>,</span><br><span class="line">            <span class="string">'get_converge'</span>, <span class="string">'get_switch'</span>, <span class="string">'level'</span>)</span><br><span class="line">    search_fields = (<span class="string">'description'</span>,)</span><br><span class="line">    list_filter = (IpFilter, <span class="string">'t_type'</span>, <span class="string">'converge_role'</span>, <span class="string">'switch_role'</span>, <span class="string">'level'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_actions</span><span class="params">(self, request)</span>:</span></span><br><span class="line">        <span class="comment"># 设置Role动作</span></span><br><span class="line">        fns = [ _with_role(i) <span class="keyword">for</span> i <span class="keyword">in</span> SwitchRole.objects.all() ]</span><br><span class="line">        fns += [_with_role(i) <span class="keyword">for</span> i <span class="keyword">in</span> ConvergeRole.objects.all()]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 清空Role动作</span></span><br><span class="line">        <span class="keyword">if</span> SwitchRole.objects.all():</span><br><span class="line">            role = _with_role(SwitchRole.objects.all()[<span class="number">0</span>], switch=<span class="keyword">False</span>)</span><br><span class="line">            role.__name__ = <span class="string">'remove_switch_role'</span></span><br><span class="line">            role.short_description = ugettext_lazy(<span class="string">u"清空开关规则"</span>)</span><br><span class="line">            fns.append(role)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ConvergeRole.objects.all():</span><br><span class="line">            role = _with_role(ConvergeRole.objects.all()[<span class="number">0</span>], switch=<span class="keyword">False</span>)</span><br><span class="line">            role.__name__ = <span class="string">'remove_converge_role'</span></span><br><span class="line">            role.short_description = ugettext_lazy(<span class="string">u"清空聚合规则"</span>)</span><br><span class="line">            fns.append(role)</span><br><span class="line"></span><br><span class="line">        actions = [ self.get_action(fn) <span class="keyword">for</span> fn <span class="keyword">in</span> fns ]</span><br><span class="line">        actions = OrderedDict(</span><br><span class="line">            (name, (func, name, desc))</span><br><span class="line">            <span class="keyword">for</span> func, name, desc <span class="keyword">in</span> actions</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> actions</span><br></pre></td></tr></table></figure>
+<p>这样每次刷新页面<code>get_actions</code>都会执行一遍， 做到动态actions.</p>
+<p><img src="/uploads/images/intermediate-django-admin-dynamic-actions.png" alt=""></p>
 
       
     </div>
@@ -342,7 +310,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Concurrent/" rel="tag">#Concurrent</a>
+            <a href="/tags/Django/" rel="tag">#Django</a>
           
             <a href="/tags/Python/" rel="tag">#Python</a>
           
@@ -353,17 +321,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/30/python-concurrent-high-level-2/" rel="next" title="Python 高级并发2">
-                <i class="fa fa-chevron-left"></i> Python 高级并发2
+              <a href="/2016/05/03/intermediate-django-admin-dynamic-actions-md/" rel="next" title="intermediate-django-admin-dynamic-actions.md">
+                <i class="fa fa-chevron-left"></i> intermediate-django-admin-dynamic-actions.md
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/09/30/black-night-cat/" rel="prev" title="黑夜的猫">
-                黑夜的猫 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -389,8 +353,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/09/30/python-concurrent-high-level-3/"
-           data-title="Python 高级并发3" data-url="http://omem.me/2015/09/30/python-concurrent-high-level-3/">
+      <div class="ds-thread" data-thread-key="2016/05/03/intermediate-django-admin-dynamic-actions/"
+           data-title="Django 进阶学习 - 动态actions" data-url="http://omem.me/2016/05/03/intermediate-django-admin-dynamic-actions/">
       </div>
     
   </div>
