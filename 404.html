@@ -61,16 +61,58 @@
 
 
 
-<meta name="description" content="&amp;lt;!DOCTYPE HTML&amp;gt;">
+<meta name="description" content="&amp;lt;!DOCTYPE HTML&amp;gt;
+
+
+  
+  
+  
+  
+
+
+    
+        function trim(s){ 
+              return ( s || &apos;&apos; ).replace( /^\s+|\s+$/g, &apos;&apos; ); 
+        };
+        console.log(&quot;this is 404 page.&quot;);
+        var directio">
 <meta property="og:type" content="website">
 <meta property="og:title" content="文本不限, 诗歌除外">
 <meta property="og:url" content="http://omem.me/404.html">
 <meta property="og:site_name" content="文本不限, 诗歌除外">
-<meta property="og:description" content="&amp;lt;!DOCTYPE HTML&amp;gt;">
-<meta property="og:updated_time" content="2016-05-17T01:54:49.000Z">
+<meta property="og:description" content="&amp;lt;!DOCTYPE HTML&amp;gt;
+
+
+  
+  
+  
+  
+
+
+    
+        function trim(s){ 
+              return ( s || &apos;&apos; ).replace( /^\s+|\s+$/g, &apos;&apos; ); 
+        };
+        console.log(&quot;this is 404 page.&quot;);
+        var directio">
+<meta property="og:updated_time" content="2016-05-17T02:16:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文本不限, 诗歌除外">
-<meta name="twitter:description" content="&amp;lt;!DOCTYPE HTML&amp;gt;">
+<meta name="twitter:description" content="&amp;lt;!DOCTYPE HTML&amp;gt;
+
+
+  
+  
+  
+  
+
+
+    
+        function trim(s){ 
+              return ( s || &apos;&apos; ).replace( /^\s+|\s+$/g, &apos;&apos; ); 
+        };
+        console.log(&quot;this is 404 page.&quot;);
+        var directio">
 
 
 
@@ -211,10 +253,23 @@
   <meta name="robots" content="index,follow">
 </head>
 <body>
+    <script>
+        function trim(s){ 
+              return ( s || '' ).replace( /^\s+|\s+$/g, '' ); 
+        };
+        console.log("this is 404 page.");
+        var directions = {
+            "cmdstats": "https://github.com/jackeyGao/cmdstats"
+        };
+        var pathname = trim(document.location.pathname);
 
-<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homepageurl="your site url " homepagename="回到我的主页">
-</script>
-
+        if (pathname in directions) {
+            var turnTo = directions[pathname];
+            window.location.href=turnTo;  
+        } else { 
+            console.log("404")
+        }
+    </script>
 </body>
 </html>
 
