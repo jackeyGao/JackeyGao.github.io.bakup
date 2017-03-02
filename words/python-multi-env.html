@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Centos 6.x 共存安装Python 2.7 or 3.x</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>Centos 6.x 共存安装Python 2.7 or 3.x</h1>
+                <h4>Posted April 04, 2016</h4>
+
+                <p>由于yum命令依赖系统的python2.6， 所以如果直接覆盖的话，会导致yum不能工作。 所以自带的python 2.6绝对不能动。 不过可以通过自定义安装来共存两套或多套python环境。 再配合virtualenv 隔离项目环境.</p>
+
+<p>这里演示安装Python2.7 :</p>
+
+<p><strong>首先安装系统依赖包</strong></p>
+<div class="highlight"><pre><span></span>yum install zlib-devel
+yum install bzip2-devel
+yum install openssl-devel
+yum install ncurses-devel
+yum install sqlite-devel
+</pre></div>
+
+<p><strong>下载Python2.7 源码编译安装</strong></p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> /usr/local/src<span class="p">;</span>
+wget --no-check-certificate https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tar.xz
+tar xf Python-2.7.11.tar.xz
+<span class="nb">cd</span> Python-2.7.11
+./configure --prefix<span class="o">=</span>/usr/local/python27
+make <span class="o">&amp;&amp;</span> make install
+</pre></div>
+
+<p><strong>安装pip</strong></p>
+
+<p>使用python27安装pip</p>
+<div class="highlight"><pre><span></span>wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
+/usr/local/python27/bin/python ez_setup.py
+/usr/local/python27/bin/easy_install pip
+</pre></div>
+
+<p>到这里python2.7.11 和 pip套件都安装了可以使用了。 下一步就是把<code>/usr/local/python27/bin/</code> 加入<code>$PATH</code>变量。</p>
+
+<h3>安装virtualenvwrapper</h3>
+
+<p>这一步实在自带的python2.6 上执行的， 所以如果用python 2.7 需要再创建的虚拟环境的时候指定</p>
+<div class="highlight"><pre><span></span>pip install virtualenvwrapper
+</pre></div>
+
+<p>然后再<code>~/.bashrc</code>文件追加以下操作</p>
+
+<p><code>~/.bashrc</code> or <code>./zshrc</code>
+<code>bash
+source $(which virtualenvwrapper.sh)
+</code></p>
+
+<p>然后<code>source ~/.bashrc</code> 这样就可以使用<code>workon</code>、 <code>mkvirtualenv</code>、 <code>rmvirtualenv</code>命令.具体的指南参考 <a href="https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html">virtualenvwrapper</a></p>
+
+<p>创建基于Python 2.7 的虚拟环境</p>
+<div class="highlight"><pre><span></span>mkvirtualenv ansible -p /usr/local/python2.7.11/bin/python
+</pre></div>
+
+<h3>错误处理</h3>
+
+<p>第一个错误,  <code>source $(which virtualenvwrapper.sh)</code>出现<code>logging no NullHandler</code></p>
+<div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib64/python2.6/runpy.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">122</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_run_module_as_main</span>
+    <span class="s2">&quot;__main__&quot;</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">pkg_name</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib64/python2.6/runpy.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">34</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_run_code</span>
+    <span class="k">exec</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">run_globals</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib/python2.6/site-packages/virtualenvwrapper/hook_loader.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">16</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">from</span> <span class="nn">stevedore</span> <span class="kn">import</span> <span class="n">ExtensionManager</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib/python2.6/site-packages/stevedore/__init__.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">23</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">LOG</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">NullHandler</span><span class="p">())</span>
+<span class="ne">AttributeError</span><span class="p">:</span> <span class="s1">&#39;module&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;NullHandler&#39;</span>
+<span class="n">virtualenvwrapper</span><span class="o">.</span><span class="n">sh</span><span class="p">:</span> <span class="n">There</span> <span class="n">was</span> <span class="n">a</span> <span class="n">problem</span> <span class="n">running</span> <span class="n">the</span> <span class="n">initialization</span> <span class="n">hooks</span><span class="o">.</span>
+
+<span class="n">If</span> <span class="n">Python</span> <span class="n">could</span> <span class="ow">not</span> <span class="kn">import</span> <span class="nn">the</span> <span class="nn">module</span> <span class="nn">virtualenvwrapper.hook_loader</span><span class="o">,</span>
+<span class="n">check</span> <span class="n">that</span> <span class="n">virtualenvwrapper</span> <span class="n">has</span> <span class="n">been</span> <span class="n">installed</span> <span class="k">for</span>
+<span class="n">VIRTUALENVWRAPPER_PYTHON</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="ow">and</span> <span class="n">that</span> <span class="n">PATH</span> <span class="ow">is</span>
+</pre></div>
+
+<p>处理方法, 升级stevedore</p>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">stevedore</span>
+</pre></div>
+
+<p><code>python 2.6.6</code> 可以升级到1.3.0 就可以了.</p>
+
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+</html>

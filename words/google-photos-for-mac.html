@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Google photos for MAC使用教程</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>Google photos for MAC使用教程</h1>
+                <h4>Posted April 04, 2016</h4>
+
+                <p>Google photos 是谷歌推出了一个独立的无限相片 / 视频存放服务。使用者可以免费存放无限量相片和视频至云端，唯其大小限于最大 16MP 和 1080p。而且客户端可以设置是否对图片进行压缩， 所以大的图片也不会占用google drive的空间。</p>
+
+<p>安卓手机上面使用shadowsocks 可以正常登陆和备份照片 ， 此处略。</p>
+
+<p>但是mac 上使用shadowsocks是不行的， 貌似有一些连接不支持socks协议。就在刚刚折腾了VPN死活出错， 最后放弃。 于是又折腾了hosts， 这个比较好弄。</p>
+
+<p>首先获取最新hosts文件， 向维护作者致敬</p>
+<div class="highlight"><pre><span></span>git clone https://github.com/racaljk/hosts
+</pre></div>
+
+<p>然后追加到/etc/hosts文件</p>
+<div class="highlight"><pre><span></span><span class="c1"># 需要root权限, 第一步请输入提权密码。 </span>
+sudo <span class="nv">$SHELL</span>
+cat hosts/hosts &gt;&gt; /etc/hosts
+<span class="nb">exit</span>
+</pre></div>
+
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Karabiner profile 命令行切换方式</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>Karabiner profile 命令行切换方式</h1>
+                <h4>Posted April 04, 2016</h4>
+
+                <p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
+
+<h2>帮助文档</h2>
+<div class="highlight"><pre><span></span>Usage:
+  Profile operations:
+    $ karabiner list
+    $ karabiner <span class="k">select</span> INDEX <span class="o">(</span>INDEX starts at 0<span class="o">)</span>
+    $ karabiner select_by_name NAME
+    $ karabiner selected
+    $ karabiner append NAME
+    $ karabiner rename INDEX NEWNAME <span class="o">(</span>INDEX starts at 0<span class="o">)</span>
+    $ karabiner delete INDEX <span class="o">(</span>INDEX starts at 0<span class="o">)</span>
+  Settings:
+    $ karabiner <span class="nb">set</span> IDENTIFIER VALUE
+    $ karabiner <span class="nb">enable</span> IDENTIFIER <span class="o">(</span><span class="nb">alias</span> of <span class="nb">set</span> IDENTIFIER 1<span class="o">)</span>
+    $ karabiner disable IDENTIFIER <span class="o">(</span><span class="nb">alias</span> of <span class="nb">set</span> IDENTIFIER 0<span class="o">)</span>
+    $ karabiner toggle IDENTIFIER
+    $ karabiner changed
+  Others:
+    $ karabiner <span class="nb">export</span>
+    $ karabiner reloadxml
+    $ karabiner relaunch
+    $ karabiner be_careful_to_use__clear_all_values_by_name PROFILE_NAME
+
+Examples:
+  $ karabiner list
+  $ karabiner <span class="k">select</span> 1
+  $ karabiner select_by_name NewItem
+  $ karabiner selected
+  $ karabiner append <span class="s2">&quot;For external keyboard&quot;</span>
+  $ karabiner rename <span class="m">1</span> <span class="s2">&quot;Empty Setting&quot;</span>
+  $ karabiner delete 1
+
+  $ karabiner <span class="nb">set</span> repeat.wait 30
+  $ karabiner <span class="nb">enable</span> remap.shiftL2commandL
+  $ karabiner disable remap.shiftL2commandL
+  $ karabiner toggle remap.shiftL2commandL
+  $ karabiner changed
+
+  $ karabiner <span class="nb">export</span>
+  $ karabiner reloadxml
+  $ karabiner relaunch
+  $ karabiner be_careful_to_use__clear_all_values_by_name NewItem
+</pre></div>
+
+<h3>简单介绍</h3>
+
+<p><strong>查看已定义的profile</strong></p>
+<div class="highlight"><pre><span></span>$ karabiner list
+0: Default
+1: Poker2
+</pre></div>
+
+<p><strong>切换到指定profile 通过index</strong></p>
+<div class="highlight"><pre><span></span>$ karabiner <span class="k">select</span> 1
+</pre></div>
+
+<p><strong>切换到指定profile 通过item name</strong></p>
+<div class="highlight"><pre><span></span>$ karabiner select_by_name <span class="nv">$NAME</span>
+</pre></div>
+
+<p><strong>当前选择的profile</strong></p>
+<div class="highlight"><pre><span></span>$ karabiner selected
+1
+</pre></div>
+
+<p><strong>当前选择的profile name</strong></p>
+<div class="highlight"><pre><span></span>$ karabiner list <span class="p">|</span> grep <span class="s2">&quot;^</span><span class="k">$(</span>karabiner selected<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+
+<p>同时此命令行工具还支持 <code>export</code>, <code>reloadxml</code>, <code>relaunch</code>, <code>删除profile</code>, <code>rename profile</code>, 等..</p>
+
+<h3>通过karabiner 设置热键来切换</h3>
+
+<p>以下为定义, 写入到private.xml的root标签中. 之后reload xml. 可以通过preferences界面也可以通过命令行<code>karabiner reloadxml</code></p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;vkopenurldef&gt;</span>
+    <span class="nt">&lt;name&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;url</span> <span class="na">type=</span><span class="s">&quot;shell&quot;</span><span class="nt">&gt;</span>
+        <span class="cp">&lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Poker2    ]]&gt;</span>
+    <span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;/vkopenurldef&gt;</span>
+<span class="nt">&lt;item&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Switch Profile to NewItem with F4<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;identifier&gt;</span>private.switch1<span class="nt">&lt;/identifier&gt;</span>
+    <span class="nt">&lt;autogen&gt;</span>
+        __KeyToKey__
+        KeyCode::SHIFT_L,
+        KeyCode::SHIFT_L,
+        KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem
+    <span class="nt">&lt;/autogen&gt;</span>
+<span class="nt">&lt;/item&gt;</span>
+</pre></div>
+
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+</html>

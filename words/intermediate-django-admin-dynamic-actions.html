@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Django 进阶学习 - 动态actions</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>Django 进阶学习 - 动态actions</h1>
+                <h4>Posted May 05, 2016</h4>
+
+                <p>Django后台默认只有一个动作<code>Delete selected xxxxs</code>, 那么如果自定义动作该怎么办， 也很容易， 直接写个类似于这种的函数</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_published</span><span class="p">(</span><span class="n">modeladmin</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
+    <span class="n">queryset</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+</pre></div>
+
+<p>然后绑定到ModelAdmin的actions属性</p>
+
+<p><code>admin.py</code></p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">empty_value_display</span> <span class="o">=</span> <span class="s1">u&#39;无规则&#39;</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,)</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">IpFilter</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">)</span>
+    <span class="n">actions</span> <span class="o">=</span> <span class="p">(</span><span class="n">make_published</span><span class="p">,)</span> <span class="c1">#指定自定义actions</span>
+</pre></div>
+
+<p>action在程序启动后就会正常工作， 现在我有个项目需要根据一张表（role表）来动态扩展动作， 所以这种方法没有办法扩展。 总不能在role表加一个数据就要重启django把？ 显然不能这样做， 当然django有动态生成action的方法, 那就是<code>admin.ModelAdmin</code>的<code>get_actions()</code>方法</p>
+
+<p><strong>首先写个闭包</strong></p>
+
+<p>根据role生成<code>action function</code></p>
+
+<p><code>actions.py</code></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext</span> <span class="k">as</span> <span class="n">_</span><span class="p">,</span> <span class="n">ugettext_lazy</span>
+<span class="kn">from</span> <span class="nn">controller.models</span> <span class="kn">import</span> <span class="n">SwitchRole</span>
+<span class="kn">from</span> <span class="nn">controller.models</span> <span class="kn">import</span> <span class="n">ConvergeRole</span>
+
+<span class="k">def</span> <span class="nf">_with_role</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">switch</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;闭包实现， 设置role, switch为通用变量,  返回一个action函数&quot;&quot;&quot;</span>
+
+    <span class="c1"># 根据role类型判断字段类型</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">SwitchRole</span><span class="p">):</span>
+        <span class="n">field_name</span> <span class="o">=</span> <span class="s2">&quot;switch_role&quot;</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">ConvergeRole</span><span class="p">):</span>
+        <span class="n">field_name</span> <span class="o">=</span> <span class="s2">&quot;converge_role&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">set_selected</span><span class="p">(</span><span class="n">modeladmin</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        规则动作</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 根据开关选项， 来判断字段value</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">switch</span><span class="p">:</span>
+            <span class="n">field_value</span> <span class="o">=</span> <span class="n">role</span><span class="o">.</span><span class="n">pk</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">field_value</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="n">kwargs</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">field_value</span>
+        <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">set_selected</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="s2">u&quot;设置规则为: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">role</span><span class="p">)</span>
+    <span class="n">set_selected</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="s2">&quot;set_role_</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="n">role</span><span class="o">.</span><span class="n">pk</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">set_selected</span>
+</pre></div>
+
+<p><strong>注意:</strong> <code>set_selected.short_description</code>为后台管理界面actions下拉菜单显示的文本， <code>set_selected.__name__</code> 是函数的名称， 由于我们是多个，所以函数的名称一定要唯一.</p>
+
+<p><strong>下面重写get_actions()</strong></p>
+
+<p><code>admin.py</code></p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">empty_value_display</span> <span class="o">=</span> <span class="s1">u&#39;无规则&#39;</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;get_converge&#39;</span><span class="p">,</span> <span class="s1">&#39;get_switch&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,)</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">IpFilter</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">,</span> <span class="s1">&#39;converge_role&#39;</span><span class="p">,</span> <span class="s1">&#39;switch_role&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="c1"># 设置Role动作</span>
+        <span class="n">fns</span> <span class="o">=</span> <span class="p">[</span> <span class="n">_with_role</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">SwitchRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="p">]</span>
+        <span class="n">fns</span> <span class="o">+=</span> <span class="p">[</span><span class="n">_with_role</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ConvergeRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
+
+        <span class="c1"># 清空Role动作</span>
+        <span class="k">if</span> <span class="n">SwitchRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">role</span> <span class="o">=</span> <span class="n">_with_role</span><span class="p">(</span><span class="n">SwitchRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">switch</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+            <span class="n">role</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="s1">&#39;remove_switch_role&#39;</span>
+            <span class="n">role</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="s2">u&quot;清空开关规则&quot;</span><span class="p">)</span>
+            <span class="n">fns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ConvergeRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">role</span> <span class="o">=</span> <span class="n">_with_role</span><span class="p">(</span><span class="n">ConvergeRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">switch</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+            <span class="n">role</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="s1">&#39;remove_converge_role&#39;</span>
+            <span class="n">role</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="s2">u&quot;清空聚合规则&quot;</span><span class="p">)</span>
+            <span class="n">fns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
+
+        <span class="n">actions</span> <span class="o">=</span> <span class="p">[</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_action</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fns</span> <span class="p">]</span>
+        <span class="n">actions</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">desc</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">func</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">desc</span> <span class="ow">in</span> <span class="n">actions</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">actions</span>
+</pre></div>
+
+<p>这样每次刷新页面<code>get_actions</code>都会执行一遍， 做到动态actions.</p>
+
+<p><p class="hassubimage"><img src="/uploads/images/intermediate-django-admin-dynamic-actions.png" alt=""截屏图片""></p>
+</p>
+
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+</html>

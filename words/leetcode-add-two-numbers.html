@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Leetcode 算法 － 2. Add Two Numbers</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>Leetcode 算法 － 2. Add Two Numbers</h1>
+                <h4>Posted August 08, 2016</h4>
+
+                <blockquote class="blockquote-normal">
+                <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/add-two-numbers/">2. Add Two Numbers</a></p><br/><p><strong>问题描述</strong>: You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p><br/><p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</p><br/><p>Output: 7 -&gt; 0 -&gt; 8</p><br/><p><strong>使用语言</strong>: Python</p></blockquote>
+<p>需要注意的是: 这里使用的ListNode不是Python内置的list对象, 而是传统(计算机科学)意义上的列表, 通常叫做<strong>Linked list</strong>(链表), 通常由一系列节点实现, 其每个节点中都持有一个指向下一个节点的引用. 这里就是next属性. 链表分为单向链表和双向链表. 双向链表持有一个指向前一节点的引用.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type l1: ListNode</span>
+<span class="sd">        :type l2: ListNode</span>
+<span class="sd">        :rtype: ListNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">results</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">x1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">x2</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+                <span class="k">break</span>
+        
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">flag</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">val</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        
+            <span class="n">flag</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">c</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span>
+        
+            <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+                <span class="n">flag</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">c</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+        
+            <span class="n">p</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">flag</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">flag</span>
+        
+            <span class="n">x1</span> <span class="o">=</span> <span class="n">x1</span><span class="o">.</span><span class="n">next</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">ListNode</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+            <span class="n">x2</span> <span class="o">=</span> <span class="n">x2</span><span class="o">.</span><span class="n">next</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">ListNode</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span>
+        
+        <span class="k">return</span> <span class="n">results</span><span class="o">.</span><span class="n">next</span>
+</pre></div>
+
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+</html>

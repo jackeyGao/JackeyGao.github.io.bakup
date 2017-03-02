@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Leetcode 算法 －3. Longest Substring Without Repeating Characters</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>Leetcode 算法 －3. Longest Substring Without Repeating Characters</h1>
+                <h4>Posted August 08, 2016</h4>
+
+                <blockquote class="blockquote-normal">
+                <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">3. Longest Substring Without Repeating Characters</a></p><br/><p><strong>问题描述</strong>: Given a string, find the length of the longest substring without repeating characters.</p><br/><p><strong>Examples:</strong></p><br/><p>Given <q>abcabcbb</q>, the answer is <q>abc</q>, which the length is 3.</p><br/><p>Given <q>bbbbb</q>, the answer is <q>b</q>, with the length of 1.</p><br/><p>Given <q>pwwkew</q>, the answer is <q>wke</q>, with the length of 3. Note that the answer must be a substring, <q>pwke</q> is a subsequence and not a substring.</p><br/><p><strong>使用语言</strong>: Python</p></blockquote>
+<p>此题有点饶, 需要一组hash表记录字符的索引. </p>
+
+<p>我们以<code>ababcbb</code>为例说明, 这里hash表的值-1是初始值, 这样在方便做+1操作. <code>index</code> 作为开始索引值, 起初index为0， 这是理所当然的。当遍历到第二个<code>a</code> <code>index</code>就成了2了, 同时把ab重置为初始值.   max<em>len为一个刷新最高值的变量. 通过当前索引 - index + 1计算(当再次迭代到c的时候, 此时i为4, index为2, 则: <code>4-2+1=3</code> ). 每次比上一次max</em>len大的时候更新此值. 保证max_len是最大的.</p>
+
+<p>重置hash表初始值的逻辑是: </p>
+
+<ul>
+<li>当此字符在hash表中的值不是-1(即不是初始值)</li>
+<li>此字符之前的所有字符hash表的值都会重置(比如上面遍历到第二个a是 0-2之间的ab都重置了 )</li>
+<li>在重置之前的字符索引值的时候把index增加到当前索引位置数.</li>
+</ul>
+
+<p>刷新max_len逻辑</p>
+
+<ul>
+<li>当此字符在hash表中的值是-1</li>
+<li>计算公式: <strong>当前索引 - index + 1</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type s: str</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">max_len</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+            <span class="c1"># 重置hash表初始值的逻辑</span>
+            <span class="c1"># 当此字符在hash表中的值不是-1</span>
+            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">while</span> <span class="n">index</span> <span class="o">&lt;=</span> <span class="n">d</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]:</span>
+                    <span class="c1">#此字符之前的所有字符hash表的值都会重置 </span>
+                    <span class="n">d</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+                    <span class="c1">#在重置之前的字符索引值的时候把index增加到当前索引位置数.</span>
+                    <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="c1"># 刷新max逻辑</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">-</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="n">max_len</span><span class="p">:</span>
+                <span class="n">max_len</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+
+            <span class="n">d</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+
+        <span class="k">return</span> <span class="n">max_len</span>
+</pre></div>
+
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+</html>

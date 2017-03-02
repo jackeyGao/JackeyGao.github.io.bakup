@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hyper shadowsocks完全教程</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>Hyper shadowsocks完全教程</h1>
+                <h4>Posted August 08, 2016</h4>
+
+                <h2>什么是Hyper?</h2>
+<blockquote class="blockquote-normal">
+                <p>Hyper是一个可以在hypervisor上，不安装完整操作系统，直接运行Docker Image的运行引擎。Hyper可以在hypervisor上运行一组相关的Docker Image，而不是一个，也正是Kubernetes所阐述的Pod的概念——不是一个虚机，不是一个胖容器，而是一组关联的容器。再进一步说，Hyper致力于成为一个平台中立、hypervisor中立的执行引擎，除了支持KVM/QEMU外，接下来Hyper还将会支持Xen。</p></blockquote>
+<h2>三步获得一个翻墙应用</h2>
+
+<h3>1. 注册</h3>
+
+<p>hyper现在正在推广优惠, 使用下面我的分享链接注册可以多获得$10, 加上原有的$20就是$30. 这些够用一段时间了.</p>
+<blockquote class="blockquote-normal">
+                <p><a href="https://console.hyper.sh/register/invite/aMwQqQG655h2K7M2YwMxFywwyd8l96u2">推广链接</a></p></blockquote>
+<p>注册后绑定信用卡才会赠送$30, 之后可以生成API凭证(此步骤必须绑定一个可用的信用卡), 通过web端<a href="https://console.hyper.sh/account/credential">Account-Credential</a>就可以生成, 生成后保存后面<code>cli</code>需要用到.</p>
+
+<p>这里以shadowsocks服务为例，计算价格, 一个shadowsocks需要一个容器和一个ip.</p>
+
+<p><p class="hassubimage"><img src="/uploads/images/hyper-container-pricing.png" alt="容器价格表"></p>
+                    <p class="img-title">容器价格表</p>
+
+                    <p class="hassubimage"><img src="/uploads/images/hyper-network-pricing.png" alt="Floating IP价格"></p>
+                    <p class="img-title">Floating IP价格</p></p>
+
+<p>shadowsocks 可以使用最小规格的容器, 也就是<strong>$1.03/month</strong>, ip为<strong>$1/month</strong>， 所有一个月最少需要$2左右(但可以用).</p>
+
+<h3>2. 安装cli</h3>
+<div class="highlight"><pre><span></span>$ curl -O https://hyper-install.s3.amazonaws.com/hyper-mac.bin.zip
+$ unzip hyper-mac.bin.zip 
+$ chmod +x hyper
+$ ./hyper --help
+</pre></div>
+
+<h3>3. 配置ss</h3>
+
+<p>要使用hyper cli首先要指定凭证通过认证. Access Key和Secret Key在注册过程中获取, 上面已经提过. </p>
+<div class="highlight"><pre><span></span>./hyper config
+Enter Access Key: xxxxxxxxxxxxxxx
+Enter Secret Key: xxxxxxxxxxxxxxxxxxxxxxxxxx
+</pre></div>
+
+<p>然后后面的类似与Docker启动一个应用来开启shadowsocks服务</p>
+<div class="highlight"><pre><span></span>$ ./hyper pull oddrationale/docker-shadowsocks
+Using default tag: latest
+latest: Pulling from oddrationale/docker-shadowsocks
+012a7829fd3f: Pull <span class="nb">complete</span>
+41158247dd50: Pull <span class="nb">complete</span>
+916b974d99af: Pull <span class="nb">complete</span>
+a3ed95caeb02: Pull <span class="nb">complete</span>
+95b198eff4ae: Pull <span class="nb">complete</span>
+001c5b5b7517: Pull <span class="nb">complete</span>
+Digest: sha256:221070b8688f049fa791528e1e9c5fc0c027f12a858d22b540170c2cca1dec69
+Status: Image is up to date <span class="k">for</span> oddrationale/docker-shadowsocks:latest
+
+$ ./hyper run -d --name shadowsocks -p <span class="m">1989</span> oddrationale/docker-shadowsocks -s 0.0.0.0 -p <span class="m">1989</span> -k MyPassWord -m aes-256-cfb
+b6cae93b056ddb123dcb754e785c557bee9b080e4a3a4731f3e1cd97798fe058
+
+$ ./hyper ps
+CONTAINER ID        IMAGE                             COMMAND                  CREATED             STATUS              PORTS               NAMES               PUBLIC IP
+b6cae93b056d        oddrationale/docker-shadowsocks   <span class="s2">&quot;/usr/local/bin/ssser&quot;</span>   <span class="m">23</span> seconds ago      Up <span class="m">18</span> seconds                           shadowsocks         
+
+$ ./hyper fip allocate 1
+162.221.195.201
+
+$ hyper fip attach 162.221.195.201 shadowsocks <span class="c1"># 指定上面命令输出的ip</span>
+</pre></div>
+
+<p>到此结束,然后shadowsocks 客户端通过服务端配置指定</p>
+
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+</html>

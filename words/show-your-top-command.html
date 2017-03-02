@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>查看你历史命令的使用率</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>查看你历史命令的使用率</h1>
+                <h4>Posted September 09, 2015</h4>
+
+                <p>一个查看历史命令的使用率工具， 因为看到<code>oh-my-zsh</code>项目中的<code>zsh_stats</code>function 后有感仿照开发了一个。 本项目不仅支持<code>zsh_history</code>而且支持<code>bash_history</code> 。 还有可扩展的趋势.</p>
+
+<h2>oh-my-zsh 之 zsh_stats</h2>
+
+<p>如果你用<code>oh-my-zsh</code> ， 那么你就有了这个功能。 </p>
+<div class="highlight"><pre><span></span>$ zsh_stats
+     <span class="m">1</span>  <span class="m">3290</span>  32.9033%   vim
+     <span class="m">2</span>  <span class="m">2204</span>  22.0422%   python
+     <span class="m">3</span>  <span class="m">902</span>   9.0209%    ls
+     <span class="m">4</span>  <span class="m">730</span>   7.30073%   git
+     <span class="m">5</span>  <span class="m">449</span>   4.49045%   <span class="nb">cd</span>
+     <span class="m">6</span>  <span class="m">194</span>   1.94019%   curl
+     <span class="m">7</span>  <span class="m">170</span>   1.70017%   pip
+     <span class="m">8</span>  <span class="m">168</span>   1.68017%   ll
+     <span class="m">9</span>  <span class="m">157</span>   1.57016%   scrapy
+    <span class="m">10</span>  <span class="m">142</span>   1.42014%   rm
+    <span class="m">11</span>  <span class="m">96</span>    0.960096%  cat
+    <span class="m">12</span>  <span class="m">78</span>    0.780078%  hexo
+    <span class="m">13</span>  <span class="m">76</span>    0.760076%  clear
+    <span class="m">14</span>  <span class="m">63</span>    0.630063%  mkdir
+    <span class="m">15</span>  <span class="m">60</span>    0.60006%   ping
+    <span class="m">16</span>  <span class="m">59</span>    0.590059%  grep
+    <span class="m">17</span>  <span class="m">58</span>    0.580058%  workon
+    <span class="m">18</span>  <span class="m">57</span>    0.570057%  sudo
+    <span class="m">19</span>  <span class="m">57</span>    0.570057%  docker
+    <span class="m">20</span>  <span class="m">55</span>    0.550055%  mv
+$ which zsh_stats <span class="c1"># oh-my-zsh 封装的函数</span>
+zsh_stats <span class="o">()</span> <span class="o">{</span>
+    <span class="nb">fc</span> -l <span class="m">1</span> <span class="p">|</span> awk <span class="s1">&#39;{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] &quot; &quot; CMD[a]/count*100 &quot;% &quot; a;}&#39;</span> <span class="p">|</span> grep -v <span class="s2">&quot;./&quot;</span> <span class="p">|</span> column -c3 -s <span class="s2">&quot; &quot;</span> -t <span class="p">|</span> sort -nr <span class="p">|</span> nl <span class="p">|</span> head -n20
+<span class="o">}</span>
+</pre></div>
+
+<h2>cmdstats 项目</h2>
+
+<p>查看你终端命令使用频率列表, 原理是通过宿主目录下的 <code>.*history</code> 分析后得到历史命令使用频率状态， 并且进行排序输出.</p>
+
+<p>目前支持 <code>~/.bash_history</code> 、 <code>~/.zsh_history</code></p>
+
+<h3>安装</h3>
+<div class="highlight"><pre><span></span>pip install git+https://github.com/jackeyGao/cmdstats.git
+</pre></div>
+
+<h3>使用</h3>
+<div class="highlight"><pre><span></span>$ cmdstats -h
+usage: cmdstats <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-l LIMIT<span class="o">]</span>
+
+optional arguments:
+  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  -l LIMIT, --limit LIMIT
+                        显示条数<span class="o">[</span>default: 20<span class="o">]</span>
+</pre></div>
+<div class="highlight"><pre><span></span>$ cmdstats
+<span class="m">1</span>   <span class="m">3612</span>  33.13154%  vim
+<span class="m">2</span>   <span class="m">2473</span>  22.68391%  python
+<span class="m">3</span>   <span class="m">1018</span>  9.33774%   ls
+<span class="m">4</span>   <span class="m">692</span>   6.34746%   git
+<span class="m">5</span>   <span class="m">487</span>   4.46707%   <span class="nb">cd</span>
+<span class="m">6</span>   <span class="m">204</span>   1.87122%   ll
+<span class="m">7</span>   <span class="m">194</span>   1.77949%   curl
+<span class="m">8</span>   <span class="m">178</span>   1.63273%   pip
+<span class="m">9</span>   <span class="m">157</span>   1.4401%    scrapy
+<span class="m">10</span>  <span class="m">147</span>   1.34838%   rm
+<span class="m">11</span>  <span class="m">98</span>    0.89892%   cat
+<span class="m">12</span>  <span class="m">91</span>    0.83471%   clear
+<span class="m">13</span>  <span class="m">86</span>    0.78885%   ping
+<span class="m">14</span>  <span class="m">78</span>    0.71547%   hexo
+<span class="m">15</span>  <span class="m">73</span>    0.6696%    docker
+<span class="m">16</span>  <span class="m">71</span>    0.65126%   mkdir
+<span class="m">17</span>  <span class="m">61</span>    0.55953%   workon
+<span class="m">18</span>  <span class="m">60</span>    0.55036%   grep
+<span class="m">19</span>  <span class="m">58</span>    0.53201%   sudo
+<span class="m">20</span>  <span class="m">57</span>    0.52284%   mv
+$ which cmdstats
+/usr/local/bin//cmdstats
+</pre></div>
+
+<h3>项目地址</h3>
+
+<p><a href="https://github.com/jackeyGao/cmdstats">jackeyGao/cmdstats</a></p>
+
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+</html>

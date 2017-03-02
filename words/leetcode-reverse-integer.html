@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Leetcode 算法 － 7. Reverse Integer</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>Leetcode 算法 － 7. Reverse Integer</h1>
+                <h4>Posted August 08, 2016</h4>
+
+                <blockquote class="blockquote-normal">
+                <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/reverse-integer/">7. Reverse Integer</a></p><br/><p><strong>问题描述</strong>: Reverse digits of an integer.</p><br/><p>Example1: <code>x = 123, return 321</code></p><br/><p>Example2: <code>x = -123, return -321</code></p><br/><p><strong>Update (2014-11-10)</strong>: Test cases had been added to test the overflow behavior.</p></blockquote>
+<p><strong>注意点:</strong> 此问题在2014-11-10有更新， 加入了对溢出的控制, 当出现溢出则返回为0. 而Python中没有溢出的行为, 所以为了Accepted, 加入了bit_length 判断. 长度为32或以上直接返回为0</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type x: int</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span>
+            <span class="n">x</span> <span class="o">/=</span> <span class="mi">10</span>
+            
+            <span class="c1"># update 2014-11-10</span>
+            <span class="k">if</span> <span class="n">answer</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">32</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span>
+                
+        <span class="k">return</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">answer</span>
+</pre></div>
+
+<p>起初我用的是转成字符串然后转成list倒序拼接, 虽然可以Accepted, 但总觉得开销大, 而且不规范, 后来两个解法速度测试后的确这个解法开销大. 顺便附上起初我的错误解答. 大家可以感受下.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type x: int</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span> <span class="nb">str</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">])</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            
+        <span class="k">if</span> <span class="n">number</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">32</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">number</span>
+</pre></div>
+
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+</html>

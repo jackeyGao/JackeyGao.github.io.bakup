@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Words</title>
+        <link rel="stylesheet" href="assets/stylesheets/global.css">
+        <link rel="stylesheet" href="assets/stylesheets/word-list.css">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <div id="header">
+            <a href="index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container">
+            <div id="word-title">思考 / 学习 / 创造</div>
+            <div id="word-list">
+                {% for word in words %}
+                <a href="words/{{ word.filename }}.html">
+                    <div class="post">
+                        <div class="post-name">{{ word.title }}</div>
+                        <div class="post-date">{{ word.date.strftime('%B %m, %Y') }}</div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
+

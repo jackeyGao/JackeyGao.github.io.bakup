@@ -1,0 +1,32 @@
+@import "global";
+
+h1 {
+    width: 14.5em;
+}
+
+#image-wrapper {
+    @include center;
+    left: 0;
+    right: 0;
+    width: 50em;
+}
+
+#image-wrapper img {
+    display: block;
+    margin-top: 2.70em;
+    margin-bottom: 2.70em;
+    width: 40em !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#avatar-wrapper {
+    text-align: center;
+}
+
+#avatar-wrapper img {
+    border-radius: 50%;
+    height: 10em!important;
+    width: 10em!important;
+    border: 3px solid #1abc9c;
+}
