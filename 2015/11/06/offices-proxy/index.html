@@ -1,0 +1,751 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Squid,Stunnel,vps,翻墙," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="文体不限, 诗歌除外" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+
+
+
+
+<meta name="description" content="为了公司内一些技术员工的要求访问google查资料, 公司准备采购国外vps来建设内部翻墙方案.利用公司内部的认证系统（Open LDAP）来进行账号授权。然后通过PAC文件进行网站过滤.
+准备工作服务器
+
+自由网络的VPS若干, 以下简称VPS.
+LDAP 服务, 认证服务器
+内部分流机器, 以下简称分流机器
+提供PAC服务机器(HTTP服务), 可以和分流服务器共用
+
+开源软件
+
+Squid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="企业级翻墙方案">
+<meta property="og:url" content="http://omem.me/2015/11/06/offices-proxy/index.html">
+<meta property="og:site_name" content="文体不限, 诗歌除外">
+<meta property="og:description" content="为了公司内一些技术员工的要求访问google查资料, 公司准备采购国外vps来建设内部翻墙方案.利用公司内部的认证系统（Open LDAP）来进行账号授权。然后通过PAC文件进行网站过滤.
+准备工作服务器
+
+自由网络的VPS若干, 以下简称VPS.
+LDAP 服务, 认证服务器
+内部分流机器, 以下简称分流机器
+提供PAC服务机器(HTTP服务), 可以和分流服务器共用
+
+开源软件
+
+Squid">
+<meta property="og:updated_time" content="2015-11-06T08:41:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="企业级翻墙方案">
+<meta name="twitter:description" content="为了公司内一些技术员工的要求访问google查资料, 公司准备采购国外vps来建设内部翻墙方案.利用公司内部的认证系统（Open LDAP）来进行账号授权。然后通过PAC文件进行网站过滤.
+准备工作服务器
+
+自由网络的VPS若干, 以下简称VPS.
+LDAP 服务, 认证服务器
+内部分流机器, 以下简称分流机器
+提供PAC服务机器(HTTP服务), 可以和分流服务器共用
+
+开源软件
+
+Squid">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: "post",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 509455,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 企业级翻墙方案 | 文体不限, 诗歌除外 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1258527046&web_id=1258527046" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">文体不限, 诗歌除外</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                企业级翻墙方案
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-06T15:53:27+08:00" content="2015-11-06">
+              2015-11-06
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/06/offices-proxy/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/06/offices-proxy/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/11/06/offices-proxy/" class="leancloud_visitors" data-flag-title="企业级翻墙方案">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>为了公司内一些技术员工的要求访问google查资料, 公司准备采购国外vps来建设内部翻墙方案.利用公司内部的认证系统（Open LDAP）来进行账号授权。然后通过PAC文件进行网站过滤.</p>
+<h2 id="准备工作">准备工作</h2><p><strong>服务器</strong></p>
+<ul>
+<li>自由网络的VPS若干, 以下简称VPS.</li>
+<li>LDAP 服务, 认证服务器</li>
+<li>内部分流机器, 以下简称分流机器</li>
+<li>提供PAC服务机器(HTTP服务), 可以和分流服务器共用</li>
+</ul>
+<p><strong>开源软件</strong></p>
+<ul>
+<li>Squid</li>
+<li>Stunnel</li>
+</ul>
+<h2 id="思考工作">思考工作</h2><p>首先要考虑加密工作, 随着墙的升级, 越来越多的手段都被禁止或者被干扰. 所以加密一定要做的， 这里采用了Stunnel进行加密.其次是网站过滤,虽然一些技术人员不会关注政治黑暗， 但一些视频娱乐网站也是要控制的.这里用PAC文件来控制， 有些人懂一些网络基础直接连接端口进行全局proxy也不是不可能的。 这个地方可以通过squid的ACL来控制.关于ACL本文不会描述 ， 请自行查阅squid文档.</p>
+<p><strong>所以</strong></p>
+<ul>
+<li>加密 (保证在公网使用ssl加密)</li>
+<li>控制 (这个看需求了, 最好控制youtube等无用的大流量网站)</li>
+</ul>
+<p><strong>大概的路线</strong></p>
+<p><strong>Client</strong> &lt;~localnetl~&gt; <strong>PAC</strong> &lt;~localnetl~&gt; <strong>分流Stunnel</strong> &lt;~internet~&gt; <strong>VPSStunnel</strong> &lt;~vps net~&gt; <strong>Squid</strong> &lt;~internet~&gt; <strong>目标服务器</strong></p>
+<h2 id="安装操作">安装操作</h2><p>参考这里: <a href="http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html" target="_blank" rel="external">http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html</a></p>
+<p>我说明下和ldap关联集中认证.首先调通 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/lib64/squid/squid_ldap_auth -u -cn <span class="operator">-f</span> <span class="string">"uid=%s"</span> -b <span class="string">"ou=people,dc=example,dc=com"</span> -D <span class="string">"cn=squid,ou=people,dc=example,dc=com"</span> -w <span class="string">"认证密码"</span>  -H ldap://ldap.example.com</span><br><span class="line"><span class="variable">$username</span> <span class="variable">$password</span> <span class="comment"># 这里输入测试认证的用户名 空格 密码</span></span><br><span class="line">OK <span class="comment">#这里是ok才是正常</span></span><br></pre></td></tr></table></figure>
+<p>然后修改squid配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/squid/squid.conf</span><br><span class="line"></span><br><span class="line">增加下面代码.</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">auth_param basic program /usr/lib64/squid/squid_ldap_auth -u -cn <span class="operator">-f</span> <span class="string">"uid=%s"</span> -b <span class="string">"ou=people,dc=example,dc=com"</span> -D <span class="string">"cn=squid,ou=people,dc=example,dc=com"</span> -w <span class="string">"xxxxxx"</span>  -H ldap://ldap.example.com</span><br><span class="line"><span class="comment">#auth_param basic realm Internet Proxy</span></span><br><span class="line">auth_param basic credentialsttl <span class="number">1</span> minute</span><br><span class="line">acl ldapauth proxy_auth REQUIRED <span class="comment"># 定义ldap认证后的acl，直接转发</span></span><br><span class="line">http_access allow ldapauth <span class="comment"># 允许ldapauth认证过的</span></span><br><span class="line">http_access deny all <span class="comment"># 其他拒绝</span></span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>squid_ldap_auth 这个工具是squid程序里面的， 地址可能不是我上面指定的 ， 因为我是yum安装的。 如果是编译安装应该是prefix里面找. 如果没有生效可以通过这个命令进行测试， 具体可以man squid_ldap_auth 查看EXAMPLE里面的介绍. 如果还不行可能是编译没有开启ldap. 这个需要开启， 网上有大量的文档说明开启ldap.</p>
+</blockquote>
+<p>然后安装<a href="http://fuweiyi.com/others/2014/05/15/a-Centos-Squid-Stunnel-proxy.html" target="_blank" rel="external">文档</a>继续装剩下的。</p>
+<h2 id="关于PAC">关于PAC</h2><p>PAC文件可以通过<a href="https://github.com/JinnLynn/GenPAC" target="_blank" rel="external">Genpac</a>生成. 然后使用<strong>PAC服务机器</strong>起个http服务， 让员工通过一个内网地址访问到就行。 这样只有上班实践可以使用翻墙.</p>
+<h2 id="关于拓展">关于拓展</h2><p>多个vps 可以启动多个squid和stunnel服务, 客户端起多个stunnel端口即可.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Squid/" rel="tag">#Squid</a>
+          
+            <a href="/tags/Stunnel/" rel="tag">#Stunnel</a>
+          
+            <a href="/tags/vps/" rel="tag">#vps</a>
+          
+            <a href="/tags/翻墙/" rel="tag">#翻墙</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/02/use-conoha/" rel="next" title="Conoha主机测评">
+                <i class="fa fa-chevron-left"></i> Conoha主机测评
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/18/flask-jpg2ascii/" rel="prev" title="JPG2ASCII开发上线记录">
+                JPG2ASCII开发上线记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/06/offices-proxy/"
+           data-title="企业级翻墙方案" data-url="http://omem.me/2015/11/06/offices-proxy/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="JackeyGao" />
+          <p class="site-author-name" itemprop="name">JackeyGao</p>
+          <p class="site-description motion-element" itemprop="description">JackeyGao的日记本</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jackeyGao" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="gaojunqi@outlook.com" target="_blank">
+                  
+                    <i class="fa fa-envelope"></i> Email
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/JackeyGaoQ" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/JackeyGaoo" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackey Gao</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.4.5.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.4.5.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.4.5.1"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.4.5.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.4.5.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.4.5.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jackeygao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("yf0s3ONpEsCybQxnLE1hvYLz-gzGzoHsz", "86yi2o6lVtLREC5KqYklEbMR");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

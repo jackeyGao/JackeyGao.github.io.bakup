@@ -1,11 +1,16 @@
 <!doctype html>
-<html class="theme-next use-motion ">
-<head>
+
+
+
   
 
-<meta charset="UTF-8"/>
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -18,81 +23,111 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
-    <meta name="description" content="Jackey Gao的日记本" />
 
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo,next" />
 
 
 
-  <link rel="alternate" href="/atom.xml" title="JackeyGao's Notes" type="application/atom+xml" />
+
+
+  <link rel="alternate" href="/atom.xml" title="文体不限, 诗歌除外" type="application/atom+xml" />
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+
+
 
 
 <meta name="description" content="Jackey Gao的日记本">
 <meta property="og:type" content="website">
-<meta property="og:title" content="JackeyGao's Notes">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="JackeyGao's Notes">
+<meta property="og:title" content="文体不限, 诗歌除外">
+<meta property="og:url" content="http://omem.me/index.html">
+<meta property="og:site_name" content="文体不限, 诗歌除外">
 <meta property="og:description" content="Jackey Gao的日记本">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackeyGao's Notes">
+<meta name="twitter:title" content="文体不限, 诗歌除外">
 <meta name="twitter:description" content="Jackey Gao的日记本">
 
 
+
 <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: '',
-    sidebar: 'post'
+    scheme: 'Mist',
+    sidebar: "post",
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 509455,
+      author: '博主'
+    }
   };
 </script>
 
-  <title> JackeyGao's Notes </title>
+  <title> 文体不限, 诗歌除外 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
 
-  <div class="container one-column 
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1258527046&web_id=1258527046" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  
    page-home 
-">
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
-      <span class="site-title">JackeyGao's Notes</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">文体不限, 诗歌除外</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
 
 <div class="site-nav-toggle">
   <button>
@@ -106,28 +141,20 @@
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
+            
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
-            分类
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
+            
             关于
           </a>
         </li>
@@ -135,7 +162,7 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
+            
             归档
           </a>
         </li>
@@ -143,13 +170,12 @@
         
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
+            
             标签
           </a>
         </li>
       
 
-      
       
     </ul>
   
@@ -162,592 +188,126 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
     
       
 
+  
+  
+
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/30/django-url-reverse/" itemprop="url">
-                django url 反解析
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-30T14:07:20+08:00" content="2015-09-30">
-            2015-09-30
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Python/" itemprop="url" rel="index">
-                  <span itemprop="name">Python</span>
-                </a>
-              </span>
-
-              
-              
-                ， 
-              
-
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Python/Django/" itemprop="url" rel="index">
-                  <span itemprop="name">Django</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/30/django-url-reverse/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/django-url-reverse/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>Django 是个python中web-framework<br>MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接.<br>虽然这种方法是可行的， 但是不是规范的。<br>为什么呢？<br>最近公司要做一个django改造， 由于改造需求的原因， 项目urls统一加上<code>项目名字</code><br>urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url都要改掉. 这就增加了改造的复杂度。<br>通过此次改造我发现<br>其实django中有一种很好的机制, 来通过urls中的viewname 来反解析url生成url.</p>
-<p>他们分别是: <code>django.core.urlresolvers.reverse</code> 和 <code>templatetags.url</code></p>
-<h2 id="django-core-urlresolvers-reverse">django.core.urlresolvers.reverse</h2><p>这个函数主要用在于python代码中， 详情请看下面案例</p>
-<p><code>urls.py</code>这里是一个对象详细页面, 需要两个参数.<br><code>models.py</code>中要通过<code>viewname</code> detail 来生成url.</p>
-<h3 id="urls-py">urls.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    url(<span class="string">r'^step/(?P&lt;label&gt;.*)/(?P&lt;name&gt;.*)$'</span>, step, name=<span class="string">"detail"</span>),</span><br><span class="line">    ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h3 id="models-py">models.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Step</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    ......</span><br><span class="line">    ......</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_absolute_url</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> reverse(<span class="string">'detail'</span>, kwargs=&#123;</span><br><span class="line">            <span class="string">'label'</span>: self.label,</span><br><span class="line">            <span class="string">'name'</span>: self.name&#125;</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">label_name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.label.name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> unicode(self.name)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br></pre></td></tr></table></figure>
-<h2 id="templatetags-url">templatetags.url</h2><p>这里还使用上面的urls.py 中的detail举例, 在模版中生成url</p>
-<h3 id="base-html">base.html</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% url "detail" step.label.name step.name %&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/30/show-your-top-command/" itemprop="url">
-                查看你历史命令的使用率
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-30T13:46:55+08:00" content="2015-09-30">
-            2015-09-30
-          </time>
-        </span>
+      <header class="post-header">
 
         
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Python/" itemprop="url" rel="index">
-                  <span itemprop="name">Python</span>
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/20/python-introduction/" itemprop="url">
+                  Python 介绍PPT
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-20T18:03:33+08:00" content="2016-05-20">
+              2016-05-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/20/python-introduction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/20/python-introduction/" itemprop="commentsCount"></span>
                 </a>
               </span>
-
-              
-              
-
             
-          </span>
-        
-
-        
           
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/30/show-your-top-command/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/show-your-top-command/" itemprop="commentsCount"></span>
-              </a>
-            </span>
+
           
-        
-      </div>
-    </header>
 
-    <div class="post-body">
+          
+          
+             <span id="/2016/05/20/python-introduction/" class="leancloud_visitors" data-flag-title="Python 介绍PPT">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
 
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>一个查看历史命令的使用率工具， 因为看到<code>oh-my-zsh</code>项目中的<code>zsh_stats</code>function 后有感仿照开发了一个。 本项目不仅支持<code>zsh_history</code>而且支持<code>bash_history</code> 。 还有可扩展的趋势.</p>
-<h2 id="oh-my-zsh_之_zsh_stats">oh-my-zsh 之 zsh_stats</h2><p>如果你用<code>oh-my-zsh</code> ， 那么你就有了这个功能。 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ zsh_stats</span><br><span class="line">     <span class="number">1</span>  <span class="number">3290</span>  <span class="number">32.9033</span>%   vim</span><br><span class="line">     <span class="number">2</span>  <span class="number">2204</span>  <span class="number">22.0422</span>%   python</span><br><span class="line">     <span class="number">3</span>  <span class="number">902</span>   <span class="number">9.0209</span>%    ls</span><br><span class="line">     <span class="number">4</span>  <span class="number">730</span>   <span class="number">7.30073</span>%   git</span><br><span class="line">     <span class="number">5</span>  <span class="number">449</span>   <span class="number">4.49045</span>%   <span class="built_in">cd</span></span><br><span class="line">     <span class="number">6</span>  <span class="number">194</span>   <span class="number">1.94019</span>%   curl</span><br><span class="line">     <span class="number">7</span>  <span class="number">170</span>   <span class="number">1.70017</span>%   pip</span><br><span class="line">     <span class="number">8</span>  <span class="number">168</span>   <span class="number">1.68017</span>%   ll</span><br><span class="line">     <span class="number">9</span>  <span class="number">157</span>   <span class="number">1.57016</span>%   scrapy</span><br><span class="line">    <span class="number">10</span>  <span class="number">142</span>   <span class="number">1.42014</span>%   rm</span><br><span class="line">    <span class="number">11</span>  <span class="number">96</span>    <span class="number">0.960096</span>%  cat</span><br><span class="line">    <span class="number">12</span>  <span class="number">78</span>    <span class="number">0.780078</span>%  hexo</span><br><span class="line">    <span class="number">13</span>  <span class="number">76</span>    <span class="number">0.760076</span>%  clear</span><br><span class="line">    <span class="number">14</span>  <span class="number">63</span>    <span class="number">0.630063</span>%  mkdir</span><br><span class="line">    <span class="number">15</span>  <span class="number">60</span>    <span class="number">0.60006</span>%   ping</span><br><span class="line">    <span class="number">16</span>  <span class="number">59</span>    <span class="number">0.590059</span>%  grep</span><br><span class="line">    <span class="number">17</span>  <span class="number">58</span>    <span class="number">0.580058</span>%  workon</span><br><span class="line">    <span class="number">18</span>  <span class="number">57</span>    <span class="number">0.570057</span>%  sudo</span><br><span class="line">    <span class="number">19</span>  <span class="number">57</span>    <span class="number">0.570057</span>%  docker</span><br><span class="line">    <span class="number">20</span>  <span class="number">55</span>    <span class="number">0.550055</span>%  mv</span><br><span class="line">$ <span class="built_in">which</span> zsh_stats <span class="comment"># oh-my-zsh 封装的函数</span></span><br><span class="line"><span class="function"><span class="title">zsh_stats</span></span> () &#123;</span><br><span class="line">    <span class="built_in">fc</span> <span class="operator">-l</span> <span class="number">1</span> | awk <span class="string">'&#123;CMD[$2]++;count++;&#125;END &#123; for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;&#125;'</span> | grep -v <span class="string">"./"</span> | column -c3 <span class="operator">-s</span> <span class="string">" "</span> -t | sort -nr | nl | head -n20</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="cmdstats_项目">cmdstats 项目</h2><p>查看你终端命令使用频率列表, 原理是通过宿主目录下的 <code>.*history</code> 分析后得到历史命令使用频率状态， 并且进行排序输出.</p>
-<p>目前支持 <code>~/.bash_history</code> 、 <code>~/.zsh_history</code></p>
-<h3 id="安装">安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install git+https://github.com/jackeyGao/cmdstats.git</span><br></pre></td></tr></table></figure>
-<h3 id="使用">使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ cmdstats -h</span><br><span class="line">usage: cmdstats [-h] [<span class="operator">-l</span> LIMIT]</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --help            show this <span class="built_in">help</span> message and <span class="built_in">exit</span></span><br><span class="line">  <span class="operator">-l</span> LIMIT, --limit LIMIT</span><br><span class="line">                        显示条数[default: <span class="number">20</span>]</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ cmdstats</span><br><span class="line"><span class="number">1</span>   <span class="number">3612</span>  <span class="number">33.13154</span>%  vim</span><br><span class="line"><span class="number">2</span>   <span class="number">2473</span>  <span class="number">22.68391</span>%  python</span><br><span class="line"><span class="number">3</span>   <span class="number">1018</span>  <span class="number">9.33774</span>%   ls</span><br><span class="line"><span class="number">4</span>   <span class="number">692</span>   <span class="number">6.34746</span>%   git</span><br><span class="line"><span class="number">5</span>   <span class="number">487</span>   <span class="number">4.46707</span>%   <span class="built_in">cd</span></span><br><span class="line"><span class="number">6</span>   <span class="number">204</span>   <span class="number">1.87122</span>%   ll</span><br><span class="line"><span class="number">7</span>   <span class="number">194</span>   <span class="number">1.77949</span>%   curl</span><br><span class="line"><span class="number">8</span>   <span class="number">178</span>   <span class="number">1.63273</span>%   pip</span><br><span class="line"><span class="number">9</span>   <span class="number">157</span>   <span class="number">1.4401</span>%    scrapy</span><br><span class="line"><span class="number">10</span>  <span class="number">147</span>   <span class="number">1.34838</span>%   rm</span><br><span class="line"><span class="number">11</span>  <span class="number">98</span>    <span class="number">0.89892</span>%   cat</span><br><span class="line"><span class="number">12</span>  <span class="number">91</span>    <span class="number">0.83471</span>%   clear</span><br><span class="line"><span class="number">13</span>  <span class="number">86</span>    <span class="number">0.78885</span>%   ping</span><br><span class="line"><span class="number">14</span>  <span class="number">78</span>    <span class="number">0.71547</span>%   hexo</span><br><span class="line"><span class="number">15</span>  <span class="number">73</span>    <span class="number">0.6696</span>%    docker</span><br><span class="line"><span class="number">16</span>  <span class="number">71</span>    <span class="number">0.65126</span>%   mkdir</span><br><span class="line"><span class="number">17</span>  <span class="number">61</span>    <span class="number">0.55953</span>%   workon</span><br><span class="line"><span class="number">18</span>  <span class="number">60</span>    <span class="number">0.55036</span>%   grep</span><br><span class="line"><span class="number">19</span>  <span class="number">58</span>    <span class="number">0.53201</span>%   sudo</span><br><span class="line"><span class="number">20</span>  <span class="number">57</span>    <span class="number">0.52284</span>%   mv</span><br><span class="line">$ <span class="built_in">which</span> cmdstats</span><br><span class="line">/usr/<span class="built_in">local</span>/bin//cmdstats</span><br></pre></td></tr></table></figure>
-<h3 id="项目地址">项目地址</h3><p><a href="https://github.com/jackeyGao/cmdstats" target="_blank" rel="external">jackeyGao/cmdstats</a></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
+        </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
       
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/30/python-pillow/" itemprop="url">
-                使用python将两张照片透明重叠
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-30T13:19:26+08:00" content="2015-09-30">
-            2015-09-30
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Python/" itemprop="url" rel="index">
-                  <span itemprop="name">Python</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
         
           
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/30/python-pillow/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-pillow/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>透明重叠最主要用的是<code>Image.blend</code>方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要<code>Image.blend</code>方法第三个参数是相对于第一张图片透明度。 </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">File Name: merge.py</span><br><span class="line">Author: JackeyGao</span><br><span class="line">mail: junqi.gao@shuyun.com</span><br><span class="line">Created Time: 一  6/ 1 13:27:49 2015</span><br><span class="line">'''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">image_resize</span><span class="params">(img, size=<span class="params">(<span class="number">4</span>, <span class="number">3</span>)</span>)</span>:</span></span><br><span class="line">    <span class="string">"""调整图片大小</span><br><span class="line">    """</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> img.mode <span class="keyword">not</span> <span class="keyword">in</span> (<span class="string">'L'</span>, <span class="string">'RGB'</span>):</span><br><span class="line">            img = img.convert(<span class="string">'RGB'</span>)</span><br><span class="line">        img = img.resize(size)</span><br><span class="line">    <span class="keyword">except</span> Exception, e:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">image_merge</span><span class="params">(images, output_dir=<span class="string">'output'</span>, output_name=<span class="string">'merge.jpg'</span>, \</span><br><span class="line">                restriction_max_width=None, restriction_max_height=None)</span>:</span></span><br><span class="line">    <span class="string">"""垂直合并多张图片</span><br><span class="line">    images - 要合并的图片路径列表</span><br><span class="line">    ouput_dir - 输出路径</span><br><span class="line">    output_name - 输出文件名</span><br><span class="line">    restriction_max_width - 限制合并后的图片最大宽度，如果超过将等比缩小</span><br><span class="line">    restriction_max_height - 限制合并后的图片最大高度，如果超过将等比缩小</span><br><span class="line">    """</span></span><br><span class="line">    x_number = <span class="number">10</span> <span class="keyword">if</span> len(images) &gt;= <span class="number">5</span> <span class="keyword">else</span> len(images)</span><br><span class="line">    y_number = int(math.ceil(len(images) / x_number))</span><br><span class="line">    total_height = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 计算合成后图片的宽度（以最宽的为准）和高度</span></span><br><span class="line">    <span class="keyword">for</span> img_path <span class="keyword">in</span> images:</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(img_path):</span><br><span class="line">            img = Image.open(img_path)</span><br><span class="line">            img = img.resize((<span class="number">712</span>, <span class="number">960</span>))</span><br><span class="line">            width, height = img.size</span><br><span class="line"></span><br><span class="line">            max_width = width * x_number</span><br><span class="line">            total_height = height * y_number</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 产生一张空白图</span></span><br><span class="line">    new_img = Image.new(<span class="string">'RGB'</span>, (max_width, total_height), <span class="number">255</span>)</span><br><span class="line">    <span class="comment"># 合并</span></span><br><span class="line">    x = y = n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> img_path <span class="keyword">in</span> images:</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(img_path):</span><br><span class="line">            img = Image.open(img_path)</span><br><span class="line">            img = img.resize((<span class="number">712</span>, <span class="number">960</span>))</span><br><span class="line">            width, height = img.size</span><br><span class="line">            <span class="keyword">print</span> width, height</span><br><span class="line">            new_img.paste(img, (x, y))</span><br><span class="line"></span><br><span class="line">            n += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> n % x_number == <span class="number">0</span>:</span><br><span class="line">                y += height</span><br><span class="line">                x = <span class="number">0</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                x += width</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> restriction_max_width <span class="keyword">and</span> max_width &gt;= restriction_max_width:</span><br><span class="line">        <span class="comment"># 如果宽带超过限制</span></span><br><span class="line">        <span class="comment"># 等比例缩小</span></span><br><span class="line">        ratio = restriction_max_height / float(max_width)</span><br><span class="line">        max_width = restriction_max_width</span><br><span class="line">        total_height = int(total_height * ratio)</span><br><span class="line">        new_img = image_resize(new_img, size=(max_width, total_height))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> restriction_max_height <span class="keyword">and</span> total_height &gt;= restriction_max_height:</span><br><span class="line">        <span class="comment"># 如果高度超过限制</span></span><br><span class="line">        <span class="comment"># 等比例缩小</span></span><br><span class="line">        ratio = restriction_max_height / float(total_height)</span><br><span class="line">        max_width = int(max_width * ratio)</span><br><span class="line">        total_height = restriction_max_height</span><br><span class="line">        new_img = image_resize(new_img, size=(max_width, total_height))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(output_dir):</span><br><span class="line">        os.makedirs(output_dir)</span><br><span class="line">    save_path = <span class="string">'%s/%s'</span> % (output_dir, output_name)</span><br><span class="line">    new_img.save(save_path)</span><br><span class="line">    <span class="keyword">return</span> save_path</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">import</span> os</span><br><span class="line">    image_files = [ <span class="string">"input/%s"</span> % f <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(<span class="string">"input/"</span>) <span class="keyword">if</span> f.endswith(<span class="string">"pg"</span>) ]</span><br><span class="line"></span><br><span class="line">    image_files = image_files * <span class="number">4</span></span><br><span class="line"></span><br><span class="line">    image_merge(images=image_files)</span><br></pre></td></tr></table></figure>
-<p>将两张背景图重叠</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Image</span><br><span class="line">img = Image.open(<span class="string">"bg.jpeg"</span>)</span><br><span class="line">img2 = Image.open(<span class="string">"merge.jpg"</span>)</span><br><span class="line">merge = Image.blend(img, img2, <span class="number">0.3</span>)</span><br><span class="line">merge.save(<span class="string">"my.jpg"</span>)</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/30/black-night-cat/" itemprop="url">
-                黑夜的猫
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-30T12:50:22+08:00" content="2015-09-30">
-            2015-09-30
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/淫诗作对/" itemprop="url" rel="index">
-                  <span itemprop="name">淫诗作对</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/30/black-night-cat/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/black-night-cat/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><img src="/uploads/images/photo-1415931633537-351070d20b81.jpeg" alt="黎明"></p>
-<blockquote class="blockquote-center"><p>夜</p>
-<p>厚夜</p>
-<p>路灯下的猫</p>
-<p>猫眼中的笑</p>
-<p>在烦躁</p>
-<p>在煎熬</p>
-<p>如同， 美好云雾缭绕</p>
-<p>还好， 不再不可救药</p>
-</blockquote>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/30/python-concurrent-high-level-3/" itemprop="url">
-                python 高级并发3
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-30T11:22:40+08:00" content="2015-09-30">
-            2015-09-30
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Python/" itemprop="url" rel="index">
-                  <span itemprop="name">Python</span>
-                </a>
-              </span>
-
-              
-              
-                ， 
-              
-
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Python/Python高级并发/" itemprop="url" rel="index">
-                  <span itemprop="name">Python高级并发</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/30/python-concurrent-high-level-3/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-concurrent-high-level-3/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>本篇主要讲案例, 两个使用Concurrent.futures实现的并发， 一个是多线程， 一个是多进程。</p>
-<p><strong>多进程</strong></p>
-<p>用在计算密集的确定Long Number是否为<code>质数</code>的例子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">PRIMES = [</span><br><span class="line">    <span class="number">112272535095293</span>,</span><br><span class="line">    <span class="number">112582705942171</span>,</span><br><span class="line">    <span class="number">112272535095293</span>,</span><br><span class="line">    <span class="number">115280095190773</span>,</span><br><span class="line">    <span class="number">115797848077099</span>,</span><br><span class="line">    <span class="number">1099726899285419</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_prime</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    sqrt_n = int(math.floor(math.sqrt(n)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>, sqrt_n + <span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">        <span class="keyword">if</span> n % i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> concurrent.futures.ProcessPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">        <span class="keyword">for</span> number, prime <span class="keyword">in</span> zip(PRIMES, executor.map(is_prime, PRIMES)):</span><br><span class="line">            print(<span class="string">'%d is prime: %s'</span> % (number, prime))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<p><strong>多线程</strong></p>
-<p>用在多线程访问HTTP链接， I/O密集的时候</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">URLS = [<span class="string">'http://jackeygao.com/'</span>,</span><br><span class="line">        <span class="string">'http://pythoner.party/'</span>,</span><br><span class="line">        <span class="string">'http://www.baidu.com/'</span>,</span><br><span class="line">        <span class="string">'http://12306.cn/'</span>,</span><br><span class="line">        <span class="string">'http://china.com/'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Retrieve a single page and report the url and contents</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_url</span><span class="params">(url, timeout)</span>:</span></span><br><span class="line">    res = requests.get(url, timeout=timeout)</span><br><span class="line">    <span class="keyword">return</span> res.text</span><br><span class="line"></span><br><span class="line"><span class="comment"># We can use a with statement to ensure threads are cleaned up promptly</span></span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor(max_workers=<span class="number">5</span>) <span class="keyword">as</span> executor:</span><br><span class="line">    <span class="comment"># Start the load operations and mark each future with its URL</span></span><br><span class="line">    future_to_url = &#123;executor.submit(load_url, url, <span class="number">60</span>): url <span class="keyword">for</span> url <span class="keyword">in</span> URLS&#125;</span><br><span class="line">    <span class="keyword">for</span> future <span class="keyword">in</span> concurrent.futures.as_completed(future_to_url):</span><br><span class="line">        url = future_to_url[future]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            data = future.result()</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> exc:</span><br><span class="line">            print(<span class="string">'%r generated an exception: %s'</span> % (url, exc))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'%r page is %d bytes'</span> % (url, len(data)))</span><br></pre></td></tr></table></figure>
-<p>以上内容修改自<a href="https://docs.python.org/3/library/concurrent.futures.html" target="_blank" rel="external">docs.python.org</a></p>
-<p><code>ThreadPoolExecutor</code> 和 <code>ProcessPoolExecutor</code> 都是<code>concurrent.futures.Executor</code>的子类。 那么他们都有<code>submit</code>、<code>map</code>、<code>shutdown</code>方法</p>
-<p><strong>submit(fn, *args, </strong>kwargs)**</p>
-<p>异步执行函数</p>
-<p><strong>参数:</strong></p>
-<p><strong>fn</strong>      为需要异步执行的函数</p>
-<p><strong>args</strong>    kwargs  函数的参数</p>
-<p><strong>map(func, *iterables, timeout=None)¶</strong></p>
-<p>此map函数和python自带的map函数功能类似，只不过concurrent模块的map函数从迭代器获得参数后异步执行。并且，每一个异步操作，能用timeout参数来设置超时时间，timeout的值可以是int或float型，如果操作timeout的话，会raisesTimeoutError。如果timeout参数不指定的话，则不设置超时间。</p>
-<p><strong>func</strong> 为需要异步执行的函数</p>
-<p><strong>*iterables</strong>  可以是一个能迭代的对象，例如列表等。每一次func执行，会从iterables中取参数。</p>
-<p><strong>timeout</strong> 每个异步操作的超时时间</p>
-<p><strong>shutdown(wait=True)</strong></p>
-<p>此函数用于释放异步执行操作后的系统资源。</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/30/python-concurrent-high-level-2/" itemprop="url">
-                python 高级并发2
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-30T11:15:40+08:00" content="2015-09-30">
-            2015-09-30
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Python/" itemprop="url" rel="index">
-                  <span itemprop="name">Python</span>
-                </a>
-              </span>
-
-              
-              
-                ， 
-              
-
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Python/Python高级并发/" itemprop="url" rel="index">
-                  <span itemprop="name">Python高级并发</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/30/python-concurrent-high-level-2/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-concurrent-high-level-2/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>一般程序并发分为<code>多线程</code>和<code>多进程</code>并发.</p>
-<p>那么什么时候选择两种并发手段， 该如何选择呢， 应用场景是什么？</p>
-<p>根据编程逻辑一般需要计算密集和I/O操作密集的时候选择并发提高程序效率， Python 由于GIL的限制，密集性运算需要使用多核心CPU时候， 这时候多线程显得力不从心， 甚至会变得更慢。而当需要I/O操作， 比如HTTP长连接的时候， 耗费的时间只是TCP建立链接的等待时间， 这时候当然优先使用多线程。</p>
-<p>所以一般情况下， 我们开发程序耗费比较慢的是<code>计算密集</code>和<code>I/O密集</code>两种情况下的逻辑， 那么我可以采取：</p>
-<ul>
-<li>计算密集:多进程</li>
-<li>I/O密集:多线程</li>
+            <h2 id="Python语法介绍的入门文档"><a href="/uploads/docs/python-introction.pdf">Python语法介绍的入门文档</a></h2><ul>
+<li>背景</li>
+<li>语法</li>
+<li>数据类型</li>
+<li>操作符</li>
+<li>控制流</li>
+<li>函数</li>
+<li>类</li>
+<li>工具推荐</li>
 </ul>
-<p>推荐使用库：</p>
-<p>concurrent.futures 是python3新增加的一个库，用于并发处理，类似于其他语言里的线程池（也有一个进程池），他属于上层的封装，对于用户来说，不用在考虑那么多东西了, 现已加入python 3.2标准库， python 2.7需要安装一下。</p>
-<p><code>pip install futures</code></p>
-<p>Executor:两个子<code>ThreadPoolExecutor</code>和<code>ProcessPoolExecutor</code>分别是产生进程池和线程池</p>
-<p>Future：有Executor.submit产生多任务</p>
-<p>ThreadPoolExecutor 和 ProcessPoolExecutor直接python的with as 控制流语句， 让你非常简单的就套入了程序里面。</p>
-</span>
+<h2 id="Python进阶文档"><a href="/uploads/docs/python-intermediate.pdf">Python进阶文档</a></h2><ul>
+<li><em>args 和 *</em>kwargs 应用场景</li>
+<li>闭包和装饰器</li>
+<li>Lambda</li>
+<li>Map &amp; Filter</li>
+<li>三元运算符</li>
+<li>Collections</li>
+<li>对象自省</li>
+<li>一行式 </li>
+<li>上下文管理器</li>
+<li>推荐学习网站和资料</li>
+</ul>
+<h2 id="Django_学习"><a href="/uploads/docs/django-learn.pdf">Django 学习</a></h2><ul>
+<li>Django 介绍安装</li>
+<li>Project 和 APP概念</li>
+<li>Model, View, Template(MVT)</li>
+<li>Django ORM</li>
+</ul>
+
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -767,95 +327,107 @@
     
       
 
+  
+  
+
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/30/python-concurrent-high-level/" itemprop="url">
-                python 高级并发1
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-30T11:09:40+08:00" content="2015-09-30">
-            2015-09-30
-          </time>
-        </span>
+    
+      <header class="post-header">
 
         
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Python/" itemprop="url" rel="index">
-                  <span itemprop="name">Python</span>
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/03/intermediate-django-admin-dynamic-actions/" itemprop="url">
+                  Django 进阶学习 - 动态actions
                 </a>
-              </span>
-
               
-              
-                ， 
-              
-
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Python/Python高级并发/" itemprop="url" rel="index">
-                  <span itemprop="name">Python高级并发</span>
-                </a>
-              </span>
+          </h1>
+        
 
-              
-              
-
-            
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T16:09:06+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
           </span>
-        
 
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/03/intermediate-django-admin-dynamic-actions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/03/intermediate-django-admin-dynamic-actions/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/03/intermediate-django-admin-dynamic-actions/" class="leancloud_visitors" data-flag-title="Django 进阶学习 - 动态actions">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
         
           
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/30/python-concurrent-high-level/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/python-concurrent-high-level/" itemprop="commentsCount"></span>
-              </a>
-            </span>
+            <p>Django后台默认只有一个动作<code>Delete selected xxxxs</code>, 那么如果自定义动作该怎么办， 也很容易， 直接写个类似于这种的函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_published</span><span class="params">(modeladmin, request, queryset)</span>:</span></span><br><span class="line">    queryset.update(status=<span class="string">'p'</span>)</span><br></pre></td></tr></table></figure>
+<p>然后绑定到ModelAdmin的actions属性</p>
+<p><code>admin.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TriggerAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    empty_value_display = <span class="string">u'无规则'</span></span><br><span class="line">    list_display = (<span class="string">'__str__'</span>, <span class="string">'id'</span>)</span><br><span class="line">    search_fields = (<span class="string">'description'</span>,)</span><br><span class="line">    list_filter = (IpFilter, <span class="string">'t_type'</span>)</span><br><span class="line">    actions = (make_published,) <span class="comment">#指定自定义actions</span></span><br></pre></td></tr></table></figure>
+<p>action在程序启动后就会正常工作， 现在我有个项目需要根据一张表（role表）来动态扩展动作， 所以这种方法没有办法扩展。 总不能在role表加一个数据就要重启django把？ 显然不能这样做， 当然django有动态生成action的方法, 那就是<code>admin.ModelAdmin</code>的<code>get_actions()</code>方法</p>
+<p><strong>首先写个闭包</strong></p>
+<p>根据role生成<code>action function</code></p>
+<p><code>actions.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.translation <span class="keyword">import</span> ugettext <span class="keyword">as</span> _, ugettext_lazy</span><br><span class="line"><span class="keyword">from</span> controller.models <span class="keyword">import</span> SwitchRole</span><br><span class="line"><span class="keyword">from</span> controller.models <span class="keyword">import</span> ConvergeRole</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_with_role</span><span class="params">(role, switch=True)</span>:</span></span><br><span class="line">    <span class="string">"""闭包实现， 设置role, switch为通用变量,  返回一个action函数"""</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 根据role类型判断字段类型</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(role, SwitchRole):</span><br><span class="line">        field_name = <span class="string">"switch_role"</span></span><br><span class="line">    <span class="keyword">elif</span> isinstance(role, ConvergeRole):</span><br><span class="line">        field_name = <span class="string">"converge_role"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_selected</span><span class="params">(modeladmin, request, queryset)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        规则动作</span><br><span class="line">        """</span></span><br><span class="line">        <span class="comment"># 根据开关选项， 来判断字段value</span></span><br><span class="line">        kwargs = &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> switch:</span><br><span class="line">            field_value = role.pk</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            field_value = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        kwargs[field_name] = field_value</span><br><span class="line">        <span class="keyword">return</span> queryset.update(**kwargs)</span><br><span class="line"></span><br><span class="line">    set_selected.short_description = ugettext_lazy(<span class="string">u"设置规则为: %s"</span> % role)</span><br><span class="line">    set_selected.__name__ = <span class="string">"set_role_%s_%s"</span> % (field_name, role.pk)</span><br><span class="line">    <span class="keyword">return</span> set_selected</span><br></pre></td></tr></table></figure>
+<p><strong>注意:</strong> <code>set_selected.short_description</code>为后台管理界面actions下拉菜单显示的文本， <code>set_selected.__name__</code> 是函数的名称， 由于我们是多个，所以函数的名称一定要唯一.</p>
+<p><strong>下面重写get_actions()</strong></p>
+<p><code>admin.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TriggerAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    empty_value_display = <span class="string">u'无规则'</span></span><br><span class="line">    list_display = (<span class="string">'__str__'</span>, <span class="string">'id'</span>, <span class="string">'ip'</span>, <span class="string">'t_type'</span>,</span><br><span class="line">            <span class="string">'get_converge'</span>, <span class="string">'get_switch'</span>, <span class="string">'level'</span>)</span><br><span class="line">    search_fields = (<span class="string">'description'</span>,)</span><br><span class="line">    list_filter = (IpFilter, <span class="string">'t_type'</span>, <span class="string">'converge_role'</span>, <span class="string">'switch_role'</span>, <span class="string">'level'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_actions</span><span class="params">(self, request)</span>:</span></span><br><span class="line">        <span class="comment"># 设置Role动作</span></span><br><span class="line">        fns = [ _with_role(i) <span class="keyword">for</span> i <span class="keyword">in</span> SwitchRole.objects.all() ]</span><br><span class="line">        fns += [_with_role(i) <span class="keyword">for</span> i <span class="keyword">in</span> ConvergeRole.objects.all()]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 清空Role动作</span></span><br><span class="line">        <span class="keyword">if</span> SwitchRole.objects.all():</span><br><span class="line">            role = _with_role(SwitchRole.objects.all()[<span class="number">0</span>], switch=<span class="keyword">False</span>)</span><br><span class="line">            role.__name__ = <span class="string">'remove_switch_role'</span></span><br><span class="line">            role.short_description = ugettext_lazy(<span class="string">u"清空开关规则"</span>)</span><br><span class="line">            fns.append(role)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ConvergeRole.objects.all():</span><br><span class="line">            role = _with_role(ConvergeRole.objects.all()[<span class="number">0</span>], switch=<span class="keyword">False</span>)</span><br><span class="line">            role.__name__ = <span class="string">'remove_converge_role'</span></span><br><span class="line">            role.short_description = ugettext_lazy(<span class="string">u"清空聚合规则"</span>)</span><br><span class="line">            fns.append(role)</span><br><span class="line"></span><br><span class="line">        actions = [ self.get_action(fn) <span class="keyword">for</span> fn <span class="keyword">in</span> fns ]</span><br><span class="line">        actions = OrderedDict(</span><br><span class="line">            (name, (func, name, desc))</span><br><span class="line">            <span class="keyword">for</span> func, name, desc <span class="keyword">in</span> actions</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> actions</span><br></pre></td></tr></table></figure>
+<p>这样每次刷新页面<code>get_actions</code>都会执行一遍， 做到动态actions.</p>
+<p><img src="/uploads/images/intermediate-django-admin-dynamic-actions.png" alt=""></p>
+
           
         
-      </div>
-    </header>
-
-    <div class="post-body">
-
       
-      
+    </div>
 
-      
-        
-          <span itemprop="articleBody"><p>总的来说并发级别归纳为下列三种, 其实也就是从底层到高层过渡， 从直接的接口到相对成熟对程序员友好的高级封装， 级别越高对于程序员来说越容易控制, 我们都知道并发难以实现， 经常出现跑死， 或者僵尸进程， 难以调试。 这些可能就是因为用了相对来说低级的并发逻辑。 此次专题主要讲述python的高级并发， 一种相对来说比较<code>Pythonic</code>的高级并发库. 在开始之前对并发归类做个引导.</p>
-<h2 id="并发的归类">并发的归类</h2><p><strong>低级并发(Low-level Concurrency)</strong></p>
-<p>就是直接用『原子操作』(atomic operation)所实现的并发。这种并发是给程序库的编写者用的， 而应用程序开发者则不需要它，因为这种写法很容易出错，而且极难调试。虽说Python本身的并发机制一般是用底层的操作实现的， 但开发者不能用Python语言编写这种级别的并发代码。</p>
-<p><strong>中级并发(Mid-level Concurrency)</strong></p>
-<p>不直接使用原子操作， 但却会直接使用”锁”（lock）,大多数语言提供的都是这种级别的并发。Python的threading.Semaphore、threading.Lock及multiprocessing.Lock等类都支持中级并发。开发应用程序的人一般都会使用终极并发，因为他们通常只能使用这个级别的并发功能。</p>
-<p><strong>高级并发(High-level Concurrency)</strong></p>
-<p>既不直接使用原子操作， 也不直接使用锁(锁与原子操作可能在幕后使用， 但开发者无须关注这些。)目前已经有编程语言开始支持高级并发了。从3.2版本起，Python提供了支持高级并发的concurrent.futures模块，此外， queue.Queue及multiprocessing这两个『队列集合类』(queue collection class)也支持高级并发.</p>
-<h2 id="见解">见解</h2><p><strong>中级并发痛点</strong></p>
-<p>中级并发是我经常使用的， 这种并发等级虽说使用起来相对低级并发简单， 但很容易出错， 容易出现那种难于追踪而且调试起来非常复杂。此外还会导致程序莫名的崩溃、失去响应(frozen)或者僵尸(zombie)进程.</p>
-<p><strong>关于中级并发建议</strong></p>
-<p>关键问题处在共享数据上面。如果共享数据可以修改，那么必须用锁来保护，以确保所有线程和进程都能按照顺序来存取它(也就是说你必须在程序里面控制好同一时刻必须有一个线程或进程访问这份数据)。如果有多个线程或进程试图访问同一份共享数据， 那么只有其中一个能够获取到， 而其他的都会阻塞(也就是进去『空闲状态』(idle)状态)。这就意味着当锁定机制生效时， 应用程序只有一个线程或进程起作用(这就变得和非并发程序类似了)，其余都得等待。由此可见我们应该进程少用锁，即便要用也不要时间太长,最简单的方法是根本不要分享可以修改的数据， 使进程本身只做运算，和I/O操作， 操作完后返回结果。这样就不用加锁了， 而大部分并发问题也就随之消失了.</p>
-<p><strong>高级并发</strong></p>
-<p>后面会追加一些高级并发， 对于Python来说高级并发才显得<code>Pythonic</code></p>
-</span>
-        
+    <div>
       
     </div>
 
@@ -875,64 +447,102 @@
     
       
 
+  
+  
+
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/30/hello-world/" itemprop="url">
-                Hello World
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-30T10:16:33+08:00" content="2015-09-30">
-            2015-09-30
-          </time>
-        </span>
+    
+      <header class="post-header">
 
         
-
         
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/30/hello-world/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/hello-world/" itemprop="commentsCount"></span>
-              </a>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/03/intermediate-django-single-input-text-filter/" itemprop="url">
+                  Django 进阶学习 - 文本框过滤
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
             </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T15:46:46+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/03/intermediate-django-single-input-text-filter/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/03/intermediate-django-single-input-text-filter/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/03/intermediate-django-single-input-text-filter/" class="leancloud_visitors" data-flag-title="Django 进阶学习 - 文本框过滤">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>默认情况下django可以对列进行过滤， 但大多数是对<code>Relationship</code>列通过<code>list_filter</code> 直接指定<code>field name</code>就可以方便的进行过滤了， 但是如果实现文本框输入过滤属性， 然后通过按钮触发事件后来过滤只能通过自定义Django filter来实现</p>
+<p><strong>首先自定义一个filter类</strong></p>
+<p><code>filters.py</code> 默认情况下如果没有<code>filters.py</code>需要在app目录新建此模块, 推荐命名<code>filters.py</code>, 下面这个类是通用的， 所以我们要基于模型的某个字段来定义一个Filter类，继承<code>SingleTextInputFilter</code>(还是在<code>filters.py</code>)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.admin <span class="keyword">import</span> ListFilter</span><br><span class="line"><span class="keyword">from</span> django.utils.translation <span class="keyword">import</span> ugettext_lazy <span class="keyword">as</span> _</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleTextInputFilter</span><span class="params">(ListFilter)</span>:</span></span><br><span class="line">    <span class="string">"""</span><br><span class="line">    renders filter form with text input and submit button</span><br><span class="line">    """</span></span><br><span class="line">    parameter_name = <span class="keyword">None</span></span><br><span class="line">    template = <span class="string">"admin/textinput_filter.html"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, request, params, model, model_admin)</span>:</span></span><br><span class="line">        super(SingleTextInputFilter, self).__init__(</span><br><span class="line">            request, params, model, model_admin)</span><br><span class="line">        <span class="keyword">if</span> self.parameter_name <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">raise</span> ImproperlyConfigured(</span><br><span class="line">                <span class="string">"The list filter '%s' does not specify "</span></span><br><span class="line">                <span class="string">"a 'parameter_name'."</span> % self.__class__.__name__)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.parameter_name <span class="keyword">in</span> params:</span><br><span class="line">            value = params.pop(self.parameter_name)</span><br><span class="line">            self.used_parameters[self.parameter_name] = value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">value</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        Returns the value (in string format) provided in the request's</span><br><span class="line">        query string for this filter, if any. If the value wasn't provided then</span><br><span class="line">        returns None.</span><br><span class="line">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.used_parameters.get(self.parameter_name, <span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">has_output</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">expected_parameters</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        Returns the list of parameter names that are expected from the</span><br><span class="line">        request's query string and that will be used by this filter.</span><br><span class="line">        """</span></span><br><span class="line">        <span class="keyword">return</span> [self.parameter_name]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">choices</span><span class="params">(self, cl)</span>:</span></span><br><span class="line">        all_choice = &#123;</span><br><span class="line">            <span class="string">'selected'</span>: self.value() <span class="keyword">is</span> <span class="keyword">None</span>,</span><br><span class="line">            <span class="string">'query_string'</span>: cl.get_query_string(&#123;&#125;, [self.parameter_name]),</span><br><span class="line">            <span class="string">'display'</span>: _(<span class="string">'All'</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (&#123;</span><br><span class="line">            <span class="string">'get_query'</span>: cl.params,</span><br><span class="line">            <span class="string">'current_value'</span>: self.value(),</span><br><span class="line">            <span class="string">'all_choice'</span>: all_choice,</span><br><span class="line">            <span class="string">'parameter_name'</span>: self.parameter_name</span><br><span class="line">        &#125;, )</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IpFilter</span><span class="params">(SingleTextInputFilter)</span>:</span></span><br><span class="line">    <span class="string">"""基于IP过滤, 继承SigleTextInputFilter"""</span></span><br><span class="line">    title = <span class="string">"IP"</span></span><br><span class="line">    parameter_name = <span class="string">'ip'</span>  <span class="comment">#作用model的字段名</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">queryset</span><span class="params">(self, request, queryset)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.value():</span><br><span class="line">            <span class="keyword">return</span> queryset.filter(ip__iexact=self.value()) ＃ 这里自定义过滤条件. self.value() 是文本框输入的值.</span><br></pre></td></tr></table></figure>
+<p><strong>自定义filter template</strong></p>
+<p><code>admin/textinput_filter.html</code>, 直接放到本项目的template目录即可， 千万不要放到<code>django</code>包目录下的admin template目录， 如果你了解django 模版检索的过程优先级， 你应该知道我说的意思. 这里我放到<code>$MYAPP/templates/admin/textinput_filter.html</code>位置</p>
+<figure class="highlight vbscript-html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">h3</span>&gt;</span>&#123;% blocktrans with filter_title=title %&#125; By &#123;&#123; filter_title &#125;&#125; &#123;% endblocktrans %&#125;<span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;#i for item, to be short in names#&#125;</span><br><span class="line">&#123;% with choices.0 as i %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">form</span> <span class="attribute">method</span>=<span class="value">"get"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"search"</span> <span class="attribute">name</span>=<span class="value">"&#123;&#123; i.parameter_name &#125;&#125;"</span> <span class="attribute">value</span>=<span class="value">"&#123;&#123; i.current_value|default_if_none:"</span><span class="value">" &#125;&#125;"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">            &#123;#create hidden inputs to preserve values from other filters and search field#&#125;</span><br><span class="line">            &#123;% for k, v in i.get_query.items %&#125;</span><br><span class="line">                &#123;% if not k == i.parameter_name %&#125;</span><br><span class="line">                    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"hidden"</span> <span class="attribute">name</span>=<span class="value">"&#123;&#123; k &#125;&#125;"</span> <span class="attribute">value</span>=<span class="value">"&#123;&#123; v &#125;&#125;"</span>&gt;</span></span><br><span class="line">                &#123;% endif %&#125;</span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">value</span>=<span class="value">"&#123;% trans 'apply' %&#125;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    &#123;#show "All" link to reset current filter#&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="title">li&#123;%</span> <span class="attribute">if</span> <span class="attribute">i.all_choice.selected</span> %&#125; <span class="attribute">class</span>=<span class="value">"selected"</span><span class="value">&#123;%</span> <span class="attribute">endif</span> %&#125;&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"&#123;&#123; i.all_choice.query_string|iriencode &#125;&#125;"</span>&gt;</span></span><br><span class="line">            &#123;&#123; i.all_choice.display &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">&#123;% endwith %&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>最后配置admin.py</strong></p>
+<p><code>admin.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> controller.filters <span class="keyword">import</span> IpFilter</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TriggerAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    empty_value_display = <span class="string">u'无规则'</span></span><br><span class="line">    list_display = (<span class="string">'__str__'</span>, <span class="string">'id'</span>, <span class="string">'ip'</span>, <span class="string">'t_type'</span>,</span><br><span class="line">            <span class="string">'get_converge'</span>, <span class="string">'get_switch'</span>, <span class="string">'level'</span>)</span><br><span class="line">    search_fields = (<span class="string">'description'</span>,)</span><br><span class="line">    list_filter = (IpFilter, <span class="string">'t_type'</span>, <span class="string">'converge_role'</span>, <span class="string">'switch_role'</span>, <span class="string">'level'</span>) <span class="comment"># 直接把IpFilter类写进去</span></span><br></pre></td></tr></table></figure>
+<p><strong>配置完成</strong></p>
+
           
         
-      </div>
-    </header>
-
-    <div class="post-body">
-
       
-      
+    </div>
 
-      
-        
-          <span itemprop="articleBody"><p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-</span>
-        
+    <div>
       
     </div>
 
@@ -952,56 +562,1060 @@
     
       
 
+  
+  
+
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/30/My-New-Post/" itemprop="url">
-                My New Post
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-30T10:11:01+08:00" content="2015-09-30">
-            2015-09-30
-          </time>
-        </span>
+    
+      <header class="post-header">
 
         
-
         
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/30/My-New-Post/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/My-New-Post/" itemprop="commentsCount"></span>
-              </a>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/21/python-multi-env/" itemprop="url">
+                  Centos 6.x 共存安装Python 2.7 or 3.x
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
             </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-21T14:46:16+08:00" content="2016-04-21">
+              2016-04-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/21/python-multi-env/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/python-multi-env/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/21/python-multi-env/" class="leancloud_visitors" data-flag-title="Centos 6.x 共存安装Python 2.7 or 3.x">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>由于yum命令依赖系统的python2.6， 所以如果直接覆盖的话，会导致yum不能工作。 所以自带的python 2.6绝对不能动。 不过可以通过自定义安装来共存两套或多套python环境。 再配合virtualenv 隔离项目环境.</p>
+<p>这里演示安装Python2.7 :</p>
+<p><strong>首先安装系统依赖包</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install zlib-devel</span><br><span class="line">yum install bzip2-devel</span><br><span class="line">yum install openssl-devel</span><br><span class="line">yum install ncurses-devel</span><br><span class="line">yum install sqlite-devel</span><br></pre></td></tr></table></figure>
+<p><strong>下载Python2.7 源码编译安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src;</span><br><span class="line">wget --no-check-certificate https://www.python.org/ftp/python/<span class="number">2.7</span>.<span class="number">11</span>/Python-<span class="number">2.7</span>.<span class="number">11</span>.tar.xz</span><br><span class="line">tar xf Python-<span class="number">2.7</span>.<span class="number">11</span>.tar.xz</span><br><span class="line"><span class="built_in">cd</span> Python-<span class="number">2.7</span>.<span class="number">11</span></span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/python27</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p><strong>安装pip</strong></p>
+<p>使用python27安装pip</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py</span><br><span class="line">/usr/<span class="built_in">local</span>/python27/bin/python ez_setup.py</span><br><span class="line">/usr/<span class="built_in">local</span>/python27/bin/easy_install pip</span><br></pre></td></tr></table></figure>
+<p>到这里python2.7.11 和 pip套件都安装了可以使用了。 下一步就是把<code>/usr/local/python27/bin/</code> 加入<code>$PATH</code>变量。</p>
+<h3 id="安装virtualenvwrapper">安装virtualenvwrapper</h3><p>这一步实在自带的python2.6 上执行的， 所以如果用python 2.7 需要再创建的虚拟环境的时候指定</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenvwrapper</span><br></pre></td></tr></table></figure>
+<p>然后再<code>~/.bashrc</code>文件追加以下操作</p>
+<p><code>~/.bashrc</code> or <code>./zshrc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> $(<span class="built_in">which</span> virtualenvwrapper.sh)</span><br></pre></td></tr></table></figure></p>
+<p>然后<code>source ~/.bashrc</code> 这样就可以使用<code>workon</code>、 <code>mkvirtualenv</code>、 <code>rmvirtualenv</code>命令.具体的指南参考 <a href="https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html" target="_blank" rel="external">virtualenvwrapper</a></p>
+<p>创建基于Python 2.7 的虚拟环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkvirtualenv ansible -p /usr/<span class="built_in">local</span>/python2.<span class="number">7.11</span>/bin/python</span><br></pre></td></tr></table></figure>
+<h3 id="错误处理">错误处理</h3><p>第一个错误,  <code>source $(which virtualenvwrapper.sh)</code>出现<code>logging no NullHandler</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"/usr/lib64/python2.6/runpy.py"</span>, line <span class="number">122</span>, <span class="keyword">in</span> _run_module_as_main</span><br><span class="line">    <span class="string">"__main__"</span>, fname, loader, pkg_name)</span><br><span class="line">  File <span class="string">"/usr/lib64/python2.6/runpy.py"</span>, line <span class="number">34</span>, <span class="keyword">in</span> _run_code</span><br><span class="line">    <span class="keyword">exec</span> code <span class="keyword">in</span> run_globals</span><br><span class="line">  File <span class="string">"/usr/lib/python2.6/site-packages/virtualenvwrapper/hook_loader.py"</span>, line <span class="number">16</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> stevedore <span class="keyword">import</span> ExtensionManager</span><br><span class="line">  File <span class="string">"/usr/lib/python2.6/site-packages/stevedore/__init__.py"</span>, line <span class="number">23</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    LOG.addHandler(logging.NullHandler())</span><br><span class="line">AttributeError: <span class="string">'module'</span> object has no attribute <span class="string">'NullHandler'</span></span><br><span class="line">virtualenvwrapper.sh: There was a problem running the initialization hooks.</span><br><span class="line"></span><br><span class="line">If Python could <span class="keyword">not</span> <span class="keyword">import</span> the module virtualenvwrapper.hook_loader,</span><br><span class="line">check that virtualenvwrapper has been installed <span class="keyword">for</span></span><br><span class="line">VIRTUALENVWRAPPER_PYTHON=/usr/bin/python <span class="keyword">and</span> that PATH <span class="keyword">is</span></span><br></pre></td></tr></table></figure>
+<p>处理方法, 升级stevedore</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install stevedore</span><br></pre></td></tr></table></figure>
+<p><code>python 2.6.6</code> 可以升级到1.3.0 就可以了.</p>
+
           
         
-      </div>
-    </header>
+      
+    </div>
 
-    <div class="post-body">
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/19/celery-userguide-tasks/" itemprop="url">
+                  Celery用户手册 - Tasks
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-19T14:39:27+08:00" content="2016-04-19">
+              2016-04-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/19/celery-userguide-tasks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/19/celery-userguide-tasks/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/19/celery-userguide-tasks/" class="leancloud_visitors" data-flag-title="Celery用户手册 - Tasks">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody"><p>这是第一篇日记， 仅仅为了测试.</p>
-</span>
+          
+            <p><code>Tasks</code>是Celery 应用的构建块。事实上Celery应用是由一个或多个Task拼装组成的。</p>
+<p>一个Task即是一个对象， Task被创建后可以被所有调用， 它是双重角色， 当Task被调用可以通过Task可以发送消息， 同时当作为一个worker的时候可以接收消息，并消费。</p>
+<p>每个Task name 都是唯一的， 这样可以通过这个名字，找到合适的function去执行消费。</p>
+<p>当发送一个任务消息在worker确认(acknowledged)前不会消失，一个worker可以提前存储很多消息，如果worker进程崩溃或killed，消息也不会消失， 消息会通过在投递的方式给其他存活worker。</p>
+<p>理想的Task函数必须是幂等的，这意味着相同的参数调用多次不会出现不同的结果。但是worker并不知道函数是幂等的， woker默认是提前确认消息， 在执行完成之前这个task永远不会被重复执行。 这个就是上锁(LOCK)意思。这一段和上一段还是有区别的， 这一段强调的是<strong>开始执行之前确认</strong>。</p>
+<p>当然确认如果任务是幂等的，你可以设置<code>acks_late</code>选项来控制worker 在函数返回之后去确认消息<code>acknowledge</code>. 请参考: <a href="http://docs.celeryproject.org/en/latest/faq.html#faq-acks-late-vs-retry%20%22%22" target="_blank" rel="external">Should I use retry or acks_late?</a></p>
+<p>在这一章节， 你将学习所有关于任务的定义，以下为目录:</p>
+<blockquote>
+<ul>
+<li><a href="#basics">Basics</a></li>
+<li><a href="#names">Names</a></li>
+<li><a href="#context">Context</a></li>
+<li><a href="#logging">Logging</a></li>
+<li><a href="#retrying">Retrying</a></li>
+<li><a href="#listofoptions">List of Options</a></li>
+<li><a href="#states">States</a></li>
+<li><a href="#semipredicates">Semipredicates</a></li>
+<li><a href="#customtaskclasses">Custom task classes</a></li>
+<li><a href="#howitworks">How it works</a></li>
+<li><a href="#tips">Tips and Best Practices</a></li>
+<li><a href="#performance">Performance and Strategies</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</blockquote>
+<h2 id="Basics">Basics <span id="basics"></span></h2><p>你可以很容易的创建任务在任何的可调用函数上使用<code>task()</code>装饰器.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> User</span><br><span class="line"></span><br><span class="line"><span class="decorator">@app.task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_user</span><span class="params">(username, password)</span>:</span></span><br><span class="line">    User.objects.create(username=username, password=password)</span><br></pre></td></tr></table></figure>
+<p>可以在装饰器上指定参数， 来设置<code>Task</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task(serializer='json')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_user</span><span class="params">(username, password)</span>:</span></span><br><span class="line">    User.objects.create(username=username, password=password)</span><br></pre></td></tr></table></figure>
+<p><strong>Multiple decorators</strong></p>
+<p>当使用多个装饰器，需要确保任务装饰生效， 把<code>task decorator</code> 写在函数第一个装饰器.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task</span></span><br><span class="line"><span class="decorator">@decorator2</span></span><br><span class="line"><span class="decorator">@decorator1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<p><strong>如何引入task装饰器？</strong></p>
+<p><code>task decorator</code> 存在于你的Celery应用的实例上， 上一节我们已经讲过如何声明Application和使用它. </p>
+<p>如果你使用的是Django 或者仍然适用老的版本， 你可能导入<code>task decorator</code>的方式是下面这样.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> task</span><br><span class="line"></span><br><span class="line"><span class="decorator">@task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<h2 id="Names">Names <span id="names"></span></h2><p>每个任务都有一个唯一的名称， 一个任务创建时如果不提供一个自定义的名字， 将会去生成一个任务.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>@app.task(name=<span class="string">'sum-of-two-numbers'</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line"><span class="prompt">... </span>    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add.name</span><br><span class="line"><span class="string">'sum-of-two-numbers'</span></span><br></pre></td></tr></table></figure>
+<p>最好的方式是适用模块名称作为一个名称空间，如果一个任务另外一个模块中也有这样的名称如user模块中有<code>add</code>, group 模块中也有<code>add</code>, 那么这样就会冲突. 最好的方式如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>@app.task(name=<span class="string">'tasks.add'</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line"><span class="prompt">... </span>    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<p>你可以通过调用task的属性来获取task name.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add.name</span><br><span class="line"><span class="string">'tasks.add'</span></span><br></pre></td></tr></table></figure>
+<p>如果不指定， 默认也会通过模块名和函数名拼装生成name</p>
+<p><code>tasks.py</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> tasks <span class="keyword">import</span> add</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add.name</span><br><span class="line"><span class="string">'tasks.add'</span></span><br></pre></td></tr></table></figure>
+<p><strong>自动命名和相对import</strong></p>
+<p>相对import和自动命名不能一起工作， 所以如果适用相对引入你必须精确的设置name.</p>
+<p>如果一个客户端(创建消息的时候) 导入这个<code>myapp.tasks</code> 通过<code>.tasks</code>导入，另外一个worker导入模块通过<code>myapp.tasks</code>， 生成的名称不匹配导致worker会抛出<code>NotRegistered</code> 从而不能工作.</p>
+<p>Django INSTALLED_APPS的<code>project.myapp</code>风格.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [<span class="string">'project.myapp'</span>]</span><br></pre></td></tr></table></figure>
+<p>如果你安装app使用<code>project.myapp</code>, 那么task导入的时候也要通过<code>project.myapp.tasks</code>导入， 所以你要确保总是使用相同的名称导入任务.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> project.myapp.tasks <span class="keyword">import</span> mytask   <span class="comment"># &lt;&lt; GOOD</span></span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> myapp.tasks <span class="keyword">import</span> mytask    <span class="comment"># &lt;&lt; BAD!!!</span></span><br></pre></td></tr></table></figure>
+<p>上面第二个例子将导致任务以不同的方式命名， 进而导致客户端和worker不用的任务名称。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> project.myapp.tasks <span class="keyword">import</span> mytask</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>mytask.name</span><br><span class="line"><span class="string">'project.myapp.tasks.mytask'</span></span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> myapp.tasks <span class="keyword">import</span> mytask</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>mytask.name</span><br><span class="line"><span class="string">'myapp.tasks.mytask'</span></span><br></pre></td></tr></table></figure>
+<p>因而你导入必须一致， 这也是python推荐的方式。</p>
+<p>同样的你不应该使用旧风格进行相对引入.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> module <span class="keyword">import</span> foo   <span class="comment"># BAD!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> proj.module <span class="keyword">import</span> foo  <span class="comment"># GOOD!</span></span><br></pre></td></tr></table></figure>
+<p>以下新的风格相对引入也是可以推荐的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .module <span class="keyword">import</span> foo  <span class="comment"># GOOD!</span></span><br></pre></td></tr></table></figure>
+<p>如果你的程序已经做了错的引入， 并且你没有时间去重构， 建议通过显式的指定名称去覆盖自动命名.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@task(name='proj.tasks.add')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<h2 id="Context">Context <span id="context"></span></h2><p>执行任务<code>request</code> 包含的信息和状态.</p>
+<p><code>request</code>定义了以下属性</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id:</strong></td>
+<td>执行任务的唯一ID</td>
+</tr>
+<tr>
+<td><strong>group:</strong></td>
+<td>组id如果属于组</td>
+</tr>
+<tr>
+<td><strong>chord:</strong></td>
+<td>The unique id of the chord this task belongs to (if the task is part of the header).</td>
+</tr>
+<tr>
+<td><strong>args:</strong></td>
+<td>位置参数</td>
+</tr>
+<tr>
+<td><strong>kwargs:</strong></td>
+<td>键值参数</td>
+</tr>
+<tr>
+<td><strong>retries:</strong></td>
+<td>重拾次数</td>
+</tr>
+<tr>
+<td><strong>is_eager:</strong></td>
+<td>如果不是工人是本地客户端，设置为True</td>
+</tr>
+<tr>
+<td><strong>eta:</strong></td>
+<td>预计任务时间</td>
+</tr>
+<tr>
+<td><strong>expires:</strong></td>
+<td>任务的过期时</td>
+</tr>
+<tr>
+<td><strong>logfile:</strong></td>
+<td>worker 的日志文件, See: <a href="#logging">logging</a></td>
+</tr>
+<tr>
+<td><strong>loglevel:</strong></td>
+<td>当前使用的日志级别</td>
+</tr>
+<tr>
+<td><strong>hostname:</strong></td>
+<td>worker实例的hostname</td>
+</tr>
+<tr>
+<td><strong>delivery_info:</strong></td>
+<td>额外的传递信息</td>
+</tr>
+<tr>
+<td><strong>called_directly:</strong></td>
+<td>This flag is set to true if the task was not executed by the worker.</td>
+</tr>
+<tr>
+<td><strong>callbacks:</strong></td>
+<td>回调函数</td>
+</tr>
+<tr>
+<td><strong>errback:</strong></td>
+<td>异常回调函数</td>
+</tr>
+<tr>
+<td><strong>utc:</strong></td>
+<td>如果为True说明调用者启动了utc</td>
+</tr>
+</tbody>
+</table>
+<p>3.1 新属性</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>headers:</strong></td>
+<td>映射消息头</td>
+</tr>
+<tr>
+<td><strong>reply_to:</strong></td>
+<td>发送replay到哪个队列</td>
+</tr>
+<tr>
+<td><strong>correlation_id:</strong></td>
+<td>通常与任务id通用， 常用语amqp的跟踪回复</td>
+</tr>
+</tbody>
+</table>
+<p>一个从context获取获取信息的例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task(bind=True)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dump_context</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">    print(<span class="string">'Executing task id &#123;0.id&#125;, args: &#123;0.args!r&#125; kwargs: &#123;0.kwargs!r&#125;'</span>.format(</span><br><span class="line">            self.request))</span><br></pre></td></tr></table></figure>
+<h2 id="Logging">Logging <span id="logging"></span></h2><p>worker 将会自动配置logging， 也可以手动配置定制logging 日志输出.</p>
+<p>Celery 提供一个名为<code>celery.task</code>的logger供使用, 你可以通过这个logger 自动的生成一个名称和唯一id作为日志的一部分.</p>
+<p>推荐在每个模块中都声明一个logger， 每个模块使用单独的logger.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery.utils.log <span class="keyword">import</span> get_task_logger</span><br><span class="line"></span><br><span class="line">logger = get_task_logger(__name__)</span><br><span class="line"></span><br><span class="line"><span class="decorator">@app.task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    logger.info(<span class="string">'Adding &#123;0&#125; + &#123;1&#125;'</span>.format(x, y))</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<p>Celery 使用Python标准库的logging模块， 文档支持可以在<a href="http://docs.python.org/dev/library/logging.html#module-logging" target="_blank" rel="external">logging</a> 模块中看到</p>
+<p>你也可以使用<code>print()</code>, 任何写入标准输出和标准错误都会转到日志系统。 所以print的字符也会作为日志记录， 记录等级为<strong>WARN</strong>.</p>
+<h2 id="Retrying">Retrying <span id="retrying"></span></h2><p><code>retry()</code> 可以重试任务， 当任务出现可恢复的错误.</p>
+<p>当调用<code>retry()</code>时将会发送一个新的消息， 使用相同的task-id,  确保消息和原始任务属于相同的队列.</p>
+<p>当一个消息重试后， 任务也会记录一个状态。这样你可以使用结果实例跟踪任务状态记录(see <a href="#states">States</a>)</p>
+<p>一个使用<code>retry()</code> 的例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task(bind=True)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_twitter_status</span><span class="params">(self, oauth, tweet)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        twitter = Twitter(oauth)</span><br><span class="line">        twitter.update_status(tweet)</span><br><span class="line">    <span class="keyword">except</span> (Twitter.FailWhaleError, Twitter.LoginError) <span class="keyword">as</span> exc:</span><br><span class="line">        <span class="keyword">raise</span> self.retry(exc=exc)</span><br></pre></td></tr></table></figure>
+<p><code>bind</code> 参数告诉装饰器将会给一个可以访问的self实例.</p>
+<p>当存储任务结果，exc 是用于传递异常信息用户日志输出。 内容有异常信息和traceback信息都存在于exc.</p>
+<p>如果此任务有<code>max_retries</code>值， 并且重试次数超过了这个值， 那么这个exc异常将会重新raise.  如果是下列情况将不会这样:</p>
+<ul>
+<li>exc 没有指定</li>
+</ul>
+<p>这种情况下将会raise <code>MaxRetriesExceeded</code>异常, 这个是默认异常</p>
+<ul>
+<li>没有异常</li>
+</ul>
+<p>当重试没有异常发生(也就是上面except没有发生)， 重试次数达到了， 但task还没有正确返回， 可以指定给exc一个异常， 用于代理默认的<code>MaxRetriesExceeded</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.retry(exc=Twitter.LoginError())</span><br></pre></td></tr></table></figure>
+<p>将会触发提供的异常信息。 </p>
+<p><strong>自定义重试间隔</strong></p>
+<p>当一个任务要去重试， 可以指定一个时间之后再去重试. 使用<code>default_retry_delay</code>属性来设置默认延迟.默认是三分钟,  注意: 延迟的单位是秒.</p>
+<p>你可以使用 <code>retry(..., countdown=60s)</code>来覆盖task级别的<code>default_retry_delay</code>时间. 两种方法灵活使用 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task(bind=True, default_retry_delay=30 * 60)  # retry in 30 minutes.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        …</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> exc:</span><br><span class="line">        <span class="keyword">raise</span> self.retry(exc=exc, countdown=<span class="number">60</span>)  <span class="comment"># override the default and                                                 # retry in 1 minute</span></span><br></pre></td></tr></table></figure>
+<h2 id="List_of_Options">List of Options <span id="listofoptions"></span></h2><p>Task.<strong>name</strong></p>
+<p>task 注册名</p>
+<p>可以手动设置，也可以生成此name. See: <a href="#names">Names</a></p>
+<p>未完待续&gt;&gt;&gt;</p>
+
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/18/celery-userguide-application/" itemprop="url">
+                  Celery用户手册 - Application
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-18T14:51:56+08:00" content="2016-04-18">
+              2016-04-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/18/celery-userguide-application/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/18/celery-userguide-application/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/18/celery-userguide-application/" class="leancloud_visitors" data-flag-title="Celery用户手册 - Application">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Application">Application</h2><p>必须使用一个Application实例来创建celery 任务.</p>
+<p>该Application线程是安全(thread-safe)的，以便你可以使用多个不同的Application 配置.  组件和任务能共存于相同的进程空间。</p>
+<p>创建一个Application实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app = Celery()</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app</span><br><span class="line">&lt;Celery __main__:<span class="number">0x100469fd0</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>最后一行显示的是此Application实例的文本描述，其中包括celery类的名称，此实例存在于<code>__main__</code> 主模块中和此实例的内存地址.</p>
+<h3 id="Main_Name">Main Name</h3><p><code>Main Name</code> 是个很重要的概念， 以下会介绍为什么重要.</p>
+<p>当你使用Celery 推送一个任务消息， 这个消息不携带任何的源代码，但是需要指定一个此消息需要执行的任务名称。这种工作方式类似于hostname工作方式， 在网络上: 每个worker维护着任务名和他们所能执行的实际函数. 这就是所谓的<code>task registry</code>(任务注册表).</p>
+<p>每当你定义一个任务,  该任务也将要添加到本地的<code>task registry</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>@app.task</span><br><span class="line"><span class="prompt">... </span><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line"><span class="prompt">... </span>    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add</span><br><span class="line">&lt;@task: __main__.add&gt;</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add.name</span><br><span class="line">__main__.add</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app.tasks[<span class="string">'__main__.add'</span>] <span class="comment"># 根据task name取出实际函数(function)</span></span><br><span class="line">&lt;@task: __main__.add&gt;</span><br></pre></td></tr></table></figure>
+<p>这里你会在此看到<code>__main__</code> ，每当Celery无法检索到function属于哪个模块, 它会使用主模块名称生成任务模块， 即<code>__main__.add</code>.</p>
+<p>这种现象只会出现在下面情况中：</p>
+<ol>
+<li>定义的task所属的application 在一个主模块中</li>
+<li>此application实例创建在Python 交互式环境中</li>
+</ol>
+<p>第一种:<br><code>tasks.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line">app = Celery()</span><br><span class="line"></span><br><span class="line"><span class="decorator">@app.task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span> <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.worker_main()</span><br></pre></td></tr></table></figure>
+<p>当这个<code>tasks.py</code> 作为一个主模块执行的时候(<code>__main__</code>成立)任务名称以<code>__main__</code>开头， 即<code>__main__.add</code>. 但是当此模块被另外一个模块引用的时候，它的任务名称将以<code>tasks</code>开头, 即<code>tasks.add</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">from</span> tasks <span class="keyword">import</span> add</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add.name</span><br><span class="line">tasks.add</span><br></pre></td></tr></table></figure>
+<p>可以在创建的Application的时候指定一个名称.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app = Celery(<span class="string">'tasks'</span>)</span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app.main</span><br><span class="line"><span class="string">'tasks'</span></span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>@app.task</span><br><span class="line"><span class="prompt">... </span><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line"><span class="prompt">... </span>    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"><span class="prompt">&gt;&gt;&gt; </span>add.name</span><br><span class="line">tasks.add</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参考: <a href="http://docs.jinkan.org/docs/celery/userguide/tasks.html#task-names" target="_blank" rel="external">Names</a></p>
+</blockquote>
+<h3 id="Configuration">Configuration</h3><p>你可以设置Celery的其他选项，这些选项作用于application 实例. 但你最好单独定义一个配置模块。 </p>
+<p>查看一个配置<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app.conf.CELERY_TIMEZONE</span><br><span class="line"><span class="string">'Europe/London'</span></span><br></pre></td></tr></table></figure></p>
+<p>你也可以直接设置配置项<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app.conf.CELERY_ENABLE_UTC = <span class="keyword">True</span></span><br></pre></td></tr></table></figure></p>
+<p>使用<code>update</code>方法更新多个键值.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app.conf.update(</span><br><span class="line"><span class="prompt">... </span>    CELERY_ENABLE_UTC=<span class="keyword">True</span>,</span><br><span class="line"><span class="prompt">... </span>    CELERY_TIMEZONE=<span class="string">'Europe/London'</span>,</span><br><span class="line">...)</span><br></pre></td></tr></table></figure></p>
+<p>配置对象可以通过多种方法去修改操作, 他们的优先级是:</p>
+<ol>
+<li>运行时修改</li>
+<li>配置模块(如果有的话)</li>
+<li>默认配置模块(<strong>celery.app.defaults</strong>)</li>
+</ol>
+<p>你甚至可以使用celery.add_defaults()方法来添加新的默认源.</p>
+<blockquote>
+<p>参见: <a href="http://docs.jinkan.org/docs/celery/configuration.html#configuration" target="_blank" rel="external">Configuration reference</a> 查看支持的通用选项参数列表.</p>
+</blockquote>
+<h4 id="config_from_object">config_from_object</h4><p><code>Celery.config_from_object()</code> 可以从一个配置对象加载配置， 可以是一个配置模块， 或者其他配置属性的对象.</p>
+<p>需要注意的是， 使用此方法后默认参数将会被重置， 如果配置对象的键值和默认对象有冲突的话。 如果你想设置额外的配置你应该在之后在此方法之后去设置.</p>
+<p><strong>Example 1: 使用name作为module</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"></span><br><span class="line">app = Celery()</span><br><span class="line">app.config_from_object(<span class="string">'celeryconfig'</span>)</span><br></pre></td></tr></table></figure>
+<p><code>celeryconfig</code> 作为字符串对象传入， <code>celeryconfig</code>内容如下</p>
+<p><code>celeryconfig.py</code>:<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">CELERY_ENABLE_UTC = <span class="value"><span class="keyword">True</span></span></span></span><br><span class="line"><span class="setting">CELERY_TIMEZONE = <span class="value"><span class="string">'Europe/London'</span></span></span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2: 使用configtion module</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"></span><br><span class="line">app = Celery()</span><br><span class="line"><span class="keyword">import</span> celeryconfig</span><br><span class="line">app.config_from_object(celeryconfig)</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3: 使用configtion class/object</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"></span><br><span class="line">app = Celery()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span>:</span></span><br><span class="line">    CELERY_ENABLE_UTC = <span class="keyword">True</span></span><br><span class="line">    CELERY_TIMEZONE = <span class="string">'Europe/London'</span></span><br><span class="line"></span><br><span class="line">app.config_from_object(Config)</span><br><span class="line"><span class="comment"># or using the fully qualified name of the object:</span></span><br><span class="line"><span class="comment">#   app.config_from_object('module:Config')</span></span><br></pre></td></tr></table></figure>
+<h4 id="config_from_envvar">config_from_envvar</h4><p>使用<code>Celery.config_from_envvar()</code>方法可以从环境变量来设置选项.</p>
+<p>从环境变量名为<strong>CELERY_CONFIG_MODULE</strong>加载配置:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"></span><br><span class="line"><span class="comment">#: Set default configuration module name</span></span><br><span class="line">os.environ.setdefault(<span class="string">'CELERY_CONFIG_MODULE'</span>, <span class="string">'celeryconfig'</span>)</span><br><span class="line"></span><br><span class="line">app = Celery()</span><br><span class="line">app.config_from_envvar(<span class="string">'CELERY_CONFIG_MODULE'</span>)</span><br></pre></td></tr></table></figure>
+<p>然后你可以指定配置模块，通过设置环境变量的方法:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ CELERY_CONFIG_MODULE=<span class="string">"celeryconfig.prod"</span> celery worker <span class="operator">-l</span> info</span><br></pre></td></tr></table></figure>
+<h3 id="Censored_configuration">Censored configuration</h3><p>如果你想打印出配置， 但是你不想打印一些敏感的数据， 就像密码和API 密钥类似的敏感信息。</p>
+<p>Celery 支持用于展示配置相关逻辑， 一个就是<code>humanize()</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="prompt">&gt;&gt;&gt; </span>app.conf.humanize(with_defaults=<span class="keyword">False</span>, censored=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<p>此方法将会隐藏敏感信息， 如果<code>with_defaults</code>为true的话， 可以显示为默认的值。</p>
+<p>默认情况下Celery认为配置KEY中包含<code>API</code>, <code>TOKEN</code>, <code>KEY</code>, <code>SECRET</code>, <code>PASS</code>, <code>SIGNATURE</code>, <code>DATABASE</code>这些字符的都为敏感信息。</p>
+<h3 id="Breaking_the_chain">Breaking the chain</h3><p>并没有看懂这段 , 貌似讲的是一种规范.</p>
+<h3 id="Abstract_Tasks">Abstract Tasks</h3><p>以上所有的tasks创建的时候都使用了task() 装饰器，task会继承Task class.</p>
+<p>当然可以指定成其他的Task基类， 比如下面代码中<code>base=OtherTask</code>, 那么此task的基类为<code>OtherTask</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@app.task(base=OtherTask):</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<p>如果你想创建一个自定义的Task 类， 你必须继承自<code>celery.Task</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Task</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DebugTask</span><span class="params">(Task)</span>:</span></span><br><span class="line">    abstract = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        print(<span class="string">'TASK STARTING: &#123;0.name&#125;[&#123;0.request.id&#125;]'</span>.format(self))</span><br><span class="line">        <span class="keyword">return</span> super(DebugTask, self).__call__(*args, **kwargs)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/16/python-funny/" itemprop="url">
+                  用Python不务正业 - 第一弹
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-16T18:31:40+08:00" content="2016-04-16">
+              2016-04-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/16/python-funny/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/16/python-funny/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/16/python-funny/" class="leancloud_visitors" data-flag-title="用Python不务正业 - 第一弹">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>从这篇开始会做一个<code>用Python不务正业</code>专题， 记录Python一些一无是用但是很好玩的脚本.本期是一个<code>终端乱弹</code>的脚本.</p>
+<p><strong>效果图:</strong></p>
+<p><img src="/uploads/images/xiaoguo.gif" alt="效果图"></p>
+<p>记得刚学shell的时候做过终端随机的点生成随机颜色的字符， 只为好玩和增强脚本开发技能， 下午闲来无事用python实现了， 正好学习了python的<code>curses</code>标准库. python <code>curses</code>标准库可以用来对终端定制开发， 做一些友好的终端命令。</p>
+<p>本脚本不需要安装其他的库， 只依赖标准库， 在Python2.7 测试通过， 以下为代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">'''</span><br><span class="line">File Name: mt2.py</span><br><span class="line">Author: JackeyGao</span><br><span class="line">mail: gaojunqi@outlook.com</span><br><span class="line">Created Time: Fri Apr 15 15:52:31 2016</span><br><span class="line">'''</span></span><br><span class="line"><span class="keyword">import</span> os, sys</span><br><span class="line"><span class="keyword">import</span> locale</span><br><span class="line"><span class="keyword">import</span> signal</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> curses</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"></span><br><span class="line">locale.setlocale(locale.LC_ALL, <span class="string">''</span>)</span><br><span class="line">code = locale.getpreferredencoding()</span><br><span class="line"></span><br><span class="line">stdscr = curses.initscr()</span><br><span class="line">size = <span class="keyword">lambda</span>: os.popen(<span class="string">'stty size'</span>, <span class="string">'r'</span>).read().split()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_point</span><span class="params">(str, x, y, colorpair=<span class="number">2</span>)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> stdscr</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        stdscr.addstr(y, x, str, curses.color_pair(colorpair))</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    stdscr.refresh()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_window</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''''控制台设置'''</span></span><br><span class="line">    <span class="keyword">global</span> stdscr</span><br><span class="line">    curses.start_color()</span><br><span class="line">    curses.init_pair(<span class="number">1</span>, curses.COLOR_RED, curses.COLOR_BLACK)</span><br><span class="line">    curses.init_pair(<span class="number">2</span>, curses.COLOR_GREEN, curses.COLOR_BLACK)</span><br><span class="line">    curses.init_pair(<span class="number">3</span>, curses.COLOR_YELLOW, curses.COLOR_BLACK)</span><br><span class="line">    curses.init_pair(<span class="number">4</span>, curses.COLOR_BLUE, curses.COLOR_BLACK)</span><br><span class="line">    curses.init_pair(<span class="number">5</span>, curses.COLOR_MAGENTA, curses.COLOR_BLACK)</span><br><span class="line">    curses.init_pair(<span class="number">6</span>, curses.COLOR_CYAN, curses.COLOR_BLACK)</span><br><span class="line">    curses.init_pair(<span class="number">7</span>, curses.COLOR_WHITE, curses.COLOR_BLACK)</span><br><span class="line">    curses.noecho()</span><br><span class="line">    curses.cbreak()</span><br><span class="line">    stdscr.nodelay(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">unset_window</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''控制台重置'''</span></span><br><span class="line">    <span class="keyword">global</span> stdstr</span><br><span class="line">    curses.nocbreak()</span><br><span class="line">    stdscr.keypad(<span class="number">0</span>)</span><br><span class="line">    curses.echo()</span><br><span class="line">    curses.endwin()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">signal_handler</span><span class="params">(signal, frame)</span>:</span></span><br><span class="line">    sys.exit(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    signal.signal(signal.SIGINT, signal_handler)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        set_window()</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            height, weight = size()</span><br><span class="line">            y = random.randrange(<span class="number">0</span>, int(height), <span class="number">1</span>)</span><br><span class="line">            x = random.randrange(<span class="number">0</span>, int(weight), <span class="number">1</span>)</span><br><span class="line">            color = random.randrange(<span class="number">1</span>, <span class="number">8</span>, <span class="number">1</span>)</span><br><span class="line">            show_point(<span class="string">'Ooo0oOo'</span>, x, y, colorpair=color)</span><br><span class="line">            time.sleep(<span class="number">0.01</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        unset_window()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/14/karabiner-switch-command-line/" itemprop="url">
+                  Karabiner profile 命令行切换方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-14T11:35:05+08:00" content="2016-04-14">
+              2016-04-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/14/karabiner-switch-command-line/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/karabiner-switch-command-line/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/14/karabiner-switch-command-line/" class="leancloud_visitors" data-flag-title="Karabiner profile 命令行切换方式">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
+<h2 id="帮助文档">帮助文档</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">Usage:</span><br><span class="line">  Profile operations:</span><br><span class="line">    $ karabiner list</span><br><span class="line">    $ karabiner select INDEX (INDEX starts at <span class="number">0</span>)</span><br><span class="line">    $ karabiner select_by_name NAME</span><br><span class="line">    $ karabiner selected</span><br><span class="line">    $ karabiner append NAME</span><br><span class="line">    $ karabiner rename INDEX NEWNAME (INDEX starts at <span class="number">0</span>)</span><br><span class="line">    $ karabiner delete INDEX (INDEX starts at <span class="number">0</span>)</span><br><span class="line">  Settings:</span><br><span class="line">    $ karabiner <span class="built_in">set</span> IDENTIFIER VALUE</span><br><span class="line">    $ karabiner <span class="built_in">enable</span> IDENTIFIER (<span class="built_in">alias</span> of <span class="built_in">set</span> IDENTIFIER <span class="number">1</span>)</span><br><span class="line">    $ karabiner <span class="built_in">disable</span> IDENTIFIER (<span class="built_in">alias</span> of <span class="built_in">set</span> IDENTIFIER <span class="number">0</span>)</span><br><span class="line">    $ karabiner toggle IDENTIFIER</span><br><span class="line">    $ karabiner changed</span><br><span class="line">  Others:</span><br><span class="line">    $ karabiner <span class="built_in">export</span></span><br><span class="line">    $ karabiner reloadxml</span><br><span class="line">    $ karabiner relaunch</span><br><span class="line">    $ karabiner be_careful_to_use__clear_all_values_by_name PROFILE_NAME</span><br><span class="line"></span><br><span class="line">Examples:</span><br><span class="line">  $ karabiner list</span><br><span class="line">  $ karabiner select <span class="number">1</span></span><br><span class="line">  $ karabiner select_by_name NewItem</span><br><span class="line">  $ karabiner selected</span><br><span class="line">  $ karabiner append <span class="string">"For external keyboard"</span></span><br><span class="line">  $ karabiner rename <span class="number">1</span> <span class="string">"Empty Setting"</span></span><br><span class="line">  $ karabiner delete <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  $ karabiner <span class="built_in">set</span> repeat.wait <span class="number">30</span></span><br><span class="line">  $ karabiner <span class="built_in">enable</span> remap.shiftL2<span class="built_in">command</span>L</span><br><span class="line">  $ karabiner <span class="built_in">disable</span> remap.shiftL2<span class="built_in">command</span>L</span><br><span class="line">  $ karabiner toggle remap.shiftL2<span class="built_in">command</span>L</span><br><span class="line">  $ karabiner changed</span><br><span class="line"></span><br><span class="line">  $ karabiner <span class="built_in">export</span></span><br><span class="line">  $ karabiner reloadxml</span><br><span class="line">  $ karabiner relaunch</span><br><span class="line">  $ karabiner be_careful_to_use__clear_all_values_by_name NewItem</span><br></pre></td></tr></table></figure>
+<h3 id="简单介绍">简单介绍</h3><p><strong>查看已定义的profile</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner list</span><br><span class="line"><span class="number">0</span>: Default</span><br><span class="line"><span class="number">1</span>: Poker2</span><br></pre></td></tr></table></figure>
+<p><strong>切换到指定profile 通过index</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner select <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>切换到指定profile 通过item name</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner select_by_name <span class="variable">$NAME</span></span><br></pre></td></tr></table></figure>
+<p><strong>当前选择的profile</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner selected</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>当前选择的profile name</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ karabiner list | grep <span class="string">"^<span class="variable">$(karabiner selected)</span>"</span></span><br></pre></td></tr></table></figure>
+<p>同时此命令行工具还支持 <code>export</code>, <code>reloadxml</code>, <code>relaunch</code>, <code>删除profile</code>, <code>rename profile</code>, 等..</p>
+<h3 id="通过karabiner_设置热键来切换">通过karabiner 设置热键来切换</h3><p>以下为定义, 写入到private.xml的root标签中. 之后reload xml. 可以通过preferences界面也可以通过命令行<code>karabiner reloadxml</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">vkopenurldef</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">url</span> <span class="attribute">type</span>=<span class="value">"shell"</span>&gt;</span></span><br><span class="line">        <span class="cdata">&lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Poker2    ]]&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">vkopenurldef</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">name</span>&gt;</span>Switch Profile to NewItem with F4<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">identifier</span>&gt;</span>private.switch1<span class="tag">&lt;/<span class="title">identifier</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">autogen</span>&gt;</span></span><br><span class="line">        __KeyToKey__</span><br><span class="line">        KeyCode::SHIFT_L,</span><br><span class="line">        KeyCode::SHIFT_L,</span><br><span class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_newitem</span><br><span class="line">    <span class="tag">&lt;/<span class="title">autogen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/13/offices-proxy-install-document/" itemprop="url">
+                  企业级翻墙服务部署文档
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-13T10:35:45+08:00" content="2016-04-13">
+              2016-04-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/13/offices-proxy-install-document/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/offices-proxy-install-document/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/13/offices-proxy-install-document/" class="leancloud_visitors" data-flag-title="企业级翻墙服务部署文档">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>写在前面, 翻墙后仅资料查询或学术研究. 之前有说过翻墙方案： <a href="/2015/11/06/offices-proxy/">企业级翻墙方案</a></p>
+<h2 id="思考工作">思考工作</h2><p>翻墙主要的技术有VPN和代理， 但是VPN在去年政策出了后正常使用需要备案， 所以VPN肯定是不推荐。 其次是代理， 个人代理最多用的是shadowsocks, shadowsocks不支持集中认证， 所以不考虑. squid支持ldap集中认证， 但是要考虑加密工作, 随着墙的升级, 越来越多的手段都被禁止或者被干扰. 所以加密一定要做的， 这里采用了Stunnel进行加密.其次是网站过滤, 一些视频网站控制住. 这里用PAC文件来控制， 有些人懂一些网络基础直接连接端口进行全局proxy也不是不可能的。 这个地方可以通过squid的ACL来控制.关于ACL本文不会描述 ， 请自行查阅squid文档.</p>
+<h2 id="环境">环境</h2><p><strong>硬件环境</strong></p>
+<ul>
+<li>墙外VPS 若干(国外需要网络自由)</li>
+<li>墙内VPS (Stunnel分流机器, 带宽要足够)</li>
+</ul>
+<p><strong>软件环境</strong></p>
+<ul>
+<li><code>Squid</code> 是一种用来缓冲Internet数据的软件。在这里仅仅使用它的代理功能.</li>
+<li><code>Stunnel</code> 是一个自由的跨平台软件，用于提供全局的<code>TLS/SSL</code>服务。针对本身无法进行TLS或SSL通信的客户端及服务器，Stunnel可提供安全的加密连接。这里我们在墙内VPS和墙外VPS中间通信中间加个加密通道， 所以需要双向安装， 墙外的为服务端墙内分流为客户端.</li>
+<li><code>LDAP Server</code>（这里没有安装介绍）</li>
+</ul>
+<h2 id="安装">安装</h2><h3 id="墙外VPS">墙外VPS</h3><p><strong>墙外VPS</strong>需要安装Stunnel 服务端和Squid服务端.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install stunnel </span><br><span class="line">$ yum -y install squid</span><br></pre></td></tr></table></figure>
+<h4 id="配置stunnel_-_生成pem">配置stunnel - 生成pem</h4><p><strong>pem可以生成一份， 所有机器通用</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /etc/stunnel/;</span><br><span class="line">$ openssl req -new -x509 -days <span class="number">365</span> -nodes -out stunnel.pem -keyout stunnel.pem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接着给它生成Diffie-Hellman部分</span></span><br><span class="line">$ openssl gendh <span class="number">512</span>&gt;&gt; stunnel.pem</span><br></pre></td></tr></table></figure>
+<h4 id="配置stunnel_-_配置Stunnel-conf">配置stunnel -  配置Stunnel.conf</h4><p>配置文件: <code>/etc/stunnel/stunnel.conf</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">cert = <span class="value">/etc/stunnel/stunnel.pem</span></span></span><br><span class="line"><span class="setting">CAfile = <span class="value">/etc/stunnel/stunnel.pem</span></span></span><br><span class="line"><span class="setting">socket = <span class="value">l:TCP_NODELAY=<span class="number">1</span></span></span></span><br><span class="line"><span class="setting">socket = <span class="value">r:TCP_NODELAY=<span class="number">1</span></span></span></span><br><span class="line"></span><br><span class="line"><span class="setting">pid = <span class="value">/tmp/stunnel.pid</span></span></span><br><span class="line"><span class="setting">verify = <span class="value"><span class="number">3</span></span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="setting">setuid = <span class="value">stunnel</span></span></span><br><span class="line"><span class="setting">setgid = <span class="value">stunnel</span></span></span><br><span class="line"></span><br><span class="line"><span class="setting">compression = <span class="value">zlib</span></span></span><br><span class="line"><span class="setting">delay = <span class="value"><span class="keyword">no</span></span></span></span><br><span class="line"><span class="setting">sslVersion = <span class="value">TLSv1</span></span></span><br><span class="line"><span class="setting">fips=<span class="value"><span class="keyword">no</span></span></span></span><br><span class="line"></span><br><span class="line"><span class="setting">debug = <span class="value"><span class="number">7</span></span></span></span><br><span class="line"><span class="setting">syslog = <span class="value"><span class="keyword">no</span></span></span></span><br><span class="line"><span class="setting">output = <span class="value">stunnel.log</span></span></span><br><span class="line"><span class="title"></span><br><span class="line">[sproxy]</span></span><br><span class="line"><span class="setting">accept = <span class="value"><span class="number">34567</span></span></span></span><br><span class="line"><span class="setting">connect = <span class="value"><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">10801</span></span></span></span><br></pre></td></tr></table></figure>
+<p>以上这是stunnel 服务端的配置， cert、CAfile指定刚刚生成的pem， 后面的[sproxy] 可以指定一组对应，sproxy可以多个， 单服务端不需要一台机器只有一个squid所以只写一组. accept 表示转发的端口， connect表示映射端口， 也就是squid的端口这里是10801， 默认为3128.</p>
+<h4 id="启动">启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ service squid start</span><br><span class="line">$ stunnel</span><br></pre></td></tr></table></figure>
+<h3 id="配置squid_-_配置squid-conf">配置squid - 配置squid.conf</h3><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">... 以下为修改， 也可以不修改， 选择默认， 上面的connect需要写成<span class="number">3128</span></span><br><span class="line">http_port <span class="number">10801</span></span><br><span class="line"></span><br><span class="line">... 以下为添加</span><br><span class="line">auth_param basic program <span class="pi">/usr/lib64/squid/squid_ldap_auth -u -cn -f "uid=%s" -b "ou=people,dc=shuyun,dc=com" -D "cn=proxy proxy,ou=people,dc=shuyun,dc=com" -w "Shuyun123456"  -H ldap:/</span>/ldap.shuyun.com   <span class="comment"># ldap 配置</span></span><br><span class="line">auth_param basic realm Please enter the wiki user <span class="keyword">and</span> password ＃ 认证提示</span><br><span class="line">auth_param basic credentialsttl <span class="number">8</span> hours ＃ 认证过期时间</span><br><span class="line">auth_param basic casesensitive <span class="literal">off</span>   </span><br><span class="line">acl ldapauth proxy_auth REQUIRED</span><br><span class="line">http_access allow ldapauth ＃ 默认允许ldap认证过的</span><br><span class="line">http_access deny all ＃ 拒绝其他所有</span><br><span class="line">acl rejectfile  urlpath_regex -i <span class="string">\.avi$</span> <span class="string">\.rmvb$</span> <span class="string">\.wmv$</span> <span class="string">\.rm$</span> <span class="string">\.mpg$</span> <span class="string">\.mpeg$</span> <span class="string">\.mp4$</span> <span class="string">\.mov$</span> <span class="string">\.asf$</span> <span class="string">\.mkv$</span> <span class="string">\.dat$</span> <span class="string">\.flv$</span> <span class="string">\.3gp$</span> <span class="string">\.mp3$</span></span><br><span class="line">http_access deny rejectfile ＃ 拒绝视频文件</span><br></pre></td></tr></table></figure>
+<p><strong>注意:</strong>  http_access 语句配置完成后应该只有上面的三个， 安装<strong>Squid默认的配置文件里面的http_access 语句需要注视掉</strong>， 否则ldapauth 会不生效， 因为默认是没有认证的。<code>http_access allow all</code> 这一句就允许所有了…</p>
+<p><strong>注意:</strong>  如果有多台墙外VPS的话重复上面的步骤, pem 可以直接复制到备份机器. 下面stunnel client可以复制这个pem.</p>
+<p>到这里服务端的配置就完成了， 下面开始分流机器的配置</p>
+<h3 id="墙内分流VPS">墙内分流VPS</h3><p><strong>墙内分流VPS</strong>需要安装Stunnel 软件作为客户端.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install stunnel</span><br></pre></td></tr></table></figure>
+<h3 id="配置Stunnel_-_复制pem">配置Stunnel - 复制pem</h3><p>复制刚刚生成pem那台服务器的pem文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp root@$墙外VPS:/etc/stunnel/stunnel.pem /etc/stunnel/stunnel.pem</span><br></pre></td></tr></table></figure>
+<h3 id="配置Stunnel_-_配置stunnel-conf">配置Stunnel - 配置stunnel.conf</h3><p>配置文件: <code>/etc/stunnel/stunnel.conf</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">cert = <span class="value">/etc/stunnel/stunnel.pem</span></span></span><br><span class="line"><span class="setting">CAfile = <span class="value">/etc/stunnel/stunnel.pem</span></span></span><br><span class="line"><span class="setting">socket = <span class="value">l:TCP_NODELAY=<span class="number">1</span></span></span></span><br><span class="line"><span class="setting">socket = <span class="value">r:TCP_NODELAY=<span class="number">1</span></span></span></span><br><span class="line"><span class="setting">verify = <span class="value"><span class="number">2</span></span></span></span><br><span class="line"><span class="setting">client=<span class="value"><span class="keyword">yes</span>  # 这里指明当前服务为客户端， 默认是服务端(<span class="keyword">no</span>).</span></span></span><br><span class="line"><span class="setting">compression = <span class="value">zlib</span></span></span><br><span class="line"><span class="setting">ciphers = <span class="value">AES256-SHA</span></span></span><br><span class="line"><span class="setting">delay = <span class="value"><span class="keyword">no</span></span></span></span><br><span class="line"><span class="setting">failover = <span class="value">prio</span></span></span><br><span class="line"><span class="setting">sslVersion = <span class="value">TLSv1</span></span></span><br><span class="line"><span class="setting">fips = <span class="value"><span class="keyword">no</span></span></span></span><br><span class="line"><span class="setting">debug = <span class="value">debug</span></span></span><br><span class="line"><span class="title"></span><br><span class="line">[sproxy2]</span></span><br><span class="line"><span class="setting">accept  = <span class="value"><span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">7072</span></span></span></span><br><span class="line"><span class="setting">connect = <span class="value">$墙内vps1:<span class="number">34567</span></span></span></span><br><span class="line"><span class="title"></span><br><span class="line">[sproxy2]</span></span><br><span class="line"><span class="setting">accept  = <span class="value"><span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">7073</span></span></span></span><br><span class="line"><span class="setting">connect = <span class="value">$墙内vps2:<span class="number">34567</span></span></span></span><br></pre></td></tr></table></figure>
+<h4 id="启动-1">启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ stunnel</span><br></pre></td></tr></table></figure>
+<p>这里所有的配置均已完成， 测试的话，可以在浏览器设置里面设置</p>
+<p>Windows: windows键+R键输入inetcpl.cpl &gt; 连接 &gt; 局域网设置 &gt; 代理服务器<br>MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; 代理 &gt; WEB 代理(HTTP) &gt; 输入地址端口用户名密码.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/12/google-photos-for-mac/" itemprop="url">
+                  Google photos for MAC使用教程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-12T11:41:17+08:00" content="2016-04-12">
+              2016-04-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/12/google-photos-for-mac/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/google-photos-for-mac/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/12/google-photos-for-mac/" class="leancloud_visitors" data-flag-title="Google photos for MAC使用教程">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Google photos 是谷歌推出了一个独立的无限相片 / 视频存放服务。使用者可以免费存放无限量相片和视频至云端，唯其大小限于最大 16MP 和 1080p。而且客户端可以设置是否对图片进行压缩， 所以大的图片也不会占用google drive的空间。</p>
+<p>安卓手机上面使用shadowsocks 可以正常登陆和备份照片 ， 此处略。</p>
+<p>但是mac 上使用shadowsocks是不行的， 貌似有一些连接不支持socks协议。就在刚刚折腾了VPN死活出错， 最后放弃。 于是又折腾了hosts， 这个比较好弄。</p>
+<p>首先获取最新hosts文件， 向维护作者致敬</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/racaljk/hosts</span><br></pre></td></tr></table></figure>
+<p>然后追加到/etc/hosts文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 需要root权限, 第一步请输入提权密码。 </span></span><br><span class="line">sudo <span class="variable">$SHELL</span></span><br><span class="line">cat hosts/hosts &gt;&gt; /etc/hosts</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1022,14 +1636,21 @@
   </section>
 
   
- </div>
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
 
+
+
+          </div>
+          
+
+
+          
+
+        </div>
         
-
-        
-      </div>
-
-      
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -1044,40 +1665,48 @@
 
       
 
-      <section class="site-overview">
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/uploads/avatar.jpg" alt="JackeyGao" itemprop="image"/>
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="JackeyGao" />
           <p class="site-author-name" itemprop="name">JackeyGao</p>
+          <p class="site-description motion-element" itemprop="description">JackeyGao的日记本</p>
         </div>
-        <p class="site-description motion-element" itemprop="description">JackeyGao的日记本</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">分类</span>
-              </a>
-          </div>
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">标签</span>
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
               </a>
-          </div>
+            </div>
+          
 
         </nav>
 
         
           <div class="feed-link motion-element">
             <a href="/atom.xml" rel="alternate">
-              <i class="menu-item-icon icon-next-feed"></i>
+              <i class="fa fa-rss"></i>
               RSS
             </a>
           </div>
@@ -1087,19 +1716,35 @@
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/jackeyGao" target="_blank">Github</a>
+                <a href="https://github.com/jackeyGao" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="gaojunqi@outlook.com" target="_blank">Email</a>
+                <a href="gaojunqi@outlook.com" target="_blank">
+                  
+                    <i class="fa fa-envelope"></i> Email
+                  
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://weibo.com/JackeyGaoQ" target="_blank">Weibo</a>
+                <a href="http://weibo.com/JackeyGaoQ" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://twitter.com/JackeyGaoo" target="_blank">Twitter</a>
+                <a href="https://twitter.com/JackeyGaoo" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
               </span>
             
           
@@ -1114,7 +1759,8 @@
           </div>
         
 
-        <div class="links-of-author motion-element">
+        
+        <div class="links-of-blogroll motion-element">
           
         </div>
 
@@ -1126,15 +1772,18 @@
   </aside>
 
 
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
+      <div class="footer-inner">
+        <div class="copyright" >
   
-  &copy; &nbsp; 
-  <span itemprop="copyrightYear">2015</span>
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Jackey Gao</span>
 </div>
@@ -1146,23 +1795,70 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Mist
   </a>
 </div>
 
 
- </div>
+
+      </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
 
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.4.5.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.4.5.1"></script>
+
+
+
   
   
+
   
-    
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.4.5.1"></script>
+
+
+
+  
 
   
     
@@ -1173,63 +1869,125 @@
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
       ds.charset = 'UTF-8';
       (document.getElementsByTagName('head')[0]
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+
+  
     
-     
-
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
     
   
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-      if (isMobile()) {
-        FastClick.attach(document.body);
-      }
-    });
-  </script>
-
-  
-
   
   
 
   
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
-        effect: "fadeIn"
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("yf0s3ONpEsCybQxnLE1hvYLz-gzGzoHsz", "86yi2o6lVtLREC5KqYklEbMR");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
       });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
     });
   </script>
+
+
+
+  
+
 </body>
 </html>
