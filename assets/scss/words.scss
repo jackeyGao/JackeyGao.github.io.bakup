@@ -125,6 +125,8 @@ ol {
 }
 
 pre {
+    overflow-x: hidden;
+    white-space: pre-wrap;
     display: block;
     margin: 0;
     font-size: 0.875em;
@@ -175,13 +177,13 @@ blockquote {
 
 blockquote p {
     @include center;
+    @include default-text-width;
     margin: 0;
     font-size: 1em;
     overflow-x: auto;
     overflow-y: hidden;
     line-height: 1.3em;
     color: #888;
-    width: $default-text-width-em / 1em * 1em !important;
 }
 
 .blockquote-center p { 
@@ -248,7 +250,7 @@ and (max-device-width : 568px) {
     }
 
     pre {
-        overflow: auto;
+        overflow-x: hidden;
     }
 
     blockquote p {
