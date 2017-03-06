@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import markdown
 import jinja2
 import os
 import sys
@@ -14,6 +13,7 @@ template_loader = jinja2.FileSystemLoader(searchpath="templates")
 template_env = jinja2.Environment(loader=template_loader)
 WORD_TEMPLATE_FILE = "word.html"
 WORDS_TEMPLATE_FILE = "words.html"
+RSS_TEMPLATE_FILE = 'rss.xml'
 
 markdown_files = os.listdir('markdown')
 
@@ -47,7 +47,6 @@ for file in markdown_files:
         'date': date
     })
     
-    #md = markdown.markdown(content, extensions=['codehilite', 'fenced_code'])
     md = markrender(content)
 
     template = template_env.get_template(WORD_TEMPLATE_FILE)
@@ -61,7 +60,9 @@ for file in markdown_files:
 words = sorted(words, key=lambda x: x["date"], reverse=True)
 template = template_env.get_template(WORDS_TEMPLATE_FILE)
 output = template.render(words=words)
-html_filename = 'words.html'
-with open(html_filename, 'w') as f:
-    f.write(output)
+with open('words.html', 'w') as f: f.write(output)
 
+
+template = template_env.get_template(RSS_TEMPLATE_FILE)
+output = template.render(words=words)
+with open('rss.xml', 'w') as f: f.write(output)
