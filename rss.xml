@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>2016年Python十大文章</title>
+        <link>http://jackeygao.io/words/python-top-10-articles-for-the-past-year.html</link>
+        <guid>http://jackeygao.io/words/python-top-10-articles-for-the-past-year.html</guid>
+        <pubDate>March 03, 2017</pubDate>
+        <description>2016年Python十大文章</description>
+    </item>
+    
+    <item>
         <title>语法测试</title>
         <link>http://jackeygao.io/words/test_headers.html</link>
         <guid>http://jackeygao.io/words/test_headers.html</guid>
