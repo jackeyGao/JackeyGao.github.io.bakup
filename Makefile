@@ -1,4 +1,6 @@
 # Generate stylesheets.
+NOW = $(shell date '+%Y-%m-%d %H:%M:%S')
+
 all: render
 
 style:
@@ -10,7 +12,11 @@ render: style
 watch:
 	sass --watch assets/scss:assets/stylesheets
 
-update:
-	git pull origin master
-	rvm use 2.0.0
+deploy:
 	make render
+	git add rss.xml
+	git add '*.html'
+	git add 'words/*.html'
+	git commit -m "[UPDATE] $(NOW)"
+	git push origin master
+	git pull coding master
