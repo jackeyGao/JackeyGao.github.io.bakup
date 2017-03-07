@@ -1,0 +1,286 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>全宋词爬取过程及数据分析</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>全宋词爬取过程及数据分析</h1>
+                <h4>Posted March 03, 2017</h4>
+
+                <script src="/assets/js/3rd/tagul.min.js" async defer></script>
+
+<p>由于某个公众号对我仓库<a href="https://github.com/jackeyGao/chinese-poetry">chinese-poetry</a>的推广， 短时间大量涨粉， 有人想要宋词的数据。 于是最近利用零散时间对全宋词进行爬取分析， 并做了简单的分析， 发现了一些不得了的事情。</p>
+
+<p>分析仅仅对全宋词的内容进行了关键字排名分析、 宋词作者产量分析、 最受欢迎的词牌名排名分析</p>
+
+<h2>关键字排名分析</h2>
+
+<p>宋人喜欢用东风， 东风作为现代也会微妙， 人间、何处从唐诗就开始蝉联前三. 即使到了现代， 这两个词依存古风.</p>
+
+<div class="block" style="height: 400px;" data-tagul-src="//cdn.tagul.com/json/uifp9qxzt4ea" data-tagul-show-attribution></div>
+
+<h2>宋词作者产量分析</h2>
+
+<p>辛弃疾果不其然的成为两宋现存词最多的作家, 还有一些虽然产量丰富但未必是我们熟知的。</p>
+
+<div class="block" style="height: 400px;" data-tagul-src="//cdn.tagul.com/json/hs8hgxlpmo29" data-tagul-show-attribution></div>
+
+<h2>最受欢迎的词牌名排名分析</h2>
+
+<p>浣溪沙作为婉约 豪放两派所常用的词牌， 在两宋时期作为最受欢迎也是理所应当. </p>
+
+<div class="block" style="height: 400px;" data-tagul-src="//cdn.tagul.com/json/xb019pkh27dn" data-tagul-show-attribution></div>
+
+<p>爬取逻辑没有做相应的系统化处理， 只是简单的脚本， 配置交互式界面做的操作。采用的相关技术: Python + parsel + peewee + requests + jieba</p>
+
+<p>附上爬取解析脚本的逻辑:</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">File Name: parser.py</span>
+<span class="sd">Author: JackeyGao</span>
+<span class="sd">mail: gaojunqi@outlook.com</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">parsel</span> <span class="kn">import</span> <span class="n">Selector</span>
+<span class="kn">from</span> <span class="nn">peewee</span> <span class="kn">import</span> <span class="n">IntegrityError</span>
+<span class="kn">from</span> <span class="nn">html</span> <span class="kn">import</span> <span class="n">html</span>
+<span class="kn">from</span> <span class="nn">html</span> <span class="kn">import</span> <span class="n">html_author_info</span>
+<span class="kn">from</span> <span class="nn">header</span> <span class="kn">import</span> <span class="n">header</span>
+<span class="kn">from</span> <span class="nn">db</span> <span class="kn">import</span> <span class="n">Ci</span>
+<span class="kn">from</span> <span class="nn">db</span> <span class="kn">import</span> <span class="n">CiAuthor</span>
+
+<span class="nb">reload</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">setdefaultencoding</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+
+
+<span class="n">seek_patt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;\((.*?)\)&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="o">|</span><span class="n">re</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># ---------------------------------</span>
+<span class="k">class</span> <span class="nc">QTSBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">filllist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
+
+    <span class="k">def</span> <span class="nf">fillpage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fillpage</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">page</span> <span class="o">=</span> <span class="n">fillpage</span>
+
+    <span class="k">def</span> <span class="nf">fillbody</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
+
+
+<span class="k">class</span> <span class="nc">ParentBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">QTS</span> <span class="o">=</span> <span class="n">QTSBase</span><span class="p">()</span>
+
+<span class="c1"># ----------------------------------</span>
+
+<span class="n">parent</span> <span class="o">=</span> <span class="n">ParentBase</span><span class="p">()</span>
+
+
+<span class="k">exec</span><span class="p">(</span><span class="s2">&quot;parent.QTS.fillpage(&#39;第1页 共92页 1564条&#39;)&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">__with_seek_type__</span><span class="p">(</span><span class="n">seek_type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="n">pageno</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://qsc.zww.cn/getdata.asp&#39;</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;seektype&#39;</span><span class="p">:</span> <span class="n">seek_type</span><span class="p">,</span>
+            <span class="s1">&#39;seekvalue&#39;</span><span class="p">:</span> <span class="n">value</span><span class="p">,</span>
+            <span class="s1">&#39;pageno&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">pageno</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">url</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">header</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">resp</span>
+
+    <span class="k">return</span> <span class="n">request</span>
+
+
+<span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;gb2312&#39;</span><span class="p">,</span> <span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+    <span class="n">sel</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">html</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">callback</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">callback_author_list</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//script&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">l</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;parent.QTS.filllist&#39;</span><span class="p">):</span>
+            <span class="k">continue</span>
+
+        <span class="k">exec</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+        <span class="n">sel</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span>
+            <span class="n">text</span><span class="o">=</span><span class="nb">unicode</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">QTS</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//a&#39;</span><span class="p">):</span>
+            <span class="n">seek</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;@onclick&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">seek</span> <span class="o">=</span> <span class="n">seek_patt</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">seek</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">_type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">pageno</span> <span class="o">=</span> <span class="n">seek</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">_type</span> <span class="o">!=</span> <span class="s1">&#39;10&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">name</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;…&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+            <span class="c1"># save author to database.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">CiAuthor</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+                <span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;主键</span><span class="si">%s</span><span class="s2">, 已创建.&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">IntegrityError</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;重复主键</span><span class="si">%s</span><span class="s2">, 已跳过.&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">callback_author_info</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//script&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">l</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;parent.QTS.fillbody&#39;</span><span class="p">):</span>
+            <span class="k">continue</span>
+
+        <span class="k">exec</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+        <span class="n">sel</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span>
+            <span class="n">text</span><span class="o">=</span><span class="nb">unicode</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">QTS</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">lon</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">[</span><span class="mi">5</span><span class="p">:]])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="n">author</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;author&quot;</span><span class="p">]</span>
+        <span class="n">author</span><span class="o">.</span><span class="n">long_desc</span> <span class="o">=</span> <span class="n">lon</span>
+        <span class="c1">#author.short_desc = sht</span>
+        <span class="n">author</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;主键</span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">), 已更新&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">author</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">author</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">sel</span>
+    <span class="k">return</span> <span class="n">sel</span>
+
+
+<span class="k">def</span> <span class="nf">callback_ci_info</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//script&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">l</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;parent.QTS.fillbody&#39;</span><span class="p">):</span>
+            <span class="k">continue</span>
+
+        <span class="k">exec</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+        <span class="n">sel</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span>
+            <span class="n">text</span><span class="o">=</span><span class="nb">unicode</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">QTS</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">value</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;seekid&quot;</span><span class="p">]</span>
+
+        <span class="n">rhythmic</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//b/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">author</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">contents</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">Ci</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span>
+                <span class="n">rhythmic</span> <span class="o">=</span> <span class="n">rhythmic</span><span class="p">,</span>
+                <span class="n">author</span> <span class="o">=</span> <span class="n">author</span><span class="p">,</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
+            <span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;主键</span><span class="si">%s</span><span class="s2">, 已创建.&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">IntegrityError</span><span class="p">:</span>
+            <span class="n">Ci</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="n">rhythmic</span> <span class="o">=</span> <span class="n">rhythmic</span><span class="p">,</span>
+                <span class="n">author</span> <span class="o">=</span> <span class="n">author</span><span class="p">,</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+                <span class="n">Ci</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;重复主键</span><span class="si">%s</span><span class="s2">, 已更新.&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">sel</span>
+
+
+<span class="n">f_author_list</span> <span class="o">=</span> <span class="n">__with_seek_type__</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">f_author_info</span> <span class="o">=</span> <span class="n">__with_seek_type__</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">f_ci_list</span> <span class="o">=</span> <span class="n">__with_seek_type__</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">f_ci_info</span> <span class="o">=</span> <span class="n">__with_seek_type__</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+
+
+<span class="c1">#resp = f_ci_info(1, value=1460)</span>
+<span class="c1">#sel = parse(resp.text, callback_ci_info, seekid=1)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">pass</span>
+    <span class="c1">#for p in range(1, 93):</span>
+    <span class="c1">#    time.sleep(5)</span>
+    <span class="c1">#    resp = f_author_list(p, value=1)</span>
+    <span class="c1">#    sel = parse(resp.text, callback_author_list)</span>
+
+
+    <span class="c1"># crawl author info</span>
+    <span class="c1">#for i in CiAuthor.select().where(CiAuthor.value&gt;914):</span>
+    <span class="c1">#    resp = f_author_info(1, value=i.value)</span>
+    <span class="c1">#    sel = parse(resp.text, callback_author_info, author=i)</span>
+    <span class="c1">#    time.sleep(3)</span>
+
+
+    <span class="c1"># crawl author ci list</span>
+    <span class="c1">#for i in range(21051, 21054):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">303</span><span class="p">,</span> <span class="mi">304</span><span class="p">,</span>
+            <span class="mi">310</span><span class="p">,</span>
+            <span class="mi">3591</span><span class="p">,</span>
+            <span class="mi">3695</span><span class="p">,</span>
+            <span class="mi">11847</span><span class="p">,</span>
+            <span class="mi">11852</span><span class="p">,</span>
+            <span class="mi">16207</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">resp</span> <span class="o">=</span> <span class="n">f_ci_info</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">wait_seconds</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="mi">500</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;等待</span><span class="si">%s</span><span class="s2">..异常(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">wait_seconds</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
+
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">wait_seconds</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">sel</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">callback_ci_info</span><span class="p">,</span> <span class="n">seekid</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+</html>
