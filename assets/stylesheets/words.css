@@ -288,4 +288,16 @@ img {
   border: 4px solid #555;
   width: 40em !important; }
 
+#article .block {
+  display: block;
+  margin-top: 1.350em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #ABEBC6;
+  width: 40em !important; }
+
+#article .block img {
+  border: 0 !important; }
+
 /*# sourceMappingURL=words.css.map */

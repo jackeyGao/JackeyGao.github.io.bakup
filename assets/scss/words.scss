@@ -277,3 +277,17 @@ img {
     width: $default-text-width-em + 10em!important;
 }
 
+#article .block {
+    display: block;
+    margin-top: 1.350em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #ABEBC6;
+    width: $default-text-width-em + 10em!important;
+}
+
+#article .block img {
+    border: 0 !important;
+}
+
