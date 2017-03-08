@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>关于Python的20个面试题</title>
+        <link>http://jackeygao.io/words/top-20-python-interview-questions-and-answer.html</link>
+        <guid>http://jackeygao.io/words/top-20-python-interview-questions-and-answer.html</guid>
+        <pubDate>March 03, 2017</pubDate>
+        <description>关于Python的20个面试题</description>
+    </item>
+    
+    <item>
         <title>全宋词爬取过程及数据分析</title>
         <link>http://jackeygao.io/words/crawl-ci.html</link>
         <guid>http://jackeygao.io/words/crawl-ci.html</guid>
