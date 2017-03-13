@@ -60,8 +60,8 @@ class HighlighterRenderer(m.HtmlRenderer):
             return '<p class="hassubimage"><img src="%s" alt="%s"></p>\n' % (link, alt)
 
     def table(self, content):
-        return '<table class="ui selectable celled table">'\
-                + content + '</table>'
+        return '<div class="table-wrapper"><table class="ui selectable celled table">'\
+                + content + '</table></div>'
 
 
 markdown = m.Markdown(
