@@ -211,8 +211,15 @@ blockquote p {
     background: #fadbd8;
 }
 
-table {
+.table-wrapper {
+    margin-top: 1.350em;
+    margin-bottom: 1em;
+    margin-left: auto!important;
+    margin-right: auto!important;
     width: $default-text-width-em / 1em * 1em !important;
+}
+
+table {
 }
 
 @media only screen
@@ -289,6 +296,10 @@ and (max-device-width : 568px) {
     margin-top: 1.350em;
     margin-bottom: 1em;
     width: $default-text-width-em + 10em!important;
+}
+
+.gist .blob-code-inner {
+    font-family: Courier, 'Courier New', monospace !important;
 }
 
 #article .block img {

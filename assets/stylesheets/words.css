@@ -242,7 +242,11 @@ blockquote p {
 .blockquote-error {
   background: #fadbd8; }
 
-table {
+.table-wrapper {
+  margin-top: 1.350em;
+  margin-bottom: 1em;
+  margin-left: auto !important;
+  margin-right: auto !important;
   width: 30em !important; }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
@@ -301,6 +305,9 @@ table {
   margin-top: 1.350em;
   margin-bottom: 1em;
   width: 40em !important; }
+
+.gist .blob-code-inner {
+  font-family: Courier, 'Courier New', monospace !important; }
 
 #article .block img {
   border: 0 !important; }
