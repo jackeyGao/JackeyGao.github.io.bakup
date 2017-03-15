@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Django Admin输出JSON</title>
+        <link>http://jackeygao.io/words/pretty-formatting-json-django-admin.html</link>
+        <guid>http://jackeygao.io/words/pretty-formatting-json-django-admin.html</guid>
+        <pubDate>March 03, 2017</pubDate>
+        <description>Django Admin输出JSON</description>
+    </item>
+    
+    <item>
         <title>数据可视化系统NGraph</title>
         <link>http://jackeygao.io/words/ngraph.html</link>
         <guid>http://jackeygao.io/words/ngraph.html</guid>
