@@ -135,7 +135,11 @@ pre {
     line-height: 1.3em;
     margin-left: auto;
     margin-right: auto;
-    width: $default-text-width-em / 0.875em * 1em;
+    width: $default-text-width-em + 20em!important;
+    border-left: 1px solid #dedede;
+    border-right: 1px solid #dedede;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 code {
