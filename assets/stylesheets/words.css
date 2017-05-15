@@ -302,6 +302,14 @@ blockquote p {
   border: 2px solid #ABEBC6;
   width: 40em !important; }
 
+#article .github-widget {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 1.350em;
+  margin-bottom: 1em;
+  width: 40em !important; }
+
 #article .gist {
   margin-left: auto;
   margin-right: auto;

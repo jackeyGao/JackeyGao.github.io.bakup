@@ -294,6 +294,14 @@ and (max-device-width : 568px) {
     width: $default-text-width-em + 10em!important;
 }
 
+#article .github-widget {
+    @include center;
+    display: block;
+    margin-top: 1.350em;
+    margin-bottom: 1em;
+    width: $default-text-width-em + 10em!important;
+}
+
 #article .gist {
     @include center;
     display: block;
