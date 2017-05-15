@@ -34,16 +34,16 @@
 <div class="highlight"><pre><span></span>Usage:
   Profile operations:
     $ karabiner list
-    $ karabiner <span class="k">select</span> INDEX <span class="o">(</span>INDEX starts at 0<span class="o">)</span>
+    $ karabiner <span class="k">select</span> INDEX <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
     $ karabiner select_by_name NAME
     $ karabiner selected
     $ karabiner append NAME
-    $ karabiner rename INDEX NEWNAME <span class="o">(</span>INDEX starts at 0<span class="o">)</span>
-    $ karabiner delete INDEX <span class="o">(</span>INDEX starts at 0<span class="o">)</span>
+    $ karabiner rename INDEX NEWNAME <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
+    $ karabiner delete INDEX <span class="o">(</span>INDEX starts at <span class="m">0</span><span class="o">)</span>
   Settings:
     $ karabiner <span class="nb">set</span> IDENTIFIER VALUE
-    $ karabiner <span class="nb">enable</span> IDENTIFIER <span class="o">(</span><span class="nb">alias</span> of <span class="nb">set</span> IDENTIFIER 1<span class="o">)</span>
-    $ karabiner disable IDENTIFIER <span class="o">(</span><span class="nb">alias</span> of <span class="nb">set</span> IDENTIFIER 0<span class="o">)</span>
+    $ karabiner <span class="nb">enable</span> IDENTIFIER <span class="o">(</span><span class="nb">alias</span> of <span class="nb">set</span> IDENTIFIER <span class="m">1</span><span class="o">)</span>
+    $ karabiner disable IDENTIFIER <span class="o">(</span><span class="nb">alias</span> of <span class="nb">set</span> IDENTIFIER <span class="m">0</span><span class="o">)</span>
     $ karabiner toggle IDENTIFIER
     $ karabiner changed
   Others:
@@ -54,14 +54,14 @@
 
 Examples:
   $ karabiner list
-  $ karabiner <span class="k">select</span> 1
+  $ karabiner <span class="k">select</span> <span class="m">1</span>
   $ karabiner select_by_name NewItem
   $ karabiner selected
   $ karabiner append <span class="s2">&quot;For external keyboard&quot;</span>
   $ karabiner rename <span class="m">1</span> <span class="s2">&quot;Empty Setting&quot;</span>
-  $ karabiner delete 1
+  $ karabiner delete <span class="m">1</span>
 
-  $ karabiner <span class="nb">set</span> repeat.wait 30
+  $ karabiner <span class="nb">set</span> repeat.wait <span class="m">30</span>
   $ karabiner <span class="nb">enable</span> remap.shiftL2commandL
   $ karabiner disable remap.shiftL2commandL
   $ karabiner toggle remap.shiftL2commandL
@@ -77,12 +77,12 @@ Examples:
 
 <p><strong>查看已定义的profile</strong></p>
 <div class="highlight"><pre><span></span>$ karabiner list
-0: Default
-1: Poker2
+<span class="m">0</span>: Default
+<span class="m">1</span>: Poker2
 </pre></div>
 
 <p><strong>切换到指定profile 通过index</strong></p>
-<div class="highlight"><pre><span></span>$ karabiner <span class="k">select</span> 1
+<div class="highlight"><pre><span></span>$ karabiner <span class="k">select</span> <span class="m">1</span>
 </pre></div>
 
 <p><strong>切换到指定profile 通过item name</strong></p>
@@ -91,7 +91,7 @@ Examples:
 
 <p><strong>当前选择的profile</strong></p>
 <div class="highlight"><pre><span></span>$ karabiner selected
-1
+<span class="m">1</span>
 </pre></div>
 
 <p><strong>当前选择的profile name</strong></p>

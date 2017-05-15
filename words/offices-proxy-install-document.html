@@ -67,7 +67,7 @@ $ yum -y install squid
 $ openssl req -new -x509 -days <span class="m">365</span> -nodes -out stunnel.pem -keyout stunnel.pem
 
 <span class="c1"># 接着给它生成Diffie-Hellman部分</span>
-$ openssl gendh 512&gt;&gt; stunnel.pem
+$ openssl gendh <span class="m">512</span>&gt;&gt; stunnel.pem
 </pre></div>
 
 <h4>配置stunnel -  配置Stunnel.conf</h4>

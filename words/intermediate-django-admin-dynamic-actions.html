@@ -37,7 +37,7 @@
 
 <p><code>admin.py</code></p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
-    <span class="n">empty_value_display</span> <span class="o">=</span> <span class="s1">u&#39;无规则&#39;</span>
+    <span class="n">empty_value_display</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;无规则&#39;</span>
     <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span>
     <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,)</span>
     <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">IpFilter</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">)</span>
@@ -80,8 +80,8 @@
         <span class="n">kwargs</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">field_value</span>
         <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="n">set_selected</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="s2">u&quot;设置规则为: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">role</span><span class="p">)</span>
-    <span class="n">set_selected</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="s2">&quot;set_role_</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="n">role</span><span class="o">.</span><span class="n">pk</span><span class="p">)</span>
+    <span class="n">set_selected</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;设置规则为: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">role</span><span class="p">)</span>
+    <span class="n">set_selected</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="s2">&quot;set_role_</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">field_name</span><span class="p">,</span> <span class="n">role</span><span class="o">.</span><span class="n">pk</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">set_selected</span>
 </pre></div>
 
@@ -91,7 +91,7 @@
 
 <p><code>admin.py</code></p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TriggerAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
-    <span class="n">empty_value_display</span> <span class="o">=</span> <span class="s1">u&#39;无规则&#39;</span>
+    <span class="n">empty_value_display</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;无规则&#39;</span>
     <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;t_type&#39;</span><span class="p">,</span>
             <span class="s1">&#39;get_converge&#39;</span><span class="p">,</span> <span class="s1">&#39;get_switch&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">)</span>
     <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,)</span>
@@ -105,14 +105,14 @@
         <span class="c1"># 清空Role动作</span>
         <span class="k">if</span> <span class="n">SwitchRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
             <span class="n">role</span> <span class="o">=</span> <span class="n">_with_role</span><span class="p">(</span><span class="n">SwitchRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">switch</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-            <span class="n">role</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="s1">&#39;remove_switch_role&#39;</span>
-            <span class="n">role</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="s2">u&quot;清空开关规则&quot;</span><span class="p">)</span>
+            <span class="n">role</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="s1">&#39;remove_switch_role&#39;</span>
+            <span class="n">role</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;清空开关规则&quot;</span><span class="p">)</span>
             <span class="n">fns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">ConvergeRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
             <span class="n">role</span> <span class="o">=</span> <span class="n">_with_role</span><span class="p">(</span><span class="n">ConvergeRole</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">switch</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-            <span class="n">role</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="s1">&#39;remove_converge_role&#39;</span>
-            <span class="n">role</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="s2">u&quot;清空聚合规则&quot;</span><span class="p">)</span>
+            <span class="n">role</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="s1">&#39;remove_converge_role&#39;</span>
+            <span class="n">role</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="n">ugettext_lazy</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;清空聚合规则&quot;</span><span class="p">)</span>
             <span class="n">fns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
 
         <span class="n">actions</span> <span class="o">=</span> <span class="p">[</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_action</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fns</span> <span class="p">]</span>

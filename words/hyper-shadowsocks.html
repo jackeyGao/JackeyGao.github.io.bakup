@@ -78,17 +78,17 @@ a3ed95caeb02: Pull <span class="nb">complete</span>
 Digest: sha256:221070b8688f049fa791528e1e9c5fc0c027f12a858d22b540170c2cca1dec69
 Status: Image is up to date <span class="k">for</span> oddrationale/docker-shadowsocks:latest
 
-$ ./hyper run -d --name shadowsocks -p <span class="m">1989</span> oddrationale/docker-shadowsocks -s 0.0.0.0 -p <span class="m">1989</span> -k MyPassWord -m aes-256-cfb
+$ ./hyper run -d --name shadowsocks -p <span class="m">1989</span> oddrationale/docker-shadowsocks -s <span class="m">0</span>.0.0.0 -p <span class="m">1989</span> -k MyPassWord -m aes-256-cfb
 b6cae93b056ddb123dcb754e785c557bee9b080e4a3a4731f3e1cd97798fe058
 
 $ ./hyper ps
 CONTAINER ID        IMAGE                             COMMAND                  CREATED             STATUS              PORTS               NAMES               PUBLIC IP
 b6cae93b056d        oddrationale/docker-shadowsocks   <span class="s2">&quot;/usr/local/bin/ssser&quot;</span>   <span class="m">23</span> seconds ago      Up <span class="m">18</span> seconds                           shadowsocks         
 
-$ ./hyper fip allocate 1
-162.221.195.201
+$ ./hyper fip allocate <span class="m">1</span>
+<span class="m">162</span>.221.195.201
 
-$ hyper fip attach 162.221.195.201 shadowsocks <span class="c1"># 指定上面命令输出的ip</span>
+$ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span class="c1"># 指定上面命令输出的ip</span>
 </pre></div>
 
 <p>到此结束,然后shadowsocks 客户端通过服务端配置指定</p>
