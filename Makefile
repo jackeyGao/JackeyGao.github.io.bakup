@@ -13,7 +13,7 @@ watch:
 	sass --watch assets/scss:assets/stylesheets
 
 deploy:
-	make render
+	#make render
 	git add rss.xml
 	git add '*.html'
 	git add 'words/*.html'
