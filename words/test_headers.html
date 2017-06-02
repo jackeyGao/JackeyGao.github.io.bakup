@@ -29,13 +29,13 @@
                 <h4>Posted September 30, 2016</h4>
 
                 <h2>标题</h2>
-<div class="highlight"><pre><span></span><span class="c1"># 我是H1标题</span>
-<span class="c1">## 我是H2标题</span>
-<span class="c1">### 我是H3标题</span>
-<span class="c1">#### 我是H4标题</span>
-<span class="c1">##### 我是H5标题</span>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="gh">#</span> 我是H1标题
+<span class="gu">##</span> 我是H2标题
+<span class="gu">###</span> 我是H3标题
+<span class="gu">####</span> 我是H4标题
+<span class="gu">#####</span> 我是H5标题
 </pre></div>
-
+</div>
 <h1>我是H1标题</h1>
 
 <h2>我是H2标题</h2>
@@ -47,27 +47,27 @@
 <h5>我是H5标题</h5>
 
 <h2>片段</h2>
-<div class="highlight"><pre><span></span>这是第一篇日记， 仅仅为了测试.
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>这是第一篇日记， 仅仅为了测试.
 </pre></div>
-
+</div>
 <p>这是第一篇日记， 仅仅为了测试.</p>
 
 <h2>列表</h2>
-<div class="highlight"><pre><span></span>- 文本1
-- 文本2
-- 文本3
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">-</span> 文本1
+<span class="k">-</span> 文本2
+<span class="k">-</span> 文本3
 </pre></div>
-
+</div>
 <ul>
 <li>文本1</li>
 <li>文本2</li>
 <li>文本3</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="m">1</span>. 文本1
-<span class="m">2</span>. 文本2
-<span class="m">3</span>. 文本3
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">1.</span> 文本1
+<span class="k">2.</span> 文本2
+<span class="k">3.</span> 文本3
 </pre></div>
-
+</div>
 <ol>
 <li>文本1</li>
 <li>文本2</li>
@@ -75,32 +75,32 @@
 </ol>
 
 <h2>链接</h2>
-<div class="highlight"><pre><span></span>我是<span class="o">[</span>JackeyGao<span class="o">](</span>https://omem.me/<span class="o">)</span>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>我是[JackeyGao](https://omem.me/)
 </pre></div>
-
+</div>
 <p>我是<a href="https://omem.me/">JackeyGao</a></p>
 
 <h2>图片</h2>
-<div class="highlight"><pre><span></span>!<span class="o">[</span>黎明<span class="o">](</span>/uploads/images/photo-1415931633537-351070d20b81.jpeg <span class="s2">&quot;黎明的阳光&quot;</span><span class="o">)</span>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>![<span class="nt">黎明</span>](<span class="na">/uploads/images/photo-1415931633537-351070d20b81.jpeg &quot;黎明的阳光&quot;</span>)
 </pre></div>
-
+</div>
 <p><p class="hassubimage"><img src="/uploads/images/photo-1415931633537-351070d20b81.jpeg" alt="黎明"></p>
                     <p class="img-title">黎明的阳光</p></p>
 
 <h2>粗体、行代码、斜体</h2>
-<div class="highlight"><pre><span></span>我**并不会**用<span class="sb">`</span>C<span class="sb">`</span>来写*前端*
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>我**并不会**用`C`来写*前端*
 </pre></div>
-
+</div>
 <p>我<strong>并不会</strong>用<code>C</code>来写<em>前端</em></p>
 
 <h2>表格</h2>
-<div class="highlight"><pre><span></span><span class="p">|</span> Tables        <span class="p">|</span> Are           <span class="p">|</span> Cool  <span class="p">|</span>
-<span class="p">|</span> ------------- <span class="p">|</span>:-------------:<span class="p">|</span> -----:<span class="p">|</span>
-<span class="p">|</span> col <span class="m">3</span> is      <span class="p">|</span> right-aligned <span class="p">|</span> <span class="nv">$1600</span> <span class="p">|</span>
-<span class="p">|</span> col <span class="m">2</span> is      <span class="p">|</span> centered      <span class="p">|</span>   <span class="nv">$12</span> <span class="p">|</span>
-<span class="p">|</span> zebra stripes <span class="p">|</span> are neat      <span class="p">|</span>    <span class="nv">$1</span> <span class="p">|</span>
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span>| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 </pre></div>
-<div class="table-wrapper"><table class="ui selectable celled table"><thead>
+</div><div class="table-wrapper"><table class="ui selectable celled table"><thead>
 <tr>
 <th>Tables</th>
 <th style="text-align: center">Are</th>
@@ -127,80 +127,160 @@
 </tbody>
 </table></div>
 <h2>标准块</h2>
-<div class="highlight"><pre><span></span>&gt; 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</span>
 </pre></div>
-<blockquote class="blockquote-normal">
+</div><blockquote class="blockquote-normal">
                 <p>一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p></blockquote>
 <h2>标准警告块</h2>
-<div class="highlight"><pre><span></span>&gt; %warning 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%warning 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</span>
 </pre></div>
-<blockquote class="blockquote-warning">
+</div><blockquote class="blockquote-warning">
                 <p> 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p></blockquote>
 <h2>标准错误块</h2>
-<div class="highlight"><pre><span></span>&gt; %error 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。
+<div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%error 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</span>
 </pre></div>
-<blockquote class="blockquote-error">
+</div><blockquote class="blockquote-error">
                 <p> 一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p></blockquote>
 <h2>引用块内标签</h2>
 <blockquote class="blockquote-normal">
-                <p>很多标签都可以在内部内容里面套用其他标签的, 我只是在在通用markdown标准上加了一些功能</p></blockquote><div class="highlight"><pre><span></span>&gt; %error **请注意:** 防火、防盗、*防经纪人*
+                <p>很多标签都可以在内部内容里面套用其他标签的, 我只是在在通用md标准上加了一些功能</p></blockquote><div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%error **请注意:** 防火、防盗、*防经纪人*</span>
 </pre></div>
-<blockquote class="blockquote-error">
+</div><blockquote class="blockquote-error">
                 <p> <strong>请注意:</strong> 防火、防盗、<em>防经纪人</em></p></blockquote>
 <h2>中间引用块</h2>
 <blockquote class="blockquote-warning">
-                <p> <strong>请注意:</strong> 设计的目的是为了更好的显示诗歌体. 如果在这里引用<code>**</code>粗体内标签会默认认为标题. <code>*</code>斜体内标签默认认为作者信息. 因为这两个内标签加入了特殊的样式, 所以不建议在诗歌内容里面加这两个内标签. 最好按照这个设定来. 详情看下面的案例</p></blockquote><div class="highlight"><pre><span></span>&gt; %center
-&gt; **浣溪沙**
-&gt; *纳兰性德·清*
-&gt; 谁道飘零不可怜，
-&gt; 旧游时节好花天，
-&gt; 断肠人去自经年。
-&gt; 一片晕红才著雨，
-&gt; 几丝柔绿乍和烟，
-&gt; 倩魂销尽夕阳前。
+                <p> <strong>请注意:</strong> 设计的目的是为了更好的显示诗歌体. 如果在这里引用<code>**</code>粗体内标签会默认认为标题. <code>*</code>斜体内标签默认认为作者信息. 因为这两个内标签加入了特殊的样式, 所以不建议在诗歌内容里面加这两个内标签. 最好按照这个设定来. 详情看下面的案例</p></blockquote><div class="code-wrapper"><div class="lang-label">markdown</div><div class="highlight"><pre><span></span><span class="k">&gt; </span><span class="ge">%center</span>
+<span class="k">&gt; </span><span class="ge">**浣溪沙**</span>
+<span class="k">&gt; </span><span class="ge">*纳兰性德·清*</span>
+<span class="k">&gt; </span><span class="ge">谁道飘零不可怜，</span>
+<span class="k">&gt; </span><span class="ge">旧游时节好花天，</span>
+<span class="k">&gt; </span><span class="ge">断肠人去自经年。</span>
+<span class="k">&gt; </span><span class="ge">一片晕红才著雨，</span>
+<span class="k">&gt; </span><span class="ge">几丝柔绿乍和烟，</span>
+<span class="k">&gt; </span><span class="ge">倩魂销尽夕阳前。</span>
 </pre></div>
-<blockquote class="blockquote-center">
-                <p><strong>浣溪沙</strong><br/><em>纳兰性德·清</em><br/>谁道飘零不可怜，<br/>旧游时节好花天，<br/>断肠人去自经年。<br/>一片晕红才著雨，<br/>几丝柔绿乍和烟，<br/>倩魂销尽夕阳前。</p></blockquote><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">api.containers</span> <span class="kn">import</span> <span class="n">Containers</span>
-<span class="kn">from</span> <span class="nn">api.ids</span> <span class="kn">import</span> <span class="n">Ids</span>
-<span class="kn">from</span> <span class="nn">api.inspect</span> <span class="kn">import</span> <span class="n">Inspect</span>
-<span class="kn">from</span> <span class="nn">api.logs</span> <span class="kn">import</span> <span class="n">Logs</span>
-<span class="kn">from</span> <span class="nn">api.process</span> <span class="kn">import</span> <span class="n">Process</span>
-<span class="kn">from</span> <span class="nn">api.changes</span> <span class="kn">import</span> <span class="n">Changes</span>
-<span class="kn">from</span> <span class="nn">api.stats</span> <span class="kn">import</span> <span class="n">Stats</span>
+</div><blockquote class="blockquote-center">
+                <p><strong>浣溪沙</strong><br/><em>纳兰性德·清</em><br/>谁道飘零不可怜，<br/>旧游时节好花天，<br/>断肠人去自经年。<br/>一片晕红才著雨，<br/>几丝柔绿乍和烟，<br/>倩魂销尽夕阳前。</p></blockquote><div class="code-wrapper"><div class="lang-label">Python</div><div class="highlight"><pre><span></span><span class="ch">#! -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   a simple teambition API SDK for python</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">six</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="kn">import</span> <span class="nn">json</span>
+<span class="k">if</span> <span class="n">six</span><span class="o">.</span><span class="n">PY2</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">urlencode</span>
+    <span class="kn">from</span> <span class="nn">urlparse</span> <span class="kn">import</span> <span class="n">urljoin</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlencode</span>
+    <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urljoin</span>
 
-<span class="n">c</span> <span class="o">=</span> <span class="n">Containers</span><span class="p">()</span>
-<span class="n">i</span> <span class="o">=</span> <span class="n">Ids</span><span class="p">()</span>
-<span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Number of containers is : </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">ids</span><span class="p">())))</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">c_id</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">ids</span><span class="p">():</span>
-        <span class="n">ins</span> <span class="o">=</span> <span class="n">Inspect</span><span class="p">(</span><span class="n">c_id</span><span class="p">)</span>
-        <span class="n">sta</span> <span class="o">=</span> <span class="n">Stats</span><span class="p">(</span><span class="n">c_id</span><span class="p">)</span>
-        <span class="n">proc</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">c_id</span><span class="p">,</span> <span class="n">ps_args</span> <span class="o">=</span> <span class="s2">&quot;aux&quot;</span><span class="p">)</span>
-        <span class="c1"># Container name</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Container name&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">ins</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
-        <span class="c1"># Container id</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Container id&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">ins</span><span class="o">.</span><span class="n">id</span><span class="p">()</span>
-        <span class="c1"># Memory usage</span>
-        <span class="n">mem_u</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span>
-        <span class="c1"># Memory limit</span>
-        <span class="n">mem_l</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">limit</span><span class="p">()</span>
-        <span class="c1"># Memory usage %</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Memory usage %&quot;</span><span class="p">)</span>
-        <span class="k">print</span>  <span class="nb">int</span><span class="p">(</span><span class="n">mem_u</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">int</span><span class="p">(</span><span class="n">mem_l</span><span class="p">)</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;api.teambition.com&#39;</span>
+<span class="n">AUTH_HOST</span> <span class="o">=</span> <span class="s1">&#39;account.teambition.com&#39;</span>
 
-        <span class="c1"># The number of times that a process of the cgroup triggered a &quot;major fault&quot;</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#The number of times that a process of the cgroup triggered a major fault&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">sta</span><span class="o">.</span><span class="n">pgmajfault</span><span class="p">()</span>
 
-        <span class="c1"># Same output as ps aux in *nix</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#Same output as ps aux in *nix&quot;</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">proc</span><span class="o">.</span><span class="n">ps</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">Teambition</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    a Teambition SDK</span>
+
+<span class="sd">    Basic Usage::</span>
+
+<span class="sd">      &gt;&gt;&gt; from teambition import Teambition</span>
+<span class="sd">      &gt;&gt;&gt; sdk = Teambition(client_id, client_secret)</span>
+<span class="sd">      &gt;&gt;&gt; sdk.get_authorize_url(redirect_url)  # get teambition authorize url</span>
+
+<span class="sd">    Access to authorize url with brower Get the redirect `code` . then::</span>
+
+<span class="sd">      &gt;&gt;&gt; access_token = sdk.get_access_token(code)</span>
+<span class="sd">      &gt;&gt;&gt; sdk.set_token(token)</span>
+<span class="sd">      &gt;&gt;&gt; sdk.get(&#39;users/me&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s1">&#39;https&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :class:`Teambtion`.</span>
+<span class="sd">        </span>
+<span class="sd">        :param client_id: :class:`string` teambition client id</span>
+<span class="sd">        :param client_secret: :class:`string` teambition client secret</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client_id</span> <span class="o">=</span> <span class="n">client_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client_secret</span> <span class="o">=</span> <span class="n">client_secret</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_root</span> <span class="o">=</span> <span class="n">protocol</span> <span class="o">+</span> <span class="s1">&#39;://&#39;</span> <span class="o">+</span> <span class="n">HOST</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_auth_root</span> <span class="o">=</span> <span class="n">protocol</span> <span class="o">+</span> <span class="s1">&#39;://&#39;</span> <span class="o">+</span> <span class="n">AUTH_HOST</span>
+        
+        <span class="nb">super</span><span class="p">(</span><span class="n">Teambition</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span>
+        <span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">set_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set token to session headers.</span>
+
+<span class="sd">        :class:`Teambtion`.</span>
+<span class="sd">        </span>
+<span class="sd">        :param token: :class:`string` the oauth2 access token.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;OAuth2 &#39;</span> <span class="o">+</span> <span class="n">token</span>
+        <span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">get_authorize_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">redirect_url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        give authorize url</span>
+
+<span class="sd">        :class:`Teambtion`.</span>
+<span class="sd">        </span>
+<span class="sd">        :param redirect_url: :class:`string` the callback url</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_auth_root</span><span class="p">,</span> <span class="s1">&#39;/oauth2/authorize&#39;</span><span class="p">)</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;client_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client_id</span><span class="p">,</span>
+            <span class="s1">&#39;redirect_uri&#39;</span><span class="p">:</span> <span class="n">redirect_url</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">_url</span> <span class="o">+</span> <span class="s1">&#39;?&#39;</span> <span class="o">+</span> <span class="n">urlencode</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_access_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        give access token</span>
+
+<span class="sd">        :class:`Teambtion`.</span>
+<span class="sd">        </span>
+<span class="sd">        :param code: :class:`string` callback code</span>
+<span class="sd">        :param state: :class:`string` https://auth0.com/docs/protocols/oauth2/oauth-state</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;client_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client_id</span><span class="p">,</span>
+            <span class="s1">&#39;client_secret&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client_secret</span><span class="p">,</span>
+            <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="n">code</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="n">state</span><span class="p">:</span>
+            <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span>
+
+        <span class="n">resp</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Teambition</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+            <span class="s1">&#39;post&#39;</span><span class="p">,</span> 
+            <span class="n">urljoin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_auth_root</span><span class="p">,</span> <span class="s1">&#39;/oauth2/access_token&#39;</span><span class="p">),</span> 
+            <span class="n">json</span><span class="o">=</span><span class="n">payload</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;access_token&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        request method</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root</span><span class="p">,</span> <span class="s1">&#39;/api&#39;</span> <span class="o">+</span> <span class="n">path</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Teambition</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+            <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+        
+        <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </pre></div>
-
+</div>
             </div>
             <div id="footer">
                 <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
