@@ -110,36 +110,46 @@ ol {
     color: $fancy-link-hover-color;
 }
 
-.highlight {
+.code-wrapper {
+    @include center;
     font-family: Courier, 'Courier New', monospace;
+    width: $default-text-width-em + 10em!important;
+}
+
+.lang-label {
+    position: relative;
+    left: 32em;
+    bottom: -1.5em;
+    font-family: Courier, 'Courier New', monospace;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(0,0,0,.6);
+}
+
+.lang-label:hover::before { 
+    content: "</> "; color: #5BBD72; 
+}
+
+.lang-label:hover { 
+    color: #5BBD72;
+}
+
+.highlight {
+    margin: 0;
+    font-size: 0.875em;
     color: #333;
-    z-index: -1;
-    background: #fafafd;
-    border: 0.063em solid #dedede;
-    border-right: 0em solid #fff;
-    line-height: 1.5em;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    left: 0;
-    right: 0;
+    line-height: 1.3em;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ddd; 
+    padding: 1em;
 }
 
 pre {
     overflow-x: hidden;
     white-space: pre-wrap;
     display: block;
-    margin: 0;
-    font-size: 0.875em;
-    font-family: Courier, 'Courier New', monospace;
-    color: #333;
-    line-height: 1.3em;
-    margin-left: auto;
-    margin-right: auto;
-    width: $default-text-width-em + 20em!important;
-    border-left: 1px solid #dedede;
-    border-right: 1px solid #dedede;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 code {
