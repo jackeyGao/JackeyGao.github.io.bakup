@@ -5,6 +5,15 @@
 
 需要安装jinja2、misaka, pygments库
 
+## 运行
+
+```
+mkdir ./markdown
+echo -e "title: Hello\ndate: 2017-03-16 12:41:12\n---\nMy first post" >> ./markdown/hello.md
+make deploy
+```
+
+
 ## 渲染逻辑
 
 ```
@@ -16,6 +25,9 @@
 ## make语句
 
 ```bash
+# Generate stylesheets.
+NOW = $(shell date '+%Y-%m-%d %H:%M:%S')
+
 all: render
 
 style:
@@ -26,9 +38,15 @@ render: style
 
 watch:
     sass --watch assets/scss:assets/stylesheets
-```
 
-暂时没有做deploy的定义
+deploy:
+    make render
+    git add rss.xml
+    git add '*.html'
+    git add 'words/*.html'
+    git commit -m "[UPDATE] $(NOW)"
+    git push origin master
+```
 
 ## License
 
