@@ -1,0 +1,209 @@
+/* CSS Document */
+
+div { position:absolute; }
+
+div.face {
+  top:100px;
+  left:400px;
+  width:700px;
+  height:600px;
+  border-radius:50% 50% 40% 40%;
+  background-color:#cff;
+  border:6px solid #000;
+}
+div.face div.half-face {
+  width:50%;
+  height:50%;
+  background-color:#3cf;
+  top:0px;
+  left:50%;
+  border-radius:0% 100% 0% 70%;
+}
+div.face div.cheeks {
+    display:none;
+    top:390px;
+    left:30px;
+    width:640px;
+}
+div.face div.cheeks div.cheek {
+    width:160px;
+    height:70px;
+    background-color:#F69;
+    border-radius:50%;
+}
+div.face div.cheeks div.left-cheek { top:0px; left:0px; }
+div.face div.cheeks div.right-cheek { top:0px; right:0px; }
+div.face div.eyes {
+  width:80%;
+  height:200px;
+  top:200px;
+  left:70px;
+}
+div eye { overflow:auto; }
+div.face div.eyes div.left-eye {
+  left:0px;
+}
+div.face div.eyes div.right-eye {
+  left:350px;
+}
+div.face div.eyes div.open_eye {
+  width:200px;
+  height:200px;
+  background-color:#fff;
+  border:2px solid #000;
+  border-radius:50%;
+}
+div.face div.eyes div.close_eye {
+  top:100px;
+  width:200px;
+  height:60px;
+  background-color:#000;
+}
+
+div.face div.eyes div.eye div.round {
+  width:160px;
+  height:160px;
+  background-color:#000;
+  border-radius:50%;
+  top:20px;
+  left:20px;
+}
+
+div.round img {
+  border-radius: 50%;
+  border: 2px solid rgba(48, 223, 243, 0.65);
+  width:160px;
+  height:160px;
+}
+
+div.face div.mouses {
+  width:100px;
+  height:24px;
+  top:420px;
+  left:300px;
+  z-index:10;
+}
+div.face div.mouses div.mouse {
+  width:47%;
+  height:100%;
+  border-bottom:6px solid #000;
+  border-radius:0 0 80% 80%;
+  background-color:#cff;
+}
+div.face div.mouses div.left-mouse {
+  border-right:6px solid #000;
+  border-radius:20% 0 80% 80%;
+}
+div.face div.mouses div.right-mouse {
+  border-radius:0 20% 80% 80%;
+  border-left:6px solid #000;
+  left:47%;
+}
+div.face div.mouses div#bottom-mouse {
+    display:none;
+    width:42px;
+    height:100px;
+    background-color:#fcf;
+    left:24px;
+  border-radius:0 0 50% 50%;
+  border-left:6px solid #000;
+  border-right:6px solid #000;
+  border-bottom:6px solid #000;
+}
+
+
+div.face div.beards {
+  width:600px;
+  height:140px;
+  top:420px;
+  left:54px;
+}
+div.face div.beards div.half-beards {
+  width:50%;
+  height:100%;
+}
+div.face div.beards div.right-beards {
+  left:50%;
+}
+div.face div.beards div.half-beards div.beard {
+  width:100px;
+  height:0px;
+  border:2px solid #000;
+}
+div.face div.beards div.left-beards div.one-beard {
+  top:20px;
+  left:40px;
+  -webkit-transform: rotate(5deg);
+}
+div.face div.beards div.left-beards div.two-beard {
+  top:60px;
+  left:40px;
+  -webkit-transform: rotate(-5deg);
+}
+div.face div.beards div.right-beards div.one-beard {
+  top:20px;
+  left:140px;
+  -webkit-transform: rotate(-5deg);
+}
+div.face div.beards div.right-beards div.two-beard {
+  top:60px;
+  left:140px;
+  -webkit-transform: rotate(5deg);
+}
+div.face div.beards div.left-beards div.one-beard-up {
+  top:16px;
+  left:40px;
+  -webkit-transform: rotate(10deg);
+}
+div.face div.beards div.left-beards div.two-beard-up {
+  top:56px;
+  left:40px;
+  -webkit-transform: rotate(0deg);
+}
+div.face div.beards div.right-beards div.one-beard-up {
+  top:16px;
+  left:140px;
+  -webkit-transform: rotate(-10deg);
+}
+div.face div.beards div.right-beards div.two-beard-up {
+  top:56px;
+  left:140px;
+  -webkit-transform: rotate(0deg);
+}
+
+div.ears {
+  width:800px;
+  height:400px;
+  left:330px;
+  top:90px;
+  z-index:-1;
+}
+div.ear {
+  background-color:#3cf;
+  width:400px;
+  height:400px;
+  border:6px solid #000;
+  border-radius:15% 80% 80% 80%;
+}
+div.left-ear {
+  -webkit-transform: rotate(5deg);
+}
+div.right-ear {
+  left:400px;
+  -webkit-transform: rotate(85deg);
+}
+div.left-ear-up {
+  -webkit-transform: rotate(15deg);
+}
+div.right-ear-up {
+  -webkit-transform: rotate(75deg);
+}
+div.ear div.round {
+  background-color:#fcf;
+  width:320px;
+  height:320px;
+  border:4px solid #000;
+  border-radius:15% 80% 80% 80%;
+  top:20px;
+  left:20px;
+}

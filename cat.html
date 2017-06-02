@@ -4,6 +4,7 @@
         <title>(=^-ω-^=)</title>
         <link rel="stylesheet" href="assets/stylesheets/global.css">
         <link rel="stylesheet" href="assets/stylesheets/about.css">
+        <link rel="stylesheet" href="assets/stylesheets/cat.css">
         <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
         <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
         <script>
@@ -16,19 +17,76 @@
             ga('create', 'UA-93231524-1', 'auto');
             ga('send', 'pageview');
         </script>
+        <style>
+        </style>
     </head>
     <body>
         <div id="header">
             <a href="index.html"><div id="logo">JG</div></a>
         </div>
-
-        <div id="container" style="margin-top: 20%">
-            <div class="avatar-wrapper">
-                <a href="/cat-bn.html"><img src="assets/images/boniu-cat-avatar.png"/></a>
-                <span class="cat">(=^-ω-^=)</span>
-                <a href="/cat-hs.html"><img src="assets/images/huangshou-cat-avatar.png"/></a>
+        <div class="face">
+            <div class="half-face"></div> <div class="cheeks">
+                  <div class="cheek left-cheek"></div>
+                  <div class="cheek right-cheek"></div>
+              </div>
+            <div class="eyes">
+              <div class="eye left-eye open_eye">
+                <div class="round">
+                  <a href="/cat-bn.html"><img class="left" src="assets/images/boniu-cat-avatar.png"/></a>
+                </div>
+              </div>
+              <div class="eye right-eye open_eye">
+                <div class="round">
+                  <a href="/cat-hs.html"><img class="right" src="assets/images/huangshou-cat-avatar.png"/></a>
+                </div>
+              </div>
+            </div>
+            <div class="mouses">
+              <div id="bottom-mouse"></div>
+              <div class="mouse left-mouse"></div>
+              <div class="mouse right-mouse"></div>
+            </div>
+            <div class="beards">
+              <div class="half-beards left-beards">
+                <div class="beard one-beard"></div>
+                <div class="beard two-beard"></div>
+              </div>
+              <div class="half-beards right-beards">
+                <div class="beard one-beard"></div>
+                <div class="beard two-beard"></div>
+              </div>
             </div>
         </div>
+        <div class="ears">
+          <div id="left-ear" class="ear left-ear">
+            <div class="round"></div>
+          </div>
+          <div id="right-ear" class="ear right-ear">
+            <div class="round"></div>
+          </div>
+        </div>
+
+        <!--
+        <div id="container" class="center" style="width: 50em;">
+            <div class="face">
+                <div class="ears">
+                    <div id="left-ear" class="ear left-ear">
+                      <div class="round"></div>
+                    </div>
+                    <div id="right-ear" class="ear right-ear">
+                      <div class="round"></div>
+                    </div>
+                  </div>
+                <div class="cateye-wrapper" style="margin-top: 8em">
+                    <a href="/cat-bn.html"><img class="left" src="assets/images/boniu-cat-avatar.png"/></a>
+                    <a href="/cat-hs.html"><img class="right" src="assets/images/huangshou-cat-avatar.png"/></a>
+                </div>
+                <div class="center" style="text-align: center;">
+                    <span class="cat">ω</span>
+                </div>
+            <div>
+        </div>
+        -->
     </body>
     <script>
     document.addEventListener("DOMContentLoaded", function(event) { 
@@ -37,8 +95,8 @@
             "(ฅ>ω<*ฅ)", "(ฅ⁼̴̀།།⁼̴́ฅ)❀", "๑•̀ㅁ•́ฅ✧", "( 〃 ˙꒫˙ 〃 )", 
             "ლ(•̀ _ •́ ლ)", "ฅ(๑•́₃•̀๑٥)", "(ฅ⁍̴̀◊⁍̴́)و ̑̑", "ฅ(๑*д*๑)ฅ"
         ]
-        var n = Math.floor(Math.random() * emotions.length + 1)-1;  
-        document.getElementsByClassName('cat')[0].textContent = emotions[n]
+        // var n = Math.floor(Math.random() * emotions.length + 1)-1;  
+        // document.getElementsByClassName('cat')[0].textContent = emotions[n]
     });
     </script>
 </html>
