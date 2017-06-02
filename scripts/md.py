@@ -23,10 +23,18 @@ class HighlighterRenderer(m.HtmlRenderer):
         \n<div class="highlight"><pre>{}</pre></div>\n'''.format(
                 text.strip())
 
-        lexer = get_lexer_by_name(lang, stripall=True)
-        formatter = HtmlFormatter()
 
-        return highlight(text, lexer, formatter)
+        try:
+            lexer = get_lexer_by_name(lang, stripall=True)
+        except pygments.util.ClassNotFound:
+            lang = 'text'
+            lexer = get_lexer_by_name('text', stripall=True)
+            
+        formatter = HtmlFormatter()
+        content = highlight(text, lexer, formatter)
+            
+        langDiv = '<div class="lang-label">' + lexer.name + '</div>'
+        return '<div class="code-wrapper">' + langDiv + content + '</div>'
 
 
     def blockquote(self, content):
