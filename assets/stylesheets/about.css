@@ -82,6 +82,12 @@ h1 {
   width: 10em !important;
   border: 3px solid #1abc9c; }
 
+.left {
+  margin-right: 8em; }
+
+.right {
+  margin-left: 8em; }
+
 .cat {
   font-family: Courier, 'Courier New', monospace;
   color: #ddd;
