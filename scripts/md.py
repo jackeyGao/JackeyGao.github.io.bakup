@@ -10,6 +10,7 @@ import misaka as m
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
+from pygments.util import ClassNotFound
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -26,14 +27,15 @@ class HighlighterRenderer(m.HtmlRenderer):
 
         try:
             lexer = get_lexer_by_name(lang, stripall=True)
-        except pygments.util.ClassNotFound:
-            lang = 'text'
+            language = lexer.name
+        except ClassNotFound:
             lexer = get_lexer_by_name('text', stripall=True)
+            language = lang
             
         formatter = HtmlFormatter()
         content = highlight(text, lexer, formatter)
             
-        langDiv = '<div class="lang-label">' + lexer.name + '</div>'
+        langDiv = '<span class="lang-label">' + language + '</span>'
         return '<div class="code-wrapper">' + langDiv + content + '</div>'
 
 

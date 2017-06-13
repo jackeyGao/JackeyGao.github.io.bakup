@@ -6,6 +6,22 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Python eval安全案例</title>
+        <link>http://jackeygao.io/words/python-eval-safe.html</link>
+        <guid>http://jackeygao.io/words/python-eval-safe.html</guid>
+        <pubDate>June 06, 2017</pubDate>
+        <description>Python eval安全案例</description>
+    </item>
+    
+    <item>
+        <title>肆无忌惮</title>
+        <link>http://jackeygao.io/words/2017-06-05.html</link>
+        <guid>http://jackeygao.io/words/2017-06-05.html</guid>
+        <pubDate>June 06, 2017</pubDate>
+        <description>肆无忌惮</description>
+    </item>
+    
+    <item>
         <title>Flask-Admin 增加自定义Action</title>
         <link>http://jackeygao.io/words/flask-admin-add-custom-row-action.html</link>
         <guid>http://jackeygao.io/words/flask-admin-add-custom-row-action.html</guid>

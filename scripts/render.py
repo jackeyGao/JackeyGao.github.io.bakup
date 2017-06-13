@@ -18,7 +18,7 @@ GALLERY_TEMPLATE_FILE = 'gallery.html'
 
 markdown_files = os.listdir('markdown')
 
-albums = os.listdir('uploads/album')
+#albums = os.listdir('uploads/album')
 
 words = []
 
@@ -70,34 +70,34 @@ output = template.render(words=words)
 with open('rss.xml', 'w') as f: f.write(output)
 
 
-imgObjs = []
-for album in albums:
-    
-    album_dir = os.path.join('uploads/album/', album)
-
-    imgs = os.listdir(album_dir)
-
-    imgObj = {}
-    imgObj["album"] = album
-
-    subimg_list = []
-    for img in imgs:
-        img_path = os.path.join(album, img)
-
-        if img.startswith('^'):
-            imgObj["first"] = img_path
-
-        subimg_list.append(img_path)
-
-    imgObj["sub_imgs"] = subimg_list
-
-    if not imgObj.get('first', None):
-        imgObj["first"] = subimg_list[0]
-        
-    
-    imgObjs.append(imgObj)
-
-
-template = template_env.get_template(GALLERY_TEMPLATE_FILE)
-output = template.render(albums=imgObjs)
-with open('gallery.html', 'w') as f: f.write(output)
+#imgObjs = []
+#for album in albums:
+#    
+#    album_dir = os.path.join('uploads/album/', album)
+#
+#    imgs = os.listdir(album_dir)
+#
+#    imgObj = {}
+#    imgObj["album"] = album
+#
+#    subimg_list = []
+#    for img in imgs:
+#        img_path = os.path.join(album, img)
+#
+#        if img.startswith('^'):
+#            imgObj["first"] = img_path
+#
+#        subimg_list.append(img_path)
+#
+#    imgObj["sub_imgs"] = subimg_list
+#
+#    if not imgObj.get('first', None):
+#        imgObj["first"] = subimg_list[0]
+#        
+#    
+#    imgObjs.append(imgObj)
+#
+#
+#template = template_env.get_template(GALLERY_TEMPLATE_FILE)
+#output = template.render(albums=imgObjs)
+#with open('gallery.html', 'w') as f: f.write(output)
