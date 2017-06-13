@@ -274,14 +274,17 @@ blockquote p {
     display: block !important;
     width: 100% !important;
     float: none !important;
-    padding: 0 !important; }
-
-  .highlight {
-    padding-top: 1.25em !important;
-    padding-bottom: 1.25em !important; }
+    padding: 0; }
 
   pre {
     overflow-x: hidden; }
+
+  .highlight {
+    padding: 1em;
+    padding-top: 2em; }
+
+  .lang-label {
+    width: 5em !important; }
 
   blockquote p {
     overflow: auto; }
