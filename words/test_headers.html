@@ -75,10 +75,10 @@
 </ol>
 
 <h2>链接</h2>
-<div class="code-wrapper"><span class="lang-label">markdown</span><div class="highlight"><pre><span></span>我是[JackeyGao](https://omem.me/)
+<div class="code-wrapper"><span class="lang-label">markdown</span><div class="highlight"><pre><span></span>我是[JackeyGao](/)
 </pre></div>
 </div>
-<p>我是<a href="https://omem.me/">JackeyGao</a></p>
+<p>我是<a href="/">JackeyGao</a></p>
 
 <h2>图片</h2>
 <div class="code-wrapper"><span class="lang-label">markdown</span><div class="highlight"><pre><span></span>![<span class="nt">黎明</span>](<span class="na">/uploads/images/photo-1415931633537-351070d20b81.jpeg &quot;黎明的阳光&quot;</span>)
@@ -94,7 +94,7 @@
 <p>我<strong>并不会</strong>用<code>C</code>来写<em>前端</em></p>
 
 <h2>表格</h2>
-<div class="code-wrapper"><span class="lang-label">markdown</span><div class="highlight"><pre><span></span>| Tables        | Are           | Cool  |
+<div class="code-wrapper"><span class="lang-label">markdown</span><div class="highlight"><pre><span></span>| Tables        | Center        | Cool  |
 | ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
 | col 2 is      | centered      |   $12 |
@@ -103,7 +103,7 @@
 </div><div class="table-wrapper"><table class="ui selectable celled table"><thead>
 <tr>
 <th>Tables</th>
-<th style="text-align: center">Are</th>
+<th style="text-align: center">Center</th>
 <th style="text-align: right">Cool</th>
 </tr>
 </thead>
@@ -160,125 +160,37 @@
 <span class="k">&gt; </span><span class="ge">倩魂销尽夕阳前。</span>
 </pre></div>
 </div><blockquote class="blockquote-center">
-                <p><strong>浣溪沙</strong><br/><em>纳兰性德·清</em><br/>谁道飘零不可怜，<br/>旧游时节好花天，<br/>断肠人去自经年。<br/>一片晕红才著雨，<br/>几丝柔绿乍和烟，<br/>倩魂销尽夕阳前。</p></blockquote><div class="code-wrapper"><span class="lang-label">Python</span><div class="highlight"><pre><span></span><span class="ch">#! -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">   a simple teambition API SDK for python</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">six</span>
-<span class="kn">import</span> <span class="nn">requests</span>
+                <p><strong>浣溪沙</strong><br/><em>纳兰性德·清</em><br/>谁道飘零不可怜，<br/>旧游时节好花天，<br/>断肠人去自经年。<br/>一片晕红才著雨，<br/>几丝柔绿乍和烟，<br/>倩魂销尽夕阳前。</p></blockquote>
+<div class="code-wrapper">
+  <span class="lang-label">markdown</span>
+  <div class="highlight">
+    <pre>```python
+#! -*- coding: utf-8 -*-
+"""
+   Python Hello world
+"""
 
-<span class="k">if</span> <span class="n">six</span><span class="o">.</span><span class="n">PY2</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">urlencode</span>
-    <span class="kn">from</span> <span class="nn">urlparse</span> <span class="kn">import</span> <span class="n">urljoin</span>
+import sys
+
+if sys.version_info[0] == 3:
+    print("Hello world!")
+else:
+    print "Hello world!"
+
+```</pre>
+  </div>
+</div>
+<div class="code-wrapper"><span class="lang-label">Python</span><div class="highlight"><pre><span></span><span class="ch">#! -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   Python Hello world</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlencode</span>
-    <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urljoin</span>
-
-<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;api.teambition.com&#39;</span>
-<span class="n">AUTH_HOST</span> <span class="o">=</span> <span class="s1">&#39;account.teambition.com&#39;</span>
-
-
-<span class="k">class</span> <span class="nc">Teambition</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    a Teambition SDK</span>
-
-<span class="sd">    Basic Usage::</span>
-
-<span class="sd">      &gt;&gt;&gt; from teambition import Teambition</span>
-<span class="sd">      &gt;&gt;&gt; sdk = Teambition(client_id, client_secret)</span>
-<span class="sd">      &gt;&gt;&gt; sdk.get_authorize_url(redirect_url)  # get teambition authorize url</span>
-
-<span class="sd">    Access to authorize url with brower Get the redirect `code` . then::</span>
-
-<span class="sd">      &gt;&gt;&gt; access_token = sdk.get_access_token(code)</span>
-<span class="sd">      &gt;&gt;&gt; sdk.set_token(token)</span>
-<span class="sd">      &gt;&gt;&gt; sdk.get(&#39;users/me&#39;)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s1">&#39;https&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :class:`Teambtion`.</span>
-<span class="sd">        </span>
-<span class="sd">        :param client_id: :class:`string` teambition client id</span>
-<span class="sd">        :param client_secret: :class:`string` teambition client secret</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client_id</span> <span class="o">=</span> <span class="n">client_id</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_client_secret</span> <span class="o">=</span> <span class="n">client_secret</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_root</span> <span class="o">=</span> <span class="n">protocol</span> <span class="o">+</span> <span class="s1">&#39;://&#39;</span> <span class="o">+</span> <span class="n">HOST</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_auth_root</span> <span class="o">=</span> <span class="n">protocol</span> <span class="o">+</span> <span class="s1">&#39;://&#39;</span> <span class="o">+</span> <span class="n">AUTH_HOST</span>
-        
-        <span class="nb">super</span><span class="p">(</span><span class="n">Teambition</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
-            <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span>
-        <span class="p">})</span>
-
-    <span class="k">def</span> <span class="nf">set_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        set token to session headers.</span>
-
-<span class="sd">        :class:`Teambtion`.</span>
-<span class="sd">        </span>
-<span class="sd">        :param token: :class:`string` the oauth2 access token.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
-            <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;OAuth2 &#39;</span> <span class="o">+</span> <span class="n">token</span>
-        <span class="p">})</span>
-
-    <span class="k">def</span> <span class="nf">get_authorize_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">redirect_url</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        give authorize url</span>
-
-<span class="sd">        :class:`Teambtion`.</span>
-<span class="sd">        </span>
-<span class="sd">        :param redirect_url: :class:`string` the callback url</span>
-<span class="sd">        :rtype: string</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">_url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_auth_root</span><span class="p">,</span> <span class="s1">&#39;/oauth2/authorize&#39;</span><span class="p">)</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;client_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client_id</span><span class="p">,</span>
-            <span class="s1">&#39;redirect_uri&#39;</span><span class="p">:</span> <span class="n">redirect_url</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">_url</span> <span class="o">+</span> <span class="s1">&#39;?&#39;</span> <span class="o">+</span> <span class="n">urlencode</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">get_access_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        give access token</span>
-
-<span class="sd">        :class:`Teambtion`.</span>
-<span class="sd">        </span>
-<span class="sd">        :param code: :class:`string` callback code</span>
-<span class="sd">        :param state: :class:`string` https://auth0.com/docs/protocols/oauth2/oauth-state</span>
-<span class="sd">        :rtype: string</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;client_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client_id</span><span class="p">,</span>
-            <span class="s1">&#39;client_secret&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client_secret</span><span class="p">,</span>
-            <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="n">code</span>
-        <span class="p">}</span>
-
-        <span class="k">if</span> <span class="n">state</span><span class="p">:</span>
-            <span class="n">payload</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span>
-
-        <span class="n">resp</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Teambition</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
-            <span class="s1">&#39;post&#39;</span><span class="p">,</span> 
-            <span class="n">urljoin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_auth_root</span><span class="p">,</span> <span class="s1">&#39;/oauth2/access_token&#39;</span><span class="p">),</span> 
-            <span class="n">json</span><span class="o">=</span><span class="n">payload</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;access_token&quot;</span><span class="p">]</span>
-
-    <span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        request method</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="n">urljoin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root</span><span class="p">,</span> <span class="s1">&#39;/api&#39;</span> <span class="o">+</span> <span class="n">path</span><span class="p">)</span>
-        <span class="n">resp</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Teambition</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
-            <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
-        <span class="p">)</span>
-        
-        <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s2">&quot;Hello world!&quot;</span>
 </pre></div>
 </div>
             </div>
