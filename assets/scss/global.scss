@@ -5,6 +5,7 @@ $link-hover-color: #999;
 $fancy-link-color: #ddd;
 $fancy-link-hover-color: #333;
 $default-text-width-em: 30em;
+$default-element-width-em: 40em;
 
 @font-face {
     font-family: "Montserrat";
@@ -47,6 +48,10 @@ body {
 
 @mixin default-text-width {
     width: $default-text-width-em;
+}
+
+@mixin default-element-width {
+    width: $default-element-width-em!important;
 }
 
 

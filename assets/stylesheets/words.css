@@ -155,8 +155,8 @@ ol {
 .code-wrapper {
   margin-left: auto;
   margin-right: auto;
-  font-family: Courier, 'Courier New', monospace;
-  width: 40em !important; }
+  width: 40em !important;
+  font-family: Courier, 'Courier New', monospace; }
 
 .lang-label {
   position: relative;
@@ -212,28 +212,26 @@ strong, b {
   line-height: 1.35; }
 
 blockquote {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40em !important;
   z-index: -1;
-  margin: 0;
   margin-top: 1.35em;
   margin-bottom: 1.35em;
-  padding: 0;
   background: #fafafd;
-  border: 0.063em solid #dedede;
-  border-right: 0em solid #fff;
-  left: 0;
-  right: 0;
-  width: 100%; }
+  border-left: 5px solid #5BBD72; }
 
 blockquote p {
   margin-left: auto;
   margin-right: auto;
-  width: 30em;
   margin: 0;
+  padding: 1em;
   font-size: 1em;
   overflow-x: auto;
   overflow-y: hidden;
   line-height: 1.3em;
-  color: #888; }
+  color: #888;
+  width: 38em !important; }
 
 .blockquote-center p {
   text-align: center;
@@ -250,18 +248,23 @@ blockquote p {
   content: "》";
   color: #5BBD72; }
 
+.blockquote-center {
+  border-left: 0; }
+
 .blockquote-warning {
-  background: #fef9e7; }
+  background: #fef9e7;
+  border-left: 5px solid #F2C61F; }
 
 .blockquote-error {
-  background: #fadbd8; }
+  background: #fadbd8;
+  border-left: 5px solid #D95C5C; }
 
 .table-wrapper {
+  width: 40em !important;
   margin-top: 1.350em;
   margin-bottom: 1em;
   margin-left: auto !important;
-  margin-right: auto !important;
-  width: 30em !important; }
+  margin-right: auto !important; }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
   @viewport {
@@ -298,38 +301,38 @@ blockquote p {
     font-family: "ProximaNova-Bold";
     src: url("../fonts/ProximaNovaRegular.otf"); } }
 #article img {
+  width: 40em !important;
   display: block;
   margin-top: 1.350em;
   margin-bottom: 1em;
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid #ABEBC6;
-  width: 40em !important; }
+  border: 2px solid #ABEBC6; }
 
 #article .block {
   margin-left: auto;
   margin-right: auto;
+  width: 40em !important;
   display: block;
   margin-top: 1.350em;
   margin-bottom: 1em;
-  border: 2px solid #ABEBC6;
-  width: 40em !important; }
+  border: 2px solid #ABEBC6; }
 
 #article .github-widget {
   margin-left: auto;
   margin-right: auto;
+  width: 40em !important;
   display: block;
   margin-top: 1.350em;
-  margin-bottom: 1em;
-  width: 40em !important; }
+  margin-bottom: 1em; }
 
 #article .gist {
   margin-left: auto;
   margin-right: auto;
+  width: 40em !important;
   display: block;
   margin-top: 1.350em;
-  margin-bottom: 1em;
-  width: 40em !important; }
+  margin-bottom: 1em; }
 
 .gist .blob-code-inner {
   font-family: Courier, 'Courier New', monospace !important; }

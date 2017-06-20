@@ -112,8 +112,8 @@ ol {
 
 .code-wrapper {
     @include center;
+    @include default-element-width;
     font-family: Courier, 'Courier New', monospace;
-    width: $default-text-width-em + 10em!important;
 }
 
 .lang-label {
@@ -178,28 +178,25 @@ strong, b {
 }
 
 blockquote {
+    @include center;
+    @include default-element-width;
     z-index: -1;
-    margin: 0;
     margin-top: 1.35em;
     margin-bottom: 1.35em;
-    padding: 0;
     background: #fafafd;
-    border: 0.063em solid #dedede;
-    border-right: 0em solid #fff;
-    left: 0;
-    right: 0;
-    width: 100%;
+    border-left: 5px solid #5BBD72;
 }
 
 blockquote p {
     @include center;
-    @include default-text-width;
     margin: 0;
+    padding: 1em;
     font-size: 1em;
     overflow-x: auto;
     overflow-y: hidden;
     line-height: 1.3em;
     color: #888;
+    width: $default-text-width-em + 8em!important;
 }
 
 .blockquote-center p { 
@@ -219,20 +216,26 @@ blockquote p {
     content: "》"; color: #5BBD72; 
 }
 
+.blockquote-center {
+    border-left: 0;
+}
+
 .blockquote-warning {
     background: #fef9e7;
+    border-left: 5px solid #F2C61F;
 }
 
 .blockquote-error {
     background: #fadbd8;
+    border-left: 5px solid #D95C5C;
 }
 
 .table-wrapper {
+    @include default-element-width;
     margin-top: 1.350em;
     margin-bottom: 1em;
     margin-left: auto!important;
     margin-right: auto!important;
-    width: $default-text-width-em / 1em * 1em !important;
 }
 
 table {
@@ -292,38 +295,38 @@ and (max-device-width : 568px) {
 }
 
 #article img {
+    @include default-element-width;
     display: block;
     margin-top: 1.350em;
     margin-bottom: 1em;
     margin-left: auto;
     margin-right: auto;
     border: 2px solid #ABEBC6;
-    width: $default-text-width-em + 10em!important;
 }
 
 #article .block {
     @include center;
+    @include default-element-width;
     display: block;
     margin-top: 1.350em;
     margin-bottom: 1em;
     border: 2px solid #ABEBC6;
-    width: $default-text-width-em + 10em!important;
 }
 
 #article .github-widget {
     @include center;
+    @include default-element-width;
     display: block;
     margin-top: 1.350em;
     margin-bottom: 1em;
-    width: $default-text-width-em + 10em!important;
 }
 
 #article .gist {
     @include center;
+    @include default-element-width;
     display: block;
     margin-top: 1.350em;
     margin-bottom: 1em;
-    width: $default-text-width-em + 10em!important;
 }
 
 .gist .blob-code-inner {
