@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>谦虚为人，终有吉时</title>
+        <link>http://jackeygao.io/words/2017-06-23.html</link>
+        <guid>http://jackeygao.io/words/2017-06-23.html</guid>
+        <pubDate>June 06, 2017</pubDate>
+        <description>谦虚为人，终有吉时</description>
+    </item>
+    
+    <item>
         <title>Python eval安全案例</title>
         <link>http://jackeygao.io/words/python-eval-safe.html</link>
         <guid>http://jackeygao.io/words/python-eval-safe.html</guid>
