@@ -230,6 +230,11 @@ blockquote p {
     border-left: 5px solid #D95C5C;
 }
 
+#comments {
+    @include center;
+    @include default-text-width;
+}
+
 .table-wrapper {
     @include default-element-width;
     margin-top: 1.350em;

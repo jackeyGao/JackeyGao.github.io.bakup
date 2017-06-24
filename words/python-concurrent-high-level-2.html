@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
         <link rel="stylesheet" href="../assets/stylesheets/table.css">
         <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
         <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
         <script>
             // 统计代码
@@ -54,9 +55,27 @@
 <p>ThreadPoolExecutor 和 ProcessPoolExecutor直接python的with as 控制流语句， 让你非常简单的就套入了程序里面。</p>
 
             </div>
+            <div id="comments">
+            </div>
             <div id="footer">
                 <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
             </div>
         </div>
     </body>
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+      const gitment = new Gitment({
+        id: 'python-concurrent-high-level-2', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+      
+      gitment.render('comments')
+    </script>
 </html>

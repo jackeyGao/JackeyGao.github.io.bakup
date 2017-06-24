@@ -62,6 +62,7 @@ class HighlighterRenderer(m.HtmlRenderer):
                 %s</blockquote>''' % (className, content)
 
     def image(self, link, title="", alt=''):
+        link = link.replace('/uploads', 'http://orzdljguj.bkt.clouddn.com')
         if title:
             return  '''
                     <p class="hassubimage"><img src="%s" alt="%s"></p>

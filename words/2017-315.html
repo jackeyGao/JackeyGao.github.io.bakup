@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
         <link rel="stylesheet" href="../assets/stylesheets/table.css">
         <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
         <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
         <script>
             // 统计代码
@@ -33,9 +34,27 @@
 <p>但在发现的时候， 为什么不在官媒上通告？ 如果一味的烘托315晚会的收视率， 那就让人反感了。 如果目的是让更多的人关注， 来责备质监部门的监管不利， 那315不是打假晚会， 而是更多的作风整治。 私以为， 关乎民生都不是小问题， 再则辐射食品严重性， 实则应该及时通告出来。 早点防范为好。</p>
 
             </div>
+            <div id="comments">
+            </div>
             <div id="footer">
                 <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
             </div>
         </div>
     </body>
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+      const gitment = new Gitment({
+        id: '2017-315', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+      
+      gitment.render('comments')
+    </script>
 </html>

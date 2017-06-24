@@ -72,7 +72,7 @@ a:hover {
 #article p {
   margin-left: auto;
   margin-right: auto;
-  width: 30em;
+  width: 32em;
   margin-top: 1.375em;
   margin-bottom: 1.375em;
   overflow-x: hidden; }
@@ -88,7 +88,7 @@ a:hover {
   margin-right: auto;
   left: 0;
   right: 0;
-  width: 50em !important; }
+  width: 52em !important; }
 
 #article h1, h2, h3, h4, h5, h6 {
   margin-left: auto;
@@ -100,33 +100,33 @@ a:hover {
 
 #article h1 {
   font-size: 2.250em;
-  width: 13.33333em; }
+  width: 14.22222em; }
 
 #article h2 {
   font-size: 1.313em;
-  width: 22.84844em; }
+  width: 24.37167em; }
 
 #article h3 {
   font-size: 1em;
-  width: 30em; }
+  width: 32em; }
 
 #article h4 {
   font-size: 0.875em;
-  width: 34.28571em; }
+  width: 36.57143em; }
 
 #article h5 {
   font-size: 0.8em;
-  width: 37.5em; }
+  width: 40em; }
 
 ul {
   margin-left: auto;
   margin-right: auto;
-  width: 30em; }
+  width: 32em; }
 
 ol {
   margin-left: auto;
   margin-right: auto;
-  width: 30em;
+  width: 32em;
   list-style-type: decimal;
   type: "1"; }
 
@@ -140,7 +140,7 @@ ol {
 #more-words {
   margin-left: auto;
   margin-right: auto;
-  width: 19.19386em;
+  width: 20.47345em;
   font-size: 1.563em;
   font-family: Montserrat;
   color: #ddd;
@@ -231,7 +231,7 @@ blockquote p {
   overflow-y: hidden;
   line-height: 1.3em;
   color: #888;
-  width: 38em !important; }
+  width: 40em !important; }
 
 .blockquote-center p {
   text-align: center;
@@ -258,6 +258,11 @@ blockquote p {
 .blockquote-error {
   background: #fadbd8;
   border-left: 5px solid #D95C5C; }
+
+#comments {
+  margin-left: auto;
+  margin-right: auto;
+  width: 32em; }
 
 .table-wrapper {
   width: 40em !important;

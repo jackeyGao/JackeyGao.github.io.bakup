@@ -52,7 +52,7 @@ for file in markdown_files:
     md = markrender(content)
 
     template = template_env.get_template(WORD_TEMPLATE_FILE)
-    output = template.render(title=title, content=md, date=date)
+    output = template.render(title=title, content=md, date=date, filename=filename)
 
     html_filename = splitext(file)[0] + '.html'
     with open('words/%s' % html_filename, 'w') as f:

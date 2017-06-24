@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
         <link rel="stylesheet" href="../assets/stylesheets/table.css">
         <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
         <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
         <script>
             // 统计代码
@@ -89,9 +90,27 @@ $ pip install -r requirements.txt
 <p>执行后会自动抓取页面生成markdown， 下载每个文章的图片， 然后gitbook通过markdown生成此次文档列表的<code>book.mobi</code> (output/book.mobi), 在start.sh 最后面有个备份的操作， 会把此次的mobi备份到<code>output/books</code>. 然后发送到指定的kindle地址邮箱.</p>
 
             </div>
+            <div id="comments">
+            </div>
             <div id="footer">
                 <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
             </div>
         </div>
     </body>
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+      const gitment = new Gitment({
+        id: 'jianshuhot', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+      
+      gitment.render('comments')
+    </script>
 </html>
