@@ -267,14 +267,12 @@ and (max-device-width : 568px) {
     div {
         clear:both!important;
         display:block!important;
-        width:100%!important;
-        float:none!important;
         padding:0;
     }
 
     #comments {
         @include center;
-        @include default-text-width;
+        width: device-width!important;
     }
 
     pre {

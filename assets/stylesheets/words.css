@@ -282,14 +282,12 @@ blockquote p {
   div {
     clear: both !important;
     display: block !important;
-    width: 100% !important;
-    float: none !important;
     padding: 0; }
 
   #comments {
     margin-left: auto;
     margin-right: auto;
-    width: 15em !important; }
+    width: device-width !important; }
 
   pre {
     overflow-x: hidden; }
