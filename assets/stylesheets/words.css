@@ -286,6 +286,11 @@ blockquote p {
     float: none !important;
     padding: 0; }
 
+  #comments {
+    margin-left: auto;
+    margin-right: auto;
+    width: 15em !important; }
+
   pre {
     overflow-x: hidden; }
 

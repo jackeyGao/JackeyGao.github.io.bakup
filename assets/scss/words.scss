@@ -272,6 +272,11 @@ and (max-device-width : 568px) {
         padding:0;
     }
 
+    #comments {
+        @include center;
+        @include default-text-width;
+    }
+
     pre {
         overflow-x: hidden;
     }

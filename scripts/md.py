@@ -20,8 +20,9 @@ cleanr =re.compile('<.*?>')
 class HighlighterRenderer(m.HtmlRenderer):
     def blockcode(self, text, lang):
         if not lang:
-            return '''
-        \n<div class="highlight"><pre>{}</pre></div>\n'''.format(
+            return '''<div class="code-wrapper">
+          <span class="lang-label">Raw</span>
+        \n<div class="highlight"><pre>{}</pre></div></div>\n'''.format(
                 text.strip())
 
 
