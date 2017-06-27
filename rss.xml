@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Golang flag 获取多个值</title>
+        <link>http://jackeygao.io/words/golang-flag-get-slice-value.html</link>
+        <guid>http://jackeygao.io/words/golang-flag-get-slice-value.html</guid>
+        <pubDate>June 06, 2017</pubDate>
+        <description>Golang flag 获取多个值</description>
+    </item>
+    
+    <item>
         <title>谦虚为人，终有吉时</title>
         <link>http://jackeygao.io/words/2017-06-23.html</link>
         <guid>http://jackeygao.io/words/2017-06-23.html</guid>

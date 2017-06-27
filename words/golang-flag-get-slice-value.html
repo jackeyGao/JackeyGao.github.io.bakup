@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Golang flag 获取多个值</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="stylesheet" href="../assets/stylesheets/gitment.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-93231524-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>Golang flag 获取多个值</h1>
+                <h4>Posted June 26, 2017</h4>
+
+                <p>flag包是golang中处理command line参数标准库。 </p>
+<blockquote class="blockquote-normal">
+                <p>GoDoc: https://golang.org/pkg/flag/</p></blockquote>
+<p>但是在某些情况下，我们要对一个key指定多个值。 并获取多个值得数组。 这时我们需要定义一个Type Value接口类型</p>
+<div class="code-wrapper"><span class="lang-label">Go</span><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Value</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span>
+    <span class="nx">Set</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="kt">error</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>重写Set方法, 处理每个value， 追加到最终的数组.</p>
+<div class="code-wrapper"><span class="lang-label">Go</span><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">arrayFlags</span> <span class="p">[]</span><span class="kt">string</span>
+
+<span class="c1">// Value ...</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">i</span> <span class="o">*</span><span class="nx">arrayFlags</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprint</span><span class="p">(</span><span class="o">*</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Set 方法是flag.Value接口, 设置flag Value的方法.</span>
+<span class="c1">// 通过多个flag指定的值， 所以我们追加到最终的数组上.</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">i</span> <span class="o">*</span><span class="nx">arrayFlags</span><span class="p">)</span> <span class="nx">Set</span><span class="p">(</span><span class="nx">value</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">i</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="o">*</span><span class="nx">i</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>使用</p>
+<div class="code-wrapper"><span class="lang-label">Go</span><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">mongoAddrs</span> <span class="nx">arrayFlags</span>
+
+<span class="nx">flag</span><span class="p">.</span><span class="nx">Var</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">addrsFlag</span><span class="p">,</span> <span class="s">&quot;addr&quot;</span><span class="p">,</span> <span class="s">&quot;Database hosts&quot;</span><span class="p">)</span>
+
+<span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>传参执行方式</p>
+<div class="code-wrapper"><span class="lang-label">Bash</span><div class="highlight"><pre><span></span>./main --addr <span class="m">192</span>.168.0.55 --addr <span class="m">192</span>.168.0.56
+</pre></div>
+</div>
+            </div>
+            <div id="comments">
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+    <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script>
+      const gitment = new Gitment({
+        id: 'golang-flag-get-slice-value', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+      
+      gitment.render('comments')
+    </script>
+</html>
