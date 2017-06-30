@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Golang bongo 简单示例</title>
+        <link>http://jackeygao.io/words/golang-bongo-example.html</link>
+        <guid>http://jackeygao.io/words/golang-bongo-example.html</guid>
+        <pubDate>June 06, 2017</pubDate>
+        <description>Golang bongo 简单示例</description>
+    </item>
+    
+    <item>
         <title>Golang flag 获取多个值</title>
         <link>http://jackeygao.io/words/golang-flag-get-slice-value.html</link>
         <guid>http://jackeygao.io/words/golang-flag-get-slice-value.html</guid>
