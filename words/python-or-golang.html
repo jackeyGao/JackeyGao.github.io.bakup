@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Python 和 Golang 一点愚见</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="stylesheet" href="../assets/stylesheets/gitment.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-93231524-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>Python 和 Golang 一点愚见</h1>
+                <h4>Posted July 01, 2017</h4>
+
+                <p>Python 之所以有很好开发效率是因为语法简单，灵活。有大量的轮子可供选择， 文档支持非常棒。 我用Python编程的时候，基本成了一把梭“拿起键盘复制粘贴，就是干”. 因为是弱类型和解释型语言，编译器并不能给出一些简单的错误。 我水平有限，基本写完代码之后都有一个很长的调试过程。</p>
+
+<p>Golang 唯一感到方便的一点是在Coding中编译器能提示基本的错误。所以碰到BUG基本上都是逻辑BUG或者业务BUG。文档充裕， 而且容易理解， 直接看函数名就可以判断函数是做什么的， 返回什么类型的数据。在写Golang的时候和Python有很大区别， 写Golang的时候多了考虑阶段。而且Golang只有一种规范， 极大的方便了读别人源码的过渡。</p>
+
+<h2>怎么选择?</h2>
+
+<p>脚本或者小应用(脚本, 爬虫)用Python开发， 简单后台系统使用Python(Django Admin或者Flask Admin)开发。 其他大型项目（API、CPU密集）使用Golang开发.</p>
+
+            </div>
+            <div id="comments">
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+    <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script>
+      const gitment = new Gitment({
+        id: 'python-or-golang', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+      
+      gitment.render('comments')
+    </script>
+</html>
