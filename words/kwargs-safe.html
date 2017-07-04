@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Python 可变参数的坑</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="stylesheet" href="../assets/stylesheets/gitment.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-93231524-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>Python 可变参数的坑</h1>
+                <h4>Posted July 04, 2017</h4>
+
+                <p>Python 的可变参数有<code>*args</code>的位置可变参数和<code>**kwargs</code>参数可变两种. 今天在DEBUG的时候发现了一个非常棘手的<code>**kwargs</code>的坑.</p>
+
+<p>具体代码为:</p>
+<div class="code-wrapper"><span class="lang-label">Python</span><div class="highlight"><pre><span></span><span class="bp">cls</span><span class="p">(</span><span class="n">__auto_convert</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">_created</span><span class="o">=</span><span class="n">created</span><span class="p">,</span> <span class="n">__only_fields</span><span class="o">=</span><span class="n">only_fields</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>正常情况, data为以下内容时此语句没有问题.</p>
+<div class="code-wrapper"><span class="lang-label">Python</span><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;JG&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">18</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>但由于最近mongodb恢复数据的时候， 有重复数据。 mongodb会加上<code>_created</code>和<code>_modified</code>两个字段. 这样data的内容就成了下面这样.</p>
+<div class="code-wrapper"><span class="lang-label">Python</span><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;JG&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="s2">&quot;_created&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">699976</span><span class="p">),</span>
+    <span class="s2">&quot;_modified&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">699976</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>会产生什么BUG？ <code>_created</code>重复赋值问题.</p>
+<div class="code-wrapper"><span class="lang-label">Text only</span><div class="highlight"><pre><span></span>obj = cls(__auto_convert=False, _created=created, __only_fields=only_fields, **data)
+TypeError: TopLevelDocumentMetaclass object got multiple values for keyword argument &#39;_created&#39;
+</pre></div>
+</div>
+<p>我的解决办法是删除了这两个无效字段.</p>
+
+            </div>
+            <div id="comments">
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+    <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script>
+      const gitment = new Gitment({
+        id: 'kwargs-safe', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+      
+      gitment.render('comments')
+    </script>
+</html>

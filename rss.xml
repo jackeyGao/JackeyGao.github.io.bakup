@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>Python 可变参数的坑</title>
+        <link>http://jackeygao.io/words/kwargs-safe.html</link>
+        <guid>http://jackeygao.io/words/kwargs-safe.html</guid>
+        <pubDate>July 07, 2017</pubDate>
+        <description>Python 可变参数的坑</description>
+    </item>
+    
+    <item>
         <title>Golang bongo 简单示例</title>
         <link>http://jackeygao.io/words/golang-bongo-example.html</link>
         <guid>http://jackeygao.io/words/golang-bongo-example.html</guid>
