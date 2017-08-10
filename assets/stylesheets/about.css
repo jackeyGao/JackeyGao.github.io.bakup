@@ -58,21 +58,6 @@ a:hover {
 h1 {
   width: 14.5em; }
 
-#image-wrapper {
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  width: 50em; }
-
-#image-wrapper img {
-  display: block;
-  margin-top: 2.70em;
-  margin-bottom: 2.70em;
-  width: 40em !important;
-  margin-left: auto !important;
-  margin-right: auto !important; }
-
 .avatar-wrapper {
   text-align: center; }
 
