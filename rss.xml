@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>ANSIBLE模块 - shell和command区别</title>
+        <link>http://jackeygao.io/words/ansible-shell-vs-command.html</link>
+        <guid>http://jackeygao.io/words/ansible-shell-vs-command.html</guid>
+        <pubDate>November 11, 2017</pubDate>
+        <description>ANSIBLE模块 - shell和command区别</description>
+    </item>
+    
+    <item>
         <title>Django OAuth2 和 JWT 案例</title>
         <link>http://jackeygao.io/words/django-oauth2-jwt-auth.html</link>
         <guid>http://jackeygao.io/words/django-oauth2-jwt-auth.html</guid>

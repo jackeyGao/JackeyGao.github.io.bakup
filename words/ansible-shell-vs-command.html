@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ANSIBLE模块 - shell和command区别</title>
+        <link rel="stylesheet" href="../assets/stylesheets/global.css">
+        <link rel="stylesheet" href="../assets/stylesheets/words.css">
+        <link rel="stylesheet" href="../assets/stylesheets/monokai.css">
+        <link rel="stylesheet" href="../assets/stylesheets/table.css">
+        <link rel="stylesheet" href="../assets/stylesheets/gitment.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+        <script>
+            // 统计代码
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-93231524-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html"><div id="logo">JG</div></a>
+        </div>
+        <div id="container" class="typo">
+            <div id="article">
+                <h1>ANSIBLE模块 - shell和command区别</h1>
+                <h4>Posted November 13, 2017</h4>
+
+                <p>Ansible 提供了大量的模块(<a href="https://docs.ansible.com/ansible/latest/list_of_all_modules.html">All Modules</a>)供执行 AD-Hoc 和撰写 playbook。 有些模块有很多通用性， 但设计为多个还是有部分区别的。</p>
+
+<h2>shell vs. command</h2>
+
+<p>一个典型的例子就是 <a href="https://docs.ansible.com/ansible/latest/shell_module.html">shell</a> 和 <a href="https://docs.ansible.com/ansible/latest/command_module.html">command</a> 模块. 这两个模块在很多情况下都能完成同样的工作， 以下是两个模块之前的区别：</p>
+
+<ul>
+<li>command 模块命令将不会使用 shell 执行. 因此, 像 <code>$HOME</code> 这样的变量是不可用的。还有像<code>&lt;</code>, <code>&gt;</code>, <code>|</code>, &#39;;&#39;, &#39;&amp;&#39;都将不可用。</li>
+<li>shell 模块通过shell程序执行， 默认是<code>/bin/sh</code>, <code>&lt;</code>, <code>&gt;</code>, <code>|</code>, &#39;;&#39;, &#39;&amp;&#39; 可用。但这样有潜在的 shell 注入风险， 后面会谈.</li>
+<li>command 模块更安全，因为他不受用户环境的影响。 也很大的避免了潜在的 shell 注入风险.</li>
+</ul>
+
+<h2>结论</h2>
+
+<p>结论是两个模块都要避免使用， 你应该优先考虑更具体的 ansible 模块。 比如用 command 或者 shell 执行 yum 命令前， 应该先了解到直接的 yum 模块。使用具体模块比执行命令要优雅很多， 因为这些模块设计都是具有幂等性的, 并满足其他标准, 如异常处理等.</p>
+
+<p>如果没有更具体的模块， 相对来说 command 更安全点。</p>
+
+<p>如果您需要用户环境和流式操作，则只能使用 shell 模块，但您要小心。 请记住 ansible 官方给出的提示, 如果将 shell 模块和变量一起使用：</p>
+<blockquote class="blockquote-warning">
+                <p> To sanitize any variables passed to the shell module, you should use “{{ var | quote }}” instead of just “{{ var }}” to make sure they don’t include evil things like semicolons.)</p><br/><p>即: 如果你需要安全的使用带有变量的 shell 模块， 使用<code>{{ var | quote }}</code><code>代替</code>{{ var }}` , 确保输入不包含分号或者流式操作.</p></blockquote>
+            </div>
+            <div id="comments">
+            </div>
+            <div id="footer">
+                <a href="../words.html"><div id="more-words">MORE WORDS</div></a>
+            </div>
+        </div>
+    </body>
+    <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script>
+      const gitment = new Gitment({
+        id: 'ansible-shell-vs-command', // optional
+        owner: 'jackeyGao',
+        repo: 'JackeyGao.github.io',
+        oauth: {
+          client_id: '177af99888a292531873',
+          client_secret: '7c0927c7cdf0d94eed7dad0b238552c10ec6f53c',
+        },
+        // ...
+        // For more available options, check out the documentation below
+      })
+      
+      gitment.render('comments')
+    </script>
+</html>
