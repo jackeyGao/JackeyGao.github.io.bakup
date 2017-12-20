@@ -6,6 +6,14 @@
     <description>Jackey Gao的在线博客</description>
     
     <item>
+        <title>一个Python3和Python2的range差异</title>
+        <link>http://jackeygao.io/words/1000000000000-in-range-1000000000001.html</link>
+        <guid>http://jackeygao.io/words/1000000000000-in-range-1000000000001.html</guid>
+        <pubDate>December 12, 2017</pubDate>
+        <description>一个Python3和Python2的range差异</description>
+    </item>
+    
+    <item>
         <title>使用非root用户在容器中运行celery</title>
         <link>http://jackeygao.io/words/celery-with-docker-compose.html</link>
         <guid>http://jackeygao.io/words/celery-with-docker-compose.html</guid>
