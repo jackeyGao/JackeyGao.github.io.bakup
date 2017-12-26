@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Python 高级并发2</h1>
                 <h4>Posted September 30, 2015</h4>
-
                 <p>一般程序并发分为<code>多线程</code>和<code>多进程</code>并发.</p>
 
 <p>那么什么时候选择两种并发手段， 该如何选择呢， 应用场景是什么？</p>
@@ -55,6 +54,7 @@
 <p>ThreadPoolExecutor 和 ProcessPoolExecutor直接python的with as 控制流语句， 让你非常简单的就套入了程序里面。</p>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -63,6 +63,7 @@
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'python-concurrent-high-level-2', // optional
@@ -77,5 +78,13 @@
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

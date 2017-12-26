@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Python eval安全案例</h1>
                 <h4>Posted June 13, 2017</h4>
-
                 <p>关于Python的eval函数， 大家一致的避免使用。 但有时候必须使用， 怎么保证安全呢？ 下面我用一个案例来避免eval潜在的风险。 当然这只是其中的一种。</p>
 
 <p>我的使用场景是这样的， 要把mongodb中的输出bson类型转换成JSON。 我需要转换的JSON是这样的, 看样子是个map类型， 但不是JSON类型， 确切的说他是bson类型。</p>
@@ -144,6 +143,7 @@
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -152,6 +152,7 @@
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'python-eval-safe', // optional
@@ -166,5 +167,13 @@
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

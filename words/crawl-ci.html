@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>全宋词爬取过程及数据分析</h1>
                 <h4>Posted March 07, 2017</h4>
-
                 <script src="/assets/js/3rd/tagul.min.js" async defer></script>
 
 <style>
@@ -85,6 +84,7 @@ $ python parse.py
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -93,6 +93,7 @@ $ python parse.py
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'crawl-ci', // optional
@@ -107,5 +108,13 @@ $ python parse.py
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>使用DoMonit监控Docker</h1>
                 <h4>Posted August 17, 2016</h4>
-
                 <p>本篇的目的是介绍Python包<a href="https://github.com/eon01/DoMonit">Domonit</a>, 一个基于Python语言开发的API封装的轻量监控程序.</p>
 
 <p>监控可以让你可视化服务的基础架构, 生产环境不进行监控是不推荐的. 同样生产环境的Docker也需要监控, 特别是很多容器运行了关键的服务.</p>
@@ -163,6 +162,7 @@ python examples.py
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -171,6 +171,7 @@ python examples.py
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'monitoring-docker-with-python-domonit', // optional
@@ -185,5 +186,13 @@ python examples.py
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

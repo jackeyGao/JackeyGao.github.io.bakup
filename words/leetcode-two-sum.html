@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Leetcode 算法 － 1. Two Sum</h1>
                 <h4>Posted August 16, 2016</h4>
-
                 <blockquote class="blockquote-normal">
                 <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/two-sum/">1. Two Sum</a></p><br/><p><strong>问题描述</strong>: Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p><br/><p>You may assume that each input would have exactly one solution.</p></blockquote>
 <p><strong>Example:</strong></p>
@@ -56,6 +55,7 @@
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -64,6 +64,7 @@
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'leetcode-two-sum', // optional
@@ -78,5 +79,13 @@
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

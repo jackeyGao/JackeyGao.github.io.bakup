@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Python 可变参数的坑</h1>
                 <h4>Posted July 04, 2017</h4>
-
                 <p>Python 的可变参数有<code>*args</code>的位置可变参数和<code>**kwargs</code>参数可变两种. 今天在DEBUG的时候发现了一个非常棘手的<code>**kwargs</code>的坑.</p>
 
 <p>具体代码为:</p>
@@ -59,6 +58,7 @@ TypeError: TopLevelDocumentMetaclass object got multiple values for keyword argu
 <p>我的解决办法是删除了这两个无效字段.</p>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -67,6 +67,7 @@ TypeError: TopLevelDocumentMetaclass object got multiple values for keyword argu
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'kwargs-safe', // optional
@@ -81,5 +82,13 @@ TypeError: TopLevelDocumentMetaclass object got multiple values for keyword argu
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

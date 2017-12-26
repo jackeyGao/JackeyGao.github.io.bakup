@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>关于Python的20个面试题</h1>
                 <h4>Posted March 08, 2017</h4>
-
                 <p>Python 是一个高级、解释型、交互式和面向对象的脚本语言. Python 语言设计具有高度可读性的， 使用一些常见的英语词组和其他语言常用的标点符号组成的语法结构， 相对于其他语言它具有更少的语法结构.</p>
 
 <p>Python 是解释语言: 意思就是代码由Python解释器在run-time时直接处理, 而不需要在运行前去编译你的程序.</p>
@@ -242,6 +241,7 @@ copy.deepcopy 深拷贝, 拷贝对象及其字对象</p>
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -250,6 +250,7 @@ copy.deepcopy 深拷贝, 拷贝对象及其字对象</p>
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'top-20-python-interview-questions-and-answer', // optional
@@ -264,5 +265,13 @@ copy.deepcopy 深拷贝, 拷贝对象及其字对象</p>
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

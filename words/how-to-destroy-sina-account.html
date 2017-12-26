@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>永久注销新浪微博账户</h1>
                 <h4>Posted August 28, 2016</h4>
-
                 <p>我是微博轻度用户， 轻度到没有微博对我的社交生活一点影响都没有. 所以我微博被盗号好几个月都没有被我发现， 一般登不上微博的时候我一般就不登录了， 所以很久之后才发现微博被盗号了。 因为我的安全措施做的很好， 所以我不禁怀疑微博的账号体系， 加之在盗号期间转发的微博让人不堪入目, 和无脑水军和无脑脑残粉一样的评论风格，让我觉得恶心.</p>
 
 <p>类似于:</p>
@@ -60,6 +59,7 @@
 <blockquote class="blockquote-warning">
                 <p> 我的微博账号不到两个小时就被封掉了</p></blockquote>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -68,6 +68,7 @@
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'how-to-destroy-sina-account', // optional
@@ -82,5 +83,13 @@
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>五个很实用的Django 项目推荐</h1>
                 <h4>Posted August 16, 2016</h4>
-
                 <p>很多Django的包都能很大的增加我们的开发效率或者增加我们项目的功能， 比如: <a href="https://github.com/tomchristie/django-rest-framework/">django-rest-framework</a> 、<a href="https://github.com/torchbox/wagtail">wagtail</a>, 它们带来了很棒的功能. 但是今天我想推荐一些其他的包， 更有爱的包.</p>
 
 <h2><a href="https://github.com/groveco/django-sql-explorer">django-sql-explorer</a></h2>
@@ -140,6 +139,7 @@
 <h4>原文地址: https://medium.com/@raiderrobert/5-django-packages-that-get-too-little-love-d55232c28640</h4>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -148,6 +148,7 @@
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: '5-django-packages', // optional
@@ -162,5 +163,13 @@
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

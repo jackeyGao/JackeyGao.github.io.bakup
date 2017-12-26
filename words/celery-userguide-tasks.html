@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Celery用户手册 - Tasks</h1>
                 <h4>Posted April 19, 2016</h4>
-
                 <p><code>Tasks</code>是Celery 应用的构建块。事实上Celery应用是由一个或多个Task拼装组成的。</p>
 
 <p>一个Task即是一个对象， Task被创建后可以被所有调用， 它是双重角色， 当Task被调用可以通过Task可以发送消息， 同时当作为一个worker的时候可以接收消息，并消费。</p>
@@ -342,6 +341,7 @@ key|value
 <p>未完待续&gt;&gt;&gt;</p>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -350,6 +350,7 @@ key|value
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'celery-userguide-tasks', // optional
@@ -364,5 +365,13 @@ key|value
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

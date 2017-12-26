@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Flask-Admin 增加自定义Action</h1>
                 <h4>Posted May 12, 2017</h4>
-
                 <p>默认情况下, Flask Admin提供了两个Row Action, 即delete和edit. 但是大多数情况下, 这些并不能满足有其他快捷操作需求, 好在Flask Admin提供增加这种按钮的接口.</p>
 
 <h2><code>UserView.py</code></h2>
@@ -108,6 +107,7 @@
 </p>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -116,6 +116,7 @@
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'flask-admin-add-custom-row-action', // optional
@@ -130,5 +131,13 @@
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

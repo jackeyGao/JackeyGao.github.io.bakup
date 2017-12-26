@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>企业级翻墙方案</h1>
                 <h4>Posted November 06, 2015</h4>
-
                 <p>为了公司内一些技术员工的要求访问google查资料, 公司准备采购国外vps来建设内部翻墙方案.利用公司内部的认证系统（Open LDAP）来进行账号授权。然后通过PAC文件进行网站过滤.</p>
 
 <h2>准备工作</h2>
@@ -102,6 +101,7 @@ http_access deny all <span class="c1"># 其他拒绝</span>
 <p>多个vps 可以启动多个squid和stunnel服务, 客户端起多个stunnel端口即可.</p>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -110,6 +110,7 @@ http_access deny all <span class="c1"># 其他拒绝</span>
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'offices-proxy', // optional
@@ -124,5 +125,13 @@ http_access deny all <span class="c1"># 其他拒绝</span>
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

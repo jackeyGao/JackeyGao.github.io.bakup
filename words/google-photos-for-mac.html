@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Google photos for MAC使用教程</h1>
                 <h4>Posted April 12, 2016</h4>
-
                 <p>Google photos 是谷歌推出了一个独立的无限相片 / 视频存放服务。使用者可以免费存放无限量相片和视频至云端，唯其大小限于最大 16MP 和 1080p。而且客户端可以设置是否对图片进行压缩， 所以大的图片也不会占用google drive的空间。</p>
 
 <p>安卓手机上面使用shadowsocks 可以正常登陆和备份照片 ， 此处略。</p>
@@ -47,6 +46,7 @@ cat hosts/hosts &gt;&gt; /etc/hosts
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -55,6 +55,7 @@ cat hosts/hosts &gt;&gt; /etc/hosts
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'google-photos-for-mac', // optional
@@ -69,5 +70,13 @@ cat hosts/hosts &gt;&gt; /etc/hosts
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

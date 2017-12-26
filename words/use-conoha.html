@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Conoha主机测评</h1>
                 <h4>Posted November 02, 2015</h4>
-
                 <p>最近由于心知肚明原因， 原来的linode主机已不能使用。所以最近又开始了疯狂找主机的历程， 说起这个简直不能提起。 我本人也连续找了好多家， linode更换了一次ip依然不能访问。然后又找了搬瓦工， 无奈速度简直不能忍受， 打开链接的时间能让我细品一杯茶.</p>
 
 <p>再后来就找到conoha ， 说起conoha之前我注册过， 而且使用别人推荐链接注册，然后加上活动送的1000日元总共2000日元，他们家东京机房是900元，  这些能用两个月的日本机房</p>
@@ -44,6 +43,7 @@
 <p><a href="https://www.conoha.jp/referral/?token=587K1ucxrGKjarxl9o.8AJxc718ZZfdHt9QFr5HR9_DprBM._ZI-AHH">我是链接</a></p>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -52,6 +52,7 @@
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'use-conoha', // optional
@@ -66,5 +67,13 @@
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

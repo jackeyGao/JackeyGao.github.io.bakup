@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Hyper shadowsocks完全教程</h1>
                 <h4>Posted August 15, 2016</h4>
-
                 <h2>什么是Hyper?</h2>
 <blockquote class="blockquote-normal">
                 <p>Hyper是一个可以在hypervisor上，不安装完整操作系统，直接运行Docker Image的运行引擎。Hyper可以在hypervisor上运行一组相关的Docker Image，而不是一个，也正是Kubernetes所阐述的Pod的概念——不是一个虚机，不是一个胖容器，而是一组关联的容器。再进一步说，Hyper致力于成为一个平台中立、hypervisor中立的执行引擎，除了支持KVM/QEMU外，接下来Hyper还将会支持Xen。</p></blockquote>
@@ -95,6 +94,7 @@ $ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span clas
 <p>到此结束,然后shadowsocks 客户端通过服务端配置指定</p>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -103,6 +103,7 @@ $ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span clas
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'hyper-shadowsocks', // optional
@@ -117,5 +118,13 @@ $ hyper fip attach <span class="m">162</span>.221.195.201 shadowsocks <span clas
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

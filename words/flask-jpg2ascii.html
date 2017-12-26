@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>JPG2ASCII开发上线记录</h1>
                 <h4>Posted November 18, 2015</h4>
-
                 <h2>介绍</h2>
 
 <p>刚开始做运维的时候喜欢在登录服务器的时候自动打印一些ASCII图像， 于是大量搜寻这种图片以做到自己的欢迎页独一无二。 想想有点不误正业， 现在虽说找到合适的ASCII图形， 相对于以前不喜这个东西了， 但至少是一段时间的情怀. 最近研究flask， 碰巧又遇到jp2a这个开源软件, 所以想把图片转ASCII图像做成一个在线服务, 顺便入门flask.
@@ -81,6 +80,7 @@ make <span class="o">&amp;&amp;</span> make install
 <p>编译完成后需要把这个jp2a可执行命令打进包里面, heroku app机器上不太方便git操作, 我这边是在heroku app机器scp到我的服务器上. 然后add commit.</p>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -89,6 +89,7 @@ make <span class="o">&amp;&amp;</span> make install
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'flask-jpg2ascii', // optional
@@ -103,5 +104,13 @@ make <span class="o">&amp;&amp;</span> make install
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Celery用户手册 - Application</h1>
                 <h4>Posted April 18, 2016</h4>
-
                 <h2>Application</h2>
 
 <p>必须使用一个Application实例来创建celery 任务.</p>
@@ -234,6 +233,7 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -242,6 +242,7 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'celery-userguide-application', // optional
@@ -256,5 +257,13 @@ CELERY_TIMEZONE = &#39;Europe/London&#39;
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

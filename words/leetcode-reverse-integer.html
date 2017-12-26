@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Leetcode 算法 － 7. Reverse Integer</h1>
                 <h4>Posted August 17, 2016</h4>
-
                 <blockquote class="blockquote-normal">
                 <p><strong>问题链接</strong>: <a href="https://leetcode.com/problems/reverse-integer/">7. Reverse Integer</a></p><br/><p><strong>问题描述</strong>: Reverse digits of an integer.</p><br/><p>Example1: <code>x = 123, return 321</code></p><br/><p>Example2: <code>x = -123, return -321</code></p><br/><p><strong>Update (2014-11-10)</strong>: Test cases had been added to test the overflow behavior.</p></blockquote>
 <p><strong>注意点:</strong> 此问题在2014-11-10有更新， 加入了对溢出的控制, 当出现溢出则返回为0. 而Python中没有溢出的行为, 所以为了Accepted, 加入了bit_length 判断. 长度为32或以上直接返回为0</p>
@@ -73,6 +72,7 @@
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -81,6 +81,7 @@
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'leetcode-reverse-integer', // optional
@@ -95,5 +96,13 @@
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

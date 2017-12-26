@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Karabiner profile 命令行切换方式</h1>
                 <h4>Posted April 14, 2016</h4>
-
                 <p>Karabiner 提供了一个命令行工具来方便脚本编程， 一般这个命令行工具在安装包的bin目录下， 具体地址为: <code>/Applications/Karabiner.app/Contents/Library/bin/karabiner</code> </p>
 
 <h2>帮助文档</h2>
@@ -123,6 +122,7 @@ Examples:
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -131,6 +131,7 @@ Examples:
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'karabiner-switch-command-line', // optional
@@ -145,5 +146,13 @@ Examples:
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

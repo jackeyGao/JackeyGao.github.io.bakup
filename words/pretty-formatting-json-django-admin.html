@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Django Admin输出JSON</h1>
                 <h4>Posted March 15, 2017</h4>
-
                 <p>Django 自带Admin后台这是Django的优势所在, 这样的话我们可以开箱即用后台功能。 有人说Django重， 可能设计就是这样， 过度的封装就是让开发者更简单的实现。 比起flask、tornado等轻量级的框架。 Django更适合做支撑系统的开发。 </p>
 
 <p>当然本文不讲述Django和其他轻量级框架的优劣， 主要说一个修改Admin后台的例子。 虽然Admin可以对定义的模型表做一些基本的增删改查， 但是有时候我们需要加一些功能。 比如： 我想在change页面加入一个字段， 可以完整的显示整个实例的所有字段， 并以JSON的格式显示出来。 这样对于我在开发API的时候能更加直观， 而且我想显示的JSON是格式化之后的， 最好是加上语法高亮.</p>
@@ -82,6 +81,7 @@
 </p>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -90,6 +90,7 @@
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'pretty-formatting-json-django-admin', // optional
@@ -104,5 +105,13 @@
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

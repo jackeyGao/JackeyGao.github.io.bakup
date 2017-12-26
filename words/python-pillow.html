@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>使用Python将两张照片透明重叠</h1>
                 <h4>Posted September 30, 2015</h4>
-
                 <p>透明重叠最主要用的是<code>Image.blend</code>方法(详情请看第二个代码块), 第一个代码块主要是将多个图片剪切到一张大图, 然后用这张大图和另外一张非剪切的大图进行透明重叠， 主要<code>Image.blend</code>方法第三个参数是相对于第一张图片透明度。 </p>
 <div class="code-wrapper"><span class="lang-label">Python</span><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
@@ -137,6 +136,7 @@
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -145,6 +145,7 @@
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'python-pillow', // optional
@@ -159,5 +160,13 @@
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

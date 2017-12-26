@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>查看你历史命令的使用率</h1>
                 <h4>Posted September 30, 2015</h4>
-
                 <p>一个查看历史命令的使用率工具， 因为看到<code>oh-my-zsh</code>项目中的<code>zsh_stats</code>function 后有感仿照开发了一个。 本项目不仅支持<code>zsh_history</code>而且支持<code>bash_history</code> 。 还有可扩展的趋势.</p>
 
 <h2>oh-my-zsh 之 zsh_stats</h2>
@@ -110,6 +109,7 @@ $ which cmdstats
 <p><a href="https://github.com/jackeyGao/cmdstats">jackeyGao/cmdstats</a></p>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -118,6 +118,7 @@ $ which cmdstats
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'show-your-top-command', // optional
@@ -132,5 +133,13 @@ $ which cmdstats
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

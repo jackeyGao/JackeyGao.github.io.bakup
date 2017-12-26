@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Django OAuth2 和 JWT 案例</h1>
                 <h4>Posted August 08, 2017</h4>
-
                 <p>在重写 Ansible 监控平台时， 需要前后端分离， 并且需要使用公司的账户系统。 而前后端认证我一直采取的 JWT 认证规范，具体为什么这么选择， 这里不多讲。而符合<code>DRF</code> 的JWT 框架， 默认使用的是 Django 自带的账户系统做的。 所以再 OAuth2 和 JWT 结合需要做点工作。</p>
 
 <p><strong>OAuth2认证方法</strong></p>
@@ -264,6 +263,7 @@ teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre></div>
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -272,6 +272,7 @@ teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre></div>
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'django-oauth2-jwt-auth', // optional
@@ -286,5 +287,13 @@ teambition_obtain_jwt_token = TeambitionObtainJSONWebToken.as_view()</pre></div>
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

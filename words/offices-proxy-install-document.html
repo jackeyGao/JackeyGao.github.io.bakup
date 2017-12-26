@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>企业级翻墙服务部署文档</h1>
                 <h4>Posted April 13, 2016</h4>
-
                 <p>写在前面, 翻墙后仅资料查询或学术研究. 之前有说过翻墙方案： <a href="/2015/11/06/offices-proxy/">企业级翻墙方案</a></p>
 
 <h2>思考工作</h2>
@@ -179,6 +178,7 @@ connect = $墙内vps2:34567</pre></div></div>
 MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; 代理 &gt; WEB 代理(HTTP) &gt; 输入地址端口用户名密码.</p>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -187,6 +187,7 @@ MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; �
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'offices-proxy-install-document', // optional
@@ -201,5 +202,13 @@ MAC: 系统设置 &gt; 网络 &gt; &lt;选择所用网络&gt; &gt; 高级 &gt; �
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

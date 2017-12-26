@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Django 进阶学习 - 文本框过滤</h1>
                 <h4>Posted May 03, 2016</h4>
-
                 <p>默认情况下django可以对列进行过滤， 但大多数是对<code>Relationship</code>列通过<code>list_filter</code> 直接指定<code>field name</code>就可以方便的进行过滤了， 但是如果实现文本框输入过滤属性， 然后通过按钮触发事件后来过滤只能通过自定义Django filter来实现</p>
 
 <p><strong>首先自定义一个filter类</strong></p>
@@ -145,6 +144,7 @@
 <p><strong>配置完成</strong></p>
 
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -153,6 +153,7 @@
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'intermediate-django-single-input-text-filter', // optional
@@ -167,5 +168,13 @@
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

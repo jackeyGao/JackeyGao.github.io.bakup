@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>Django url 反解析</h1>
                 <h4>Posted September 30, 2015</h4>
-
                 <p>Django 是个python中web-framework
 MTV框架能够快速的开发网站, 刚开始学习django时候， 对于模版里面经常根据自己项目的<code>urls</code>来手写链接. 
 虽然这种方法是可行的， 但是不是规范的。 
@@ -85,6 +84,7 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -93,6 +93,7 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'django-url-reverse', // optional
@@ -107,5 +108,13 @@ urls.py 中很简单， 在url前面加上就行. 但是很多的模版中的url
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>

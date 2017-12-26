@@ -28,7 +28,6 @@
             <div id="article">
                 <h1>使用非root用户在容器中运行celery</h1>
                 <h4>Posted December 17, 2017</h4>
-
                 <p>在 docker 环境中， 如果使用 root 用户运行 celery worker会有下面才警告出现. 虽然可以通过<code>C_FORCE_ROOT</code>环境变量来避免这个问题。 但毕竟 celery 官方并不推荐使用 root。好在 docker-compose 有user参数指定用户.</p>
 <div class="code-wrapper"><span class="lang-label">Text only</span><div class="highlight"><pre><span></span>RuntimeWarning: You&#39;re running the worker with superuser privileges: this is
 absolutely not recommended!
@@ -63,6 +62,7 @@ User information: uid=0 euid=0 gid=0 egid=0
 </pre></div>
 </div>
             </div>
+            <div id="donate" style="margin-left: auto; margin-right: auto; width: 32em; text-align: center;"></div>
             <div id="comments">
             </div>
             <div id="footer">
@@ -71,6 +71,7 @@ User information: uid=0 euid=0 gid=0 egid=0
         </div>
     </body>
     <script src="../assets/js/3rd/gitment.browser.js"></script>
+    <script src="../assets/js/3rd/vdonate.min.js"></script>
     <script>
       const gitment = new Gitment({
         id: 'celery-with-docker-compose', // optional
@@ -85,5 +86,13 @@ User information: uid=0 euid=0 gid=0 egid=0
       })
       
       gitment.render('comments')
+
+      new Donate({
+        title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+        btnText: '打赏', // 可选参数，打赏按钮文字
+        el: document.getElementById('donate'), // 必选参数，打赏按钮的容器
+        wechatImage: '../assets/images/wechat.png', // 必选参数，微信收款二维码
+        alipayImage: '../assets/images/alipay.jpg' // 必选参数，支付宝收款二维码
+      });
     </script>
 </html>
